@@ -3,12 +3,12 @@
   "dataset": 3844034,
   "checkpoints": 100446723,
   "cache": 0,
-  "logs": 611684,
+  "logs": 611533,
   "environment": 4862931142,
-  "total": 5567503657,
-  "other": 328081,
+  "total": 5569980988,
+  "other": 2805563,
   "external_reserve": 1549096637,
-  "budget_total": 7116600294,
+  "budget_total": 7119077625,
   "warnings": [
     "5 GB eşiği aşıldı"
   ]

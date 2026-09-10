@@ -61,8 +61,8 @@ Eksikler: “gidicem”, “buluşcaz”, “gidicez” gibi gündelik gelecek z
 
 ## Depolama
 
-- Proje klasörü: **5.568 GB**.
-- Paylaşılan eski önbellek için ihtiyat payıyla: **7.117 GB**. Bu payın tamamının projeye ait olduğu iddia edilmez.
+- Proje klasörü: **5.570 GB**.
+- Paylaşılan eski önbellek için ihtiyat payıyla: **7.119 GB**. Bu payın tamamının projeye ait olduğu iddia edilmez.
 - Kalıcı kullanım 8 GB hedefinin altında; 15 GB kesin sınır. Küresel önbellekler silinmedi.
 
 | Alan | MB |
