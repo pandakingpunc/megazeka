@@ -1,0 +1,10 @@
+{
+  "name": "Common Voice Turkish Sentence Collector",
+  "url": "https://raw.githubusercontent.com/common-voice/common-voice/b12cde653757295103c5948c1cd601b166e1b905/server/data/tr/sentence-collector.txt",
+  "revision": "b12cde653757295103c5948c1cd601b166e1b905",
+  "license": "CC0-1.0",
+  "license_url": "https://github.com/common-voice/common-voice#licensing-and-content-source",
+  "sha256": "28e2d0955f640d001dd90c6205c1e55cde18528a2bed45cc99389bc0d4058ece",
+  "bytes": 1557129,
+  "lines": 47781
+}

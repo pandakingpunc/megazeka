@@ -1,0 +1,16 @@
+{
+  "input": "bugun hava cok guzel\n\nYarın görüşürüz.",
+  "output": "Bugün hava çok güzel.\n\nYarın görüşürüz.",
+  "clipboard_matches": true,
+  "learning_mode": true,
+  "tokens_observed": 48,
+  "window_size": [
+    1180,
+    820
+  ],
+  "small_window_size": [
+    840,
+    660
+  ],
+  "checkpoint_comparison": "Temel model\n guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guzel hava cok guz\n\nün görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yarın görüşürüz. Yyar\n\nEn iyi kayıt\nBugün hava çok güzel.\n\nYarın görüşürüz.\n\nSon kayıt\nBugün hava çok güzel.\n\nYarın görüşürüz."
+}

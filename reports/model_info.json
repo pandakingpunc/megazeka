@@ -1,0 +1,20 @@
+{
+  "architecture": "ByT5-small + LoRA",
+  "base": "google/byt5-small",
+  "parameters": 305896448,
+  "trainable_parameters": 6258688,
+  "device": "NVIDIA GeForce RTX 4060",
+  "precision": "torch.bfloat16",
+  "tokenizer_vocabulary": 384,
+  "config": {
+    "steps": 2000,
+    "batch_size": 8,
+    "gradient_accumulation": 2,
+    "learning_rate": 0.0005,
+    "eval_every": 200,
+    "seed": 42,
+    "rank": 16,
+    "max_bytes": 176,
+    "patience": 8
+  }
+}

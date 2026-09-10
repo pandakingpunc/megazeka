@@ -1,0 +1,92 @@
+Değerlendirme 40/640
+Değerlendirme 80/640
+Değerlendirme 120/640
+Değerlendirme 160/640
+Değerlendirme 200/640
+Değerlendirme 240/640
+Değerlendirme 280/640
+Değerlendirme 320/640
+Değerlendirme 360/640
+Değerlendirme 400/640
+Değerlendirme 440/640
+Değerlendirme 480/640
+Değerlendirme 520/640
+Değerlendirme 560/640
+Değerlendirme 600/640
+Değerlendirme 640/640
+{
+  "checkpoint": "base",
+  "metrics": {
+    "examples": 640,
+    "cer": 0.09288114879315612,
+    "wer": 0.3492489270386266,
+    "exact_match": 0.2515625,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 161,
+    "overcorrection": 0.0
+  },
+  "raw_metrics": {
+    "examples": 640,
+    "cer": 3.664604338527345,
+    "wer": 3.8924356223175964,
+    "exact_match": 0.0,
+    "edit_precision": 0.002672367717797969,
+    "edit_recall": 0.0390625,
+    "edit_f1": 0.0050025012506253125,
+    "clean_examples": 161,
+    "overcorrection": 1.0
+  },
+  "identity_baseline": {
+    "examples": 640,
+    "cer": 0.09288114879315612,
+    "wer": 0.3492489270386266,
+    "exact_match": 0.2515625,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 161,
+    "overcorrection": 0.0
+  },
+  "manual_metrics": {
+    "examples": 12,
+    "cer": 0.08504398826979472,
+    "wer": 0.35294117647058826,
+    "exact_match": 0.5,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 6,
+    "overcorrection": 0.0
+  },
+  "seconds": 374.1037822999997,
+  "model_info": {
+    "Mimari": "ByT5-small (temel)",
+    "Toplam parametre": 299637760,
+    "Token sözlüğü": 384,
+    "Kontrol noktası": "megazeka\\models\\base",
+    "Temel model boyutu (MB)": 599.3,
+    "Aygıt": "NVIDIA GeForce RTX 4060",
+    "Hassasiyet": "torch.bfloat16",
+    "Nicemleme": "Yok",
+    "Parça sınırı": "176 UTF-8 baytı",
+    "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı"
+  },
+  "storage": {
+    "model": 599341749,
+    "dataset": 3844034,
+    "checkpoints": 100446716,
+    "cache": 0,
+    "logs": 16015,
+    "environment": 4862759280,
+    "total": 5566721122,
+    "other": 313328,
+    "external_reserve": 1549096637,
+    "budget_total": 7115817759,
+    "warnings": [
+      "5 GB eşiği aşıldı"
+    ]
+  },
+  "note": "Sentetik test; karakter düzenleme F1; manuel örnekler eğitim dışında. Modelin ön eğitim verileriyle olası örtüşme bilinmiyor."
+}

@@ -1,0 +1,1 @@
+"""Türkçe Tk masaüstü uygulaması."""

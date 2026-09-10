@@ -1,0 +1,1 @@
+{"steps": 6000, "batch_size": 8, "gradient_accumulation": 2, "learning_rate": 0.0003, "eval_every": 400, "seed": 42, "rank": 16, "max_bytes": 176, "patience": 8}

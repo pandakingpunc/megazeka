@@ -1,0 +1,11 @@
+.venv/
+.cache/
+__pycache__/
+.pytest_cache/
+# Temel model (google/byt5-small) scripts/download.py ile indirilir
+models/base/*
+# LoRA kontrol noktaları Hugging Face'te yayınlanır: pandakingpunc/megazeka-byt5-tr-spellfix
+models/checkpoints/*
+# Common Voice ham dosyası; data/raw/source.json'daki commit + SHA-256 ile yeniden indirilir
+data/raw/common_voice_tr.txt
+*.part

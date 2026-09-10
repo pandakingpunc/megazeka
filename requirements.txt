@@ -1,0 +1,7 @@
+# Install torch separately: scripts/setup.py (CUDA 12.4, storage guarded).
+transformers==4.56.2
+peft==0.17.1
+safetensors==0.6.2
+numpy==2.2.6
+rapidfuzz==3.14.1
+pytest==8.4.2

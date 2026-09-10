@@ -1,0 +1,36 @@
+{
+  "seed": 42,
+  "source": {
+    "name": "Common Voice Turkish Sentence Collector",
+    "url": "https://raw.githubusercontent.com/common-voice/common-voice/b12cde653757295103c5948c1cd601b166e1b905/server/data/tr/sentence-collector.txt",
+    "revision": "b12cde653757295103c5948c1cd601b166e1b905",
+    "license": "CC0-1.0",
+    "license_url": "https://github.com/common-voice/common-voice#licensing-and-content-source",
+    "sha256": "28e2d0955f640d001dd90c6205c1e55cde18528a2bed45cc99389bc0d4058ece",
+    "bytes": 1557129,
+    "lines": 47781
+  },
+  "split_method": "NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım",
+  "clean_ratio": 0.25,
+  "format": "gzip-compressed JSONL",
+  "splits": {
+    "train": {
+      "pairs": 32000,
+      "unique_targets": 8000,
+      "bytes": 2209399,
+      "sha256": "70ab044559c707a403ed139312da05da544e7e89959f4c87eaaa1c07a3725127"
+    },
+    "validation": {
+      "pairs": 640,
+      "unique_targets": 160,
+      "bytes": 36924,
+      "sha256": "b577df81fabaf88a9f5db31883cea4d10b8095f127eba2d59b6dd081a32e6481"
+    },
+    "test": {
+      "pairs": 640,
+      "unique_targets": 160,
+      "bytes": 38759,
+      "sha256": "d2428782ab46c25fe6743fe4348a34d0d11fb30ab50ab6fda49cd311084f44c8"
+    }
+  }
+}

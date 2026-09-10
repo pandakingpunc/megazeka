@@ -1,0 +1,93 @@
+Değerlendirme 40/640
+Değerlendirme 80/640
+Değerlendirme 120/640
+Değerlendirme 160/640
+Değerlendirme 200/640
+Değerlendirme 240/640
+Değerlendirme 280/640
+Değerlendirme 320/640
+Değerlendirme 360/640
+Değerlendirme 400/640
+Değerlendirme 440/640
+Değerlendirme 480/640
+Değerlendirme 520/640
+Değerlendirme 560/640
+Değerlendirme 600/640
+Değerlendirme 640/640
+{
+  "checkpoint": "best",
+  "metrics": {
+    "examples": 640,
+    "cer": 0.0510617170791323,
+    "wer": 0.13277896995708155,
+    "exact_match": 0.60625,
+    "edit_precision": 0.8691176470588236,
+    "edit_recall": 0.48601973684210525,
+    "edit_f1": 0.6234177215189873,
+    "clean_examples": 161,
+    "overcorrection": 0.024844720496894408
+  },
+  "raw_metrics": {
+    "examples": 640,
+    "cer": 0.01928658722884204,
+    "wer": 0.09817596566523605,
+    "exact_match": 0.6328125,
+    "edit_precision": 0.8954219030520646,
+    "edit_recall": 0.8203125,
+    "edit_f1": 0.8562231759656653,
+    "clean_examples": 161,
+    "overcorrection": 0.024844720496894408
+  },
+  "identity_baseline": {
+    "examples": 640,
+    "cer": 0.09288114879315612,
+    "wer": 0.3492489270386266,
+    "exact_match": 0.2515625,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 161,
+    "overcorrection": 0.0
+  },
+  "manual_metrics": {
+    "examples": 12,
+    "cer": 0.0469208211143695,
+    "wer": 0.1568627450980392,
+    "exact_match": 0.6666666666666666,
+    "edit_precision": 0.9333333333333333,
+    "edit_recall": 0.4827586206896552,
+    "edit_f1": 0.6363636363636364,
+    "clean_examples": 6,
+    "overcorrection": 0.16666666666666666
+  },
+  "seconds": 175.13885240000036,
+  "model_info": {
+    "Mimari": "ByT5-small + LoRA",
+    "Toplam parametre": 305896448,
+    "Token sözlüğü": 384,
+    "Kontrol noktası": "megazeka\\models\\checkpoints\\best",
+    "Temel model boyutu (MB)": 599.3,
+    "Aygıt": "NVIDIA GeForce RTX 4060",
+    "Hassasiyet": "torch.bfloat16",
+    "Nicemleme": "Yok",
+    "Parça sınırı": "176 UTF-8 baytı",
+    "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
+    "Eğitim adımı": 1800
+  },
+  "storage": {
+    "model": 599341749,
+    "dataset": 3844034,
+    "checkpoints": 100446723,
+    "cache": 0,
+    "logs": 374183,
+    "environment": 4862759280,
+    "total": 5567082003,
+    "other": 316034,
+    "external_reserve": 1549096637,
+    "budget_total": 7116178640,
+    "warnings": [
+      "5 GB eşiği aşıldı"
+    ]
+  },
+  "note": "Sentetik test; karakter düzenleme F1; manuel örnekler eğitim dışında. Modelin ön eğitim verileriyle olası örtüşme bilinmiyor."
+}
