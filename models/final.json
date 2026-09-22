@@ -1,6 +1,6 @@
 {
   "adapter": "models/checkpoints/best",
   "base": "models/base",
-  "best_step": 1800,
+  "best_step": 4000,
   "note": "Son model en iyi kontrol noktasına işaret eder; kopya yok."
 }

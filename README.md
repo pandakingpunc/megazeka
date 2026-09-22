@@ -4,41 +4,62 @@ Bu proje, **gerçekten yerelde eğitilen ByT5-small + LoRA modeliyle** Türkçe 
 
 ## Sonuçlar
 
-640 çiftlik ayrılmış test kümesinde (`evaluation/evaluate.py --checkpoint best`). "Girdiyi kopyala",
-hiçbir şey değiştirmeyen önemsiz başlangıç değeridir; "temel ByT5" ise eğitilmemiş `google/byt5-small`.
+1.128 çiftlik ayrılmış test kümesinde (`evaluation/evaluate.py --checkpoint best`): 640 Common Voice çifti
+ve 488 gündelik konuşma çifti. "Girdiyi kopyala", hiçbir şey değiştirmeyen önemsiz başlangıç değeridir;
+"temel ByT5" ise eğitilmemiş `google/byt5-small`.
 
 | Ölçüt | Girdiyi kopyala | Temel ByT5 | **Megazeka (best)** | Megazeka, filtresiz |
 |---|---:|---:|---:|---:|
-| CER ↓ | 0,0929 | 0,0929 | **0,0511** | 0,0193 |
-| WER ↓ | 0,3492 | 0,3492 | **0,1328** | 0,0982 |
-| Tam eşleşme ↑ | %25,2 | %25,2 | **%60,6** | %63,3 |
-| Düzenleme F1 ↑ | 0,000 | 0,000 | **0,623** | 0,856 |
-| Gereksiz düzeltme ↓ | %0,0 | %100,0 | **%2,5** | %2,5 |
+| CER ↓ | 0,0963 | 0,0963 | **0,0137** | 0,0126 |
+| WER ↓ | 0,3576 | 0,3579 | **0,0678** | 0,0658 |
+| Tam eşleşme ↑ | %25,0 | %24,9 | **%76,2** | %76,6 |
+| Düzenleme F1 ↑ | 0,000 | 0,000 | **0,898** | 0,905 |
+| Gereksiz düzeltme ↓ | %0,0 | %0,4 (ham %100) | **%1,8** | %1,8 |
 
-Eğitilmemiş temel model bu görevde kullanılamaz (ham CER 3,66; her çıktıyı değiştirir), bu yüzden
-korumalı sonucu girdiyle aynıdır. Eğitim 1.800 adımda durdu. Ham ölçümler ve başarılı / yanlış /
-kaçırılmış örnekler: [`reports/evaluation-best.md`](reports/evaluation-best.md).
+Alt kümeler (filtre açık): Common Voice 640 çiftte tam eşleşme **%70,3**, gereksiz düzeltme %3,1;
+gündelik 488 çiftte tam eşleşme **%84,0**, gereksiz düzeltme %0,0. Girdiyi kopyalama her iki alt kümede %25'tir.
 
-Son sütun, koruma filtresi kapalıyken ölçülendir. Filtre tam eşleşmeyi az miktarda düşürür; karşılığında
-girdiyi büyük ölçüde değiştiren üretimleri engeller. İkisi ayrı verilir çünkü hangisinin tercih edileceği
-kullanıma bağlıdır.
+Eğitilmemiş temel model bu görevde kullanılamaz (ham CER 4,04; her çıktıyı değiştirir), bu yüzden
+korumalı sonucu girdiyle aynıdır. Eğitim 4.000 adım sürdü; en iyi kayıt 4.000. adımdır. Ham ölçümler ve
+başarılı / yanlış / kaçırılmış örnekler: [`reports/evaluation-best.md`](reports/evaluation-best.md).
+
+Son sütun, koruma filtresi kapalıyken ölçülendir. Filtre artık iki katmanlıdır (parça filtresi + kelime
+kilidi, bkz. Mimari) ve tam eşleşmeyi yalnızca 0,4 puan düşürür; karşılığında harf benzerliği olmayan kelime
+değişimlerini ve uydurma kelimeleri engeller.
+
+**Önceki sürümle fark.** İlk sürüm (1.800 adım, yalnızca Common Voice verisi) eski 640 çiftlik testte
+%60,6 tam eşleşme veriyordu ve "gidicem", "gitcez", "yapıcam", "kalıcam", "hatırlamıyom" gibi gündelik
+biçimleri hiç düzeltmiyordu; çünkü eğitim verisinde bu biçimler neredeyse yoktu. Yeni sürüm bunları düzeltir
+ve "Okula gideceğim." gibi doğru cümleleri olduğu gibi bırakır. Elle seçilmiş 23 örnekte hâlâ yanlış kalan
+gerçek çıktılar: "gitcez → giteceğiz" (t → d yumuşaması yok; doğrusu "gideceğiz"), "napcam → napacağım" ve
+"napıyosun → Napıyorsun" (tam açılım "ne yapacağım / ne yapıyorsun" üretilmedi), "yanlız" düzelmedi,
+"Ankaraya" kesme işareti almadı, "Işık" özel adı "İşık" oldu.
 
 ## Yayınlanan sürümler
 
 - LoRA adaptörü: [`pandakingpunc/megazeka-byt5-tr-spellfix`](https://huggingface.co/pandakingpunc/megazeka-byt5-tr-spellfix)
 - Eğitim verisi: [`pandakingpunc/megazeka-tr-spellfix-pairs`](https://huggingface.co/datasets/pandakingpunc/megazeka-tr-spellfix-pairs)
 
+Her iki depoda da ana dal bu depodaki yeni eğitimi (**v2**: 4.000 adım, 38.057 çift) içerir. İlk eğitim
+(**v1**: 1.800 adım, 32.000 çift) `v1` etiketiyle erişilebilir kalır, örneğin
+`PeftModel.from_pretrained(base, "pandakingpunc/megazeka-byt5-tr-spellfix", revision="v1")`.
+
 ## In English
 
 Megazeka is a Turkish spelling and typo correction model: `google/byt5-small` fine-tuned with LoRA
-(r=16, alpha=32, 6.26M trainable parameters) on 32,000 synthetically corrupted sentence pairs derived
-from the CC0 Common Voice Turkish Sentence Collector. It ships with an offline Tkinter desktop app —
+(r=16, alpha=32, 6.26M trainable parameters) on 38,057 synthetically corrupted sentence pairs: 32,000
+derived from the CC0 Common Voice Turkish Sentence Collector, 4,904 from project-authored everyday
+first/second-person sentences (template-generated with a small conjugator, CC0) and 1,153 two-sentence
+chunks. Colloquial noise is rule-based on suffixes ("-eceğim → -icem", "-yorum → -yom", "burada → burda"),
+so chat-style forms are corrected for any verb. It ships with an offline Tkinter desktop app —
 inference makes no network calls and uses no hosted LLM API.
 
-On a held-out 640-pair test set it reduces CER from 0.093 to 0.051 and WER from 0.349 to 0.133 against
-a copy-the-input baseline, raising exact match from 25.2% to 60.6%, while changing only 2.5% of already
-correct inputs. Byte-level modelling was chosen so Turkish diacritics (ı/İ, ş, ğ, ç, ö, ü) survive
-corruption without depending on a subword vocabulary.
+On a held-out 1,128-pair test set it reduces CER from 0.096 to 0.014 and WER from 0.358 to 0.068 against
+a copy-the-input baseline, raising exact match from 25.0% to 76.2% (84.0% on the 488 everyday pairs), while
+changing only 1.8% of already correct inputs. A word-level guard keeps any word substitution that has no
+letter overlap with the original (e.g. a synonym swap) from reaching the output. Byte-level modelling was
+chosen so Turkish diacritics (ı/İ, ş, ğ, ç, ö, ü) survive corruption without depending on a subword
+vocabulary.
 
 The app includes a "learning mode" that exposes the actual bytes fed to the model, raw generation before
 the change-limiting filter, per-token softmax probabilities, character-level edit operations, and the
@@ -67,7 +88,7 @@ Metninizi girin, **Düzelt** düğmesine veya **Ctrl+Enter** tuşlarına basın.
 - **LoRA, r=16, alpha=32**: doğrusal katmanlara düşük ranklı eğitilebilir matrisler eklenir. Temel ağırlıklar sabittir; 6.258.688 parametre eğitilir. Temel model yaklaşık 299,6 milyon parametredir; adaptörle toplam 305.896.448 olur. Bu, bir API sarmalayıcısı veya salt kural sistemi değildir.
 - RTX 4060'ta temel model **bfloat16** tutulur; LoRA parametreleri ve AdamW durumları gerektiğinde float32'dir. CPU'da model float32'ye yüklenir. Nicemleme, ONNX ve `torch.compile` eklenmedi: bu ölçek için kurulum/depolama karmaşıklığını artırıyorlar.
 - Üretim deterministik açgözlü çözümleme kullanır (`num_beams=1`, `do_sample=False`). Uzun metinler **176 UTF-8 baytını** aşmayan parçalara ayrılır, sessizce kesilmez. En fazla 224 yeni token üretilir. Bu bayt sınırı karakter sınırı değildir.
-- Önişleme yalnızca NFC Unicode ve satır sonlarını normalleştirir. Modelden sonra kapsamlı değişiklikleri engelleyen açık bir filtre vardır: karakter düzenleme oranı > %45, çıktının girdi uzunluğunun %65'inden kısa olması, boş çıktı veya bitiş tokenının gelmemesi durumunda o parça özgün haliyle korunur. Filtrenin ham üretimi öğrenme ekranında görünür. Bu filtre anlamın korunmasını garanti etmez.
+- Önişleme yalnızca NFC Unicode ve satır sonlarını normalleştirir. Modelden sonra iki katmanlı açık bir koruma filtresi vardır. **Parça filtresi**: karakter düzenleme sayısı girdi uzunluğunu aşarsa (oran > 1,0), çıktı girdi uzunluğunun %65'inden kısaysa, çıktı boşsa veya bitiş tokenı gelmemişse o parça özgün haliyle korunur. Eski %45 eşiği 1.128 çiftlik testte doğru ağır düzeltmelerin çoğunu reddediyordu (düzenleme F1 0,71 → 0,89); gereksiz düzeltme oranı eşikten bağımsız kaldı, bu yüzden gevşetildi. **Kelime kilidi**: kelimeler büyük/küçük harf, Türkçe karakter ve noktalamadan bağımsız hizalanır; bir kelime grubu harf benzerliği olmayan başka bir grupla değiştirilmişse (normalize Levenshtein uzaklığı > 0,6), bir kelime silinmişse veya karşılığı olmayan yeni kelime eklenmişse yalnızca o grup özgün haliyle kalır. Böylece "gidicem → gideceğim" veya "napcam → ne yapacağım" gibi harf benzerliği taşıyan düzeltmeler geçer; "okula → eğitim kurumuna" gibi anlam değiştiren kelime değişimleri geçmez. Filtrenin ham üretimi öğrenme ekranında görünür. Bu filtre anlamın korunmasını garanti etmez; yalnızca kelime düzeyinde eş anlamlı değişimi ve uydurma kelimeyi engeller.
 
 ## Depolama sözleşmesi
 
@@ -96,7 +117,7 @@ Temizlik betiği yalnızca projeye ait geçici kurulum önbelleklerini ve yarım
 
 ## Veri ve lisanslar
 
-Tek dış metin kaynağı, **Common Voice Türkçe Sentence Collector** dosyasıdır. Yaklaşık 47.781 kısa satır içeren 1,56 MB'lık bu dosyanın belirli commit'i kullanılır; dev külliyat veya ses dosyaları indirilmez. Boyutu çok küçük olduğu için bu kaynakta streaming kütüphanesi ve Parquet motoru yerine doğrudan tek dosya ve **gzip JSONL** seçildi. Böylece PyArrow gibi ek bağımlılıklar gerekmez.
+Tek dış metin kaynağı, **Common Voice Türkçe Sentence Collector** dosyasıdır. Bunun yanında projede yazılmış, `training/everyday.py` içinde üretilen gündelik cümleler vardır (aşağıda). Yaklaşık 47.781 kısa satır içeren 1,56 MB'lık bu dosyanın belirli commit'i kullanılır; dev külliyat veya ses dosyaları indirilmez. Boyutu çok küçük olduğu için bu kaynakta streaming kütüphanesi ve Parquet motoru yerine doğrudan tek dosya ve **gzip JSONL** seçildi. Böylece PyArrow gibi ek bağımlılıklar gerekmez.
 
 - [Kaynağın sabit sürümü](https://raw.githubusercontent.com/common-voice/common-voice/b12cde653757295103c5948c1cd601b166e1b905/server/data/tr/sentence-collector.txt)
 - [Common Voice lisans açıklaması](https://github.com/common-voice/common-voice#licensing-and-content-source): bu cümleler **CC0-1.0**. Depodaki program kodunun MPL-2.0 lisansı ile cümlelerin lisansı farklıdır. Buraya Common Voice program kodu alınmadı.
@@ -113,15 +134,21 @@ Tek dış metin kaynağı, **Common Voice Türkçe Sentence Collector** dosyası
 .\.venv\Scripts\python.exe training\prepare.py
 ```
 
-3–24 kelimelik, 18–160 UTF-8 baytlık, büyük harfle başlayıp noktalama ile biten cümleler süzülür. NFC ve Türkçe küçük harf dönüşümü yapılmış, noktalaması kaldırılmış anahtarlarla tekilleştirilir. **Gürültü eklenmeden önce** 8.000 / 160 / 160 farklı hedef cümle eğitim / doğrulama / teste ayrılır. Her hedef için temiz / kolay / orta / zor olmak üzere dört çift hazırlanır:
+3–24 kelimelik, 18–160 UTF-8 baytlık, büyük harfle başlayıp noktalama ile biten cümleler süzülür. NFC ve Türkçe küçük harf dönüşümü yapılmış, noktalaması kaldırılmış anahtarlarla tekilleştirilir. **Gürültü eklenmeden önce** 8.000 / 160 / 160 farklı Common Voice cümlesi eğitim / doğrulama / teste ayrılır. Her hedef için temiz / kolay / orta / zor olmak üzere dört çift hazırlanır.
 
-| Küme | Farklı hedef | Toplam çift |
-|---|---:|---:|
-| Eğitim | 8.000 | 32.000 |
-| Doğrulama | 160 | 640 |
-| Test | 160 | 640 |
+**Gündelik cümleler.** Common Voice cümleleri edebî ve çoğunlukla üçüncü şahıstır; 32.000 çiftte "gideceğim" yalnızca 8, "geleceğim" 4 kez geçiyordu. Bu yüzden ilk sürüm "gidicem", "gitcez", "yapıcam" gibi biçimleri düzeltemiyordu. `training/everyday.py`, 50 fiillik bir tablo ve küçük bir çekim yardımcısıyla (gelecek zaman, şimdiki zaman, olumsuz, soru eki; ünlü uyumu ve git/et/ye/de özel durumları) birinci/ikinci şahıs gündelik cümleler ile elle yazılmış yaklaşık 250 kısa cümle üretir. Bu cümleler projeye aittir ve CC0-1.0 ile yayınlanır. Yaklaşık 1.470 gündelik cümlenin 1/12'si doğrulamaya, 1/12'si teste, kalanı eğitime ayrılır; kolay ve orta zorlukta ilk işlem her zaman gündelik dönüşümdür.
 
-Temiz örnek payı %25'tir. Gürültü; harf silme/tekrarlama/komşu harfleri yer değiştirme, Türkçe Q klavye komşuları, Türkçe karakter kaybı, büyük/küçük harf, noktalama, birleşmiş/ayrılmış kelimeler, fazla boşluk, de/da ve ki birleşmeleri, soru eki ve kesme işareti kaybı ve yaygın gündelik biçimleri içerir. Her uygulanmış işlem **önce/sonra metniyle kaydedilir**. Bazı cümlelerde bir işlem uygulanabilir değilse başka bir işlem denenir. Zorluk seviyeleri 1 / 2 / 4 başarılı işlem hedefler.
+**Birleşik parçalar.** Eğitim kümesine, aynı zorlukta iki bağımsız çiftin boşlukla birleştirilmesiyle oluşan ve 170 baytı aşmayan çok cümleli örnekler eklenir. Kullanıcı paragraf yapıştırdığında model parça içinde birden çok cümle görür; bu örnekler bunun için vardır.
+
+| Küme | Farklı hedef | Toplam çift | Kaynak dağılımı |
+|---|---:|---:|---|
+| Eğitim | 9.226 | 38.057 | 32.000 Common Voice · 4.904 gündelik · 1.153 birleşik |
+| Doğrulama | 282 | 1.128 | 640 Common Voice · 488 gündelik |
+| Test | 282 | 1.128 | 640 Common Voice · 488 gündelik |
+
+Temiz örnek payı %25'tir. Gürültü; harf silme/tekrarlama/komşu harfleri yer değiştirme, Türkçe Q klavye komşuları, Türkçe karakter kaybı, büyük/küçük harf, noktalama, birleşmiş/ayrılmış kelimeler, fazla boşluk, de/da ve ki birleşmeleri, soru eki ve kesme işareti kaybı ve gündelik biçimleri içerir. Her uygulanmış işlem **önce/sonra metniyle kaydedilir**. Bazı cümlelerde bir işlem uygulanabilir değilse başka bir işlem denenir. Zorluk seviyeleri 1 / 2 / 4 başarılı işlem hedefler.
+
+**Gündelik dönüşüm kuralları** (`src/megazeka/colloquial.py`) sabit bir kelime listesi değil, ek tabanlı kurallardır ve her fiile uygulanır: "-eceğim → -icem/-cem", "-acağız → -ıcaz/-caz", "-ecek → -icek/-cek", "-mayacağım → -mıcam", "-yorum → -yom", "-yorsun → -yosun", "-yor → -yo"; "gideceğim → gitcem" gibi ünsüz sertleşmesi ve "okuyacağım → okucam", "söyleyeceğim → söylicem" gibi kaynaştırma düşmeleri; ayrıca "burada → burda", "ne yapıyorsun → napıyosun", "ne yapacağım → napcam", "bir şey → bişey", "değil → diil", "herkes → herkez", "yalnız → yanlız", "teşekkürler → tşk", "bir → bi" gibi kelime ve öbek kuralları. Eğitim kümesinde gündelik işlem sayısı 1.001'den 8.178'e çıktı.
 
 Bu %25, özellikle temiz bırakılan örneklerin payıdır. Nadir çoklu gürültüler birbirini geri alabilir; gereksiz düzeltme metriği etiket yerine gerçekten `girdi == hedef` olan bütün örnekleri sayar.
 
@@ -147,8 +174,8 @@ Python'un Tk bileşeni standart Windows Python kurulumuna dahildir. `scripts/set
 # Önce kısa deneme: 60 adım
 .\.venv\Scripts\python.exe training\train.py --config configs/quick.json
 
-# Aynı kayıttan devam: toplam 2.000 adım, 32.000 örnek işlenmiş olur
-.\.venv\Scripts\python.exe training\train.py --config configs/medium.json --resume
+# Sıfırdan tam eğitim: 3.000 adım, 48.000 örnek işlenir; best/latest kayıtlarını değiştirir
+.\.venv\Scripts\python.exe training\train.py --config configs/medium.json
 
 # Kesinti sonrası son kayıttan aynı şekilde devam
 .\.venv\Scripts\python.exe training\train.py --config configs/medium.json --resume
@@ -157,7 +184,10 @@ Python'un Tk bileşeni standart Windows Python kurulumuna dahildir. `scripts/set
 .\.venv\Scripts\python.exe training\train.py --config configs/quality.json --resume
 ```
 
-Yeni eğitim (`--resume` olmadan) mevcut best/latest deneyini değiştirir; bunu bilinçli yeni deneylerde kullanın. Uygulamadaki **60 adım eğit** düğmesi varsa son kayıttan devam eder. **Kaydet ve durdur**, güncel adım sonrasında doğrulama/kayıt yapılarak durulmasını ister. Doğrulama üretimi devam ediyorsa bunun tamamlanması beklenir.
+Yayınlanan v2 modeli `configs/medium.json` ile 3.000 adım eğitildi, ardından
+`--resume --steps 4000` ile aynı ayarlarla 4.000 adıma tamamlandı (toplam 64.000 örnek, yaklaşık 33 dakika).
+
+Yeni eğitim (`--resume` olmadan) mevcut best/latest deneyini değiştirir ve `reports/history.jsonl` grafik geçmişini sıfırlar; bunu bilinçli yeni deneylerde kullanın. Uygulamadaki **60 adım eğit** düğmesi varsa son kayıttan devam eder. **Kaydet ve durdur**, güncel adım sonrasında doğrulama/kayıt yapılarak durulmasını ister. Doğrulama üretimi devam ediyorsa bunun tamamlanması beklenir.
 
 AdamW, 30 adımlık öğrenme hızı ısınması, norm 1.0 gradient clipping, mikro parti 8 ve gradient accumulation 2 kullanılır. Her tur için tohuma bağlı deterministik karıştırma vardır. Python/NumPy/PyTorch rastgelelik durumları, optimizer, örnek sayacı ve adım kaydedilir. CUDA'nın bazı işlemleri donanım/sürüm farklılıklarında bit düzeyinde tekrarlanabilir olmayabilir. En iyi model, 640 doğrulama çifti üzerinde hedef token sayısıyla ağırlıklandırılmış kayıpla seçilir. Sekiz ardışık doğrulamada iyileşme olmazsa erken durdurma vardır.
 
@@ -198,8 +228,8 @@ Eğitim grafikleri hızlı olmak için sabit **16 doğrulama örneği** kullanı
 
 ```text
 app/                 Türkçe masaüstü, öğrenme ve depolama ekranları
-src/megazeka/        gürültü, normalizasyon, çıkarım, metrikler, disk denetimi
-training/            veri üretimi ve devam edilebilir LoRA eğitimi
+src/megazeka/        gürültü, gündelik kurallar, normalizasyon, çıkarım ve kelime kilidi, metrikler, disk denetimi
+training/            veri üretimi, gündelik cümle şablonları ve devam edilebilir LoRA eğitimi
 evaluation/          ayrılmış test ve okunabilir değerlendirme
 configs/             quick / medium / quality ve depolama bütçesi
 data/                tek kaynak, metadata ve sıkıştırılmış çiftler
@@ -213,6 +243,6 @@ scripts/             bütçeli kurulum/indirme, temizlik ve gerçek UI kontrolü
 
 ## Bilinen sınırlar ve sonraki deneyler
 
-Sentetik gürültü gerçek kullanıcı hatalarının bütün çeşitliliğini karşılamaz. Model özellikle gündelik kısaltma, nadir/özel ad, karma dil, bağlama bağlı de/da/ki ve noktalama tercihlerinde yanılabilir. 176 baytlık bağımsız parçalar arasında bağlam taşınmaz. Veriye belirli bir üslup dönüştürme hedefi verilmedi; buna rağmen küçük eğitimle anlamı etkileyen yanlış düzenlemeler görülebilir. Doğru metni koruma eğitimi ve büyük değişiklik filtresi bu riski tamamen ortadan kaldırmaz.
+Sentetik gürültü gerçek kullanıcı hatalarının bütün çeşitliliğini karşılamaz. Model özellikle nadir/özel ad, karma dil, bağlama bağlı de/da/ki ve noktalama tercihlerinde yanılabilir. Gündelik biçimlerde "gitcez → giteceğiz" gibi ünsüz yumuşaması atlanmış üretimler ve "napcam" gibi kısaltmaların tam açılımının verilmemesi görülür. "tşk", "inş" gibi aşırı kısaltmalar kelime kilidine takılıp değişmeden kalabilir. Şablon cümleler 50 fiil ve sınırlı tümleçle üretildiği için gündelik alt küme gerçek sohbet dilinin tamamını temsil etmez. 176 baytlık bağımsız parçalar arasında bağlam taşınmaz. Veriye belirli bir üslup dönüştürme hedefi verilmedi; buna rağmen küçük eğitimle anlamı etkileyen yanlış düzenlemeler görülebilir. Doğru metni koruma eğitimi ve büyük değişiklik filtresi bu riski tamamen ortadan kaldırmaz.
 
-İlk iyileştirmeler: aynı disk bütçesi içinde daha dengeli gerçek hata çiftleri, özel adları koruma için ayrılmış test, sentetik bozma ağırlıklarını doğrulama kümesiyle ayarlama, kalibre edilmiş değişiklik kabul eşiği. Veri boyutu kullanıcı açıkça istemeden artırılmaz. Kayıt veya model varyantı biriktirilmez.
+İlk iyileştirmeler: gerçek kullanıcı mesajlarından derlenmiş küçük bir hata kümesi, özel adları koruma için ayrılmış test, daha fazla fiil ve tümleçle gündelik şablonlar, sentetik bozma ağırlıklarını doğrulama kümesiyle ayarlama. Veri boyutu kullanıcı açıkça istemeden artırılmaz. Kayıt veya model varyantı biriktirilmez.

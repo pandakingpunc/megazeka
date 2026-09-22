@@ -1,66 +1,150 @@
-Değerlendirme 40/640
-Değerlendirme 80/640
-Değerlendirme 120/640
-Değerlendirme 160/640
-Değerlendirme 200/640
-Değerlendirme 240/640
-Değerlendirme 280/640
-Değerlendirme 320/640
-Değerlendirme 360/640
-Değerlendirme 400/640
-Değerlendirme 440/640
-Değerlendirme 480/640
-Değerlendirme 520/640
-Değerlendirme 560/640
-Değerlendirme 600/640
-Değerlendirme 640/640
+Değerlendirme 40/1128
+Değerlendirme 80/1128
+Değerlendirme 120/1128
+Değerlendirme 160/1128
+Değerlendirme 200/1128
+Değerlendirme 240/1128
+Değerlendirme 280/1128
+Değerlendirme 320/1128
+Değerlendirme 360/1128
+Değerlendirme 400/1128
+Değerlendirme 440/1128
+Değerlendirme 480/1128
+Değerlendirme 520/1128
+Değerlendirme 560/1128
+Değerlendirme 600/1128
+Değerlendirme 640/1128
+Değerlendirme 680/1128
+Değerlendirme 720/1128
+Değerlendirme 760/1128
+Değerlendirme 800/1128
+Değerlendirme 840/1128
+Değerlendirme 880/1128
+Değerlendirme 920/1128
+Değerlendirme 960/1128
+Değerlendirme 1000/1128
+Değerlendirme 1040/1128
+Değerlendirme 1080/1128
+Değerlendirme 1120/1128
 {
   "checkpoint": "best",
   "metrics": {
-    "examples": 640,
-    "cer": 0.0510617170791323,
-    "wer": 0.13277896995708155,
-    "exact_match": 0.60625,
-    "edit_precision": 0.8691176470588236,
-    "edit_recall": 0.48601973684210525,
-    "edit_f1": 0.6234177215189873,
-    "clean_examples": 161,
-    "overcorrection": 0.024844720496894408
+    "examples": 1128,
+    "cer": 0.013714696026807085,
+    "wer": 0.06782814614343707,
+    "exact_match": 0.7624113475177305,
+    "edit_precision": 0.9257791864764924,
+    "edit_recall": 0.8712403678846632,
+    "edit_f1": 0.8976821616084005,
+    "clean_examples": 282,
+    "overcorrection": 0.01773049645390071
+  },
+  "subsets": {
+    "common_voice": {
+      "metrics": {
+        "examples": 640,
+        "cer": 0.017109685304002444,
+        "wer": 0.07993562231759657,
+        "exact_match": 0.703125,
+        "edit_precision": 0.9087934560327199,
+        "edit_recall": 0.8490638135269393,
+        "edit_f1": 0.8779138680363494,
+        "clean_examples": 160,
+        "overcorrection": 0.03125
+      },
+      "raw_metrics": {
+        "examples": 640,
+        "cer": 0.015276504735716468,
+        "wer": 0.07671673819742489,
+        "exact_match": 0.709375,
+        "edit_precision": 0.911611088790679,
+        "edit_recall": 0.8670233091325946,
+        "edit_f1": 0.8887583235409321,
+        "clean_examples": 160,
+        "overcorrection": 0.03125
+      },
+      "identity_baseline": {
+        "examples": 640,
+        "cer": 0.09998472349526429,
+        "wer": 0.35568669527896996,
+        "exact_match": 0.25,
+        "edit_precision": 0.0,
+        "edit_recall": 0.0,
+        "edit_f1": 0.0,
+        "clean_examples": 160,
+        "overcorrection": 0.0
+      }
+    },
+    "gündelik": {
+      "metrics": {
+        "examples": 488,
+        "cer": 0.008014875609130546,
+        "wer": 0.04716117216117216,
+        "exact_match": 0.8401639344262295,
+        "edit_precision": 0.9567486950037286,
+        "edit_recall": 0.9125177809388336,
+        "edit_f1": 0.9341099381143065,
+        "clean_examples": 122,
+        "overcorrection": 0.0
+      },
+      "raw_metrics": {
+        "examples": 488,
+        "cer": 0.008014875609130546,
+        "wer": 0.04716117216117216,
+        "exact_match": 0.8401639344262295,
+        "edit_precision": 0.9567486950037286,
+        "edit_recall": 0.9125177809388336,
+        "edit_f1": 0.9341099381143065,
+        "clean_examples": 122,
+        "overcorrection": 0.0
+      },
+      "identity_baseline": {
+        "examples": 488,
+        "cer": 0.09015132085150039,
+        "wer": 0.3608058608058608,
+        "exact_match": 0.25,
+        "edit_precision": 0.0,
+        "edit_recall": 0.0,
+        "edit_f1": 0.0,
+        "clean_examples": 122,
+        "overcorrection": 0.0
+      }
+    }
   },
   "raw_metrics": {
-    "examples": 640,
-    "cer": 0.01928658722884204,
-    "wer": 0.09817596566523605,
-    "exact_match": 0.6328125,
-    "edit_precision": 0.8954219030520646,
-    "edit_recall": 0.8203125,
-    "edit_f1": 0.8562231759656653,
-    "clean_examples": 161,
-    "overcorrection": 0.024844720496894408
+    "examples": 1128,
+    "cer": 0.012565820966969843,
+    "wer": 0.06579837618403248,
+    "exact_match": 0.7659574468085106,
+    "edit_precision": 0.9274151436031332,
+    "edit_recall": 0.8829231916480239,
+    "edit_f1": 0.9046224372851139,
+    "clean_examples": 282,
+    "overcorrection": 0.01773049645390071
   },
   "identity_baseline": {
-    "examples": 640,
-    "cer": 0.09288114879315612,
-    "wer": 0.3492489270386266,
-    "exact_match": 0.2515625,
+    "examples": 1128,
+    "cer": 0.09631402584968884,
+    "wer": 0.35757780784844384,
+    "exact_match": 0.25,
     "edit_precision": 0.0,
     "edit_recall": 0.0,
     "edit_f1": 0.0,
-    "clean_examples": 161,
+    "clean_examples": 282,
     "overcorrection": 0.0
   },
   "manual_metrics": {
-    "examples": 12,
-    "cer": 0.0469208211143695,
-    "wer": 0.1568627450980392,
-    "exact_match": 0.6666666666666666,
-    "edit_precision": 0.9333333333333333,
-    "edit_recall": 0.4827586206896552,
-    "edit_f1": 0.6363636363636364,
-    "clean_examples": 6,
-    "overcorrection": 0.16666666666666666
+    "examples": 23,
+    "cer": 0.016105417276720352,
+    "wer": 0.08163265306122448,
+    "exact_match": 0.7391304347826086,
+    "edit_precision": 0.961038961038961,
+    "edit_recall": 0.8604651162790697,
+    "edit_f1": 0.9079754601226995,
+    "clean_examples": 9,
+    "overcorrection": 0.1111111111111111
   },
-  "seconds": 175.13885240000036,
+  "seconds": 213.5793036,
   "model_info": {
     "Mimari": "ByT5-small + LoRA",
     "Toplam parametre": 305896448,
@@ -72,19 +156,20 @@ Değerlendirme 640/640
     "Nicemleme": "Yok",
     "Parça sınırı": "176 UTF-8 baytı",
     "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
-    "Eğitim adımı": 1800
+    "Eğitim adımı": 4000,
+    "LoRA hassasiyeti": "torch.float32"
   },
   "storage": {
-    "model": 599341749,
-    "dataset": 3844034,
-    "checkpoints": 100446723,
+    "model": 599341993,
+    "dataset": 4352889,
+    "checkpoints": 100446716,
     "cache": 0,
-    "logs": 374183,
-    "environment": 4862759280,
-    "total": 5567082003,
-    "other": 316034,
+    "logs": 837431,
+    "environment": 4863140231,
+    "total": 5571016364,
+    "other": 2897104,
     "external_reserve": 1549096637,
-    "budget_total": 7116178640,
+    "budget_total": 7120113001,
     "warnings": [
       "5 GB eşiği aşıldı"
     ]

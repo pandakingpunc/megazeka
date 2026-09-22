@@ -7,11 +7,11 @@
   "precision": "torch.bfloat16",
   "tokenizer_vocabulary": 384,
   "config": {
-    "steps": 2000,
+    "steps": 4000,
     "batch_size": 8,
     "gradient_accumulation": 2,
     "learning_rate": 0.0005,
-    "eval_every": 200,
+    "eval_every": 250,
     "seed": 42,
     "rank": 16,
     "max_bytes": 176,

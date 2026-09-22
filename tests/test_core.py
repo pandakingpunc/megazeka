@@ -61,10 +61,38 @@ def test_data_has_no_group_leakage():
     rows = [read_pairs(s) for s in ['train', 'validation', 'test']]
     groups = [{r['group_id'] for r in split} for split in rows]
     assert not groups[0] & groups[1] and not groups[0] & groups[2] and not groups[1] & groups[2]
-    assert len(rows[0]) == 32000
-    assert sum(r['difficulty'] == 'temiz' for r in rows[0]) == 8000
+    combined = [r for r in rows[0] if r.get('group_id_second')]
+    second = {r['group_id_second'] for r in combined}
+    assert not second & groups[1] and not second & groups[2]
+    assert len(rows[0]) > 32000 and combined
+    assert sum(r['difficulty'] == 'temiz' for r in rows[0]) >= 8000
+    assert any(r['source'].startswith('Megazeka') for r in rows[2])
 
 def test_storage_blocks_before_write(tmp_path):
     with pytest.raises(RuntimeError): ensure_budget(15_000_000_000, 'test', tmp_path)
     assert not list(tmp_path.iterdir())
     with pytest.raises(ValueError): remove_owned(tmp_path)
+
+
+def test_colloquial_rules_generalize_to_any_verb():
+    from megazeka.colloquial import candidates
+    def forms(text):
+        return {f for _, _, fs in candidates(text) for f in fs}
+    assert {'gidicem', 'gitcem'} <= forms('Yarın okula gideceğim.')
+    assert {'yapıcaz', 'yapcaz'} <= forms('Bunu yapacağız.')
+    assert 'bekliyom' in forms('Seni bekliyorum.')
+    assert 'geliyo' in forms('Ali geliyor.')
+    assert 'Söylicem' in forms('Söyleyeceğim.') and 'okucam' in forms('Kitabı okuyacağım.')
+    assert 'Yapmıcam' in forms('Yapmayacağım.')
+    assert {'Burda', 'napıyosun'} & forms('Burada ne yapıyorsun?')
+    assert not candidates('Görüşürüz.')
+
+def test_word_guard_blocks_paraphrase_but_keeps_spelling_fixes():
+    from megazeka.inference import guard_words
+    assert guard_words('yarın okula gidicem', 'Yarın okula gideceğim.') == ('Yarın okula gideceğim.', 0)
+    assert guard_words('bilmiyom ki napcam', 'Bilmiyorum ki ne yapacağım.')[1] == 0
+    text, blocked = guard_words('okula gideceğim', 'eğitim kurumuna gideceğim')
+    assert blocked == 1 and text.startswith('okula')
+    text, blocked = guard_words('kedi geldi', 'Köpek geldi.')
+    assert blocked == 1 and text.startswith('kedi')
+    assert guard_words('evi gördüm', 'evi dün gördüm')[1] == 1

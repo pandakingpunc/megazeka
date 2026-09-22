@@ -2,20 +2,9 @@
 import random
 import re
 from .text import lower_tr
+from .colloquial import colloquialize
 
 ASCII = str.maketrans('çğıöşüÇĞİÖŞÜ', 'cgiosuCGIOSU')
-INFORMAL = {
-    'gideceğim': ['gidicem', 'gidiceğim'], 'gideceğiz': ['gidicez', 'gitcez'],
-    'geleceğim': ['gelicem', 'gelcem'], 'geleceğiz': ['gelicez'],
-    'yapacağım': ['yapıcam', 'yapcam'], 'yapacağız': ['yapıcaz'],
-    'buluşacağız': ['buluşcaz', 'buluscaz'], 'söyleyeceğim': ['söylicem'],
-    'bilmiyorum': ['bilmiyom', 'bilmiom'], 'istiyorum': ['istiyom'],
-    'olacak': ['olcak'], 'bir şey': ['bişey', 'birşey'], 'her şey': ['herşey'],
-    'hiçbir': ['hiç bir'], 'biraz': ['bir az'], 'yalnız': ['yanlız'],
-    'yanlış': ['yalnış'], 'değil': ['diil', 'deil'], 'tamam': ['tmm'],
-    'merhaba': ['mrb'], 'teşekkür': ['teşekür'], 'çünkü': ['çünki'],
-    'herkes': ['herkez'], 'bugün': ['bu gün'], 'şimdi': ['şimdi', 'simdi'],
-}
 KEYBOARD = ['qwertyuıopğü', 'asdfghjklşi', 'zxcvbnmöç']
 NEIGHBORS = {}
 for row in KEYBOARD:
@@ -72,22 +61,24 @@ class NoiseGenerator:
         if kind == 'kesme':
             return text.replace("'", '').replace('’', '')
         if kind == 'gündelik':
-            keys = [k for k in INFORMAL if re.search(r'\b' + k + r'\b', lower_tr(text))]
-            if keys:
-                k = r.choice(keys)
-                return re.sub(r'\b' + k + r'\b', r.choice(INFORMAL[k]), text, count=1, flags=re.I)
+            return colloquialize(text, r)
         return text
 
-    def corrupt(self, text, difficulty):
+    def corrupt(self, text, difficulty, prefer=None):
+        """Apply 1/2/4 successful operations. `prefer` forces the first attempted operation
+        (used so everyday sentences always carry at least one colloquial rewrite)."""
         if difficulty == 'temiz':
             return text, []
         count = {'kolay': 1, 'orta': 2, 'zor': 4}[difficulty]
         history = []
         current = text
-        for _ in range(count):
+        for n in range(count):
             for attempt in range(16):
-                # Favor realistic diacritics/case/chat noise over random destruction.
-                kind = self.rng.choice(self.names + ['türkçe_karakter'] * 4 + ['gündelik'] * 3 + ['küçük_harf'])
+                if n == 0 and attempt == 0 and prefer:
+                    kind = prefer
+                else:
+                    # Favor realistic diacritics/case/chat noise over random destruction.
+                    kind = self.rng.choice(self.names + ['türkçe_karakter'] * 4 + ['gündelik'] * 3 + ['küçük_harf'])
                 changed = self.apply(current, kind)
                 if changed != current and changed.strip():
                     history.append({'operation': kind, 'before': current, 'after': changed})

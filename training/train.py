@@ -118,6 +118,9 @@ def main():
     losses = []; last_evaluation = state['step']
     stop_file = ROOT / 'reports/stop-training'
     stop_file.unlink(missing_ok=True)
+    if not args.resume:
+        # A fresh experiment replaces best/latest, so the plotted history starts over too.
+        (ROOT / 'reports/history.jsonl').write_text('', encoding='utf-8')
     # Deterministic per-epoch permutations permit resume without huge sampler state.
     effective_batch = config['batch_size'] * config['gradient_accumulation']
     permutation, permutation_epoch = [], -1

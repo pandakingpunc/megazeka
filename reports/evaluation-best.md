@@ -2,15 +2,95 @@
 
 ```json
 {
-  "examples": 640,
-  "cer": 0.0510617170791323,
-  "wer": 0.13277896995708155,
-  "exact_match": 0.60625,
-  "edit_precision": 0.8691176470588236,
-  "edit_recall": 0.48601973684210525,
-  "edit_f1": 0.6234177215189873,
-  "clean_examples": 161,
-  "overcorrection": 0.024844720496894408
+  "examples": 1128,
+  "cer": 0.013714696026807085,
+  "wer": 0.06782814614343707,
+  "exact_match": 0.7624113475177305,
+  "edit_precision": 0.9257791864764924,
+  "edit_recall": 0.8712403678846632,
+  "edit_f1": 0.8976821616084005,
+  "clean_examples": 282,
+  "overcorrection": 0.01773049645390071
+}
+```
+
+## Alt küme: common_voice (640 çift)
+
+```json
+{
+  "filtreli": {
+    "examples": 640,
+    "cer": 0.017109685304002444,
+    "wer": 0.07993562231759657,
+    "exact_match": 0.703125,
+    "edit_precision": 0.9087934560327199,
+    "edit_recall": 0.8490638135269393,
+    "edit_f1": 0.8779138680363494,
+    "clean_examples": 160,
+    "overcorrection": 0.03125
+  },
+  "ham": {
+    "examples": 640,
+    "cer": 0.015276504735716468,
+    "wer": 0.07671673819742489,
+    "exact_match": 0.709375,
+    "edit_precision": 0.911611088790679,
+    "edit_recall": 0.8670233091325946,
+    "edit_f1": 0.8887583235409321,
+    "clean_examples": 160,
+    "overcorrection": 0.03125
+  },
+  "girdiyi_kopyala": {
+    "examples": 640,
+    "cer": 0.09998472349526429,
+    "wer": 0.35568669527896996,
+    "exact_match": 0.25,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 160,
+    "overcorrection": 0.0
+  }
+}
+```
+
+## Alt küme: gündelik (488 çift)
+
+```json
+{
+  "filtreli": {
+    "examples": 488,
+    "cer": 0.008014875609130546,
+    "wer": 0.04716117216117216,
+    "exact_match": 0.8401639344262295,
+    "edit_precision": 0.9567486950037286,
+    "edit_recall": 0.9125177809388336,
+    "edit_f1": 0.9341099381143065,
+    "clean_examples": 122,
+    "overcorrection": 0.0
+  },
+  "ham": {
+    "examples": 488,
+    "cer": 0.008014875609130546,
+    "wer": 0.04716117216117216,
+    "exact_match": 0.8401639344262295,
+    "edit_precision": 0.9567486950037286,
+    "edit_recall": 0.9125177809388336,
+    "edit_f1": 0.9341099381143065,
+    "clean_examples": 122,
+    "overcorrection": 0.0
+  },
+  "girdiyi_kopyala": {
+    "examples": 488,
+    "cer": 0.09015132085150039,
+    "wer": 0.3608058608058608,
+    "exact_match": 0.25,
+    "edit_precision": 0.0,
+    "edit_recall": 0.0,
+    "edit_f1": 0.0,
+    "clean_examples": 122,
+    "overcorrection": 0.0
+  }
 }
 ```
 
@@ -19,83 +99,83 @@ Düzenleme hassasiyeti/duyarlılığı, orijinal karakter konumlarına bağlı L
 ## Başarılı düzeltmeler
 
 ```text
-GİRDİ: NNNe yapıyorsunuz çocuklar?
-MODEL: Ne yapıyorsunuz çocuklar?
-HEDEF: Ne yapıyorsunuz çocuklar?
+GİRDİ: Nihayet şarrrkıyı bbbitirdi ve sazı eline alarak ayağa kalktı.
+MODEL: Nihayet şarkıyı bitirdi ve sazı eline alarak ayağa kalktı.
+HEDEF: Nihayet şarkıyı bitirdi ve sazı eline alarak ayağa kalktı.
 ```
 
 ```text
-GİRDİ: kendisi  de biraz doğruldu.
-MODEL: Kendisi de biraz doğruldu.
-HEDEF: Kendisi de biraz doğruldu.
+GİRDİ: kIM OLDUGUMU SOYLEMEYE HACET YOKTU.
+MODEL: Kim olduğumu söylemeye hacet yoktu.
+HEDEF: Kim olduğumu söylemeye hacet yoktu.
 ```
 
 ```text
-GİRDİ: İki ya şlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
-MODEL: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
-HEDEF: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
+GİRDİ: Herhalde yaşamak istemediği için
+MODEL: Herhalde yaşamak istemediği için.
+HEDEF: Herhalde yaşamak istemediği için.
 ```
 
 ```text
-GİRDİ: Benimle dalga mı geçiyosun?
-MODEL: Benimle dalga mı geçiyorsun?
-HEDEF: Benimle dalga mı geçiyorsun?
+GİRDİ: senş  seviyor muusn?
+MODEL: Seni seviyor musun?
+HEDEF: Seni seviyor musun?
 ```
 
 ```text
-GİRDİ: Nereden aklina evvela bu zavallinin ismi glmisti?
-MODEL: Nereden aklına evvela bu zavallının ismi gelmişti?
-HEDEF: Nereden aklına evvela bu zavallının ismi gelmişti?
+GİRDİ: Her zamankinden daha iltifatkarsınız sulltanım.
+MODEL: Her zamankinden daha iltifatkarsınız sultanım.
+HEDEF: Her zamankinden daha iltifatkarsınız sultanım.
 ```
 
 ```text
-GİRDİ: Omer  bu anda zavalli kıza sahiden a.cidıgini hissetti
-MODEL: Ömer bu anda zavallı kıza sahiden acıdığını hissetti.
-HEDEF: Ömer bu anda zavallı kıza sahiden acıdığını hissetti.
-```
-
-```text
-GİRDİ: Önem.li  değil, gerçekten.
-MODEL: Önemli değil, gerçekten.
-HEDEF: Önemli değil, gerçekten.
-```
-
-```text
-GİRDİ: Ateş etmek için çobanın görülmesini bekliyordu
-MODEL: Ateş etmek için çobanın görülmesini bekliyordu.
-HEDEF: Ateş etmek için çobanın görülmesini bekliyordu.
-```
-
-```text
-GİRDİ: bir kere çıkayım da, sonrası k!olay.
+GİRDİ: Bir kere çıka yım da, sonrası kolay.
 MODEL: Bir kere çıkayım da, sonrası kolay.
 HEDEF: Bir kere çıkayım da, sonrası kolay.
 ```
 
 ```text
-GİRDİ: ondan  sonra bekir'e döndüm, ellerimi uzattım.
-MODEL: Ondan sonra Bekir'e döndüm, ellerimi uzattım.
-HEDEF: Ondan sonra Bekir'e döndüm, ellerimi uzattım.
+GİRDİ: Soyle.yecek bir kelime bulamadi.
+MODEL: Söyleyecek bir kelime bulamadı.
+HEDEF: Söyleyecek bir kelime bulamadı.
 ```
 
 ```text
-GİRDİ: Seniyarın ararim.
-MODEL: Seni yarın ararım.
-HEDEF: Seni yarın ararım.
+GİRDİ: Arkamdan hayretle bakanhizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.
+MODEL: Arkamdan hayretle bakan hizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.
+HEDEF: Arkamdan hayretle bakan hizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.
 ```
 
 ```text
-GİRDİ: Hiçbir yere gitmeyecegim.
-MODEL: Hiçbir yere gitmeyeceğim.
-HEDEF: Hiçbir yere gitmeyeceğim.
+GİRDİ: BBunu neden ypatttigımi bilmiyorum.
+MODEL: Bunu neden yaptığımı bilmiyorum.
+HEDEF: Bunu neden yaptığımı bilmiyorum.
+```
+
+```text
+GİRDİ: Aşk ağlatırr, dert söyletir.
+MODEL: Aşk ağlatır, dert söyletir.
+HEDEF: Aşk ağlatır, dert söyletir.
+```
+
+```text
+GİRDİ: Birkac parcadan ibaret camasırlari kapınin arkasina yigdim.
+MODEL: Birkaç parçadan ibaret çamaşırları kapının arkasına yığdım.
+HEDEF: Birkaç parçadan ibaret çamaşırları kapının arkasına yığdım.
+```
+
+```text
+GİRDİ: İki yaşlarinda kadar bir cocuk salıncakta oturmuş katilırcasına agliyordu.
+MODEL: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
+HEDEF: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
 ```
 
 ## Yanlış düzeltmeler
 
 ```text
-GİRDİ: Eskiye itibar olsaydı bitpazarına nur yağardı.
-MODEL: Eskiye itibar olsaydı bit pazarına nur yağardı.
-HEDEF: Eskiye itibar olsaydı bitpazarına nur yağardı.
+GİRDİ: Hani nerdeyse harman yerlerinden duyulacaktı.
+MODEL: Hani neredeyse harman yerlerinden duyulacaktı.
+HEDEF: Hani nerdeyse harman yerlerinden duyulacaktı.
 ```
 
 ```text
@@ -105,9 +185,15 @@ HEDEF: İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.
 ```
 
 ```text
-GİRDİ: Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
-MODEL: Tavuslara, sülünlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.
-HEDEF: Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
+GİRDİ: Eskiye itibar olsaydı bitpazarına nur yağardı.
+MODEL: Eskiye itibar olsaydı bit pazarına nur yağardı.
+HEDEF: Eskiye itibar olsaydı bitpazarına nur yağardı.
+```
+
+```text
+GİRDİ: Sonra ortalığı yıldırmış olduğum için, şurda burda saklı karıları bensiz alıp getiremezlerdi.
+MODEL: Sonra ortalığı yıldırmış olduğum için, şurda burada saklı karıları bensiz alıp getiremezlerdi.
+HEDEF: Sonra ortalığı yıldırmış olduğum için, şurda burda saklı karıları bensiz alıp getiremezlerdi.
 ```
 
 ```text
@@ -119,162 +205,162 @@ HEDEF: Islak kumlar ayaklarımızın altında gıcırdıyordu.
 ## Kaçırılan düzeltmeler
 
 ```text
-GİRDİ: Onu, her şeye rağmen, bu çeşit bir mahluk addede mezdim.
-MODEL: Onu, her şeye rağmen, bu çeşit bir mahluk addede mezdim.
-HEDEF: Onu, her şeye rağmen, bu çeşit bir mahluk addedemezdim.
+GİRDİ: Ben yukarda sedire uzanurım!
+MODEL: Ben yukarda sedire uzanurım!
+HEDEF: Ben yukarıda sedire uzanırım!
 ```
 
 ```text
-GİRDİ: oNE MLI DEGIL GERÇEKTEN
-MODEL: oNE MLI DEGIL GERÇEKTEN
-HEDEF: Önemli değil, gerçekten.
+GİRDİ: Hiçbir ipucu ok.
+MODEL: Hiçbir ipucu ok.
+HEDEF: Hiçbir ipucu yok.
 ```
 
 ```text
-GİRDİ: bIR KERE HEYBETLI DELIKANLIYDI
-MODEL: bIR KERE HEYBETLI DELIKANLIYDI
-HEDEF: Bir kere heybetli delikanlıydı!
+GİRDİ: Kim söyledi sana bu nu?
+MODEL: Kim söyledi sana bu nu?
+HEDEF: Kim söyledi sana bunu?
 ```
 
 ```text
-GİRDİ: Bütün akraba gelmişe benziyorsu.
-MODEL: Bütün akraba gelmişe benziyorsu.
-HEDEF: Bütün akraba gelmişe benziyordu.
-```
-
-```text
-GİRDİ: bENEDN ISTEDIGIN HER SE?YI YAPTIM.
-MODEL: bENEDN ISTEDIGIN HER SE?YI YAPTIM.
-HEDEF: Benden istediğin her şeyi yaptım.
-```
-
-```text
-GİRDİ: Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolun da, çıkıp gitti.
-MODEL: Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolun da, çıkıp gitti.
-HEDEF: Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda, çıkıp gitti.
-```
-
-```text
-GİRDİ: RcET, BUTARAFTAN.
-MODEL: RcET, BUTARAFTAN.
-HEDEF: Evet, bu taraftan.
-```
-
-```text
-GİRDİ: bIR HAYLI YÜRÜDÜKTEN SONRA ?YOL BIRDENBIRE DENIZ KENARINI TAKIBE BAŞLADI.
-MODEL: bIR HAYLI YÜRÜDÜKTEN SONRA ?YOL BIRDENBIRE DENIZ KENARINI TAKIBE BAŞLADI.
-HEDEF: Bir hayli yürüdükten sonra yol birdenbire deniz kenarını takibe başladı.
-```
-
-```text
-GİRDİ: Konuşmak nietiyle çıktıkları halde ikisi de kendi âlemlerine dalmışlardı.
-MODEL: Konuşmak nietiyle çıktıkları halde ikisi de kendi âlemlerine dalmışlardı.
-HEDEF: Konuşmak niyetiyle çıktıkları halde ikisi de kendi âlemlerine dalmışlardı.
-```
-
-```text
-GİRDİ: hICBIR YERE GITMEYECEĞI M
-MODEL: hICBIR YERE GITMEYECEĞI M
-HEDEF: Hiçbir yere gitmeyeceğim.
-```
-
-```text
-GİRDİ: Bir şey er ayarlarız.
-MODEL: Bir şey er ayarlarız.
+GİRDİ: Bir şeyer ayarlarız.
+MODEL: Bir şeyer ayarlarız.
 HEDEF: Bir şeyler ayarlarız.
 ```
 
 ```text
-GİRDİ: Ben onu bekleren, evimi ona kabule hazırlarken ölmüştü.
-MODEL: Ben onu bekleren, evimi ona kabule hazırlarken ölmüştü.
-HEDEF: Ben onu beklerken, evimi ona kabule hazırlarken ölmüştü.
+GİRDİ: Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey eğildi.
+MODEL: Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey eğildi.
+HEDEF: Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey değildi.
+```
+
+```text
+GİRDİ: Tavuslara, sülnlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
+MODEL: Tavuslara, sülnlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
+HEDEF: Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
+```
+
+```text
+GİRDİ: Yarın aşkamevi temizler misin?
+MODEL: Yarın aşkamevi temizler misin?
+HEDEF: Yarın akşam evi temizler misin?
+```
+
+```text
+GİRDİ: bEN SIZEYETISIRIM
+MODEL: bEN SIZEYETISIRIM
+HEDEF: Ben size yetişirim.
+```
+
+```text
+GİRDİ: Genç kız onun uyanmış olduğunu görünce gülüm sedi.
+MODEL: Genç kız onun uyanmış olduğunu görünce gülüm sedi.
+HEDEF: Genç kız onun uyanmış olduğunu görünce gülümsedi.
+```
+
+```text
+GİRDİ: sIZINSUÖUNUZDEĞIL.
+MODEL: sIZINSUÖUNUZDEĞIL.
+HEDEF: Sizin suçunuz değil.
+```
+
+```text
+GİRDİ: Bir gardiyan elindeki kağıda bakarak yoklama yatı.
+MODEL: Bir gardiyan elindeki kağıda bakarak yoklama yatı.
+HEDEF: Bir gardiyan elindeki kağıda bakarak yoklama yaptı.
+```
+
+```text
+GİRDİ: Ancak kenefe gittiği zamankar peşinden fırlar, apteshane aralığında sıkıştırıp üç beş lira alırım.
+MODEL: Ancak kenefe gittiği zamankar peşinden fırlar, apteshane aralığında sıkıştırıp üç beş lira alırım.
+HEDEF: Ancak kenefe gittiği zamanlar peşinden fırlar, apteshane aralığında sıkıştırıp üç beş lira alırım.
 ```
 
 ## Zor örnekler
 
 ```text
-GİRDİ: küçük satici, o tştrek ve !ince sesiyle bagırıyordu.
-MODEL: Küçük satici, o terek ve ince sesiyle bağırıyordu.
-HEDEF: Küçük satıcı, o titrek ve ince sesiyle bağırıyordu.
+GİRDİ: wşeği  suren osuruguna katşanir.
+MODEL: Bir şeği süren osuruğuna katşanır.
+HEDEF: Eşeği süren osuruğuna katlanır.
 ```
 
 ```text
-GİRDİ: cok  uzgunum baba.
-MODEL: Çok uzgunum baba.
+GİRDİ: Yarin aksam sama annlatıyoru?z.
+MODEL: Yarın akşam sama anlatıyoruz.
+HEDEF: Yarın akşam sana anlatıyoruz.
+```
+
+```text
+GİRDİ: Ben onu beklerken, evimi ona kabbbule haz irlrken olmustu.
+MODEL: Ben onu beklerken, evimi ona kabule hazırlarken olmuştu.
+HEDEF: Ben onu beklerken, evimi ona kabule hazırlarken ölmüştü.
+```
+
+```text
+GİRDİ: ne ldu, iyiisin?
+MODEL: Ne ladu, iyisin?
+HEDEF: Ne oldu, iyi misin?
+```
+
+```text
+GİRDİ: Sieihiyacımyok.
+MODEL: Sinehiyacım yok.
+HEDEF: Size ihtiyacım yok.
+```
+
+```text
+GİRDİ: Oğleden sonra og retmenmesaji gonderiyo.
+MODEL: Öğleden sonra oğretmen mesajı gönderiyor.
+HEDEF: Öğleden sonra öğretmen mesajı gönderiyor.
+```
+
+```text
+GİRDİ: C?okuzgünumbaba.
+MODEL: Çokuz günüm baba.
 HEDEF: Çok üzgünüm baba.
 ```
 
 ```text
-GİRDİ: Atın ürleği,yğidin korkağı.
-MODEL: Atın ürleğiyi yıdın korkağı.
-HEDEF: Atın ürkeği, yiğidin korkağı.
+GİRDİ: Pekala,  hxir misiniz?
+MODEL: Pekala, hiç misiniz?
+HEDEF: Pekala, hazır mısınız?
 ```
 
 ```text
-GİRDİ: Bedrinin dizleri dermansizlasmist.i.
-MODEL: Bedrinin dizleri dermansızlaşmıştı.
-HEDEF: Bedri'nin dizleri dermansızlaşmıştı.
+GİRDİ: Bir kere cikayım fa sonrasş kolay
+MODEL: Bir kere çıkayım fa sonrası kolay.
+HEDEF: Bir kere çıkayım da, sonrası kolay.
 ```
 
 ```text
-GİRDİ: Tavuslara, sulunleere bakmaya tenrzzül etmeyen y.abani kus, kanadi kirik bir cullugun, avı oldu.
-MODEL: Tavuşlara, sulunlere bakmaya tenrül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.
-HEDEF: Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.
+GİRDİ: Ben yukarda sedire uzanurım!
+MODEL: Ben yukarda sedire uzanurım!
+HEDEF: Ben yukarıda sedire uzanırım!
 ```
 
 ```text
-GİRDİ: Diger ressam arkadaslardasizi merak ed iyorlardi.
-MODEL: Diğer ressam arkadaşlarda sizi merak ediyorlardı.
-HEDEF: Diğer ressam arkadaşlar da sizi merak ediyorlardı.
+GİRDİ: kusura bakma unut musum
+MODEL: Kusura bakma unut musun?
+HEDEF: Kusura bakma, unutmuşum.
 ```
 
 ```text
-GİRDİ: dort gün sonra polonya ve romanya uzerinden turkiye'ye dondum
-MODEL: Dort gün sonra polonya ve romanya üzerinden Türkiye'ye döndüm.
-HEDEF: Dört gün sonra, Polonya ve Romanya üzerinden Türkiye'ye döndüm.
-```
-
-```text
-GİRDİ: Simdi   onun nicin benden evvel seyahate çiktigıni da anlar fibi oluyordum.
-MODEL: Simdi onun niçin benden evvel seyahate çıktığını da anlar fibi oluyordum.
-HEDEF: Şimdi onun niçin benden evvel seyahate çıktığını da anlar gibi oluyordum.
-```
-
-```text
-GİRDİ: beni rahat bırak? on!
-MODEL: Beni rahat bırak? On!
-HEDEF: Beni rahat bırakın!
-```
-
-```text
-GİRDİ: Ben de .szi bekllitordum.
-MODEL: Ben de sizi beklitordum.
-HEDEF: Ben de sizi bekliyordum.
-```
-
-```text
-GİRDİ: oNE MLI DEGIL GERÇEKTEN
-MODEL: oNE MLI DEGIL GERÇEKTEN
-HEDEF: Önemli değil, gerçekten.
-```
-
-```text
-GİRDİ: Her iey incelikten iinsan kablıktan kırılır
-MODEL: Her iyi incelikten insan kablıktan kırılır.
-HEDEF: Her şey incelikten insan kabalıktan kırılır.
+GİRDİ: Şidi babam deni bulacak sonra sabah kitabıbitirecek
+MODEL: Şidi babam deni bulacak sonra sabah kitabı bitirecek.
+HEDEF: Şimdi babam seni bulacak, sonra sabah kitabı bitirecek.
 ```
 
 ## Manuel örnekler
 
 ```text
 GİRDİ: bugün okula gidicem ama hava cok kötü galiba
-MODEL: Bugün okula gidicem ama hava çok kötü galiba.
+MODEL: Bugün okula gideceğim ama hava çok kötü galiba.
 HEDEF: Bugün okula gideceğim ama hava çok kötü galiba.
 ```
 
 ```text
 GİRDİ: yarin arkadaşlarla buluşcaz sonrada sinemaya gidicez
-MODEL: Yarın arkadaşlarla buluşcaz sonrada sinemaya gidicez.
+MODEL: Yarın arkadaşlarla buluşacağız, sonra da sinemaya gideceğiz.
 HEDEF: Yarın arkadaşlarla buluşacağız, sonra da sinemaya gideceğiz.
 ```
 
@@ -298,7 +384,7 @@ HEDEF: Ben de seninle geleceğim.
 
 ```text
 GİRDİ: Ankaraya yarin gidicem.
-MODEL: Ankaraya yarın gidicem.
+MODEL: Ankaraya yarın gideceğim.
 HEDEF: Ankara'ya yarın gideceğim.
 ```
 

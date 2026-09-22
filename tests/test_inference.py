@@ -19,3 +19,13 @@ def test_real_local_model_interface(monkeypatch):
     with pytest.raises(ValueError): engine.correct(' ')
     with pytest.raises(ValueError): engine.correct('a'*4001)
     with pytest.raises(TypeError): engine.correct(None)
+
+@pytest.mark.skipif(not (ROOT/'models/checkpoints/best/adapter_config.json').exists(), reason='Eğitilmiş model gerekli')
+def test_real_model_fixes_colloquial_and_keeps_correct_text():
+    from megazeka.inference import CorrectionEngine
+    engine = CorrectionEngine()
+    fixes = {'yarın okula gidicem': 'gideceğim', 'bugün sinemaya gitcez': 'gideceğiz', 'seni bekliyom': 'bekliyorum'}
+    hits = sum(expected in engine.correct(text, inspect=False)['output'] for text, expected in fixes.items())
+    assert hits >= 2, hits
+    for text in ['Okula gideceğim.', 'Yarın arkadaşlarımla sinemaya gideceğiz.', 'Bugün hava çok güzel.']:
+        assert engine.correct(text, inspect=False)['output'] == text
