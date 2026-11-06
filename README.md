@@ -4,8 +4,7 @@ Bu proje, **gerçekten yerelde eğitilen ByT5-small + LoRA modeliyle** Türkçe 
 
 ## Sonuçlar
 
-**Canlı demo:** [huggingface.co/spaces/pandakingpunc/megazeka](https://huggingface.co/spaces/pandakingpunc/megazeka)
-(Space kaynağı bu depoda `space/` klasöründedir).
+**Tarayıcı demosu (yerel):** `space/` klasöründeki Gradio uygulaması; `pip install gradio==5.49.1` sonrası `python space/app.py` ile açılır. (Hugging Face artık ücretsiz hesapta Gradio Space barındırmadığı için şimdilik çevrim içi demo yok.)
 
 1.128 çiftlik ayrılmış test kümesinde (`evaluation/evaluate.py --checkpoint best`): 640 Common Voice çifti
 ve 488 gündelik konuşma çifti. "Girdiyi kopyala", hiçbir şey değiştirmeyen önemsiz başlangıç değeridir;
@@ -96,7 +95,6 @@ biçimler neredeyse yoktu. v2 bunları düzeltmeye başladı; v3 "gitcez → gid
 
 - LoRA adaptörü: [`pandakingpunc/megazeka-byt5-tr-spellfix`](https://huggingface.co/pandakingpunc/megazeka-byt5-tr-spellfix)
 - Eğitim verisi: [`pandakingpunc/megazeka-tr-spellfix-pairs`](https://huggingface.co/datasets/pandakingpunc/megazeka-tr-spellfix-pairs)
-- Canlı demo: [`pandakingpunc/megazeka`](https://huggingface.co/spaces/pandakingpunc/megazeka) (Space; kaynağı `space/`)
 
 Her iki depoda da ana dal bu depodaki yeni eğitimi (**v3**: 5.000 adım, 42.075 çift) içerir. Önceki
 sürümler etiketleriyle yüklenebilir kalır: **v2** (4.000 adım, 38.057 çift) ve **v1** (1.800 adım, 32.000
@@ -116,7 +114,7 @@ contractions ("napcam"), ~35 common misspellings ("yanlız", "herkez", "şöför
 apostrophes ("Ankaraya"). It ships with an offline Tkinter desktop app —
 inference makes no network calls and uses no hosted LLM API.
 
-**Live demo:** https://huggingface.co/spaces/pandakingpunc/megazeka (source in `space/`).
+**Browser demo (local):** a Gradio app in `space/` (`python space/app.py`); there is no hosted demo for now.
 
 On a held-out 1,128-pair test set (frozen byte-identical since v2, so v2 and v3 are directly comparable) v3
 reduces CER from 0.096 to 0.012 and WER from 0.358 to 0.061 against a copy-the-input baseline, raising exact
@@ -315,7 +313,7 @@ app/                 Türkçe masaüstü, öğrenme ve depolama ekranları
 src/megazeka/        gürültü, gündelik kurallar, normalizasyon, çıkarım ve kelime kilidi, metrikler, disk denetimi
 training/            veri üretimi, gündelik cümle şablonları ve devam edilebilir LoRA eğitimi
 evaluation/          ayrılmış test, elle yazılmış zorluk kümesi ve okunabilir değerlendirme
-space/               Hugging Face Space (canlı demo) kaynağı
+space/               Gradio tarayıcı demosu (yerel)
 configs/             quick / medium / quality ve depolama bütçesi
 data/                tek kaynak, metadata ve sıkıştırılmış çiftler
 models/base/         tek yerel temel model + tokenizer
