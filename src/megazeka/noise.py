@@ -1,8 +1,9 @@
 """Observable, seeded Turkish corruptions; each operation records before/after."""
 import random
 import re
-from .text import lower_tr
-from .colloquial import colloquialize
+from .text import lower_tr, swapcase_tr
+from .colloquial import colloquialize, rewrite, hard_candidates, ne_candidates
+from .spelling import misspell, drop_proper_apostrophe, misspelling_candidates, apostrophe_candidates
 
 ASCII = str.maketrans('çğıöşüÇĞİÖŞÜ', 'cgiosuCGIOSU')
 KEYBOARD = ['qwertyuıopğü', 'asdfghjklşi', 'zxcvbnmöç']
@@ -14,7 +15,12 @@ for row in KEYBOARD:
 class NoiseGenerator:
     names = ['harf_sil', 'harf_tekrar', 'harf_yer_değiştir', 'klavye', 'türkçe_karakter',
              'küçük_harf', 'noktalama_sil', 'noktalama_ekle', 'boşluk_sil', 'boşluk_ekle',
-             'fazla_boşluk', 'de_da', 'ki', 'soru_eki', 'kesme', 'gündelik']
+             'fazla_boşluk', 'de_da', 'ki', 'soru_eki', 'kesme', 'gündelik',
+             'sert_ünsüz', 'ne_kısalt', 'yazım_yanlışı', 'özel_ad_kesme']
+    # Operations that are only applicable to specific words; used to target everyday sentences.
+    targeted = {'sert_ünsüz': lambda t: bool(hard_candidates(t)), 'ne_kısalt': lambda t: bool(ne_candidates(t)),
+                'yazım_yanlışı': lambda t: bool(misspelling_candidates(t)),
+                'özel_ad_kesme': lambda t: bool(apostrophe_candidates(t))}
 
     def __init__(self, seed=42):
         self.rng = random.Random(seed)
@@ -36,7 +42,7 @@ class NoiseGenerator:
         if kind == 'türkçe_karakter':
             return ''.join(c.translate(ASCII) if r.random() < .7 else c for c in text)
         if kind == 'küçük_harf':
-            return lower_tr(text) if r.random() < .8 else text.swapcase()
+            return lower_tr(text) if r.random() < .8 else swapcase_tr(text)
         if kind == 'noktalama_sil':
             return re.sub(r'[.,!?;:]', '', text)
         if kind == 'noktalama_ekle':
@@ -62,7 +68,24 @@ class NoiseGenerator:
             return text.replace("'", '').replace('’', '')
         if kind == 'gündelik':
             return colloquialize(text, r)
+        if kind == 'sert_ünsüz':
+            return rewrite(text, r, hard_candidates)
+        if kind == 'ne_kısalt':
+            return rewrite(text, r, ne_candidates)
+        if kind == 'yazım_yanlışı':
+            return misspell(text, r)
+        if kind == 'özel_ad_kesme':
+            return drop_proper_apostrophe(text, r)
         return text
+
+    def preferred(self, text):
+        """Pick the first operation for an everyday sentence: a targeted one when the sentence
+        contains a softening verb, a ne-contraction, a common misspelling target or a proper noun
+        with a suffix apostrophe; otherwise the generic colloquial rewrite."""
+        options = [name for name, applies in self.targeted.items() if applies(text)]
+        # Generic colloquial rewrite keeps the vowel-initial forms (gidicem) well represented.
+        generic = .15 if {'ne_kısalt', 'yazım_yanlışı'} & set(options) else .35
+        return self.rng.choice(options) if options and self.rng.random() > generic else 'gündelik'
 
     def corrupt(self, text, difficulty, prefer=None):
         """Apply 1/2/4 successful operations. `prefer` forces the first attempted operation
@@ -78,7 +101,8 @@ class NoiseGenerator:
                     kind = prefer
                 else:
                     # Favor realistic diacritics/case/chat noise over random destruction.
-                    kind = self.rng.choice(self.names + ['türkçe_karakter'] * 4 + ['gündelik'] * 3 + ['küçük_harf'])
+                    kind = self.rng.choice(self.names + ['türkçe_karakter'] * 4 + ['gündelik'] * 3 + ['küçük_harf']
+                                         + ['yazım_yanlışı'] * 3 + ['özel_ad_kesme'] * 3 + ['sert_ünsüz'] * 2 + ['ne_kısalt'] * 2)
                 changed = self.apply(current, kind)
                 if changed != current and changed.strip():
                     history.append({'operation': kind, 'before': current, 'after': changed})

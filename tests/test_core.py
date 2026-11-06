@@ -33,7 +33,7 @@ def test_noise_reproducible_and_observable():
 
 def test_every_noise_operation_can_change():
     gen = NoiseGenerator(42)
-    text = "Bugün Ankara'ya gideceğim, sen de evdeki kitabı getirir misin?"
+    text = "Bugün Ankara'ya gideceğim, herkes yalnız. Sen de evdeki kitabı getirir misin? Ne yapıyorsun?"
     for name in gen.names:
         assert any(gen.apply(text, name) != text for _ in range(100)), name
 

@@ -1,0 +1,81 @@
+{"source": "yarın sinemaya gitcez mi", "target": "Yarın sinemaya gideceğiz mi?", "category": "yumuşama"}
+{"source": "sana yardım etcem merak etme", "target": "Sana yardım edeceğim, merak etme.", "category": "yumuşama"}
+{"source": "akşam eve gitcem", "target": "Akşam eve gideceğim.", "category": "yumuşama"}
+{"source": "bu işi kabul etcek misin", "target": "Bu işi kabul edecek misin?", "category": "yumuşama"}
+{"source": "hafta sonu tatile gitcez", "target": "Hafta sonu tatile gideceğiz.", "category": "yumuşama"}
+{"source": "sana teşekkür etcem sonra", "target": "Sana teşekkür edeceğim sonra.", "category": "yumuşama"}
+{"source": "sen de gitcen değil mi", "target": "Sen de gideceksin değil mi?", "category": "yumuşama"}
+{"source": "onu affetcem herhalde", "target": "Onu affedeceğim herhalde.", "category": "yumuşama"}
+{"source": "yemeği tadcaz bakalım", "target": "Yemeği tadacağız bakalım.", "category": "yumuşama"}
+{"source": "yoksa kaybetcem", "target": "Yoksa kaybedeceğim.", "category": "yumuşama"}
+{"source": "napcaz şimdi", "target": "Ne yapacağız şimdi?", "category": "ne_yap"}
+{"source": "napıyon orada", "target": "Ne yapıyorsun orada?", "category": "ne_yap"}
+{"source": "ben napcam şimdi", "target": "Ben ne yapacağım şimdi?", "category": "ne_yap"}
+{"source": "noldu sana", "target": "Ne oldu sana?", "category": "ne_yap"}
+{"source": "nolur gel", "target": "Ne olur gel.", "category": "ne_yap"}
+{"source": "naber nasılsın", "target": "Ne haber, nasılsın?", "category": "ne_yap"}
+{"source": "nabıyosun", "target": "Ne yapıyorsun?", "category": "ne_yap"}
+{"source": "sen napıcaksın yarın", "target": "Sen ne yapacaksın yarın?", "category": "ne_yap"}
+{"source": "napıyosunuz çocuklar", "target": "Ne yapıyorsunuz çocuklar?", "category": "ne_yap"}
+{"source": "bugün napıyosun", "target": "Bugün ne yapıyorsun?", "category": "ne_yap"}
+{"source": "napalım şimdi", "target": "Ne yapalım şimdi?", "category": "ne_yap"}
+{"source": "noluyo burda", "target": "Ne oluyor burada?", "category": "ne_yap"}
+{"source": "gelicem ama biraz geç kalcam", "target": "Geleceğim ama biraz geç kalacağım.", "category": "sohbet"}
+{"source": "bi dakika bekle geliyom", "target": "Bir dakika bekle, geliyorum.", "category": "sohbet"}
+{"source": "yarın okula gelmicem", "target": "Yarın okula gelmeyeceğim.", "category": "sohbet"}
+{"source": "bilmiyom valla", "target": "Bilmiyorum valla.", "category": "sohbet"}
+{"source": "ordan bişey almıcam", "target": "Oradan bir şey almayacağım.", "category": "sohbet"}
+{"source": "ne zaman geliyosun", "target": "Ne zaman geliyorsun?", "category": "sohbet"}
+{"source": "yarın erken kalkıcam", "target": "Yarın erken kalkacağım.", "category": "sohbet"}
+{"source": "tmm görüşürüz", "target": "Tamam görüşürüz.", "category": "sohbet"}
+{"source": "yanlız gitmek istemiyorum", "target": "Yalnız gitmek istemiyorum.", "category": "yazım_yanlışı"}
+{"source": "herkez toplantıya geldi", "target": "Herkes toplantıya geldi.", "category": "yazım_yanlışı"}
+{"source": "yalnış anladın beni", "target": "Yanlış anladın beni.", "category": "yazım_yanlışı"}
+{"source": "şöför beni evin önünde bıraktı", "target": "Şoför beni evin önünde bıraktı.", "category": "yazım_yanlışı"}
+{"source": "eşortman almam lazım", "target": "Eşofman almam lazım.", "category": "yazım_yanlışı"}
+{"source": "orjinal belgeyi getir", "target": "Orijinal belgeyi getir.", "category": "yazım_yanlışı"}
+{"source": "sana süpriz yapacağım", "target": "Sana sürpriz yapacağım.", "category": "yazım_yanlışı"}
+{"source": "makina bozuldu galiba", "target": "Makine bozuldu galiba.", "category": "yazım_yanlışı"}
+{"source": "labaratuvarda çalışıyorum", "target": "Laboratuvarda çalışıyorum.", "category": "yazım_yanlışı"}
+{"source": "arabanın egzos borusu delinmiş", "target": "Arabanın egzoz borusu delinmiş.", "category": "yazım_yanlışı"}
+{"source": "klavuz kitabı masada", "target": "Kılavuz kitabı masada.", "category": "yazım_yanlışı"}
+{"source": "meyva yemeyi seviyorum", "target": "Meyve yemeyi seviyorum.", "category": "yazım_yanlışı"}
+{"source": "yalnışlıkla yanlış kapıyı çaldım", "target": "Yanlışlıkla yanlış kapıyı çaldım.", "category": "yazım_yanlışı"}
+{"source": "çok mütevazi bir insan", "target": "Çok mütevazı bir insan.", "category": "yazım_yanlışı"}
+{"source": "hastahaneye gittim dün", "target": "Hastaneye gittim dün.", "category": "yazım_yanlışı"}
+{"source": "yada ben giderim", "target": "Ya da ben giderim.", "category": "yazım_yanlışı"}
+{"source": "herzaman böyle yapıyorsun", "target": "Her zaman böyle yapıyorsun.", "category": "yazım_yanlışı"}
+{"source": "Ankaraya yarın gideceğim.", "target": "Ankara'ya yarın gideceğim.", "category": "kesme_işareti"}
+{"source": "Ayşenin kitabı masada.", "target": "Ayşe'nin kitabı masada.", "category": "kesme_işareti"}
+{"source": "İzmirden Bursaya otobüsle gittik.", "target": "İzmir'den Bursa'ya otobüsle gittik.", "category": "kesme_işareti"}
+{"source": "Türkiyede hava çok sıcak.", "target": "Türkiye'de hava çok sıcak.", "category": "kesme_işareti"}
+{"source": "Mehmetle Eskişehirde buluştuk.", "target": "Mehmet'le Eskişehir'de buluştuk.", "category": "kesme_işareti"}
+{"source": "istanbula gidiyorum", "target": "İstanbul'a gidiyorum.", "category": "kesme_işareti"}
+{"source": "Antalyanın havası güzel.", "target": "Antalya'nın havası güzel.", "category": "kesme_işareti"}
+{"source": "Kayseriden geldim.", "target": "Kayseri'den geldim.", "category": "kesme_işareti"}
+{"source": "ısık bugün okula gelmedi", "target": "Işık bugün okula gelmedi.", "category": "ı_i_isimleri"}
+{"source": "Irmak ile Ilgaz parka gitti", "target": "Irmak ile Ilgaz parka gitti.", "category": "ı_i_isimleri"}
+{"source": "Ipek Izmirde yaşıyor", "target": "İpek İzmir'de yaşıyor.", "category": "ı_i_isimleri"}
+{"source": "isparta gülleriyle ünlüdür", "target": "Isparta gülleriyle ünlüdür.", "category": "ı_i_isimleri"}
+{"source": "Igdir'a ilk kez gidiyorum", "target": "Iğdır'a ilk kez gidiyorum.", "category": "ı_i_isimleri"}
+{"source": "Irmak bana mesaj atti", "target": "Irmak bana mesaj attı.", "category": "ı_i_isimleri"}
+{"source": "ılgaz ve işık yarın gelcek", "target": "Ilgaz ve Işık yarın gelecek.", "category": "ı_i_isimleri"}
+{"source": "Isik ile Ipek aynı sınıfta", "target": "Işık ile İpek aynı sınıfta.", "category": "ı_i_isimleri"}
+{"source": "Isparta'dan Igdir'a yolculuk uzun", "target": "Isparta'dan Iğdır'a yolculuk uzun.", "category": "ı_i_isimleri"}
+{"source": "Yarın okula gideceğim.", "target": "Yarın okula gideceğim.", "category": "doğru_cümle"}
+{"source": "Bu akşam sinemaya gidelim mi?", "target": "Bu akşam sinemaya gidelim mi?", "category": "doğru_cümle"}
+{"source": "Irmak Ankara'dan döndü.", "target": "Irmak Ankara'dan döndü.", "category": "doğru_cümle"}
+{"source": "Hava bugün çok güzel, parka gidebiliriz.", "target": "Hava bugün çok güzel, parka gidebiliriz.", "category": "doğru_cümle"}
+{"source": "Napolyon büyük bir komutandı.", "target": "Napolyon büyük bir komutandı.", "category": "doğru_cümle"}
+{"source": "Nolan'ın yeni filmini izledim.", "target": "Nolan'ın yeni filmini izledim.", "category": "doğru_cümle"}
+{"source": "Yalnız başına yaşamak zor olabilir.", "target": "Yalnız başına yaşamak zor olabilir.", "category": "doğru_cümle"}
+{"source": "Herkes evine gitti.", "target": "Herkes evine gitti.", "category": "doğru_cümle"}
+{"source": "Makine yeniden çalıştı.", "target": "Makine yeniden çalıştı.", "category": "doğru_cümle"}
+{"source": "Sürpriz doğum günü partisi hazırlıyoruz.", "target": "Sürpriz doğum günü partisi hazırlıyoruz.", "category": "doğru_cümle"}
+{"source": "Gideceğiz dedik ama yağmur başladı.", "target": "Gideceğiz dedik ama yağmur başladı.", "category": "doğru_cümle"}
+{"source": "Ali'ye telefon ettim ama açmadı.", "target": "Ali'ye telefon ettim ama açmadı.", "category": "doğru_cümle"}
+{"source": "Toplantı saat üçte başlayacak.", "target": "Toplantı saat üçte başlayacak.", "category": "doğru_cümle"}
+{"source": "Dün akşam arkadaşlarımla yemek yedik.", "target": "Dün akşam arkadaşlarımla yemek yedik.", "category": "doğru_cümle"}
+{"source": "Annem pazardan meyve aldı.", "target": "Annem pazardan meyve aldı.", "category": "doğru_cümle"}
+{"source": "Teşekkür ederim, çok yardımcı oldun.", "target": "Teşekkür ederim, çok yardımcı oldun.", "category": "doğru_cümle"}
+{"source": "Türkiye'de kış aylarında kar yağar.", "target": "Türkiye'de kış aylarında kar yağar.", "category": "doğru_cümle"}

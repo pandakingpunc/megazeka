@@ -4,6 +4,18 @@ import unicodedata
 def lower_tr(text):
     return text.translate(str.maketrans({'I': 'ı', 'İ': 'i'})).lower()
 
+def upper_tr(text):
+    return text.translate(str.maketrans({'i': 'İ', 'ı': 'I'})).upper()
+
+def swapcase_tr(text):
+    """Turkish-aware swapcase: i<->İ and ı<->I (str.swapcase turns 'İ' into two code points)."""
+    def swap(c):
+        if c.isupper():
+            return lower_tr(c)
+        up = upper_tr(c)
+        return up if len(up) == 1 else c
+    return ''.join(swap(c) for c in text)
+
 def upper_first(text):
     return text[:1].translate(str.maketrans({'i': 'İ', 'ı': 'I'})).upper() + text[1:]
 

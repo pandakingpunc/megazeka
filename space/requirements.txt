@@ -1,0 +1,6 @@
+torch
+transformers==4.56.2
+peft==0.17.1
+rapidfuzz==3.14.1
+safetensors
+gradio==5.49.1

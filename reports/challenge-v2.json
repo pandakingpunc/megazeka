@@ -1,0 +1,968 @@
+{
+  "checkpoint": "v2",
+  "total": 81,
+  "exact": 33,
+  "exact_match": 0.4074074074074074,
+  "categories": {
+    "yumuşama": {
+      "total": 10,
+      "exact": 7,
+      "exact_match": 0.7
+    },
+    "ne_yap": {
+      "total": 12,
+      "exact": 1,
+      "exact_match": 0.08333333333333333
+    },
+    "sohbet": {
+      "total": 8,
+      "exact": 7,
+      "exact_match": 0.875
+    },
+    "yazım_yanlışı": {
+      "total": 17,
+      "exact": 2,
+      "exact_match": 0.11764705882352941
+    },
+    "kesme_işareti": {
+      "total": 8,
+      "exact": 0,
+      "exact_match": 0.0
+    },
+    "ı_i_isimleri": {
+      "total": 9,
+      "exact": 0,
+      "exact_match": 0.0
+    },
+    "doğru_cümle": {
+      "total": 17,
+      "exact": 16,
+      "exact_match": 0.9411764705882353
+    }
+  },
+  "clean_total": 17,
+  "clean_changed": 1,
+  "overcorrection": 0.058823529411764705,
+  "seconds": 45.52326140000014,
+  "failures": [
+    {
+      "source": "sen de gitcen değil mi",
+      "target": "Sen de gideceksin değil mi?",
+      "category": "yumuşama",
+      "output": "Sen de giteceğin değil mi?",
+      "raw_output": "Sen de giteceğin değil mi?"
+    },
+    {
+      "source": "onu affetcem herhalde",
+      "target": "Onu affedeceğim herhalde.",
+      "category": "yumuşama",
+      "output": "Onu affeteceğim herhalde.",
+      "raw_output": "Onu affeteceğim herhalde."
+    },
+    {
+      "source": "yoksa kaybetcem",
+      "target": "Yoksa kaybedeceğim.",
+      "category": "yumuşama",
+      "output": "Yoksa kaybeteceğim.",
+      "raw_output": "Yoksa kaybeteceğim."
+    },
+    {
+      "source": "napcaz şimdi",
+      "target": "Ne yapacağız şimdi?",
+      "category": "ne_yap",
+      "output": "Nasacağız şimdi.",
+      "raw_output": "Nasacağız şimdi."
+    },
+    {
+      "source": "napıyon orada",
+      "target": "Ne yapıyorsun orada?",
+      "category": "ne_yap",
+      "output": "Napıyor orada?",
+      "raw_output": "Napıyor orada?"
+    },
+    {
+      "source": "ben napcam şimdi",
+      "target": "Ben ne yapacağım şimdi?",
+      "category": "ne_yap",
+      "output": "Ben nasacağım şimdi.",
+      "raw_output": "Ben nasacağım şimdi."
+    },
+    {
+      "source": "nolur gel",
+      "target": "Ne olur gel.",
+      "category": "ne_yap",
+      "output": "Nolur gel.",
+      "raw_output": "Nolur gel."
+    },
+    {
+      "source": "naber nasılsın",
+      "target": "Ne haber, nasılsın?",
+      "category": "ne_yap",
+      "output": "Naber nasılsın?",
+      "raw_output": "Naber nasılsın?"
+    },
+    {
+      "source": "nabıyosun",
+      "target": "Ne yapıyorsun?",
+      "category": "ne_yap",
+      "output": "Nasıl biyorsun?",
+      "raw_output": "Nasıl biyorsun?"
+    },
+    {
+      "source": "sen napıcaksın yarın",
+      "target": "Sen ne yapacaksın yarın?",
+      "category": "ne_yap",
+      "output": "Sen napacaksın yarın?",
+      "raw_output": "Sen napacaksın yarın?"
+    },
+    {
+      "source": "napıyosunuz çocuklar",
+      "target": "Ne yapıyorsunuz çocuklar?",
+      "category": "ne_yap",
+      "output": "Napıyorsunuz çocuklar?",
+      "raw_output": "Napıyorsunuz çocuklar?"
+    },
+    {
+      "source": "bugün napıyosun",
+      "target": "Bugün ne yapıyorsun?",
+      "category": "ne_yap",
+      "output": "Bugün napıyorsun?",
+      "raw_output": "Bugün napıyorsun?"
+    },
+    {
+      "source": "napalım şimdi",
+      "target": "Ne yapalım şimdi?",
+      "category": "ne_yap",
+      "output": "Napalım şimdi?",
+      "raw_output": "Napalım şimdi?"
+    },
+    {
+      "source": "noluyo burda",
+      "target": "Ne oluyor burada?",
+      "category": "ne_yap",
+      "output": "Noluyor burada.",
+      "raw_output": "Noluyor burada."
+    },
+    {
+      "source": "bi dakika bekle geliyom",
+      "target": "Bir dakika bekle, geliyorum.",
+      "category": "sohbet",
+      "output": "Bir dakika bekle geliyorum.",
+      "raw_output": "Bir dakika bekle geliyorum."
+    },
+    {
+      "source": "yanlız gitmek istemiyorum",
+      "target": "Yalnız gitmek istemiyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Yanlız gitmek istemiyorum.",
+      "raw_output": "Yanlız gitmek istemiyorum."
+    },
+    {
+      "source": "yalnış anladın beni",
+      "target": "Yanlış anladın beni.",
+      "category": "yazım_yanlışı",
+      "output": "Yalnış anladın beni.",
+      "raw_output": "Yalnış anladın beni."
+    },
+    {
+      "source": "şöför beni evin önünde bıraktı",
+      "target": "Şoför beni evin önünde bıraktı.",
+      "category": "yazım_yanlışı",
+      "output": "Şöför beni evin önünde bıraktı.",
+      "raw_output": "Şöför beni evin önünde bıraktı."
+    },
+    {
+      "source": "eşortman almam lazım",
+      "target": "Eşofman almam lazım.",
+      "category": "yazım_yanlışı",
+      "output": "Eş ortman almam lazım.",
+      "raw_output": "Eş ortman almam lazım."
+    },
+    {
+      "source": "orjinal belgeyi getir",
+      "target": "Orijinal belgeyi getir.",
+      "category": "yazım_yanlışı",
+      "output": "Orjinal belgeyi getir.",
+      "raw_output": "Orjinal belgeyi getir."
+    },
+    {
+      "source": "sana süpriz yapacağım",
+      "target": "Sana sürpriz yapacağım.",
+      "category": "yazım_yanlışı",
+      "output": "Sana süpriz yapacağım.",
+      "raw_output": "Sana süpriz yapacağım."
+    },
+    {
+      "source": "makina bozuldu galiba",
+      "target": "Makine bozuldu galiba.",
+      "category": "yazım_yanlışı",
+      "output": "Makina bozuldu galiba.",
+      "raw_output": "Makina bozuldu galiba."
+    },
+    {
+      "source": "labaratuvarda çalışıyorum",
+      "target": "Laboratuvarda çalışıyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Labaratuvarda çalışıyorum.",
+      "raw_output": "Labaratuvarda çalışıyorum."
+    },
+    {
+      "source": "arabanın egzos borusu delinmiş",
+      "target": "Arabanın egzoz borusu delinmiş.",
+      "category": "yazım_yanlışı",
+      "output": "Arabanın eğzos borusu delinmiş.",
+      "raw_output": "Arabanın eğzos borusu delinmiş."
+    },
+    {
+      "source": "klavuz kitabı masada",
+      "target": "Kılavuz kitabı masada.",
+      "category": "yazım_yanlışı",
+      "output": "Klavuz kitabı masada.",
+      "raw_output": "Klavuz kitabı masada."
+    },
+    {
+      "source": "meyva yemeyi seviyorum",
+      "target": "Meyve yemeyi seviyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Meyva yemeyi seviyorum.",
+      "raw_output": "Meyva yemeyi seviyorum."
+    },
+    {
+      "source": "yalnışlıkla yanlış kapıyı çaldım",
+      "target": "Yanlışlıkla yanlış kapıyı çaldım.",
+      "category": "yazım_yanlışı",
+      "output": "Yalnışlıkla yanlış kapıyı çaldım.",
+      "raw_output": "Yalnışlıkla yanlış kapıyı çaldım."
+    },
+    {
+      "source": "çok mütevazi bir insan",
+      "target": "Çok mütevazı bir insan.",
+      "category": "yazım_yanlışı",
+      "output": "Çok mütevazi bir insan.",
+      "raw_output": "Çok mütevazi bir insan."
+    },
+    {
+      "source": "hastahaneye gittim dün",
+      "target": "Hastaneye gittim dün.",
+      "category": "yazım_yanlışı",
+      "output": "Hastahaneye gittim dün.",
+      "raw_output": "Hastahaneye gittim dün."
+    },
+    {
+      "source": "yada ben giderim",
+      "target": "Ya da ben giderim.",
+      "category": "yazım_yanlışı",
+      "output": "Yada ben giderim.",
+      "raw_output": "Yada ben giderim."
+    },
+    {
+      "source": "Ankaraya yarın gideceğim.",
+      "target": "Ankara'ya yarın gideceğim.",
+      "category": "kesme_işareti",
+      "output": "Ankaraya yarın gideceğim.",
+      "raw_output": "Ankaraya yarın gideceğim."
+    },
+    {
+      "source": "Ayşenin kitabı masada.",
+      "target": "Ayşe'nin kitabı masada.",
+      "category": "kesme_işareti",
+      "output": "Ayşenin kitabı masada.",
+      "raw_output": "Ayşenin kitabı masada."
+    },
+    {
+      "source": "İzmirden Bursaya otobüsle gittik.",
+      "target": "İzmir'den Bursa'ya otobüsle gittik.",
+      "category": "kesme_işareti",
+      "output": "İzmirden Bursaya otobüsle gittik.",
+      "raw_output": "İzmirden Bursaya otobüsle gittik."
+    },
+    {
+      "source": "Türkiyede hava çok sıcak.",
+      "target": "Türkiye'de hava çok sıcak.",
+      "category": "kesme_işareti",
+      "output": "Türkiyede hava çok sıcak.",
+      "raw_output": "Türkiyede hava çok sıcak."
+    },
+    {
+      "source": "Mehmetle Eskişehirde buluştuk.",
+      "target": "Mehmet'le Eskişehir'de buluştuk.",
+      "category": "kesme_işareti",
+      "output": "Mehmetle Eskişehirde buluştuk.",
+      "raw_output": "Mehmetle Eskişehirde buluştuk."
+    },
+    {
+      "source": "istanbula gidiyorum",
+      "target": "İstanbul'a gidiyorum.",
+      "category": "kesme_işareti",
+      "output": "İstanbula gidiyorum.",
+      "raw_output": "İstanbula gidiyorum."
+    },
+    {
+      "source": "Antalyanın havası güzel.",
+      "target": "Antalya'nın havası güzel.",
+      "category": "kesme_işareti",
+      "output": "Antalyanın havası güzel.",
+      "raw_output": "Antalyanın havası güzel."
+    },
+    {
+      "source": "Kayseriden geldim.",
+      "target": "Kayseri'den geldim.",
+      "category": "kesme_işareti",
+      "output": "Kayseriden geldim.",
+      "raw_output": "Kayseriden geldim."
+    },
+    {
+      "source": "ısık bugün okula gelmedi",
+      "target": "Işık bugün okula gelmedi.",
+      "category": "ı_i_isimleri",
+      "output": "İşik bugün okula gelmedi.",
+      "raw_output": "İşik bugün okula gelmedi."
+    },
+    {
+      "source": "Irmak ile Ilgaz parka gitti",
+      "target": "Irmak ile Ilgaz parka gitti.",
+      "category": "ı_i_isimleri",
+      "output": "İrmak ile İlgaz parka gitti.",
+      "raw_output": "İrmak ile İlgaz parka gitti."
+    },
+    {
+      "source": "Ipek Izmirde yaşıyor",
+      "target": "İpek İzmir'de yaşıyor.",
+      "category": "ı_i_isimleri",
+      "output": "İpek İzmirde yaşıyor.",
+      "raw_output": "İpek İzmirde yaşıyor."
+    },
+    {
+      "source": "isparta gülleriyle ünlüdür",
+      "target": "Isparta gülleriyle ünlüdür.",
+      "category": "ı_i_isimleri",
+      "output": "İsparta gülleriyle ünlüdür.",
+      "raw_output": "İsparta gülleriyle ünlüdür."
+    },
+    {
+      "source": "Igdir'a ilk kez gidiyorum",
+      "target": "Iğdır'a ilk kez gidiyorum.",
+      "category": "ı_i_isimleri",
+      "output": "İğdir'a ilk kez gidiyorum.",
+      "raw_output": "İğdir'a ilk kez gidiyorum."
+    },
+    {
+      "source": "Irmak bana mesaj atti",
+      "target": "Irmak bana mesaj attı.",
+      "category": "ı_i_isimleri",
+      "output": "İrmak bana mesaj attı.",
+      "raw_output": "İrmak bana mesaj attı."
+    },
+    {
+      "source": "ılgaz ve işık yarın gelcek",
+      "target": "Ilgaz ve Işık yarın gelecek.",
+      "category": "ı_i_isimleri",
+      "output": "İlgaz ve işık yarın gelecek.",
+      "raw_output": "İlgaz ve işık yarın gelecek."
+    },
+    {
+      "source": "Isik ile Ipek aynı sınıfta",
+      "target": "Işık ile İpek aynı sınıfta.",
+      "category": "ı_i_isimleri",
+      "output": "İşik ile İpek aynı sınıfta.",
+      "raw_output": "İşik ile İpek aynı sınıfta."
+    },
+    {
+      "source": "Isparta'dan Igdir'a yolculuk uzun",
+      "target": "Isparta'dan Iğdır'a yolculuk uzun.",
+      "category": "ı_i_isimleri",
+      "output": "İsparta'dan İğdir'a yolculuk uzun.",
+      "raw_output": "İsparta'dan İğdir'a yolculuk uzun."
+    },
+    {
+      "source": "Irmak Ankara'dan döndü.",
+      "target": "Irmak Ankara'dan döndü.",
+      "category": "doğru_cümle",
+      "output": "İrmak Ankara'dan döndü.",
+      "raw_output": "İrmak Ankara'dan döndü."
+    }
+  ],
+  "rows": [
+    {
+      "source": "yarın sinemaya gitcez mi",
+      "target": "Yarın sinemaya gideceğiz mi?",
+      "category": "yumuşama",
+      "output": "Yarın sinemaya gideceğiz mi?",
+      "raw_output": "Yarın sinemaya gideceğiz mi?"
+    },
+    {
+      "source": "sana yardım etcem merak etme",
+      "target": "Sana yardım edeceğim, merak etme.",
+      "category": "yumuşama",
+      "output": "Sana yardım edeceğim, merak etme.",
+      "raw_output": "Sana yardım edeceğim, merak etme."
+    },
+    {
+      "source": "akşam eve gitcem",
+      "target": "Akşam eve gideceğim.",
+      "category": "yumuşama",
+      "output": "Akşam eve gideceğim.",
+      "raw_output": "Akşam eve gideceğim."
+    },
+    {
+      "source": "bu işi kabul etcek misin",
+      "target": "Bu işi kabul edecek misin?",
+      "category": "yumuşama",
+      "output": "Bu işi kabul edecek misin?",
+      "raw_output": "Bu işi kabul edecek misin?"
+    },
+    {
+      "source": "hafta sonu tatile gitcez",
+      "target": "Hafta sonu tatile gideceğiz.",
+      "category": "yumuşama",
+      "output": "Hafta sonu tatile gideceğiz.",
+      "raw_output": "Hafta sonu tatile gideceğiz."
+    },
+    {
+      "source": "sana teşekkür etcem sonra",
+      "target": "Sana teşekkür edeceğim sonra.",
+      "category": "yumuşama",
+      "output": "Sana teşekkür edeceğim sonra.",
+      "raw_output": "Sana teşekkür edeceğim sonra."
+    },
+    {
+      "source": "sen de gitcen değil mi",
+      "target": "Sen de gideceksin değil mi?",
+      "category": "yumuşama",
+      "output": "Sen de giteceğin değil mi?",
+      "raw_output": "Sen de giteceğin değil mi?"
+    },
+    {
+      "source": "onu affetcem herhalde",
+      "target": "Onu affedeceğim herhalde.",
+      "category": "yumuşama",
+      "output": "Onu affeteceğim herhalde.",
+      "raw_output": "Onu affeteceğim herhalde."
+    },
+    {
+      "source": "yemeği tadcaz bakalım",
+      "target": "Yemeği tadacağız bakalım.",
+      "category": "yumuşama",
+      "output": "Yemeği tadacağız bakalım.",
+      "raw_output": "Yemeği tadacağız bakalım."
+    },
+    {
+      "source": "yoksa kaybetcem",
+      "target": "Yoksa kaybedeceğim.",
+      "category": "yumuşama",
+      "output": "Yoksa kaybeteceğim.",
+      "raw_output": "Yoksa kaybeteceğim."
+    },
+    {
+      "source": "napcaz şimdi",
+      "target": "Ne yapacağız şimdi?",
+      "category": "ne_yap",
+      "output": "Nasacağız şimdi.",
+      "raw_output": "Nasacağız şimdi."
+    },
+    {
+      "source": "napıyon orada",
+      "target": "Ne yapıyorsun orada?",
+      "category": "ne_yap",
+      "output": "Napıyor orada?",
+      "raw_output": "Napıyor orada?"
+    },
+    {
+      "source": "ben napcam şimdi",
+      "target": "Ben ne yapacağım şimdi?",
+      "category": "ne_yap",
+      "output": "Ben nasacağım şimdi.",
+      "raw_output": "Ben nasacağım şimdi."
+    },
+    {
+      "source": "noldu sana",
+      "target": "Ne oldu sana?",
+      "category": "ne_yap",
+      "output": "Ne oldu sana?",
+      "raw_output": "Ne oldu sana?"
+    },
+    {
+      "source": "nolur gel",
+      "target": "Ne olur gel.",
+      "category": "ne_yap",
+      "output": "Nolur gel.",
+      "raw_output": "Nolur gel."
+    },
+    {
+      "source": "naber nasılsın",
+      "target": "Ne haber, nasılsın?",
+      "category": "ne_yap",
+      "output": "Naber nasılsın?",
+      "raw_output": "Naber nasılsın?"
+    },
+    {
+      "source": "nabıyosun",
+      "target": "Ne yapıyorsun?",
+      "category": "ne_yap",
+      "output": "Nasıl biyorsun?",
+      "raw_output": "Nasıl biyorsun?"
+    },
+    {
+      "source": "sen napıcaksın yarın",
+      "target": "Sen ne yapacaksın yarın?",
+      "category": "ne_yap",
+      "output": "Sen napacaksın yarın?",
+      "raw_output": "Sen napacaksın yarın?"
+    },
+    {
+      "source": "napıyosunuz çocuklar",
+      "target": "Ne yapıyorsunuz çocuklar?",
+      "category": "ne_yap",
+      "output": "Napıyorsunuz çocuklar?",
+      "raw_output": "Napıyorsunuz çocuklar?"
+    },
+    {
+      "source": "bugün napıyosun",
+      "target": "Bugün ne yapıyorsun?",
+      "category": "ne_yap",
+      "output": "Bugün napıyorsun?",
+      "raw_output": "Bugün napıyorsun?"
+    },
+    {
+      "source": "napalım şimdi",
+      "target": "Ne yapalım şimdi?",
+      "category": "ne_yap",
+      "output": "Napalım şimdi?",
+      "raw_output": "Napalım şimdi?"
+    },
+    {
+      "source": "noluyo burda",
+      "target": "Ne oluyor burada?",
+      "category": "ne_yap",
+      "output": "Noluyor burada.",
+      "raw_output": "Noluyor burada."
+    },
+    {
+      "source": "gelicem ama biraz geç kalcam",
+      "target": "Geleceğim ama biraz geç kalacağım.",
+      "category": "sohbet",
+      "output": "Geleceğim ama biraz geç kalacağım.",
+      "raw_output": "Geleceğim ama biraz geç kalacağım."
+    },
+    {
+      "source": "bi dakika bekle geliyom",
+      "target": "Bir dakika bekle, geliyorum.",
+      "category": "sohbet",
+      "output": "Bir dakika bekle geliyorum.",
+      "raw_output": "Bir dakika bekle geliyorum."
+    },
+    {
+      "source": "yarın okula gelmicem",
+      "target": "Yarın okula gelmeyeceğim.",
+      "category": "sohbet",
+      "output": "Yarın okula gelmeyeceğim.",
+      "raw_output": "Yarın okula gelmeyeceğim."
+    },
+    {
+      "source": "bilmiyom valla",
+      "target": "Bilmiyorum valla.",
+      "category": "sohbet",
+      "output": "Bilmiyorum valla.",
+      "raw_output": "Bilmiyorum valla."
+    },
+    {
+      "source": "ordan bişey almıcam",
+      "target": "Oradan bir şey almayacağım.",
+      "category": "sohbet",
+      "output": "Oradan bir şey almayacağım.",
+      "raw_output": "Oradan bir şey almayacağım."
+    },
+    {
+      "source": "ne zaman geliyosun",
+      "target": "Ne zaman geliyorsun?",
+      "category": "sohbet",
+      "output": "Ne zaman geliyorsun?",
+      "raw_output": "Ne zaman geliyorsun?"
+    },
+    {
+      "source": "yarın erken kalkıcam",
+      "target": "Yarın erken kalkacağım.",
+      "category": "sohbet",
+      "output": "Yarın erken kalkacağım.",
+      "raw_output": "Yarın erken kalkacağım."
+    },
+    {
+      "source": "tmm görüşürüz",
+      "target": "Tamam görüşürüz.",
+      "category": "sohbet",
+      "output": "Tamam görüşürüz.",
+      "raw_output": "Tamam görüşürüz."
+    },
+    {
+      "source": "yanlız gitmek istemiyorum",
+      "target": "Yalnız gitmek istemiyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Yanlız gitmek istemiyorum.",
+      "raw_output": "Yanlız gitmek istemiyorum."
+    },
+    {
+      "source": "herkez toplantıya geldi",
+      "target": "Herkes toplantıya geldi.",
+      "category": "yazım_yanlışı",
+      "output": "Herkes toplantıya geldi.",
+      "raw_output": "Herkes toplantıya geldi."
+    },
+    {
+      "source": "yalnış anladın beni",
+      "target": "Yanlış anladın beni.",
+      "category": "yazım_yanlışı",
+      "output": "Yalnış anladın beni.",
+      "raw_output": "Yalnış anladın beni."
+    },
+    {
+      "source": "şöför beni evin önünde bıraktı",
+      "target": "Şoför beni evin önünde bıraktı.",
+      "category": "yazım_yanlışı",
+      "output": "Şöför beni evin önünde bıraktı.",
+      "raw_output": "Şöför beni evin önünde bıraktı."
+    },
+    {
+      "source": "eşortman almam lazım",
+      "target": "Eşofman almam lazım.",
+      "category": "yazım_yanlışı",
+      "output": "Eş ortman almam lazım.",
+      "raw_output": "Eş ortman almam lazım."
+    },
+    {
+      "source": "orjinal belgeyi getir",
+      "target": "Orijinal belgeyi getir.",
+      "category": "yazım_yanlışı",
+      "output": "Orjinal belgeyi getir.",
+      "raw_output": "Orjinal belgeyi getir."
+    },
+    {
+      "source": "sana süpriz yapacağım",
+      "target": "Sana sürpriz yapacağım.",
+      "category": "yazım_yanlışı",
+      "output": "Sana süpriz yapacağım.",
+      "raw_output": "Sana süpriz yapacağım."
+    },
+    {
+      "source": "makina bozuldu galiba",
+      "target": "Makine bozuldu galiba.",
+      "category": "yazım_yanlışı",
+      "output": "Makina bozuldu galiba.",
+      "raw_output": "Makina bozuldu galiba."
+    },
+    {
+      "source": "labaratuvarda çalışıyorum",
+      "target": "Laboratuvarda çalışıyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Labaratuvarda çalışıyorum.",
+      "raw_output": "Labaratuvarda çalışıyorum."
+    },
+    {
+      "source": "arabanın egzos borusu delinmiş",
+      "target": "Arabanın egzoz borusu delinmiş.",
+      "category": "yazım_yanlışı",
+      "output": "Arabanın eğzos borusu delinmiş.",
+      "raw_output": "Arabanın eğzos borusu delinmiş."
+    },
+    {
+      "source": "klavuz kitabı masada",
+      "target": "Kılavuz kitabı masada.",
+      "category": "yazım_yanlışı",
+      "output": "Klavuz kitabı masada.",
+      "raw_output": "Klavuz kitabı masada."
+    },
+    {
+      "source": "meyva yemeyi seviyorum",
+      "target": "Meyve yemeyi seviyorum.",
+      "category": "yazım_yanlışı",
+      "output": "Meyva yemeyi seviyorum.",
+      "raw_output": "Meyva yemeyi seviyorum."
+    },
+    {
+      "source": "yalnışlıkla yanlış kapıyı çaldım",
+      "target": "Yanlışlıkla yanlış kapıyı çaldım.",
+      "category": "yazım_yanlışı",
+      "output": "Yalnışlıkla yanlış kapıyı çaldım.",
+      "raw_output": "Yalnışlıkla yanlış kapıyı çaldım."
+    },
+    {
+      "source": "çok mütevazi bir insan",
+      "target": "Çok mütevazı bir insan.",
+      "category": "yazım_yanlışı",
+      "output": "Çok mütevazi bir insan.",
+      "raw_output": "Çok mütevazi bir insan."
+    },
+    {
+      "source": "hastahaneye gittim dün",
+      "target": "Hastaneye gittim dün.",
+      "category": "yazım_yanlışı",
+      "output": "Hastahaneye gittim dün.",
+      "raw_output": "Hastahaneye gittim dün."
+    },
+    {
+      "source": "yada ben giderim",
+      "target": "Ya da ben giderim.",
+      "category": "yazım_yanlışı",
+      "output": "Yada ben giderim.",
+      "raw_output": "Yada ben giderim."
+    },
+    {
+      "source": "herzaman böyle yapıyorsun",
+      "target": "Her zaman böyle yapıyorsun.",
+      "category": "yazım_yanlışı",
+      "output": "Her zaman böyle yapıyorsun.",
+      "raw_output": "Her zaman böyle yapıyorsun."
+    },
+    {
+      "source": "Ankaraya yarın gideceğim.",
+      "target": "Ankara'ya yarın gideceğim.",
+      "category": "kesme_işareti",
+      "output": "Ankaraya yarın gideceğim.",
+      "raw_output": "Ankaraya yarın gideceğim."
+    },
+    {
+      "source": "Ayşenin kitabı masada.",
+      "target": "Ayşe'nin kitabı masada.",
+      "category": "kesme_işareti",
+      "output": "Ayşenin kitabı masada.",
+      "raw_output": "Ayşenin kitabı masada."
+    },
+    {
+      "source": "İzmirden Bursaya otobüsle gittik.",
+      "target": "İzmir'den Bursa'ya otobüsle gittik.",
+      "category": "kesme_işareti",
+      "output": "İzmirden Bursaya otobüsle gittik.",
+      "raw_output": "İzmirden Bursaya otobüsle gittik."
+    },
+    {
+      "source": "Türkiyede hava çok sıcak.",
+      "target": "Türkiye'de hava çok sıcak.",
+      "category": "kesme_işareti",
+      "output": "Türkiyede hava çok sıcak.",
+      "raw_output": "Türkiyede hava çok sıcak."
+    },
+    {
+      "source": "Mehmetle Eskişehirde buluştuk.",
+      "target": "Mehmet'le Eskişehir'de buluştuk.",
+      "category": "kesme_işareti",
+      "output": "Mehmetle Eskişehirde buluştuk.",
+      "raw_output": "Mehmetle Eskişehirde buluştuk."
+    },
+    {
+      "source": "istanbula gidiyorum",
+      "target": "İstanbul'a gidiyorum.",
+      "category": "kesme_işareti",
+      "output": "İstanbula gidiyorum.",
+      "raw_output": "İstanbula gidiyorum."
+    },
+    {
+      "source": "Antalyanın havası güzel.",
+      "target": "Antalya'nın havası güzel.",
+      "category": "kesme_işareti",
+      "output": "Antalyanın havası güzel.",
+      "raw_output": "Antalyanın havası güzel."
+    },
+    {
+      "source": "Kayseriden geldim.",
+      "target": "Kayseri'den geldim.",
+      "category": "kesme_işareti",
+      "output": "Kayseriden geldim.",
+      "raw_output": "Kayseriden geldim."
+    },
+    {
+      "source": "ısık bugün okula gelmedi",
+      "target": "Işık bugün okula gelmedi.",
+      "category": "ı_i_isimleri",
+      "output": "İşik bugün okula gelmedi.",
+      "raw_output": "İşik bugün okula gelmedi."
+    },
+    {
+      "source": "Irmak ile Ilgaz parka gitti",
+      "target": "Irmak ile Ilgaz parka gitti.",
+      "category": "ı_i_isimleri",
+      "output": "İrmak ile İlgaz parka gitti.",
+      "raw_output": "İrmak ile İlgaz parka gitti."
+    },
+    {
+      "source": "Ipek Izmirde yaşıyor",
+      "target": "İpek İzmir'de yaşıyor.",
+      "category": "ı_i_isimleri",
+      "output": "İpek İzmirde yaşıyor.",
+      "raw_output": "İpek İzmirde yaşıyor."
+    },
+    {
+      "source": "isparta gülleriyle ünlüdür",
+      "target": "Isparta gülleriyle ünlüdür.",
+      "category": "ı_i_isimleri",
+      "output": "İsparta gülleriyle ünlüdür.",
+      "raw_output": "İsparta gülleriyle ünlüdür."
+    },
+    {
+      "source": "Igdir'a ilk kez gidiyorum",
+      "target": "Iğdır'a ilk kez gidiyorum.",
+      "category": "ı_i_isimleri",
+      "output": "İğdir'a ilk kez gidiyorum.",
+      "raw_output": "İğdir'a ilk kez gidiyorum."
+    },
+    {
+      "source": "Irmak bana mesaj atti",
+      "target": "Irmak bana mesaj attı.",
+      "category": "ı_i_isimleri",
+      "output": "İrmak bana mesaj attı.",
+      "raw_output": "İrmak bana mesaj attı."
+    },
+    {
+      "source": "ılgaz ve işık yarın gelcek",
+      "target": "Ilgaz ve Işık yarın gelecek.",
+      "category": "ı_i_isimleri",
+      "output": "İlgaz ve işık yarın gelecek.",
+      "raw_output": "İlgaz ve işık yarın gelecek."
+    },
+    {
+      "source": "Isik ile Ipek aynı sınıfta",
+      "target": "Işık ile İpek aynı sınıfta.",
+      "category": "ı_i_isimleri",
+      "output": "İşik ile İpek aynı sınıfta.",
+      "raw_output": "İşik ile İpek aynı sınıfta."
+    },
+    {
+      "source": "Isparta'dan Igdir'a yolculuk uzun",
+      "target": "Isparta'dan Iğdır'a yolculuk uzun.",
+      "category": "ı_i_isimleri",
+      "output": "İsparta'dan İğdir'a yolculuk uzun.",
+      "raw_output": "İsparta'dan İğdir'a yolculuk uzun."
+    },
+    {
+      "source": "Yarın okula gideceğim.",
+      "target": "Yarın okula gideceğim.",
+      "category": "doğru_cümle",
+      "output": "Yarın okula gideceğim.",
+      "raw_output": "Yarın okula gideceğim."
+    },
+    {
+      "source": "Bu akşam sinemaya gidelim mi?",
+      "target": "Bu akşam sinemaya gidelim mi?",
+      "category": "doğru_cümle",
+      "output": "Bu akşam sinemaya gidelim mi?",
+      "raw_output": "Bu akşam sinemaya gidelim mi?"
+    },
+    {
+      "source": "Irmak Ankara'dan döndü.",
+      "target": "Irmak Ankara'dan döndü.",
+      "category": "doğru_cümle",
+      "output": "İrmak Ankara'dan döndü.",
+      "raw_output": "İrmak Ankara'dan döndü."
+    },
+    {
+      "source": "Hava bugün çok güzel, parka gidebiliriz.",
+      "target": "Hava bugün çok güzel, parka gidebiliriz.",
+      "category": "doğru_cümle",
+      "output": "Hava bugün çok güzel, parka gidebiliriz.",
+      "raw_output": "Hava bugün çok güzel, parka gidebiliriz."
+    },
+    {
+      "source": "Napolyon büyük bir komutandı.",
+      "target": "Napolyon büyük bir komutandı.",
+      "category": "doğru_cümle",
+      "output": "Napolyon büyük bir komutandı.",
+      "raw_output": "Napolyon büyük bir komutandı."
+    },
+    {
+      "source": "Nolan'ın yeni filmini izledim.",
+      "target": "Nolan'ın yeni filmini izledim.",
+      "category": "doğru_cümle",
+      "output": "Nolan'ın yeni filmini izledim.",
+      "raw_output": "Nolan'ın yeni filmini izledim."
+    },
+    {
+      "source": "Yalnız başına yaşamak zor olabilir.",
+      "target": "Yalnız başına yaşamak zor olabilir.",
+      "category": "doğru_cümle",
+      "output": "Yalnız başına yaşamak zor olabilir.",
+      "raw_output": "Yalnız başına yaşamak zor olabilir."
+    },
+    {
+      "source": "Herkes evine gitti.",
+      "target": "Herkes evine gitti.",
+      "category": "doğru_cümle",
+      "output": "Herkes evine gitti.",
+      "raw_output": "Herkes evine gitti."
+    },
+    {
+      "source": "Makine yeniden çalıştı.",
+      "target": "Makine yeniden çalıştı.",
+      "category": "doğru_cümle",
+      "output": "Makine yeniden çalıştı.",
+      "raw_output": "Makine yeniden çalıştı."
+    },
+    {
+      "source": "Sürpriz doğum günü partisi hazırlıyoruz.",
+      "target": "Sürpriz doğum günü partisi hazırlıyoruz.",
+      "category": "doğru_cümle",
+      "output": "Sürpriz doğum günü partisi hazırlıyoruz.",
+      "raw_output": "Sürpriz doğum günü partisi hazırlıyoruz."
+    },
+    {
+      "source": "Gideceğiz dedik ama yağmur başladı.",
+      "target": "Gideceğiz dedik ama yağmur başladı.",
+      "category": "doğru_cümle",
+      "output": "Gideceğiz dedik ama yağmur başladı.",
+      "raw_output": "Gideceğiz dedik ama yağmur başladı."
+    },
+    {
+      "source": "Ali'ye telefon ettim ama açmadı.",
+      "target": "Ali'ye telefon ettim ama açmadı.",
+      "category": "doğru_cümle",
+      "output": "Ali'ye telefon ettim ama açmadı.",
+      "raw_output": "Ali'ye telefon ettim ama açmadı."
+    },
+    {
+      "source": "Toplantı saat üçte başlayacak.",
+      "target": "Toplantı saat üçte başlayacak.",
+      "category": "doğru_cümle",
+      "output": "Toplantı saat üçte başlayacak.",
+      "raw_output": "Toplantı saat üçte başlayacak."
+    },
+    {
+      "source": "Dün akşam arkadaşlarımla yemek yedik.",
+      "target": "Dün akşam arkadaşlarımla yemek yedik.",
+      "category": "doğru_cümle",
+      "output": "Dün akşam arkadaşlarımla yemek yedik.",
+      "raw_output": "Dün akşam arkadaşlarımla yemek yedik."
+    },
+    {
+      "source": "Annem pazardan meyve aldı.",
+      "target": "Annem pazardan meyve aldı.",
+      "category": "doğru_cümle",
+      "output": "Annem pazardan meyve aldı.",
+      "raw_output": "Annem pazardan meyve aldı."
+    },
+    {
+      "source": "Teşekkür ederim, çok yardımcı oldun.",
+      "target": "Teşekkür ederim, çok yardımcı oldun.",
+      "category": "doğru_cümle",
+      "output": "Teşekkür ederim, çok yardımcı oldun.",
+      "raw_output": "Teşekkür ederim, çok yardımcı oldun."
+    },
+    {
+      "source": "Türkiye'de kış aylarında kar yağar.",
+      "target": "Türkiye'de kış aylarında kar yağar.",
+      "category": "doğru_cümle",
+      "output": "Türkiye'de kış aylarında kar yağar.",
+      "raw_output": "Türkiye'de kış aylarında kar yağar."
+    }
+  ],
+  "model_info": {
+    "Mimari": "ByT5-small + LoRA",
+    "Toplam parametre": 305896448,
+    "Token sözlüğü": 384,
+    "Kontrol noktası": "megazeka\\models\\checkpoints\\best",
+    "Temel model boyutu (MB)": 599.3,
+    "Aygıt": "NVIDIA GeForce RTX 4060",
+    "Hassasiyet": "torch.bfloat16",
+    "Nicemleme": "Yok",
+    "Parça sınırı": "176 UTF-8 baytı",
+    "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
+    "Eğitim adımı": 4000,
+    "LoRA hassasiyeti": "torch.float32"
+  }
+}

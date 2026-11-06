@@ -41,11 +41,11 @@ UNCHANGED = [t for _, t in MANUAL if _ == t]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint', choices=['base', 'best', 'latest'], default='best')
-    parser.add_argument('--limit', type=int, default=640)
+    parser.add_argument('--limit', type=int, default=None)
     args = parser.parse_args()
     ensure_budget(10_000_000, 'Değerlendirme raporu')
     engine = CorrectionEngine(args.checkpoint)
-    source = read_pairs('test')[:args.limit]
+    source = read_pairs('test')[:args.limit]  # None -> all pairs
     rows = []
     started = time.perf_counter()
     for offset in range(0, len(source), 8):

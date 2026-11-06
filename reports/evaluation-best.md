@@ -3,12 +3,12 @@
 ```json
 {
   "examples": 1128,
-  "cer": 0.013714696026807085,
-  "wer": 0.06782814614343707,
-  "exact_match": 0.7624113475177305,
-  "edit_precision": 0.9257791864764924,
-  "edit_recall": 0.8712403678846632,
-  "edit_f1": 0.8976821616084005,
+  "cer": 0.012374341790330302,
+  "wer": 0.06123139377537212,
+  "exact_match": 0.774822695035461,
+  "edit_precision": 0.9261849261849262,
+  "edit_recall": 0.8888888888888888,
+  "edit_f1": 0.9071537290715374,
   "clean_examples": 282,
   "overcorrection": 0.01773049645390071
 }
@@ -20,23 +20,23 @@
 {
   "filtreli": {
     "examples": 640,
-    "cer": 0.017109685304002444,
-    "wer": 0.07993562231759657,
-    "exact_match": 0.703125,
-    "edit_precision": 0.9087934560327199,
-    "edit_recall": 0.8490638135269393,
-    "edit_f1": 0.8779138680363494,
+    "cer": 0.015887564925145127,
+    "wer": 0.07671673819742489,
+    "exact_match": 0.7015625,
+    "edit_precision": 0.9085072231139647,
+    "edit_recall": 0.865112724493695,
+    "edit_f1": 0.8862791152867489,
     "clean_examples": 160,
     "overcorrection": 0.03125
   },
   "ham": {
     "examples": 640,
-    "cer": 0.015276504735716468,
-    "wer": 0.07671673819742489,
-    "exact_match": 0.709375,
-    "edit_precision": 0.911611088790679,
-    "edit_recall": 0.8670233091325946,
-    "edit_f1": 0.8887583235409321,
+    "cer": 0.014589062022609227,
+    "wer": 0.0740343347639485,
+    "exact_match": 0.70625,
+    "edit_precision": 0.9081551860649247,
+    "edit_recall": 0.8765762323270921,
+    "edit_f1": 0.8920863309352518,
     "clean_examples": 160,
     "overcorrection": 0.03125
   },
@@ -60,23 +60,23 @@
 {
   "filtreli": {
     "examples": 488,
-    "cer": 0.008014875609130546,
-    "wer": 0.04716117216117216,
-    "exact_match": 0.8401639344262295,
-    "edit_precision": 0.9567486950037286,
-    "edit_recall": 0.9125177809388336,
-    "edit_f1": 0.9341099381143065,
+    "cer": 0.0064760194921774815,
+    "wer": 0.0347985347985348,
+    "exact_match": 0.8709016393442623,
+    "edit_precision": 0.95836376917458,
+    "edit_recall": 0.9331436699857752,
+    "edit_f1": 0.9455855855855857,
     "clean_examples": 122,
     "overcorrection": 0.0
   },
   "ham": {
     "examples": 488,
-    "cer": 0.008014875609130546,
-    "wer": 0.04716117216117216,
-    "exact_match": 0.8401639344262295,
-    "edit_precision": 0.9567486950037286,
-    "edit_recall": 0.9125177809388336,
-    "edit_f1": 0.9341099381143065,
+    "cer": 0.006347781482431393,
+    "wer": 0.034340659340659344,
+    "exact_match": 0.8729508196721312,
+    "edit_precision": 0.9584245076586433,
+    "edit_recall": 0.9345661450924608,
+    "edit_f1": 0.9463449765934462,
     "clean_examples": 122,
     "overcorrection": 0.0
   },
@@ -114,18 +114,6 @@ HEDEF: Kim olduğumu söylemeye hacet yoktu.
 GİRDİ: Herhalde yaşamak istemediği için
 MODEL: Herhalde yaşamak istemediği için.
 HEDEF: Herhalde yaşamak istemediği için.
-```
-
-```text
-GİRDİ: senş  seviyor muusn?
-MODEL: Seni seviyor musun?
-HEDEF: Seni seviyor musun?
-```
-
-```text
-GİRDİ: Her zamankinden daha iltifatkarsınız sulltanım.
-MODEL: Her zamankinden daha iltifatkarsınız sultanım.
-HEDEF: Her zamankinden daha iltifatkarsınız sultanım.
 ```
 
 ```text
@@ -170,6 +158,18 @@ MODEL: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına 
 HEDEF: İki yaşlarında kadar bir çocuk salıncakta oturmuş katılırcasına ağlıyordu.
 ```
 
+```text
+GİRDİ: Seninle konusmak istiyor.
+MODEL: Seninle konuşmak istiyor.
+HEDEF: Seninle konuşmak istiyor.
+```
+
+```text
+GİRDİ: Biz  gazeteyi okuyouz ve okuldansonra size uğruyor
+MODEL: Biz gazeteyi okuyoruz ve okuldan sonra size uğruyor.
+HEDEF: Biz gazeteyi okuyoruz ve okuldan sonra size uğruyor.
+```
+
 ## Yanlış düzeltmeler
 
 ```text
@@ -186,7 +186,7 @@ HEDEF: İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.
 
 ```text
 GİRDİ: Eskiye itibar olsaydı bitpazarına nur yağardı.
-MODEL: Eskiye itibar olsaydı bit pazarına nur yağardı.
+MODEL: Eskiye itibar olsaydı bir pazarına nur yağardı.
 HEDEF: Eskiye itibar olsaydı bitpazarına nur yağardı.
 ```
 
@@ -197,9 +197,9 @@ HEDEF: Sonra ortalığı yıldırmış olduğum için, şurda burda saklı karı
 ```
 
 ```text
-GİRDİ: Islak kumlar ayaklarımızın altında gıcırdıyordu.
-MODEL: İslak kumlar ayaklarımızın altında gıcırdıyordu.
-HEDEF: Islak kumlar ayaklarımızın altında gıcırdıyordu.
+GİRDİ: Her zamankinden daha iltifatkarsınız sultanım.
+MODEL: Her zamankinden daha iltifat karsınız sultanım.
+HEDEF: Her zamankinden daha iltifatkarsınız sultanım.
 ```
 
 ## Kaçırılan düzeltmeler
@@ -220,12 +220,6 @@ HEDEF: Hiçbir ipucu yok.
 GİRDİ: Kim söyledi sana bu nu?
 MODEL: Kim söyledi sana bu nu?
 HEDEF: Kim söyledi sana bunu?
-```
-
-```text
-GİRDİ: Bir şeyer ayarlarız.
-MODEL: Bir şeyer ayarlarız.
-HEDEF: Bir şeyler ayarlarız.
 ```
 
 ```text
@@ -259,12 +253,6 @@ HEDEF: Genç kız onun uyanmış olduğunu görünce gülümsedi.
 ```
 
 ```text
-GİRDİ: sIZINSUÖUNUZDEĞIL.
-MODEL: sIZINSUÖUNUZDEĞIL.
-HEDEF: Sizin suçunuz değil.
-```
-
-```text
 GİRDİ: Bir gardiyan elindeki kağıda bakarak yoklama yatı.
 MODEL: Bir gardiyan elindeki kağıda bakarak yoklama yatı.
 HEDEF: Bir gardiyan elindeki kağıda bakarak yoklama yaptı.
@@ -276,12 +264,30 @@ MODEL: Ancak kenefe gittiği zamankar peşinden fırlar, apteshane aralığında
 HEDEF: Ancak kenefe gittiği zamanlar peşinden fırlar, apteshane aralığında sıkıştırıp üç beş lira alırım.
 ```
 
+```text
+GİRDİ: Birkaç adım daha atınca yanına feldi.
+MODEL: Birkaç adım daha atınca yanına feldi.
+HEDEF: Birkaç adım daha atınca yanına geldi.
+```
+
+```text
+GİRDİ: Ben yukarda sedire uzanırım!
+MODEL: Ben yukarda sedire uzanırım!
+HEDEF: Ben yukarıda sedire uzanırım!
+```
+
 ## Zor örnekler
 
 ```text
 GİRDİ: wşeği  suren osuruguna katşanir.
-MODEL: Bir şeği süren osuruğuna katşanır.
+MODEL: Eşeği süren osuruğuna katşanır.
 HEDEF: Eşeği süren osuruğuna katlanır.
+```
+
+```text
+GİRDİ: senş  seviyor muusn?
+MODEL: Sen seviyor musun?
+HEDEF: Seni seviyor musun?
 ```
 
 ```text
@@ -298,13 +304,13 @@ HEDEF: Ben onu beklerken, evimi ona kabule hazırlarken ölmüştü.
 
 ```text
 GİRDİ: ne ldu, iyiisin?
-MODEL: Ne ladu, iyisin?
+MODEL: Ne oldu, iyisin?
 HEDEF: Ne oldu, iyi misin?
 ```
 
 ```text
 GİRDİ: Sieihiyacımyok.
-MODEL: Sinehiyacım yok.
+MODEL: Siye ihiyacım yok.
 HEDEF: Size ihtiyacım yok.
 ```
 
@@ -322,13 +328,13 @@ HEDEF: Çok üzgünüm baba.
 
 ```text
 GİRDİ: Pekala,  hxir misiniz?
-MODEL: Pekala, hiç misiniz?
+MODEL: Pek ala, hiç misiniz?
 HEDEF: Pekala, hazır mısınız?
 ```
 
 ```text
 GİRDİ: Bir kere cikayım fa sonrasş kolay
-MODEL: Bir kere çıkayım fa sonrası kolay.
+MODEL: Bir kere çıkayım, fa sonrası kolay.
 HEDEF: Bir kere çıkayım da, sonrası kolay.
 ```
 
@@ -339,15 +345,9 @@ HEDEF: Ben yukarıda sedire uzanırım!
 ```
 
 ```text
-GİRDİ: kusura bakma unut musum
-MODEL: Kusura bakma unut musun?
-HEDEF: Kusura bakma, unutmuşum.
-```
-
-```text
-GİRDİ: Şidi babam deni bulacak sonra sabah kitabıbitirecek
-MODEL: Şidi babam deni bulacak sonra sabah kitabı bitirecek.
-HEDEF: Şimdi babam seni bulacak, sonra sabah kitabı bitirecek.
+GİRDİ: Fakatadresiin blimiyrdum.
+MODEL: Fakat adresin bilmiyordum.
+HEDEF: Fakat adresini bilmiyordum.
 ```
 
 ## Manuel örnekler
@@ -384,7 +384,7 @@ HEDEF: Ben de seninle geleceğim.
 
 ```text
 GİRDİ: Ankaraya yarin gidicem.
-MODEL: Ankaraya yarın gideceğim.
+MODEL: Ankara'ya yarın gideceğim.
 HEDEF: Ankara'ya yarın gideceğim.
 ```
 
@@ -426,6 +426,6 @@ HEDEF: Çok teşekkür ederim.
 
 ```text
 GİRDİ: Işık, İstanbul’a yarın gelecek.
-MODEL: İşık, İstanbul’a yarın gelecek.
+MODEL: Işık, İstanbul’a yarın gelecek.
 HEDEF: Işık, İstanbul’a yarın gelecek.
 ```

@@ -4,62 +4,140 @@ Bu proje, **gerçekten yerelde eğitilen ByT5-small + LoRA modeliyle** Türkçe 
 
 ## Sonuçlar
 
+**Canlı demo:** [huggingface.co/spaces/pandakingpunc/megazeka](https://huggingface.co/spaces/pandakingpunc/megazeka)
+(Space kaynağı bu depoda `space/` klasöründedir).
+
 1.128 çiftlik ayrılmış test kümesinde (`evaluation/evaluate.py --checkpoint best`): 640 Common Voice çifti
 ve 488 gündelik konuşma çifti. "Girdiyi kopyala", hiçbir şey değiştirmeyen önemsiz başlangıç değeridir;
-"temel ByT5" ise eğitilmemiş `google/byt5-small`.
+"temel ByT5" ise eğitilmemiş `google/byt5-small`. Test kümesi v2'den **bayt bayt aynı** dondurulmuştur
+(SHA-256 `43738c61…`), bu yüzden v2 ve v3 doğrudan karşılaştırılabilir.
 
-| Ölçüt | Girdiyi kopyala | Temel ByT5 | **Megazeka (best)** | Megazeka, filtresiz |
-|---|---:|---:|---:|---:|
-| CER ↓ | 0,0963 | 0,0963 | **0,0137** | 0,0126 |
-| WER ↓ | 0,3576 | 0,3579 | **0,0678** | 0,0658 |
-| Tam eşleşme ↑ | %25,0 | %24,9 | **%76,2** | %76,6 |
-| Düzenleme F1 ↑ | 0,000 | 0,000 | **0,898** | 0,905 |
-| Gereksiz düzeltme ↓ | %0,0 | %0,4 (ham %100) | **%1,8** | %1,8 |
+| Ölçüt | Girdiyi kopyala | Temel ByT5 | v2 | **Megazeka v3 (best)** | v3, filtresiz |
+|---|---:|---:|---:|---:|---:|
+| CER ↓ | 0,0963 | 0,0963 | 0,0137 | **0,0124** | 0,0115 |
+| WER ↓ | 0,3576 | 0,3579 | 0,0678 | **0,0612** | 0,0594 |
+| Tam eşleşme ↑ | %25,0 | %24,9 | %76,2 | **%77,5** | %77,8 |
+| Düzenleme F1 ↑ | 0,000 | 0,000 | 0,898 | **0,907** | 0,911 |
+| Gereksiz düzeltme ↓ | %0,0 | %0,4 (ham %100) | %1,8 | **%1,8** | %1,8 |
 
-Alt kümeler (filtre açık): Common Voice 640 çiftte tam eşleşme **%70,3**, gereksiz düzeltme %3,1;
-gündelik 488 çiftte tam eşleşme **%84,0**, gereksiz düzeltme %0,0. Girdiyi kopyalama her iki alt kümede %25'tir.
+Alt kümeler (filtre açık), v2 → v3:
+
+| Alt küme | Çift | Tam eşleşme | Gereksiz düzeltme |
+|---|---:|---:|---:|
+| Common Voice | 640 | %70,3 → **%70,2** | %3,1 → %3,1 |
+| Gündelik | 488 | %84,0 → **%87,1** | %0,0 → %0,0 |
+| Elle seçilmiş 23 örnek | 23 | %73,9 → **%91,3** | %11,1 → %0,0 (9 doğru örnekten 1 → 0) |
+
+Girdiyi kopyalama her iki alt kümede %25'tir. Common Voice tarafı pratikte değişmedi (%70,3 → %70,2 bir
+fark değil); kazanım gündelik alt kümede ve elle seçilmiş küçük örnek kümesinde. 23 örnek yalnızca bir
+nitelik kontrolüdür, başarı oranı değildir.
 
 Eğitilmemiş temel model bu görevde kullanılamaz (ham CER 4,04; her çıktıyı değiştirir), bu yüzden
-korumalı sonucu girdiyle aynıdır. Eğitim 4.000 adım sürdü; en iyi kayıt 4.000. adımdır. Ham ölçümler ve
-başarılı / yanlış / kaçırılmış örnekler: [`reports/evaluation-best.md`](reports/evaluation-best.md).
+korumalı sonucu girdiyle aynıdır. v3 eğitimi 5.000 adım sürdü; en iyi kayıt 5.000. adımdır. Ham ölçümler ve
+başarılı / yanlış / kaçırılmış örnekler: [`reports/evaluation-best.md`](reports/evaluation-best.md);
+v2 ölçümleri: [`reports/evaluation-v2.md`](reports/evaluation-v2.md).
 
-Son sütun, koruma filtresi kapalıyken ölçülendir. Filtre artık iki katmanlıdır (parça filtresi + kelime
+"Filtresiz" sütunu, koruma filtresi kapalıyken ölçülendir. Filtre iki katmanlıdır (parça filtresi + kelime
 kilidi, bkz. Mimari) ve tam eşleşmeyi yalnızca 0,4 puan düşürür; karşılığında harf benzerliği olmayan kelime
 değişimlerini ve uydurma kelimeleri engeller.
 
-**Önceki sürümle fark.** İlk sürüm (1.800 adım, yalnızca Common Voice verisi) eski 640 çiftlik testte
-%60,6 tam eşleşme veriyordu ve "gidicem", "gitcez", "yapıcam", "kalıcam", "hatırlamıyom" gibi gündelik
-biçimleri hiç düzeltmiyordu; çünkü eğitim verisinde bu biçimler neredeyse yoktu. Yeni sürüm bunları düzeltir
-ve "Okula gideceğim." gibi doğru cümleleri olduğu gibi bırakır. Elle seçilmiş 23 örnekte hâlâ yanlış kalan
-gerçek çıktılar: "gitcez → giteceğiz" (t → d yumuşaması yok; doğrusu "gideceğiz"), "napcam → napacağım" ve
-"napıyosun → Napıyorsun" (tam açılım "ne yapacağım / ne yapıyorsun" üretilmedi), "yanlız" düzelmedi,
-"Ankaraya" kesme işareti almadı, "Işık" özel adı "İşık" oldu.
+**Ölçüm notu.** `evaluation/evaluate.py` içindeki `--limit` varsayılanı eskiden 640'tı ve 1.128 çiftlik test
+kümesinin yalnızca bir kısmını sessizce değerlendiriyordu. Varsayılan artık tüm kümedir (`--limit` yalnızca
+hızlı deneme içindir). v2'nin 1.128 çift sonuçları `--limit 1128` ile ölçülmüştü; bu belgedeki v2 ve v3
+sayıları aynı 1.128 çiftin tamamı üzerindedir.
+
+### Zorluk kümesi (81 çift)
+
+[`evaluation/challenge.jsonl`](evaluation/challenge.jsonl), elle yazılmış 81 cümle çiftidir (7 kategori;
+17'si zaten doğru cümledir). Şablonla üretilmediği için test kümesinden farklı bir bakış sağlar, ancak
+**dürüst bir uyarı gerekir: bu küme yeni gürültü kurallarıyla birlikte, v2'nin bilinen hataları hedeflenerek
+yazıldı.** Yani genel gerçek dünya doğruluğunu değil, hedeflenen hataların giderilip giderilmediğini ölçer.
+Hedef cümleleri eğitim ve doğrulama verisinden çıkarılmıştır (`data/metadata.json` →
+`challenge_targets_excluded: 81`), ama kategoriler v3 kurallarıyla örtüşür; bu yüzden %81,5 bir genel
+başarı oranı olarak okunmamalıdır.
+
+```powershell
+.\.venv\Scripts\python.exe evaluation\challenge.py --checkpoint best
+```
+
+| Kategori | Cümle | v2 | **v3** |
+|---|---:|---:|---:|
+| yumuşama (gitcez → gideceğiz) | 10 | 7 (%70,0) | **9 (%90,0)** |
+| ne_yap (napcam → ne yapacağım) | 12 | 1 (%8,3) | **9 (%75,0)** |
+| sohbet | 8 | 7 (%87,5) | **7 (%87,5)** |
+| yazım_yanlışı (yanlız, herkez, …) | 17 | 2 (%11,8) | **12 (%70,6)** |
+| kesme_işareti (Ankaraya → Ankara'ya) | 8 | 0 (%0,0) | **7 (%87,5)** |
+| ı_i_isimleri (Isparta, Işık, Iğdır) | 9 | 0 (%0,0) | **5 (%55,6)** |
+| doğru_cümle (değişmemeli) | 17 | 16 (%94,1) | **17 (%100,0)** |
+| **Toplam tam eşleşme** | 81 | 33 (%40,7) | **66 (%81,5)** |
+| Gereksiz düzeltme (17 doğru cümlede) | 17 | 1 (%5,9) | **0 (%0,0)** |
+
+Başarısız 15 cümle ve gerçek çıktılar: [`reports/challenge-best.md`](reports/challenge-best.md)
+(v2: [`reports/challenge-v2.md`](reports/challenge-v2.md); o dosyanın başlığı "best" yazar, içerik v2 ölçümüdür).
+
+**Önceki sürümle fark (v3 ve v2).** v3, v2 ile aynı yapılandırmayı kullanır (`configs/medium.json`, öğrenme
+hızı 5e-4, LoRA r=16); farklar veri üretiminde ve adım sayısındadır (5.000, v2'de 4.000). Veri üreticisine
+dört yeni gürültü işlemi eklendi: `sert_ünsüz` ("gitcez / etcem" gibi sertleşmiş biçimler), `ne_kısalt`
+("napcam" → "ne yapacağım…"), `yazım_yanlışı` (yaklaşık 35 yaygın yazım yanlışı: yanlız, herkez, yalnış,
+şöför, orjinal, süpriz, makina, hastahane, yada…) ve `özel_ad_kesme` ("Ankaraya" → "Ankara'ya"). Ayrıca bir
+büyük/küçük harf hatası düzeltildi: `str.swapcase` "İ" harfini iki kod noktasına çeviriyor, "I" harfini "i"
+yapıyordu; yerine `swapcase_tr` / `upper_tr` kullanılıyor. Gündelik cümleler 1.470'ten 2.561 benzersiz
+cümleye çıktı. Sonuç: dondurulmuş testte tam eşleşme %76,2 → %77,5, WER 0,0678 → 0,0612; gündelik alt
+küme %84,0 → %87,1; ama Common Voice alt kümesi değişmedi ve gereksiz düzeltme oranı aynı kaldı (%1,8).
+Büyük sıçrama, v3 kurallarının hedeflediği zorluk kümesindedir (%40,7 → %81,5) ve yukarıdaki uyarıyla
+okunmalıdır.
+
+İlk sürüm (v1: 1.800 adım, yalnızca Common Voice verisi) eski 640 çiftlik testte %60,6 tam eşleşme veriyordu
+ve "gidicem", "gitcez", "yapıcam" gibi gündelik biçimleri hiç düzeltmiyordu; çünkü eğitim verisinde bu
+biçimler neredeyse yoktu. v2 bunları düzeltmeye başladı; v3 "gitcez → gideceğiz", "napcam → ne yapacağım",
+"Ankaraya → Ankara'ya" gibi v2'nin yanlış bıraktığı biçimlerin çoğunu da düzeltir.
 
 ## Yayınlanan sürümler
 
 - LoRA adaptörü: [`pandakingpunc/megazeka-byt5-tr-spellfix`](https://huggingface.co/pandakingpunc/megazeka-byt5-tr-spellfix)
 - Eğitim verisi: [`pandakingpunc/megazeka-tr-spellfix-pairs`](https://huggingface.co/datasets/pandakingpunc/megazeka-tr-spellfix-pairs)
+- Canlı demo: [`pandakingpunc/megazeka`](https://huggingface.co/spaces/pandakingpunc/megazeka) (Space; kaynağı `space/`)
 
-Her iki depoda da ana dal bu depodaki yeni eğitimi (**v2**: 4.000 adım, 38.057 çift) içerir. İlk eğitim
-(**v1**: 1.800 adım, 32.000 çift) `v1` etiketiyle erişilebilir kalır, örneğin
-`PeftModel.from_pretrained(base, "pandakingpunc/megazeka-byt5-tr-spellfix", revision="v1")`.
+Her iki depoda da ana dal bu depodaki yeni eğitimi (**v3**: 5.000 adım, 42.075 çift) içerir. Önceki
+sürümler etiketleriyle yüklenebilir kalır: **v2** (4.000 adım, 38.057 çift) ve **v1** (1.800 adım, 32.000
+çift), örneğin
+`PeftModel.from_pretrained(base, "pandakingpunc/megazeka-byt5-tr-spellfix", revision="v2")` veya
+`revision="v1"`.
 
 ## In English
 
 Megazeka is a Turkish spelling and typo correction model: `google/byt5-small` fine-tuned with LoRA
-(r=16, alpha=32, 6.26M trainable parameters) on 38,057 synthetically corrupted sentence pairs: 32,000
-derived from the CC0 Common Voice Turkish Sentence Collector, 4,904 from project-authored everyday
-first/second-person sentences (template-generated with a small conjugator, CC0) and 1,153 two-sentence
+(r=16, alpha=32, 6.26M trainable parameters) on 42,075 synthetically corrupted sentence pairs (v3): 31,996
+derived from the CC0 Common Voice Turkish Sentence Collector, 8,804 from project-authored everyday
+first/second-person sentences (template-generated with a small conjugator, CC0) and 1,275 two-sentence
 chunks. Colloquial noise is rule-based on suffixes ("-eceğim → -icem", "-yorum → -yom", "burada → burda"),
-so chat-style forms are corrected for any verb. It ships with an offline Tkinter desktop app —
+so chat-style forms are corrected for any verb; v3 adds hardened consonants ("gitcez"), "ne yapacağım"
+contractions ("napcam"), ~35 common misspellings ("yanlız", "herkez", "şöför") and dropped proper-noun
+apostrophes ("Ankaraya"). It ships with an offline Tkinter desktop app —
 inference makes no network calls and uses no hosted LLM API.
 
-On a held-out 1,128-pair test set it reduces CER from 0.096 to 0.014 and WER from 0.358 to 0.068 against
-a copy-the-input baseline, raising exact match from 25.0% to 76.2% (84.0% on the 488 everyday pairs), while
-changing only 1.8% of already correct inputs. A word-level guard keeps any word substitution that has no
-letter overlap with the original (e.g. a synonym swap) from reaching the output. Byte-level modelling was
-chosen so Turkish diacritics (ı/İ, ş, ğ, ç, ö, ü) survive corruption without depending on a subword
-vocabulary.
+**Live demo:** https://huggingface.co/spaces/pandakingpunc/megazeka (source in `space/`).
+
+On a held-out 1,128-pair test set (frozen byte-identical since v2, so v2 and v3 are directly comparable) v3
+reduces CER from 0.096 to 0.012 and WER from 0.358 to 0.061 against a copy-the-input baseline, raising exact
+match from 25.0% to 77.5% (87.1% on the 488 everyday pairs), while changing only 1.8% of already correct
+inputs. v2 scored 0.0137 CER / 0.0678 WER / 76.2% exact. The Common Voice subset did not improve (70.3% →
+70.2%); the gain is in everyday text. A word-level guard keeps any word substitution that has no letter
+overlap with the original (e.g. a synonym swap) from reaching the output. Byte-level modelling was chosen so
+Turkish diacritics (ı/İ, ş, ğ, ç, ö, ü) survive corruption without depending on a subword vocabulary.
+
+A separate 81-pair hand-written challenge set (7 categories) went from 40.7% (v2) to 81.5% (v3) exact match,
+with overcorrection on its 17 already-correct sentences dropping from 5.9% to 0%. **Caveat:** that set was
+written alongside the v3 noise rules and aimed at known v2 failures (its targets are excluded from
+training), so it measures whether those targeted failures were fixed, not general real-world accuracy.
+Still failing: I/İ in names (`isparta` → `İsparta`, `Iğdır` → `İğdır`, `ısık` → `Isık`); `şöför`,
+`labaratuvar` and `mütevazi` are not fixed; `klavuz` → `Kalavuz`; `naber` → `Ne yapar`; and one new
+regression: `Türkiyede hava çok sıcak.` came out right in v2 but v3 produces `Türkiyede hava çok sıyacak.`,
+a hallucinated, letter-similar word that passes the word guard.
+
+Releases: `main` = v3; tags `v2` and `v1` stay loadable with `revision="v2"` / `revision="v1"`.
+(`evaluation/evaluate.py` used to default to `--limit 640`, silently scoring only part of the test set; the
+default is now the full 1,128 pairs and the v2 numbers above were measured with `--limit 1128`.)
 
 The app includes a "learning mode" that exposes the actual bytes fed to the model, raw generation before
 the change-limiting filter, per-token softmax probabilities, character-level edit operations, and the
@@ -136,19 +214,23 @@ Tek dış metin kaynağı, **Common Voice Türkçe Sentence Collector** dosyası
 
 3–24 kelimelik, 18–160 UTF-8 baytlık, büyük harfle başlayıp noktalama ile biten cümleler süzülür. NFC ve Türkçe küçük harf dönüşümü yapılmış, noktalaması kaldırılmış anahtarlarla tekilleştirilir. **Gürültü eklenmeden önce** 8.000 / 160 / 160 farklı Common Voice cümlesi eğitim / doğrulama / teste ayrılır. Her hedef için temiz / kolay / orta / zor olmak üzere dört çift hazırlanır.
 
-**Gündelik cümleler.** Common Voice cümleleri edebî ve çoğunlukla üçüncü şahıstır; 32.000 çiftte "gideceğim" yalnızca 8, "geleceğim" 4 kez geçiyordu. Bu yüzden ilk sürüm "gidicem", "gitcez", "yapıcam" gibi biçimleri düzeltemiyordu. `training/everyday.py`, 50 fiillik bir tablo ve küçük bir çekim yardımcısıyla (gelecek zaman, şimdiki zaman, olumsuz, soru eki; ünlü uyumu ve git/et/ye/de özel durumları) birinci/ikinci şahıs gündelik cümleler ile elle yazılmış yaklaşık 250 kısa cümle üretir. Bu cümleler projeye aittir ve CC0-1.0 ile yayınlanır. Yaklaşık 1.470 gündelik cümlenin 1/12'si doğrulamaya, 1/12'si teste, kalanı eğitime ayrılır; kolay ve orta zorlukta ilk işlem her zaman gündelik dönüşümdür.
+**Gündelik cümleler.** Common Voice cümleleri edebî ve çoğunlukla üçüncü şahıstır; 32.000 çiftte "gideceğim" yalnızca 8, "geleceğim" 4 kez geçiyordu. Bu yüzden ilk sürüm "gidicem", "gitcez", "yapıcam" gibi biçimleri düzeltemiyordu. `training/everyday.py`, 50 fiillik bir tablo ve küçük bir çekim yardımcısıyla (gelecek zaman, şimdiki zaman, olumsuz, soru eki; ünlü uyumu ve git/et/ye/de özel durumları) birinci/ikinci şahıs gündelik cümleler ile elle yazılmış yaklaşık 250 kısa cümle üretir. Bu cümleler projeye aittir ve CC0-1.0 ile yayınlanır. v3'te üretilen gündelik cümle sayısı 1.470'ten 2.561 benzersiz cümleye çıktı (Common Voice ile çakışanlar atıldıktan sonra 2.526'sı kullanılır). Yaklaşık 1/12'si doğrulamaya ayrılır, test v2'den dondurulmuştur, kalanı eğitime gider; kolay ve orta zorlukta ilk işlem gündelik bir dönüşümdür (mümkünse hedefli işlem: `sert_ünsüz`, `ne_kısalt`, `yazım_yanlışı`, `özel_ad_kesme`). Zorluk kümesinin 81 hedefi eğitim ve doğrulamadan dışlanır.
 
 **Birleşik parçalar.** Eğitim kümesine, aynı zorlukta iki bağımsız çiftin boşlukla birleştirilmesiyle oluşan ve 170 baytı aşmayan çok cümleli örnekler eklenir. Kullanıcı paragraf yapıştırdığında model parça içinde birden çok cümle görür; bu örnekler bunun için vardır.
 
 | Küme | Farklı hedef | Toplam çift | Kaynak dağılımı |
 |---|---:|---:|---|
-| Eğitim | 9.226 | 38.057 | 32.000 Common Voice · 4.904 gündelik · 1.153 birleşik |
-| Doğrulama | 282 | 1.128 | 640 Common Voice · 488 gündelik |
-| Test | 282 | 1.128 | 640 Common Voice · 488 gündelik |
+| Eğitim | 10.200 | 42.075 | 31.996 Common Voice · 8.804 gündelik · 1.275 birleşik |
+| Doğrulama | 360 | 1.440 | 640 Common Voice · 800 gündelik |
+| Test (v2'den dondurulmuş) | 282 | 1.128 | 640 Common Voice · 488 gündelik |
 
-Temiz örnek payı %25'tir. Gürültü; harf silme/tekrarlama/komşu harfleri yer değiştirme, Türkçe Q klavye komşuları, Türkçe karakter kaybı, büyük/küçük harf, noktalama, birleşmiş/ayrılmış kelimeler, fazla boşluk, de/da ve ki birleşmeleri, soru eki ve kesme işareti kaybı ve gündelik biçimleri içerir. Her uygulanmış işlem **önce/sonra metniyle kaydedilir**. Bazı cümlelerde bir işlem uygulanabilir değilse başka bir işlem denenir. Zorluk seviyeleri 1 / 2 / 4 başarılı işlem hedefler.
+Test kümesi v2'den bayt bayt aynıdır (SHA-256 `43738c617c498e21753f71f9af928ac518c374e938742901a443e81b827e30a5`);
+`training/prepare.py` mevcut test dosyasını yeniden üretmez ve hedeflerini eğitim ve doğrulamadan
+dışlar. Doğrulama kümesi v3'te yenilendi (daha çok gündelik cümle). v2 verisi ve modeli `v2` etiketinde durur.
 
-**Gündelik dönüşüm kuralları** (`src/megazeka/colloquial.py`) sabit bir kelime listesi değil, ek tabanlı kurallardır ve her fiile uygulanır: "-eceğim → -icem/-cem", "-acağız → -ıcaz/-caz", "-ecek → -icek/-cek", "-mayacağım → -mıcam", "-yorum → -yom", "-yorsun → -yosun", "-yor → -yo"; "gideceğim → gitcem" gibi ünsüz sertleşmesi ve "okuyacağım → okucam", "söyleyeceğim → söylicem" gibi kaynaştırma düşmeleri; ayrıca "burada → burda", "ne yapıyorsun → napıyosun", "ne yapacağım → napcam", "bir şey → bişey", "değil → diil", "herkes → herkez", "yalnız → yanlız", "teşekkürler → tşk", "bir → bi" gibi kelime ve öbek kuralları. Eğitim kümesinde gündelik işlem sayısı 1.001'den 8.178'e çıktı.
+Temiz örnek payı %25'tir. Gürültü; harf silme/tekrarlama/komşu harfleri yer değiştirme, Türkçe Q klavye komşuları, Türkçe karakter kaybı, büyük/küçük harf, noktalama, birleşmiş/ayrılmış kelimeler, fazla boşluk, de/da ve ki birleşmeleri, soru eki ve kesme işareti kaybı ve gündelik biçimleri içerir. v3'te dört işlem eklendi: **`sert_ünsüz`** ("gideceğim → gitcem", "edeceğim → etcem": yumuşak ünsüzün sertleşmesi), **`ne_kısalt`** ("ne yapacağım → napcam" gibi "ne yap-" kısaltmaları), **`yazım_yanlışı`** (yaklaşık 35 yaygın yanlış yazım: yanlız, herkez, yalnış, şöför, orjinal, süpriz, makina, hastahane, yada…) ve **`özel_ad_kesme`** ("Ankara'ya → Ankaraya"). Büyük/küçük harf hatası da düzeltildi: `str.swapcase` "İ" harfini iki kod noktasına ayırıp "I" harfini "i" yapıyordu; artık Türkçe duyarlı `swapcase_tr` / `upper_tr` kullanılır (`src/megazeka/text.py`). Yazım yanlışı sözlüğü `src/megazeka/spelling.py` içindedir. Her uygulanmış işlem **önce/sonra metniyle kaydedilir**. Bazı cümlelerde bir işlem uygulanabilir değilse başka bir işlem denenir. Zorluk seviyeleri 1 / 2 / 4 başarılı işlem hedefler.
+
+**Gündelik dönüşüm kuralları** (`src/megazeka/colloquial.py`) sabit bir kelime listesi değil, ek tabanlı kurallardır ve her fiile uygulanır: "-eceğim → -icem/-cem", "-acağız → -ıcaz/-caz", "-ecek → -icek/-cek", "-mayacağım → -mıcam", "-yorum → -yom", "-yorsun → -yosun", "-yor → -yo"; "gideceğim → gitcem" gibi ünsüz sertleşmesi ve "okuyacağım → okucam", "söyleyeceğim → söylicem" gibi kaynaştırma düşmeleri; ayrıca "burada → burda", "ne yapıyorsun → napıyosun", "ne yapacağım → napcam", "bir şey → bişey", "değil → diil", "herkes → herkez", "yalnız → yanlız", "teşekkürler → tşk", "bir → bi" gibi kelime ve öbek kuralları. Eğitim kümesinde gündelik işlem sayısı v1'de 1.001, v2'de 8.178, v3'te 8.853'tür; ayrıca v3'te 991 `yazım_yanlışı`, 729 `özel_ad_kesme`, 478 `ne_kısalt` ve 449 `sert_ünsüz` işlemi vardır.
 
 Bu %25, özellikle temiz bırakılan örneklerin payıdır. Nadir çoklu gürültüler birbirini geri alabilir; gereksiz düzeltme metriği etiket yerine gerçekten `girdi == hedef` olan bütün örnekleri sayar.
 
@@ -184,8 +266,9 @@ Python'un Tk bileşeni standart Windows Python kurulumuna dahildir. `scripts/set
 .\.venv\Scripts\python.exe training\train.py --config configs/quality.json --resume
 ```
 
-Yayınlanan v2 modeli `configs/medium.json` ile 3.000 adım eğitildi, ardından
-`--resume --steps 4000` ile aynı ayarlarla 4.000 adıma tamamlandı (toplam 64.000 örnek, yaklaşık 33 dakika).
+Yayınlanan v3 modeli `configs/medium.json` ayarlarıyla (öğrenme hızı 5e-4, LoRA r=16) ve `--steps 5000` ile
+sıfırdan tek koşuda 5.000 adım eğitildi (toplam 80.000 örnek, RTX 4060'ta yaklaşık 52 dakika; en iyi kayıt
+5.000. adım, bkz. `reports/training-console.log`). v2, 4.000 adımla (64.000 örnek, yaklaşık 33 dakika) eğitilmişti.
 
 Yeni eğitim (`--resume` olmadan) mevcut best/latest deneyini değiştirir ve `reports/history.jsonl` grafik geçmişini sıfırlar; bunu bilinçli yeni deneylerde kullanın. Uygulamadaki **60 adım eğit** düğmesi varsa son kayıttan devam eder. **Kaydet ve durdur**, güncel adım sonrasında doğrulama/kayıt yapılarak durulmasını ister. Doğrulama üretimi devam ediyorsa bunun tamamlanması beklenir.
 
@@ -211,6 +294,7 @@ CPU otomatik tanınır ve mikro parti 2'ye düşer; eğitim çok daha yavaştır
 
 ```powershell
 .\.venv\Scripts\python.exe evaluation\evaluate.py --checkpoint best
+.\.venv\Scripts\python.exe evaluation\challenge.py --checkpoint best
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe scripts\ui_smoke.py
 ```
@@ -222,7 +306,7 @@ CPU otomatik tanınır ve mikro parti 2'ye düşer; eğitim çok daha yavaştır
 - **Karakter düzenleme precision/recall/F1**: orijinal konum + işlem + eklenen/değiştirilen karakter kümelerinin örtüşmesi. Bu proje metriğidir; standart GEC M2/ERRANT F0.5 ile aynı değildir. Eşit maliyetli hizalamalar ve tekrar eden eklemeler puanı etkileyebilir.
 - **Gereksiz düzeltme**: doğru girdi örneklerinden kaçında çıktı değişti? Ön/son işleme dahil uygulama oranı ve ham model oranı ayrı verilir.
 
-Eğitim grafikleri hızlı olmak için sabit **16 doğrulama örneği** kullanır; 640 test sonucu ile karıştırılmamalıdır. Başarılı, yanlış, kaçırılmış ve zor düzeltmelerden okunabilir örnekler raporda ayrıdır. Manuel örnekler küçük bir nitelik kontrolüdür; genel başarı garantisi değildir. `tests/test_ui.py` hızlı widget testi için test motoru kullanır; `tests/test_inference.py` ve `scripts/ui_smoke.py` **gerçek yerel model** kullanır. Gerçek UI kontrolünde metin girilir, düğme çalıştırılır, sonuç ve işletim sistemi panosu karşılaştırılır.
+Eğitim grafikleri hızlı olmak için sabit **16 doğrulama örneği** kullanır; 1.128 çiftlik test sonucu ile karıştırılmamalıdır. `evaluate.py` varsayılan olarak testin tamamını değerlendirir (`--limit N` ilk N çifti). Başarılı, yanlış, kaçırılmış ve zor düzeltmelerden okunabilir örnekler raporda ayrıdır. Manuel örnekler küçük bir nitelik kontrolüdür; genel başarı garantisi değildir. `tests/test_ui.py` hızlı widget testi için test motoru kullanır; `tests/test_inference.py` ve `scripts/ui_smoke.py` **gerçek yerel model** kullanır. Gerçek UI kontrolünde metin girilir, düğme çalıştırılır, sonuç ve işletim sistemi panosu karşılaştırılır.
 
 ## Dosyalar
 
@@ -230,7 +314,8 @@ Eğitim grafikleri hızlı olmak için sabit **16 doğrulama örneği** kullanı
 app/                 Türkçe masaüstü, öğrenme ve depolama ekranları
 src/megazeka/        gürültü, gündelik kurallar, normalizasyon, çıkarım ve kelime kilidi, metrikler, disk denetimi
 training/            veri üretimi, gündelik cümle şablonları ve devam edilebilir LoRA eğitimi
-evaluation/          ayrılmış test ve okunabilir değerlendirme
+evaluation/          ayrılmış test, elle yazılmış zorluk kümesi ve okunabilir değerlendirme
+space/               Hugging Face Space (canlı demo) kaynağı
 configs/             quick / medium / quality ve depolama bütçesi
 data/                tek kaynak, metadata ve sıkıştırılmış çiftler
 models/base/         tek yerel temel model + tokenizer
@@ -243,6 +328,14 @@ scripts/             bütçeli kurulum/indirme, temizlik ve gerçek UI kontrolü
 
 ## Bilinen sınırlar ve sonraki deneyler
 
-Sentetik gürültü gerçek kullanıcı hatalarının bütün çeşitliliğini karşılamaz. Model özellikle nadir/özel ad, karma dil, bağlama bağlı de/da/ki ve noktalama tercihlerinde yanılabilir. Gündelik biçimlerde "gitcez → giteceğiz" gibi ünsüz yumuşaması atlanmış üretimler ve "napcam" gibi kısaltmaların tam açılımının verilmemesi görülür. "tşk", "inş" gibi aşırı kısaltmalar kelime kilidine takılıp değişmeden kalabilir. Şablon cümleler 50 fiil ve sınırlı tümleçle üretildiği için gündelik alt küme gerçek sohbet dilinin tamamını temsil etmez. 176 baytlık bağımsız parçalar arasında bağlam taşınmaz. Veriye belirli bir üslup dönüştürme hedefi verilmedi; buna rağmen küçük eğitimle anlamı etkileyen yanlış düzenlemeler görülebilir. Doğru metni koruma eğitimi ve büyük değişiklik filtresi bu riski tamamen ortadan kaldırmaz.
+Sentetik gürültü gerçek kullanıcı hatalarının bütün çeşitliliğini karşılamaz. Model özellikle nadir/özel ad, karma dil, bağlama bağlı de/da/ki ve noktalama tercihlerinde yanılabilir. Zorluk kümesindeki (`reports/challenge-best.md`) kalan 15 hata v3'ün sınırlarını gösterir:
 
-İlk iyileştirmeler: gerçek kullanıcı mesajlarından derlenmiş küçük bir hata kümesi, özel adları koruma için ayrılmış test, daha fazla fiil ve tümleçle gündelik şablonlar, sentetik bozma ağırlıklarını doğrulama kümesiyle ayarlama. Veri boyutu kullanıcı açıkça istemeden artırılmaz. Kayıt veya model varyantı biriktirilmez.
+- **I/İ içeren özel adlar hâlâ güvenilmez**: "isparta" → "İsparta" (doğrusu Isparta), "Igdir'a" → "İğdır'a" (Iğdır'a), "ısık" → "Isık" (Işık), "ılgaz ve işık" → "Ilgaz ve işık" (Işık).
+- **Bazı yazım yanlışları düzelmiyor**: "şöför", "labaratuvar", "mütevazi" (→ mütevazı) olduğu gibi kalır; "klavuz" ise "Kalavuz" olur (doğrusu kılavuz). "yalnış anladın beni" doğru kelimeye düzelir ama sonuna gereksiz soru işareti eklenir.
+- **Konuşma kısaltmaları**: "naber" → "Ne yapar" (doğrusu "Ne haber"); "nolur gel" → "Ne olur gel?" ve birkaç cümlede virgül/soru işareti tercihleri hedeften ayrılır.
+- **Yeni gerileme**: "Türkiyede hava çok sıcak." cümlesini v2 doğru işliyordu; v3 "Türkiyede hava çok **sıyacak**." üretir. Uydurma ama harf olarak benzer bir kelime olduğu için kelime kilidinden geçer; kilit yalnızca harf benzerliği olmayan değişimleri engeller.
+- "tşk", "inş" gibi aşırı kısaltmalar kelime kilidine takılıp değişmeden kalabilir.
+- Zorluk kümesi v3 kurallarıyla birlikte, v2 hataları hedeflenerek yazıldı; %81,5 genel doğruluk değildir. Common Voice alt kümesi v2'ye göre iyileşmedi (%70,3 → %70,2).
+- Şablon cümleler 50 fiil ve sınırlı tümleçle üretildiği için gündelik alt küme gerçek sohbet dilinin tamamını temsil etmez. 176 baytlık bağımsız parçalar arasında bağlam taşınmaz. Veriye belirli bir üslup dönüştürme hedefi verilmedi; buna rağmen küçük eğitimle anlamı etkileyen yanlış düzenlemeler görülebilir. Doğru metni koruma eğitimi ve büyük değişiklik filtresi bu riski tamamen ortadan kaldırmaz.
+
+İlk iyileştirmeler: gerçek kullanıcı mesajlarından derlenmiş küçük bir hata kümesi, özel adları (özellikle I/İ) koruma için ayrılmış test, uydurma ama harf olarak benzer kelimeleri yakalayacak bir sözlük kontrolü, daha fazla fiil ve tümleçle gündelik şablonlar, sentetik bozma ağırlıklarını doğrulama kümesiyle ayarlama. Veri boyutu kullanıcı açıkça istemeden artırılmaz. Kayıt veya model varyantı biriktirilmez.

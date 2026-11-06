@@ -32,6 +32,15 @@ def read_pairs(split):
 def group_of(text):
     return hashlib.sha256(canonical(text).encode()).hexdigest()[:16]
 
+CHALLENGE = ROOT / 'evaluation/challenge.jsonl'
+TEST_PATH = ROOT / 'data/processed/test.jsonl.gz'
+
+def challenge_keys():
+    """Canonical keys of the hand-written challenge targets: they must never enter train/validation."""
+    if not CHALLENGE.exists():
+        return set()
+    return {canonical(json.loads(line)['target']) for line in CHALLENGE.read_text(encoding='utf-8').splitlines() if line.strip()}
+
 def main():
     configure()
     ensure_budget(30_000_000, 'Sıkıştırılmış eğitim çiftleri')
@@ -57,15 +66,34 @@ def main():
     if len(values) < 8320:
         raise RuntimeError(f'Yeterli süzülmüş cümle yok: {len(values)}')
     rng.shuffle(everyday)
+    everyday_total = len(everyday)
     held = max(40, len(everyday) // 12)
-    selected = {'train': values[:8000] + everyday[2 * held:],
-                'validation': values[8000:8160] + everyday[:held],
-                'test': values[8160:8320] + everyday[held:2 * held]}
+    frozen = TEST_PATH.exists()
+    blocked = challenge_keys()
+    if frozen:
+        # The v2 test split is frozen so v2 and v3 stay comparable: never regenerated, and every
+        # sentence it contains is excluded from train/validation before any noise is added.
+        frozen_rows = read_pairs('test')
+        frozen_keys = {canonical(r['target']) for r in frozen_rows}
+        cv_test = {canonical(v['target']) for v in values[8160:8320]}
+        if cv_test != {canonical(r['target']) for r in frozen_rows if r['source'] == COMMON_VOICE_SOURCE}:
+            raise RuntimeError('Dondurulmuş test, Common Voice ayrımıyla uyuşmuyor; data/v2-backup kullanın.')
+        blocked |= frozen_keys
+        everyday = [e for e in everyday if canonical(e['target']) not in blocked]
+        held = max(40, len(everyday) // 12)
+        selected = {'train': [v for v in values[:8000] if canonical(v['target']) not in blocked] + everyday[held:],
+                    'validation': [v for v in values[8000:8160] if canonical(v['target']) not in blocked] + everyday[:held]}
+    else:
+        selected = {'train': values[:8000] + everyday[2 * held:],
+                    'validation': values[8000:8160] + everyday[:held],
+                    'test': values[8160:8320] + everyday[held:2 * held]}
+        selected = {k: [r for r in v if canonical(r['target']) not in blocked or k == 'test'] for k, v in selected.items()}
     metadata = {'seed': 42, 'source': json.loads((ROOT / 'data/raw/source.json').read_text(encoding='utf-8')),
                 'everyday_source': {'name': 'Megazeka gündelik şablon ve elle yazılmış cümleler', 'module': 'training/everyday.py',
-                                    'license': 'CC0-1.0', 'sentences': len(everyday)},
+                                    'license': 'CC0-1.0', 'sentences': everyday_total},
                 'split_method': 'NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım',
-                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'splits': {}}
+                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'version': 'v3',
+                'test_frozen_from': 'v2' if frozen else None, 'challenge_targets_excluded': len(challenge_keys()), 'splits': {}}
     keys = []
     for index, (split, rows) in enumerate(selected.items()):
         generator = NoiseGenerator(42 + index)
@@ -73,7 +101,7 @@ def main():
         for row in rows:
             everyday_row = row['source'] == EVERYDAY_SOURCE
             for difficulty in DIFFICULTIES:
-                prefer = 'gündelik' if everyday_row and difficulty in ('kolay', 'orta') else None
+                prefer = generator.preferred(row['target']) if everyday_row and difficulty in ('kolay', 'orta') else None
                 noisy, operations = generator.corrupt(row['target'], difficulty, prefer=prefer)
                 output.append({**row, 'input': noisy, 'difficulty': difficulty, 'operations': operations,
                                'group_id': group_of(row['target'])})
@@ -106,7 +134,19 @@ def main():
         metadata['splits'][split] = {'pairs': len(output), 'unique_targets': len(rows), 'by_source': counts,
                                     'bytes': path.stat().st_size, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
         keys.append({row['group_id'] for row in output} | {row.get('group_id_second') for row in output if row.get('group_id_second')})
+    if frozen:
+        # Test is not rewritten: record its statistics as read from the untouched v2 file.
+        counts = {}
+        for row in frozen_rows:
+            counts[row['source']] = counts.get(row['source'], 0) + 1
+        metadata['splits']['test'] = {'pairs': len(frozen_rows), 'unique_targets': len({row['group_id'] for row in frozen_rows}),
+                                      'by_source': counts, 'bytes': TEST_PATH.stat().st_size,
+                                      'sha256': hashlib.sha256(TEST_PATH.read_bytes()).hexdigest(), 'frozen_from': 'v2'}
+        keys.append({row['group_id'] for row in frozen_rows})
     assert not keys[0] & keys[1] and not keys[0] & keys[2] and not keys[1] & keys[2]
+    for split in ('train', 'validation'):
+        leaked = [r['target'] for r in read_pairs(split) if canonical(r['target']) in challenge_keys()]
+        assert not leaked, f'Zorluk kümesi hedefi {split} içinde: {leaked[:3]}'
     (ROOT / 'data/metadata.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(metadata, ensure_ascii=False, indent=2))
 
