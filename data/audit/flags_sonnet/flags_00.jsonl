@@ -1,0 +1,13 @@
+{"id": 16, "target": "Acaba küçük prensesimizi sabahın bu vaktinde tatlı uykusuından uyandıran gürültüyü hangi münasebetsiz yaptı?", "fix": "Acaba küçük prensesimizi sabahın bu vaktinde tatlı uykusundan uyandıran gürültüyü hangi münasebetsiz yaptı?", "type": "yazim", "note": "uykusuından -> uykusundan"}
+{"id": 126, "target": "Akılı olmayana neylesin sakal, kayışı tarladan götürür çakal.", "fix": "Aklı olmayana neylesin sakal, kayışı tarladan götürür çakal.", "type": "yazim", "note": "Akılı -> Aklı"}
+{"id": 176, "target": "Allaha şükürler olsun!", "fix": "Allah'a şükürler olsun!", "type": "kesme", "note": "Allaha -> Allah'a"}
+{"id": 177, "target": "Allahtan korkmadan paralarını yanına alıp gitti.", "fix": "Allah'tan korkmadan paralarını yanına alıp gitti.", "type": "kesme", "note": "Allahtan -> Allah'tan"}
+{"id": 257, "target": "Ama ne bileyim, bir Cenabı Hakka malum.", "fix": "Ama ne bileyim, bir Cenab-ı Hakk'a malum.", "type": "kesme", "note": "Cenabı Hakka -> Cenab-ı Hakk'a"}
+{"id": 281, "target": "Aman, orda berber Yusuf vardır, tanır mısın?", "fix": "Aman, orada berber Yusuf vardır, tanır mısın?", "type": "konusma_dili", "note": "orda -> orada"}
+{"id": 545, "target": "Ayakkabılan çamurda saplanıp kalmıştı.", "fix": "Ayakkabıları çamurda saplanıp kalmıştı.", "type": "yazim", "note": "Ayakkabılan -> Ayakkabıları (OCR)"}
+{"id": 560, "target": "Aylardan beri içinde boğulduğum rahat alakasızlık bir anda süprülüp gitmişti.", "fix": "Aylardan beri içinde boğulduğum rahat alakasızlık bir anda süpürülüp gitmişti.", "type": "yazim", "note": "süprülüp -> süpürülüp"}
+{"id": 692, "target": "Bak Mevlüt Ağa bundan sonra seni hep kollayacağını süylüyor.", "fix": "Bak Mevlüt Ağa bundan sonra seni hep kollayacağını söylüyor.", "type": "yazim", "note": "süylüyor -> söylüyor"}
+{"id": 884, "target": "Başını kaldırıp bi baksan görürdün?", "fix": "Başını kaldırıp bir baksan görürdün?", "type": "konusma_dili", "note": "bi -> bir"}
+{"id": 889, "target": "Başını zahmetle kaldıran şoförün üzerinde bu tehdit hiç bir tesir göstermişe benzemiyordu.", "fix": "Başını zahmetle kaldıran şoförün üzerinde bu tehdit hiçbir tesir göstermişe benzemiyordu.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 917, "target": "Bekarın ahmağı akşam, evlinin ahmağı sabah traş olur.", "fix": "Bekarın ahmağı akşam, evlinin ahmağı sabah tıraş olur.", "type": "yazim", "note": "traş -> tıraş"}
+{"id": 954, "target": "Ben Bu akşam sizinle dans etmeyeceğim Nurullah bey.", "fix": "Ben bu akşam sizinle dans etmeyeceğim, Nurullah Bey.", "type": "buyuk_harf", "note": "Bu -> bu; hitapta bey -> Bey; eksik virgül"}

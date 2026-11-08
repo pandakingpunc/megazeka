@@ -1,0 +1,18 @@
+{"id": 1071, "target": "Ben nerden bileyim?", "fix": "Ben nereden bileyim?", "type": "konusma_dili", "note": "nerden -> nereden"}
+{"id": 1277, "target": "Berberin solumazı, tellağin söylemezi, kahvecinin söylemezi.", "fix": "Berberin solumazı, tellağın söylemezi, kahvecinin söylemezi.", "type": "dilbilgisi", "note": "tellağin -> tellağın (ünlü uyumu)"}
+{"id": 1304, "target": "Beş kuruşa, arabalar beş kuruşa..", "fix": "Beş kuruşa, arabalar beş kuruşa...", "type": "noktalama", "note": "iki nokta; üç nokta veya tek nokta olmalı"}
+{"id": 1359, "target": "Bir akşam üzeri yolda evine giden bir mahallelisini çevirmiş...", "fix": "Bir akşamüzeri yolda evine giden bir mahallelisini çevirmiş...", "type": "ayri_bitisik", "note": "akşam üzeri -> akşamüzeri"}
+{"id": 1360, "target": "Bir akşamüstü Ömer eve erken dönmüşü.", "fix": "Bir akşamüstü Ömer eve erken dönmüştü.", "type": "yazim", "note": "dönmüşü -> dönmüştü (OCR)"}
+{"id": 1382, "target": "Bir ay kadar sonra idi, köye iki süvari candarma geldi.", "fix": "Bir ay kadar sonra idi, köye iki süvari jandarma geldi.", "type": "yazim", "note": "candarma -> jandarma"}
+{"id": 1393, "target": "Bir candarma kurşunu on beş seneden daha mı kötü sanki?", "fix": "Bir jandarma kurşunu on beş seneden daha mı kötü sanki?", "type": "yazim", "note": "candarma -> jandarma"}
+{"id": 1394, "target": "Bir candarma mavzerini uzatarak iki sıkı attı.", "fix": "Bir jandarma mavzerini uzatarak iki sıkı attı.", "type": "yazim", "note": "candarma -> jandarma"}
+{"id": 1416, "target": "Bir duvar ördük, Piramitleri inşa ettik.", "fix": "Bir duvar ördük, piramitleri inşa ettik.", "type": "buyuk_harf", "note": "Piramitleri -> piramitleri (cümle ortasında büyük harf)"}
+{"id": 1431, "target": "Bir gecem de bin gecene değmez mi.", "fix": "Bir gecem de bin gecene değmez mi?", "type": "noktalama", "note": "soru cümlesi nokta ile bitmiş"}
+{"id": 1468, "target": "Bir kadını öpmek hoş şeydir, hele adam genç olursa..", "fix": "Bir kadını öpmek hoş şeydir, hele adam genç olursa...", "type": "noktalama", "note": "iki nokta; üç nokta veya tek nokta olmalı"}
+{"id": 1492, "target": "Bir kısmı kasketini alıp gidiyor, bir kısmı ihtiyar avukatla Meleğin etrafına toplanıyordu.", "fix": "Bir kısmı kasketini alıp gidiyor, bir kısmı ihtiyar avukatla Melek'in etrafına toplanıyordu.", "type": "kesme", "note": "Meleğin -> Melek'in (özel ad)"}
+{"id": 1568, "target": "Bir Şaka Konya Hapishanesine ilk girdiğim gün Cavit Bey'le tanıştım.", "fix": null, "type": "anlamsiz", "note": "'Bir Şaka' büyük harfli, cümleye bağlanmamış (başlık kalıntısı gibi)"}
+{"id": 1633, "target": "Biraz kalkık duran şahadetparmağı ilerideki bir noktayı işaret ediyormuş gibi manalıydı.", "fix": "Biraz kalkık duran şahadet parmağı ilerideki bir noktayı işaret ediyormuş gibi manalıydı.", "type": "ayri_bitisik", "note": "şahadetparmağı -> şahadet parmağı (TDK)"}
+{"id": 1642, "target": "Biraz sonra her ikisi yan yana pencerede güründüler.", "fix": "Biraz sonra her ikisi yan yana pencerede göründüler.", "type": "yazim", "note": "güründüler -> göründüler"}
+{"id": 1696, "target": "Birkaç ay beraber yaşadıktan sonra kış vakası geldi.", "fix": null, "type": "anlamsiz", "note": "'kış vakası geldi' anlamsız (kış mevsimi olmalı)"}
+{"id": 1883, "target": "Bu eser, kültürel öneminden ötürü Türkiye Cumhuriyeti'nde kamuya maledilmiştir.", "fix": "Bu eser, kültürel öneminden ötürü Türkiye Cumhuriyeti'nde kamuya mal edilmiştir.", "type": "ayri_bitisik", "note": "maledilmiştir -> mal edilmiştir"}
+{"id": 1985, "target": "Bu kız kuyrukluyıldızlar gibiydi.", "fix": "Bu kız kuyruklu yıldızlar gibiydi.", "type": "ayri_bitisik", "note": "kuyrukluyıldız -> kuyruklu yıldız (TDK)"}

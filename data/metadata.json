@@ -14,35 +14,41 @@
     "name": "Megazeka gündelik şablon ve elle yazılmış cümleler",
     "module": "training/everyday.py",
     "license": "CC0-1.0",
-    "sentences": 2526
+    "sentences": 2524
   },
   "split_method": "NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım",
   "clean_ratio": 0.25,
   "format": "gzip-compressed JSONL",
-  "version": "v3",
+  "version": "v3.1",
+  "target_corrections": {
+    "file": "data/audit/corrections.jsonl",
+    "sha256": "790e34b0165b84951fd7caededa33f5fb9e6b0cee41559068264b63f3991d8f5",
+    "fixed_applied": 136,
+    "dropped_applied": 12
+  },
   "test_frozen_from": "v2",
   "challenge_targets_excluded": 81,
   "splits": {
     "train": {
-      "pairs": 42075,
-      "unique_targets": 10200,
+      "pairs": 42017,
+      "unique_targets": 10186,
       "by_source": {
-        "Common Voice / CC0-1.0": 31996,
-        "Birleşik iki cümle": 1275,
-        "Megazeka gündelik şablon / CC0-1.0": 8804
+        "Common Voice / CC0-1.0": 31936,
+        "Megazeka gündelik şablon / CC0-1.0": 8808,
+        "Birleşik iki cümle": 1273
       },
-      "bytes": 2928459,
-      "sha256": "edb4883f050a0a7c6468790445236114f57c828901f0b9f14354c1615b66b2c1"
+      "bytes": 2923981,
+      "sha256": "5b0feaecbb564ddeffc60bb9f05e59d1a79071c1bfec50a6a3eb100fb202ae9a"
     },
     "validation": {
       "pairs": 1440,
       "unique_targets": 360,
       "by_source": {
-        "Megazeka gündelik şablon / CC0-1.0": 800,
-        "Common Voice / CC0-1.0": 640
+        "Common Voice / CC0-1.0": 640,
+        "Megazeka gündelik şablon / CC0-1.0": 800
       },
-      "bytes": 82847,
-      "sha256": "6fc511085cdd4ad24d8c5a4dd757957fd18c14487f271397e2f7a104a38966b6"
+      "bytes": 82736,
+      "sha256": "f3aa570ed40c336d9cfa0480797abd05700216f120c4f61ce1ec57b1c476df20"
     },
     "test": {
       "pairs": 1128,

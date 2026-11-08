@@ -1,0 +1,25 @@
+{"id": 10000, "target": "Yakında seni ziyaret edeceksiniz kesinlikle.", "fix": null, "type": "anlamsiz", "note": "özne siz, nesne seni: tekil/çoğul uyumsuz, doğal değil"}
+{"id": 10084, "target": "Yarın akşam bana yardım edeceğim, değil mi?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10116, "target": "Yarın akşam sana teşekkür eder misin?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10117, "target": "Yarın akşam sana uğruyor musun?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10120, "target": "Yarın akşam seni anlayacak mısın?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10219, "target": "Yarın sabah sen sana telefon ediyorsun, merak etme.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10220, "target": "Yarın sabah sen seni ziyaret edeceksin.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10233, "target": "Yarın sana bakacak mısın?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10320, "target": "Öğleden sonra sana bakıyorsun.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10321, "target": "Öğleden sonra sana söyler misin?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10325, "target": "Öğleden sonra seni bekliyor musun?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10413, "target": "İşten sonra bana yardım edeceğim.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10446, "target": "İşten sonra sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10447, "target": "İşten sonra sen sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10448, "target": "İşten sonra seni anlayacak mısın?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10449, "target": "İşten sonra seni arayacak mısın?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10450, "target": "İşten sonra seni dinler misin?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10453, "target": "İşten sonra seninle konuşur musun?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10513, "target": "Şimdi parkta yürümeyeceğim, saat üçte sen seni dinliyorsun.", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10516, "target": "Şimdi sana söylüyor musun?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10517, "target": "Şimdi sana yazar mısın?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10522, "target": "Şimdi seni sevecek misin?", "fix": null, "type": "anlamsiz", "note": "özne ve nesne aynı kişi (sen/ben) ya da yüklem-nesne uyumsuz"}
+{"id": 10349, "target": "İdil'den bir şey sordum.", "fix": "İdil'e bir şey sordum.", "type": "dilbilgisi", "note": "-den hâli yanlış; sormak -e hâli ister"}
+{"id": 10364, "target": "İlker'den bir şey sordum.", "fix": "İlker'e bir şey sordum.", "type": "dilbilgisi", "note": "-den hâli yanlış; sormak -e hâli ister"}
+{"id": 10372, "target": "İnci'den bir şey sordum.", "fix": "İnci'ye bir şey sordum.", "type": "dilbilgisi", "note": "-den hâli yanlış; sormak -e hâli ister"}

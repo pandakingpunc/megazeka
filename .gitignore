@@ -12,3 +12,11 @@ data/raw/common_voice_tr.txt
 
 # v2 veri yedeği
 data/v2-backup/
+
+# Yerel sürüm arşivleri (v3 / v3.1a / v3.1b karşılaştırması); yayınlanan sürümler git etiketlerinde ve HF'te
+data/v3-backup/
+reports/v3/
+reports/v3.1a/
+reports/v3.1b/
+# Denetim parçaları targets.jsonl'den yeniden üretilebilir
+data/audit/chunks/

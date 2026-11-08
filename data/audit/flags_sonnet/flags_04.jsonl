@@ -1,0 +1,22 @@
+{"id": 4035, "target": "Her horoz kendi çöplüğünde öter;.", "fix": "Her horoz kendi çöplüğünde öter.", "type": "noktalama", "note": "';.' -> '.'"}
+{"id": 4047, "target": "Her sey yolunda mi?", "fix": "Her şey yolunda mı?", "type": "yazim", "note": "sey -> şey, mi -> mı"}
+{"id": 4062, "target": "Her zaman ki gibi.", "fix": "Her zamanki gibi.", "type": "ayri_bitisik", "note": "her zaman ki -> her zamanki"}
+{"id": 4120, "target": "Herkes birden seslerini yüksellti.", "fix": "Herkes birden seslerini yükseltti.", "type": "yazim", "note": "yüksellti -> yükseltti"}
+{"id": 4164, "target": "Hikâyesine bu günlerde başlayacağım.", "fix": "Hikâyesine bugünlerde başlayacağım.", "type": "ayri_bitisik", "note": "bu günlerde -> bugünlerde"}
+{"id": 4177, "target": "Hiç bir anlamı yok.", "fix": "Hiçbir anlamı yok.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 4178, "target": "Hiç bir fikrim yok.", "fix": "Hiçbir fikrim yok.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 4179, "target": "Hiç bir fikrin yok.", "fix": "Hiçbir fikrin yok.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 4180, "target": "Hiç bir şey bilmiyorum.", "fix": "Hiçbir şey bilmiyorum.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 4181, "target": "Hiç bir şey söyleme.", "fix": "Hiçbir şey söyleme.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 4202, "target": "Hiç ses çıkarmadan bir müddet oturup bekleştiler, sonra lambayı söndürüp birer köşeye kıvnldılar.", "fix": "Hiç ses çıkarmadan bir müddet oturup bekleştiler, sonra lambayı söndürüp birer köşeye kıvrıldılar.", "type": "yazim", "note": "kıvnldılar -> kıvrıldılar (OCR)"}
+{"id": 4216, "target": "Hiçbir hakikatin beni ondan uzaklaştırmasına tahammül edemiyeceğimi anlıyordum.", "fix": "Hiçbir hakikatin beni ondan uzaklaştırmasına tahammül edemeyeceğimi anlıyordum.", "type": "yazim", "note": "edemiyeceğimi -> edemeyeceğimi"}
+{"id": 4277, "target": "Hususi muhasebe memuru, harcırahlan eksik tahakkuk ettirmekteki maharetiyle meşhurdur.", "fix": "Hususi muhasebe memuru, harcırahları eksik tahakkuk ettirmekteki maharetiyle meşhurdur.", "type": "yazim", "note": "harcırahlan -> harcırahları (OCR)"}
+{"id": 4290, "target": "Hüseyin Avni tekrar Meleğin koluna sarılmak isteyerek, bir adım attı.", "fix": "Hüseyin Avni tekrar Melek'in koluna sarılmak isteyerek, bir adım attı.", "type": "kesme", "note": "özel isim eki: Meleğin -> Melek'in"}
+{"id": 4405, "target": "Kanı temiz çıktı, üst yanına karışmam. dedi.", "fix": "Kanı temiz çıktı, üst yanına karışmam, dedi.", "type": "noktalama", "note": "'. dedi' -> ', dedi'"}
+{"id": 4522, "target": "Keman çalan uzun kafalı, esmer delikanlı eğilerek davavekilinin selamını iade etti.", "fix": "Keman çalan uzun kafalı, esmer delikanlı eğilerek dava vekilinin selamını iade etti.", "type": "ayri_bitisik", "note": "davavekilinin -> dava vekilinin"}
+{"id": 4609, "target": "Kim verdi sana o kasabın adını.", "fix": "Kim verdi sana o kasabın adını?", "type": "noktalama", "note": "soru cümlesi nokta ile bitmiş"}
+{"id": 4742, "target": "Küçük Haşan o tarafa koştu.", "fix": "Küçük Hasan o tarafa koştu.", "type": "yazim", "note": "Haşan -> Hasan (OCR)"}
+{"id": 4743, "target": "Küçük Haşan onun ağzından babasına veya herhangi bir akrabaya dair bir kelime bile duymamıştı.", "fix": "Küçük Hasan onun ağzından babasına veya herhangi bir akrabaya dair bir kelime bile duymamıştı.", "type": "yazim", "note": "Haşan -> Hasan (OCR)"}
+{"id": 4845, "target": "Macide burda galiba; onunla göndereyim!", "fix": "Macide burada galiba; onunla göndereyim!", "type": "konusma_dili", "note": "burda -> burada"}
+{"id": 4880, "target": "Macide’nin gözleri aynadaki hayali üzerinde süratle dolaştırdıktan sonra saçlarına takılıp kaldı.", "fix": "Macide’nin gözleri aynadaki hayali üzerinde süratle dolaştıktan sonra saçlarına takılıp kaldı.", "type": "dilbilgisi", "note": "özne gözleri iken 'dolaştırdıktan' uyumsuz -> dolaştıktan"}
+{"id": 4882, "target": "Macide’ye uzun uzun batıktan sonra yerinden kalktı.", "fix": "Macide’ye uzun uzun baktıktan sonra yerinden kalktı.", "type": "yazim", "note": "batıktan -> baktıktan (OCR)"}

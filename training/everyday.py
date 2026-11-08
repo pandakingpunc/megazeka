@@ -9,6 +9,7 @@ All sentences are authored for this project and released under CC0-1.0.
 import random
 import re
 import sys
+import zlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
@@ -381,12 +382,68 @@ def question(word, person):
     return f'{word} {suffix}'
 
 
+# Pronoun forms that would make subject and object the same person when they share a clause.
+_PRONOUNS_1S = {'ben', 'beni', 'bana', 'benimle', 'benden', 'bende'}
+_PRONOUNS_2S = {'sen', 'seni', 'sana', 'seninle', 'senden', 'sende'}
+_PRONOUNS_1P = {'biz', 'bizi', 'bize', 'bizimle', 'bizden'} | _PRONOUNS_1S
+_PRONOUNS_2P = {'siz', 'sizi', 'size', 'sizinle', 'sizden'} | _PRONOUNS_2S
+_CLASH_WORDS = {'1s': _PRONOUNS_1S, '2s': _PRONOUNS_2S, '1p': _PRONOUNS_1P, '2p': _PRONOUNS_2P}
+_WORD_RE = re.compile(r"[^\W\d_]+(?:'[^\W\d_]+)*")
+_TR_FOLD = str.maketrans({'I': 'ı', 'İ': 'i'})
+
+
+def _clashes(complement, person):
+    """True if the complement holds a pronoun that clashes with the clause's person (whole words)."""
+    words = set(_WORD_RE.findall(complement.translate(_TR_FOLD).lower()))
+    return bool(words & _CLASH_WORDS.get(person, set()))
+
+
+_CLAUSE_SPLIT = re.compile(r',|\s(?:ama|çünkü|ve)\s')
+_TAIL_WORDS = {'sanırım', 'galiba', 'herhalde', 'kesinlikle', 'mutlaka', 'inşallah', 'söz'}
+_SECOND_OBJECTS = {'seni', 'sana', 'seninle', 'senden', 'sende'}
+_FIRST_OBJECTS = {'beni', 'bana', 'benimle'}
+_VERB_2S = re.compile(r'(sın|sin|sun|sün)$')
+_VERB_2P = re.compile(r'(sınız|siniz|sunuz|sünüz)$')
+_VERB_1S = re.compile(r'(ım|im|um|üm)$')
+
+
+def person_clash(text):
+    """Safety net: True if a clause has a 2sg/1sg/2pl finite verb together with an object pronoun of the same person.
+
+    Catches "Yakında seni unutur musun?", "Sen seni izliyorsun", "Bana yardım edeceğim" and
+    "Seni ziyaret edeceksiniz". Clauses are split on commas and ama/çünkü/ve; trailing tail words
+    (sanırım, galiba, ...) are not the clause verb and are stripped first.
+    """
+    for clause in _CLAUSE_SPLIT.split(text.translate(_TR_FOLD).lower()):
+        words = _WORD_RE.findall(clause)
+        while words and words[-1] in _TAIL_WORDS:
+            words.pop()
+        if len(words) < 2:
+            continue
+        verb, others = words[-1], set(words[:-1])
+        if _VERB_2P.search(verb) and others & _SECOND_OBJECTS:
+            return True
+        if _VERB_2S.search(verb) and others & _SECOND_OBJECTS:
+            return True
+        if _VERB_1S.search(verb) and others & _FIRST_OBJECTS:
+            return True
+    return False
+
+
 def _clause(rng, stem, aorist, complements, allow_third=True, kinds=None, weights=None):
     """One clause without final punctuation, plus a flag for question form."""
     complement = rng.choice(complements)
     adverb = '' if complement in TIME_WORDS else rng.choice(ADVERBS)
     kind = rng.choices(kinds or ['f1s', 'f1p', 'f2s', 'f3s', 'nf1s', 'p1s', 'p2s', 'p3s', 'p1p', 'np1s', 'qf2s', 'qp2s', 'qa2s', 'qf1p'],
                        weights=weights or [6, 3, 2, 3, 2, 4, 2, 2, 2, 2, 2, 2, 2, 1])[0]
+    if _clashes(complement, kind[-2:]):
+        # Subject and object must not be the same person ("Sen seni izliyorsun"). Replace the complement with a
+        # separate deterministic generator so the main rng stream stays identical to v3.
+        alt = random.Random(zlib.crc32(f'{stem}|{complement}|{kind}'.encode()))
+        pool = [c for c in complements if not _clashes(c, kind[-2:])]
+        complement = alt.choice(pool) if pool else ''
+        if complement in TIME_WORDS:
+            adverb = ''
     subject = ''
     if kind[0] == 'n' or kind[0] in 'fp':
         person = kind[-2:]
@@ -627,7 +684,7 @@ PERSON_T = ["{gen} kitabı masada kalmış.", "{gen} telefonu çalıyor.", "{dat
             "{abl} haber bekliyorum.", "{with} sinemaya gittik.", "{with} yarın buluşacağız.", "{nom} şimdi evde değil.",
             "Bu hediyeyi {dat} alacağım.", "{gen} yanına gidiyorum.", "{gen} doğum günü yarın.",
             "{nom} bana akşam mesaj attı.", "{nom} ile {nom2} aynı takımda.", "{nom} yarın {pdat} gelecek.",
-            "{nom} {pdat} taşınmış.", "{abl} bir şey sordum.", "{with} birlikte çalışıyoruz.",
+            "{nom} {pdat} taşınmış.", "{dat} bir şey sordum.", "{with} birlikte çalışıyoruz.",
             "{gen} annesi bizi çağırdı.", "{nom} bugün okula gelmedi mi?", "{dat} bir şey söylemem lazım."]
 PERSON_FIRST = ["{nom} geldi mi?", "{nom} nerede kaldı?", "{nom} ile konuştun mu?"]
 _TR_LOWER = str.maketrans({'I': 'ı', 'İ': 'i'})
@@ -768,7 +825,7 @@ def sentences(count=1500, seed=42, extra=True):
         text = re.sub(r'\s+', ' ', text).strip()
         text = upper_first(text)
         key = canonical(text)
-        if key in seen or not 18 <= len(text.encode('utf-8')) <= 160 or len(text.split()) < 3:
+        if key in seen or not 18 <= len(text.encode('utf-8')) <= 160 or len(text.split()) < 3 or person_clash(text):
             return
         seen.add(key)
         result.append(text)

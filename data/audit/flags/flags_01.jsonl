@@ -1,0 +1,2 @@
+{"id": 1360, "target": "Bir akşamüstü Ömer eve erken dönmüşü.", "fix": "Bir akşamüstü Ömer eve erken dönmüştü.", "type": "yazim", "note": "dönmüşü -> dönmüştü (eksik t)"}
+{"id": 1696, "target": "Birkaç ay beraber yaşadıktan sonra kış vakası geldi.", "fix": null, "type": "anlamsiz", "note": "'kış vakası geldi' doğal Türkçe değil; 'kış mevsimi' olmalı"}

@@ -1,0 +1,4 @@
+{"id": 7004, "target": "Vıyy, her yanlar da yaş!.", "fix": "Vıyy, her yanlar da yaş!", "type": "noktalama", "note": "Sonda çift noktalama işareti (!.)"}
+{"id": 7254, "target": "Yirmi dört yaşma geldiğim halde hâlâ çocukluğumun saflığından kurtulamamıştım.", "fix": "Yirmi dört yaşına geldiğim halde hâlâ çocukluğumun saflığından kurtulamamıştım.", "type": "dilbilgisi", "note": "yaşma -> yaşına (yaş + yönelme eki değil, iyelikli yaşına)"}
+{"id": 7299, "target": "Yolun açılışının onuncu günü nafıanın fen memurlan vilayete bir rapor vermişler.", "fix": "Yolun açılışının onuncu günü nafıanın fen memurları vilayete bir rapor vermişler.", "type": "yazim", "note": "memurlan -> memurları"}
+{"id": 7908, "target": "İstersen benim kliniğe yatırayım, ama şenin için biraz masraflı olur.", "fix": "İstersen benim kliniğe yatırayım, ama senin için biraz masraflı olur.", "type": "yazim", "note": "şenin -> senin"}

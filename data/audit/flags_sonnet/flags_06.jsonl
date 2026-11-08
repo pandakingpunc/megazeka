@@ -1,0 +1,8 @@
+{"id": 6259, "target": "Senelerden beri buraya yerleşmiş, birkaç incir bahçesi edinmiş, kızlarım burada evlendirmişti.", "fix": "Senelerden beri buraya yerleşmiş, birkaç incir bahçesi edinmiş, kızlarını burada evlendirmişti.", "type": "dilbilgisi", "note": "kızlarım -> kızlarını (iyelik/çekim eki)"}
+{"id": 6390, "target": "Sevgililer günün kutlu olsun.", "fix": "Sevgililer Günün kutlu olsun.", "type": "buyuk_harf", "note": "özel gün adı büyük harfle: Sevgililer Günü"}
+{"id": 6490, "target": "Sizin sonunda bulunduğunuz yolun ben daha başlarmdayım.", "fix": "Sizin sonunda bulunduğunuz yolun ben daha başlarındayım.", "type": "yazim", "note": "başlarmdayım -> başlarındayım (OCR rn/m)"}
+{"id": 6520, "target": "Son senelerde bir küçük fabrikada motörcü yamaklığı yapıyordu, hastalığı orada iken başladı.", "fix": "Son senelerde bir küçük fabrikada motorcu yamaklığı yapıyordu, hastalığı orada iken başladı.", "type": "yazim", "note": "motörcü -> motorcu"}
+{"id": 6535, "target": "Sonra birdenbire kaşlan çatıldı.", "fix": "Sonra birdenbire kaşları çatıldı.", "type": "yazim", "note": "kaşlan -> kaşları (OCR)"}
+{"id": 6575, "target": "Sora yüzünü Recep'in yüzüne yaklaştırdı.", "fix": "Sonra yüzünü Recep'in yüzüne yaklaştırdı.", "type": "konusma_dili", "note": "Sora -> Sonra"}
+{"id": 6651, "target": "Süt veriyor, biz burda her akşam sarhoşuz.", "fix": "Süt veriyor, biz burada her akşam sarhoşuz.", "type": "konusma_dili", "note": "burda -> burada"}
+{"id": 6898, "target": "Vaka Miladi yedinci asırda ve Çin'in payitahtlarından birinde geçer.", "fix": "Vaka miladi yedinci asırda ve Çin'in payitahtlarından birinde geçer.", "type": "buyuk_harf", "note": "Miladi sıfat, cümle ortasında küçük harf"}

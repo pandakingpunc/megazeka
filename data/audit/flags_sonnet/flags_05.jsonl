@@ -1,0 +1,23 @@
+{"id": 5010, "target": "Muvazenesini kaybeden davavekili dizlerinin üstüne düşerek alnını iskemlelerden birine vurdu.", "fix": "Muvazenesini kaybeden dava vekili dizlerinin üstüne düşerek alnını iskemlelerden birine vurdu.", "type": "ayri_bitisik", "note": "davavekili -> dava vekili"}
+{"id": 5039, "target": "Mısırların altı günlerden beri sulanmamış, yapraklar sararmaya yüz tutmuştu.", "fix": "Mısırlar altı günden beri sulanmamış, yapraklar sararmaya yüz tutmuştu.", "type": "dilbilgisi", "note": "Mısırların altı günlerden beri -> Mısırlar altı günden beri (bozuk yapı)"}
+{"id": 5123, "target": "Ne gezer? Hiçbir şeyler dimedi!", "fix": "Ne gezer? Hiçbir şey demedi!", "type": "konusma_dili", "note": "dimedi -> demedi; hiçbir şeyler -> hiçbir şey"}
+{"id": 5124, "target": "Ne geçmişi, ne geleceği düşünmüyor, ancak yaşamakta olduğum anları biliyordum.", "fix": "Ne geçmişi, ne geleceği düşünüyordum, ancak yaşamakta olduğum anları biliyordum.", "type": "dilbilgisi", "note": "düşünmüyor -> düşünmüyordum (kişi uyumsuzluğu)"}
+{"id": 5193, "target": "Ne var ne yok Hafız bey?", "fix": "Ne var ne yok Hafız Bey?", "type": "buyuk_harf", "note": "Hafız bey -> Hafız Bey"}
+{"id": 5313, "target": "Neler oluyor burda?", "fix": "Neler oluyor burada?", "type": "konusma_dili", "note": "burda -> burada"}
+{"id": 5318, "target": "Nerde birlik, orda dirlik.", "fix": "Nerede birlik, orada dirlik.", "type": "konusma_dili", "note": "nerde -> nerede, orda -> orada"}
+{"id": 5319, "target": "Nerde hareket, orda bereket.", "fix": "Nerede hareket, orada bereket.", "type": "konusma_dili", "note": "nerde -> nerede, orda -> orada"}
+{"id": 5338, "target": "Neren ağrırsa canın orda.", "fix": "Neren ağrırsa canın orada.", "type": "konusma_dili", "note": "orda -> orada"}
+{"id": 5414, "target": "Nurettin bey kaşlarını çatarak sordu.", "fix": "Nurettin Bey kaşlarını çatarak sordu.", "type": "buyuk_harf", "note": "Nurettin bey -> Nurettin Bey"}
+{"id": 5520, "target": "O çok zekiydi: İnsanın söyleyeceği şeyleri değil, söylemek İsteyebileceği şeyleri bile hissediyordu.", "fix": "O çok zekiydi: İnsanın söyleyeceği şeyleri değil, söylemek isteyebileceği şeyleri bile hissediyordu.", "type": "buyuk_harf", "note": "İsteyebileceği -> isteyebileceği"}
+{"id": 5566, "target": "On gündür vazifedeydik, İstanbul'a gelir gelmez nerden çıktunuz?", "fix": "On gündür vazifedeydik, İstanbul'a gelir gelmez nereden çıktınız?", "type": "konusma_dili", "note": "nerden -> nereden, çıktunuz -> çıktınız"}
+{"id": 5606, "target": "Onla söylenecek şey daha açık ve samimi olmalıdır.", "fix": "Onunla söylenecek şey daha açık ve samimi olmalıdır.", "type": "konusma_dili", "note": "onla -> onunla"}
+{"id": 5775, "target": "Osmanlının ayağı üzengide gerek.", "fix": "Osmanlı'nın ayağı üzengide gerek.", "type": "kesme", "note": "Osmanlının -> Osmanlı'nın"}
+{"id": 5788, "target": "Oturduğu yerden Meleğe doğru bakarken, derhal fırlayıp saldırmak isteyen vahşi bir hisse kapılıyordu.", "fix": "Oturduğu yerden Melek'e doğru bakarken, derhal fırlayıp saldırmak isteyen vahşi bir hisse kapılıyordu.", "type": "kesme", "note": "Meleğe -> Melek'e (özel ad)"}
+{"id": 5917, "target": "Raif efendi sizsiniz, değil mi? diye sormuştum.", "fix": "Raif Efendi sizsiniz, değil mi? diye sormuştum.", "type": "buyuk_harf", "note": "Raif efendi -> Raif Efendi"}
+{"id": 5918, "target": "Raif efendi tekrar kolunu çıkarmış ve elimi tutmuştu.", "fix": "Raif Efendi tekrar kolunu çıkarmış ve elimi tutmuştu.", "type": "buyuk_harf", "note": "Raif efendi -> Raif Efendi"}
+{"id": 5919, "target": "Raif efendi, ara sıra hastalanır ve daireye gelemezdi.", "fix": "Raif Efendi, ara sıra hastalanır ve daireye gelemezdi.", "type": "buyuk_harf", "note": "Raif efendi -> Raif Efendi"}
+{"id": 5920, "target": "Raif efendinin alt katta oturduğunu biliyordum.", "fix": "Raif Efendi'nin alt katta oturduğunu biliyordum.", "type": "buyuk_harf", "note": "Raif efendinin -> Raif Efendi'nin"}
+{"id": 5921, "target": "Raif efendinin defterini ellerimle yok etmek, benim için imkânsızdı.", "fix": "Raif Efendi'nin defterini ellerimle yok etmek, benim için imkânsızdı.", "type": "buyuk_harf", "note": "Raif efendinin -> Raif Efendi'nin"}
+{"id": 5922, "target": "Raif efendinin kulağına eğilip bir şeyler söyledi.", "fix": "Raif Efendi'nin kulağına eğilip bir şeyler söyledi.", "type": "buyuk_harf", "note": "Raif efendinin -> Raif Efendi'nin"}
+{"id": 5923, "target": "Raif efendinin ölümü bana o kadar tesir etmemişti.", "fix": "Raif Efendi'nin ölümü bana o kadar tesir etmemişti.", "type": "buyuk_harf", "note": "Raif efendinin -> Raif Efendi'nin"}
+{"id": 5999, "target": "Sahnenin arka kapısından dışarı bakarak söylendi..", "fix": "Sahnenin arka kapısından dışarı bakarak söylendi.", "type": "noktalama", "note": "çift nokta"}

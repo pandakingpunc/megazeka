@@ -41,10 +41,36 @@ def challenge_keys():
         return set()
     return {canonical(json.loads(line)['target']) for line in CHALLENGE.read_text(encoding='utf-8').splitlines() if line.strip()}
 
+CORRECTIONS = ROOT / 'data/audit/corrections.jsonl'
+
+def load_corrections(path=CORRECTIONS):
+    """Audit corrections: (fixes {original target: fixed target}, drops {original target}). Missing file -> empty."""
+    fixes, drops = {}, set()
+    path = Path(path)
+    if not path.exists():
+        return fixes, drops
+    for line in path.read_text(encoding='utf-8').splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        if row['action'] == 'drop':
+            drops.add(row['target'])
+        elif row['action'] == 'fix' and row.get('fix') and row['fix'] != row['target']:
+            fixes[row['target']] = row['fix']
+    overlap = set(fixes) & drops
+    if overlap:
+        raise RuntimeError(f'Hem düzeltilen hem silinen hedef: {sorted(overlap)[:3]}')
+    return fixes, drops
+
 def main():
     configure()
     ensure_budget(30_000_000, 'Sıkıştırılmış eğitim çiftleri')
     rng = random.Random(42)
+    fixes, drops = load_corrections()
+    fixed_applied = 0
+    dropped_ids = set()      # id() of Common Voice / everyday entries whose original target is dropped
+    original_key = {}        # id(entry) -> canonical key of the ORIGINAL text (frozen-test check uses it)
+    everyday_dropped = 0
     sources = {}
     for row in (ROOT / 'data/raw/common_voice_tr.txt').read_text(encoding='utf-8').splitlines():
         text = normalize(row).strip()
@@ -54,12 +80,24 @@ def main():
             continue
         if any(x in text for x in ['http', '�', '"', '<', '>']):
             continue
-        sources.setdefault(canonical(text), {'target': text, 'source': COMMON_VOICE_SOURCE})
+        key = canonical(text)
+        if key in sources:
+            continue
+        # The dict key stays the ORIGINAL text so insertion order (seeded shuffle, frozen test slice) is unchanged.
+        entry = sources[key] = {'target': fixes.get(text, text), 'source': COMMON_VOICE_SOURCE}
+        original_key[id(entry)] = key
+        fixed_applied += text in fixes
+        if text in drops:
+            dropped_ids.add(id(entry))
     everyday = []
     for text in everyday_sentences():
         key = canonical(text)
         if key not in sources:
-            everyday.append({'target': text, 'source': EVERYDAY_SOURCE})
+            if text in drops:
+                everyday_dropped += 1
+                continue
+            everyday.append({'target': fixes.get(text, text), 'source': EVERYDAY_SOURCE})
+            fixed_applied += text in fixes
             sources[key] = everyday[-1]
     values = [v for v in sources.values() if v['source'] == COMMON_VOICE_SOURCE]
     rng.shuffle(values)
@@ -75,25 +113,44 @@ def main():
         # sentence it contains is excluded from train/validation before any noise is added.
         frozen_rows = read_pairs('test')
         frozen_keys = {canonical(r['target']) for r in frozen_rows}
-        cv_test = {canonical(v['target']) for v in values[8160:8320]}
+        cv_test = {original_key[id(v)] for v in values[8160:8320]}
         if cv_test != {canonical(r['target']) for r in frozen_rows if r['source'] == COMMON_VOICE_SOURCE}:
             raise RuntimeError('Dondurulmuş test, Common Voice ayrımıyla uyuşmuyor; data/v2-backup kullanın.')
         blocked |= frozen_keys
         everyday = [e for e in everyday if canonical(e['target']) not in blocked]
         held = max(40, len(everyday) // 12)
-        selected = {'train': [v for v in values[:8000] if canonical(v['target']) not in blocked] + everyday[held:],
-                    'validation': [v for v in values[8000:8160] if canonical(v['target']) not in blocked] + everyday[:held]}
+        selected = {'train': [v for v in values[:8000] if canonical(v['target']) not in blocked and id(v) not in dropped_ids] + everyday[held:],
+                    'validation': [v for v in values[8000:8160] if canonical(v['target']) not in blocked and id(v) not in dropped_ids] + everyday[:held]}
     else:
         selected = {'train': values[:8000] + everyday[2 * held:],
                     'validation': values[8000:8160] + everyday[:held],
                     'test': values[8160:8320] + everyday[held:2 * held]}
-        selected = {k: [r for r in v if canonical(r['target']) not in blocked or k == 'test'] for k, v in selected.items()}
+        selected = {k: [r for r in v if k == 'test' or (canonical(r['target']) not in blocked and id(r) not in dropped_ids)]
+                    for k, v in selected.items()}
+    # A fix can land on a sentence that already exists elsewhere: keep one copy (test > validation > train).
+    seen_targets, collisions = set(), 0
+    for split in sorted(selected, key=lambda k: ['test', 'validation', 'train'].index(k)):
+        kept = []
+        for row in selected[split]:
+            key = canonical(row['target'])
+            if key in seen_targets:
+                collisions += 1
+                continue
+            seen_targets.add(key)
+            kept.append(row)
+        selected[split] = kept
+    dropped_applied = sum(1 for v in values[:8160] if id(v) in dropped_ids) + everyday_dropped  # test slice is never trimmed
+    corrections_file = CORRECTIONS if CORRECTIONS.exists() else None
     metadata = {'seed': 42, 'source': json.loads((ROOT / 'data/raw/source.json').read_text(encoding='utf-8')),
                 'everyday_source': {'name': 'Megazeka gündelik şablon ve elle yazılmış cümleler', 'module': 'training/everyday.py',
                                     'license': 'CC0-1.0', 'sentences': everyday_total},
                 'split_method': 'NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım',
-                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'version': 'v3',
+                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'version': 'v3.1',
+                'target_corrections': {'file': 'data/audit/corrections.jsonl',
+                                           'sha256': hashlib.sha256(corrections_file.read_bytes()).hexdigest() if corrections_file else None,
+                                           'fixed_applied': fixed_applied, 'dropped_applied': dropped_applied},
                 'test_frozen_from': 'v2' if frozen else None, 'challenge_targets_excluded': len(challenge_keys()), 'splits': {}}
+    print(f'Hedef düzeltmeleri: {fixed_applied} düzeltme, {dropped_applied} silme uygulandı; {collisions} çakışan kopya elendi.')
     keys = []
     for index, (split, rows) in enumerate(selected.items()):
         generator = NoiseGenerator(42 + index)

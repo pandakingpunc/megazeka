@@ -1,0 +1,3 @@
+{"id": 8018, "target": "İşte bütün bu haller, Aydının dağlarını, ormanlarını isyan eden çetelerle doldurmuştu.", "fix": "İşte bütün bu haller, Aydın'ın dağlarını, ormanlarını isyan eden çetelerle doldurmuştu.", "type": "kesme", "note": "Aydın'ın: özel ad + ek kesmeyle yazılmalı"}
+{"id": 8507, "target": "Biraz sonra seni hissedecek miyiz?", "fix": null, "type": "anlamsiz", "note": "'seni hissetmek' doğal olmayan fiil-nesne eşleşmesi"}
+{"id": 8586, "target": "Bu akşam akşam yemeğini pişirecek.", "fix": "Bu akşam yemeğini pişirecek.", "type": "yazim", "note": "'akşam' kelimesi yinelenmiş"}

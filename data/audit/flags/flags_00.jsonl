@@ -1,0 +1,11 @@
+{"id": 16, "target": "Acaba küçük prensesimizi sabahın bu vaktinde tatlı uykusuından uyandıran gürültüyü hangi münasebetsiz yaptı?", "fix": "Acaba küçük prensesimizi sabahın bu vaktinde tatlı uykusundan uyandıran gürültüyü hangi münasebetsiz yaptı?", "type": "yazim", "note": "uykusuından -> uykusundan"}
+{"id": 176, "target": "Allaha şükürler olsun!", "fix": "Allah'a şükürler olsun!", "type": "kesme", "note": "Allah özel isim, Allah'a"}
+{"id": 177, "target": "Allahtan korkmadan paralarını yanına alıp gitti.", "fix": "Allah'tan korkmadan paralarını yanına alıp gitti.", "type": "kesme", "note": "Allah'tan"}
+{"id": 281, "target": "Aman, orda berber Yusuf vardır, tanır mısın?", "fix": "Aman, orada berber Yusuf vardır, tanır mısın?", "type": "yazim", "note": "orda -> orada"}
+{"id": 545, "target": "Ayakkabılan çamurda saplanıp kalmıştı.", "fix": "Ayakkabıları çamurda saplanıp kalmıştı.", "type": "yazim", "note": "Ayakkabılan -> Ayakkabıları"}
+{"id": 572, "target": "Ayrıca gümüş köstekli saati de çıkısına koydu.", "fix": "Ayrıca gümüş köstekli saati de çıkışına koydu.", "type": "yazim", "note": "çıkısına -> çıkışına"}
+{"id": 692, "target": "Bak Mevlüt Ağa bundan sonra seni hep kollayacağını süylüyor.", "fix": "Bak Mevlüt Ağa bundan sonra seni hep kollayacağını söylüyor.", "type": "yazim", "note": "süylüyor -> söylüyor"}
+{"id": 884, "target": "Başını kaldırıp bi baksan görürdün?", "fix": "Başını kaldırıp bir baksan görürdün?", "type": "yazim", "note": "bi -> bir (gayriresmi yazım)"}
+{"id": 889, "target": "Başını zahmetle kaldıran şoförün üzerinde bu tehdit hiç bir tesir göstermişe benzemiyordu.", "fix": "Başını zahmetle kaldıran şoförün üzerinde bu tehdit hiçbir tesir göstermişe benzemiyordu.", "type": "ayri_bitisik", "note": "hiç bir -> hiçbir"}
+{"id": 954, "target": "Ben Bu akşam sizinle dans etmeyeceğim Nurullah bey.", "fix": "Ben bu akşam sizinle dans etmeyeceğim Nurullah bey.", "type": "buyuk_harf", "note": "cümle ortasında gereksiz büyük harf: Bu -> bu"}
+{"id": 962, "target": "Ben asıl Praglıyım, Çek Almanlarından.", "fix": "Ben asıl Prag'lıyım, Çek Almanlarından.", "type": "kesme", "note": "özel isme gelen ek kesme ile: Prag'lıyım"}

@@ -44,10 +44,10 @@ WORDS = {
     'bugün': ['bu gün'], 'inşallah': ['inşalah', 'inş'], 'maalesef': ['malesef'],
     'sürpriz': ['süpriz'], 'orijinal': ['orjinal'], 'herhalde': ['heralde'], 'şu anda': ['şuanda', 'şuan'],
     'şu an': ['şuan'], 'kesinlikle': ['kesinlkle'], 'sonra': ['sora'], 'birazdan': ['bi azdan'],
-    'bilmiyorum': ['bilmiyom', 'bilmem', 'blmiyorum'], 'istiyorum': ['istiyom', 'istiom'],
+    'bilmiyorum': ['bilmiyom', 'blmiyorum'], 'istiyorum': ['istiyom', 'istiom'],
     'gideceğim': ['gitcem'], 'gideceğiz': ['gitcez'], 'gidecek': ['gitcek'], 'edeceğim': ['etcem'],
     'biraz': ['bi raz', 'bir az'], 'bir': ['bi'], 'ne kadar': ['nekadar'],
-    'yani': ['yni'], 'tabii': ['tabi'], 'ağabey': ['abi'],
+    'yani': ['yni'],
 }
 
 # "ne yap-/ol-/haber" chat contractions: napcam, napıyosun, noldu, nolur, naber. Each key is the

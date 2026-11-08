@@ -1,0 +1,6 @@
+{"id": 6021, "target": "Samsun da hapishane, burası da hapishaneydi.", "fix": "Samsun'da hapishane, burası da hapishaneydi.", "type": "kesme", "note": "Samsun'da: özel isme gelen -da eki kesme ile yazılır"}
+{"id": 6373, "target": "Sesi çıkmaz olduydu.", "fix": "Sesi çıkmaz olmuştu.", "type": "dilbilgisi", "note": "olduydu -> olmuştu"}
+{"id": 6490, "target": "Sizin sonunda bulunduğunuz yolun ben daha başlarmdayım.", "fix": "Sizin sonunda bulunduğunuz yolun ben daha başlarındayım.", "type": "yazim", "note": "başlarmdayım -> başlarındayım"}
+{"id": 6535, "target": "Sonra birdenbire kaşlan çatıldı.", "fix": "Sonra birdenbire kaşları çatıldı.", "type": "yazim", "note": "kaşlan -> kaşları"}
+{"id": 6548, "target": "Sonra kürk mantosunu sırtına geçiriyor, merdivenlerden ağır ağır indiriyordum!", "fix": "Sonra kürk mantosunu sırtına geçiriyor, merdivenlerden ağır ağır iniyordu!", "type": "dilbilgisi", "note": "indirmek nesne ister, burada inmek gerekir; kişi uyumu için iniyordu"}
+{"id": 6583, "target": "Sorunun ne biliyor musun?", "fix": "Sorunun ne olduğunu biliyor musun?", "type": "dilbilgisi", "note": "eksik yapı: ne olduğunu"}

@@ -1,0 +1,26 @@
+{"id": 8018, "target": "İşte bütün bu haller, Aydının dağlarını, ormanlarını isyan eden çetelerle doldurmuştu.", "fix": "İşte bütün bu haller, Aydın'ın dağlarını, ormanlarını isyan eden çetelerle doldurmuştu.", "type": "kesme", "note": "Aydının -> Aydın'ın"}
+{"id": 8053, "target": "Şimdi Hüsamettin efendinin söyleyeceklerini merak da ediyordu.", "fix": "Şimdi Hüsamettin Efendi'nin söyleyeceklerini merak da ediyordu.", "type": "buyuk_harf", "note": "efendinin -> Efendi'nin"}
+{"id": 8152, "target": "Şurdan burdan topladığı kemikleri oyuncak gibi bir araya getirdi ve seyretti.", "fix": "Şuradan buradan topladığı kemikleri oyuncak gibi bir araya getirdi ve seyretti.", "type": "konusma_dili", "note": "Şurdan burdan -> Şuradan buradan"}
+{"id": 8213, "target": "Akşam sana anlatıyorsun.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8217, "target": "Akşam sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8454, "target": "Bir saat sonra sana bir şey diyeceksin.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8455, "target": "Bir saat sonra sana teşekkür edecek misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8458, "target": "Bir saat sonra sen sana söylüyorsun ama işten sonra evi temizlemeyeceğim.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8460, "target": "Bir saat sonra seni götürecek misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8551, "target": "Birazdan sana gönderecek misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8636, "target": "Bu akşam seninle konuşuyorsun.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8698, "target": "Bu hafta seni bulacaksın.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8800, "target": "Bu yaz teklifi düşünüyorum ama cumartesi seni dinliyorsun.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8868, "target": "Bugün seni anlayacaksın.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8869, "target": "Bugün seni bekleyeceksin.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8871, "target": "Bugün seni düşünür müsün?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8873, "target": "Bugün seninle buluşur musun?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8863, "target": "Bugün sana şunu der misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8958, "target": "Cumartesi sana göndereceksin.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8959, "target": "Cumartesi sana gönderir misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8961, "target": "Cumartesi sana uğrayacaksın.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8962, "target": "Cumartesi sana yardım edeceksin.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8963, "target": "Cumartesi sana şunu diyecek misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8964, "target": "Cumartesi sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8215, "target": "Akşam sana getirecek misin?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}
+{"id": 8216, "target": "Akşam sana yazacak mısın?", "fix": null, "type": "anlamsiz", "note": "2. tekil fiil ile sana/seni/seninle aynı kişi"}

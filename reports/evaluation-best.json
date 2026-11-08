@@ -2,38 +2,38 @@
   "checkpoint": "best",
   "metrics": {
     "examples": 1128,
-    "cer": 0.012374341790330302,
-    "wer": 0.06123139377537212,
-    "exact_match": 0.774822695035461,
-    "edit_precision": 0.9261849261849262,
-    "edit_recall": 0.8888888888888888,
-    "edit_f1": 0.9071537290715374,
+    "cer": 0.012900909526089037,
+    "wer": 0.06089309878213803,
+    "exact_match": 0.7801418439716312,
+    "edit_precision": 0.924915562483762,
+    "edit_recall": 0.8849117573949788,
+    "edit_f1": 0.9044715447154472,
     "clean_examples": 282,
-    "overcorrection": 0.01773049645390071
+    "overcorrection": 0.02127659574468085
   },
   "subsets": {
     "common_voice": {
       "metrics": {
         "examples": 640,
-        "cer": 0.015887564925145127,
-        "wer": 0.07671673819742489,
-        "exact_match": 0.7015625,
-        "edit_precision": 0.9085072231139647,
-        "edit_recall": 0.865112724493695,
-        "edit_f1": 0.8862791152867489,
+        "cer": 0.016727772685609533,
+        "wer": 0.07698497854077253,
+        "exact_match": 0.703125,
+        "edit_precision": 0.90883420734167,
+        "edit_recall": 0.8609094382881162,
+        "edit_f1": 0.8842229199372057,
         "clean_examples": 160,
-        "overcorrection": 0.03125
+        "overcorrection": 0.0375
       },
       "raw_metrics": {
         "examples": 640,
-        "cer": 0.014589062022609227,
+        "cer": 0.014970974641002138,
         "wer": 0.0740343347639485,
-        "exact_match": 0.70625,
-        "edit_precision": 0.9081551860649247,
-        "edit_recall": 0.8765762323270921,
-        "edit_f1": 0.8920863309352518,
+        "exact_match": 0.709375,
+        "edit_precision": 0.9111816019032514,
+        "edit_recall": 0.8781047000382117,
+        "edit_f1": 0.8943374197314652,
         "clean_examples": 160,
-        "overcorrection": 0.03125
+        "overcorrection": 0.0375
       },
       "identity_baseline": {
         "examples": 640,
@@ -51,22 +51,22 @@
       "metrics": {
         "examples": 488,
         "cer": 0.0064760194921774815,
-        "wer": 0.0347985347985348,
-        "exact_match": 0.8709016393442623,
-        "edit_precision": 0.95836376917458,
-        "edit_recall": 0.9331436699857752,
-        "edit_f1": 0.9455855855855857,
+        "wer": 0.033424908424908424,
+        "exact_match": 0.8811475409836066,
+        "edit_precision": 0.954014598540146,
+        "edit_recall": 0.9295874822190612,
+        "edit_f1": 0.9416426512968301,
         "clean_examples": 122,
         "overcorrection": 0.0
       },
       "raw_metrics": {
         "examples": 488,
         "cer": 0.006347781482431393,
-        "wer": 0.034340659340659344,
-        "exact_match": 0.8729508196721312,
-        "edit_precision": 0.9584245076586433,
-        "edit_recall": 0.9345661450924608,
-        "edit_f1": 0.9463449765934462,
+        "wer": 0.03296703296703297,
+        "exact_match": 0.8831967213114754,
+        "edit_precision": 0.9540816326530612,
+        "edit_recall": 0.9310099573257468,
+        "edit_f1": 0.9424046076313894,
         "clean_examples": 122,
         "overcorrection": 0.0
       },
@@ -85,14 +85,14 @@
   },
   "raw_metrics": {
     "examples": 1128,
-    "cer": 0.01151268549545237,
-    "wer": 0.05937077131258457,
-    "exact_match": 0.7783687943262412,
-    "edit_precision": 0.9258403900436233,
-    "edit_recall": 0.8968431518767089,
-    "edit_f1": 0.9111111111111112,
+    "cer": 0.011752034466251796,
+    "wer": 0.05886332882273342,
+    "exact_match": 0.7845744680851063,
+    "edit_precision": 0.926296866974833,
+    "edit_recall": 0.8965945811583396,
+    "edit_f1": 0.9112037387899456,
     "clean_examples": 282,
-    "overcorrection": 0.01773049645390071
+    "overcorrection": 0.02127659574468085
   },
   "identity_baseline": {
     "examples": 1128,
@@ -107,12 +107,12 @@
   },
   "manual_metrics": {
     "examples": 23,
-    "cer": 0.0029282576866764276,
-    "wer": 0.02040816326530612,
-    "exact_match": 0.9130434782608695,
-    "edit_precision": 0.9770114942528736,
-    "edit_recall": 0.9883720930232558,
-    "edit_f1": 0.9826589595375722,
+    "cer": 0.005856515373352855,
+    "wer": 0.05102040816326531,
+    "exact_match": 0.8695652173913043,
+    "edit_precision": 0.9761904761904762,
+    "edit_recall": 0.9534883720930233,
+    "edit_f1": 0.9647058823529412,
     "clean_examples": 9,
     "overcorrection": 0.0
   },
@@ -126,8 +126,8 @@
     {
       "input": "yarin arkadaşlarla buluşcaz sonrada sinemaya gidicez",
       "target": "Yarın arkadaşlarla buluşacağız, sonra da sinemaya gideceğiz.",
-      "output": "Yarın arkadaşlarla buluşacağız, sonra da sinemaya gideceğiz.",
-      "raw_output": "Yarın arkadaşlarla buluşacağız, sonra da sinemaya gideceğiz."
+      "output": "Yarın arkadaşlarla buluşacağız sonrada sinemaya gideceğiz.",
+      "raw_output": "Yarın arkadaşlarla buluşacağız sonrada sinemaya gideceğiz."
     },
     {
       "input": "Bu film baya iyi olmuş.",
@@ -198,8 +198,8 @@
     {
       "input": "bugün sinemaya gitcez sonra yemek yiycez",
       "target": "Bugün sinemaya gideceğiz sonra yemek yiyeceğiz.",
-      "output": "Bugün sinemaya gideceğiz, sonra yemek yiyeceğiz.",
-      "raw_output": "Bugün sinemaya gideceğiz, sonra yemek yiyeceğiz."
+      "output": "Bugün sinemaya gideceğiz sonra yemek yiyeceğiz.",
+      "raw_output": "Bugün sinemaya gideceğiz sonra yemek yiyeceğiz."
     },
     {
       "input": "Yapıcam dedim ama yapmıcam.",
@@ -222,8 +222,8 @@
     {
       "input": "yanlız kaldım burda",
       "target": "Yalnız kaldım burada.",
-      "output": "Yalnız kaldım burada.",
-      "raw_output": "Yalnız kaldım burada."
+      "output": "Yalnız kaldım burada?",
+      "raw_output": "Yalnız kaldım burada?"
     },
     {
       "input": "napıyosun bugun",
@@ -298,8 +298,8 @@
       "target": "Eskiye itibar olsaydı bitpazarına nur yağardı.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
-      "raw_output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
+      "output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
+      "raw_output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
       "warnings": []
     },
     {
@@ -325,8 +325,8 @@
       "target": "Eşeği süren osuruğuna katlanır.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Eşeği süren osuruğuna katşanır.",
-      "raw_output": "Eşeği süren osuruğuna katşanır.",
+      "output": "Yeği süren osuruğuna katşanır.",
+      "raw_output": "Yeği süren osuruğuna katşanır.",
       "warnings": []
     },
     {
@@ -334,8 +334,8 @@
       "target": "Seni seviyor musun?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sen seviyor musun?",
-      "raw_output": "Sen seviyor musun?",
+      "output": "Seni seviyor musun?",
+      "raw_output": "Seni seviyor musun?",
       "warnings": []
     },
     {
@@ -343,8 +343,8 @@
       "target": "Her zamankinden daha iltifatkarsınız sultanım.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Her zamankinden daha iltifat karsınız sullanım.",
-      "raw_output": "Her zamankinden daha iltifat karsınız sullanım.",
+      "output": "Her zamankinden daha iltifatkarsınız sullanım.",
+      "raw_output": "Her zamankinden daha iltifatkarsınız sullanım.",
       "warnings": []
     },
     {
@@ -370,8 +370,8 @@
       "target": "Ben onu beklerken, evimi ona kabule hazırlarken ölmüştü.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ben onu beklerken, evimi ona kabule hazırlarken olmuştu.",
-      "raw_output": "Ben onu beklerken, evimi ona kabule hazırlarken olmuştu.",
+      "output": "Ben onu beklerken, evimi ona kabule hazırleken olmuştu.",
+      "raw_output": "Ben onu beklerken, evimi ona kabule hazırleken olmuştu.",
       "warnings": []
     },
     {
@@ -577,8 +577,8 @@
       "target": "Size ihtiyacım yok.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Siye ihiyacım yok.",
-      "raw_output": "Siye ihiyacım yok.",
+      "output": "Sihiyacım yok.",
+      "raw_output": "Sihiyacım yok.",
       "warnings": []
     },
     {
@@ -658,8 +658,8 @@
       "target": "Zehra'nın canı çok çok sıkkın!",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Zehr'in canı çok çok sıkkın!",
-      "raw_output": "Zehr'in canı çok çok sıkkın!",
+      "output": "Zehr'nin canı çok çok sıkkın!",
+      "raw_output": "Zehr'nin canı çok çok sıkkın!",
       "warnings": []
     },
     {
@@ -703,8 +703,8 @@
       "target": "Pekala, hazır mısınız?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Pek ala, hiç misiniz?",
-      "raw_output": "Pek ala, hiç misiniz?",
+      "output": "Pekala, hiç misiniz?",
+      "raw_output": "Pekala, hiç misiniz?",
       "warnings": []
     },
     {
@@ -777,8 +777,8 @@
       "target": "Bir kere çıkayım da, sonrası kolay.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir kere çıkayım, fa sonrası kolay.",
-      "raw_output": "Bir kere çıkayım, fa sonrası kolay.",
+      "output": "Bir kere çıkayım fakat sonrası kolay.",
+      "raw_output": "Bir kere çıkayım fakat sonrası kolay.",
       "warnings": []
     },
     {
@@ -795,8 +795,8 @@
       "target": "Ben yukarıda sedire uzanırım!",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ben yukarda sedire uzanurım!",
-      "raw_output": "Ben yukarda sedire uzanurım!",
+      "output": "Ben yukarda sedire uzanırım!",
+      "raw_output": "Ben yukarda sedire uzanırım!",
       "warnings": []
     },
     {
@@ -813,8 +813,8 @@
       "target": "Merak edilecek bir şey yok.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Merakedilecek bir şey yok.",
-      "raw_output": "Merakedilecek bir şey yok.",
+      "output": "Merak edilecek bir şey yok.",
+      "raw_output": "Merak edilecek bir şey yok.",
       "warnings": []
     },
     {
@@ -840,8 +840,8 @@
       "target": "Fakat adresini bilmiyordum.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Fakat adresin bilmiyordum.",
-      "raw_output": "Fakat adresin bilmiyordum.",
+      "output": "Fakat dersin bilmiyordum.",
+      "raw_output": "Fakat dersin bilmiyordum.",
       "warnings": []
     },
     {
@@ -867,8 +867,8 @@
       "target": "Olan bitenden bir şey anlamış değildim.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Olan ibtenden bir şey anlamış değildim.",
-      "raw_output": "Olan ibtenden bir şey anlamış değildim.",
+      "output": "Olan birtenden bir şey anlamış değildim.",
+      "raw_output": "Olan birtenden bir şey anlamış değildim.",
       "warnings": []
     },
     {
@@ -1146,8 +1146,8 @@
       "target": "Ben üstüme düşeni yaptım.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Be üstüme düşeni yaptım.",
-      "raw_output": "Be üstüme düşeni yaptım.",
+      "output": "Ben üstüme düşeni yaptım.",
+      "raw_output": "Ben üstüme düşeni yaptım.",
       "warnings": []
     },
     {
@@ -1191,8 +1191,8 @@
       "target": "Yarın ben daha çok çalışmayacağım.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Yarın ben daha çok çoluşmayacağım.",
-      "raw_output": "Yarın ben daha çok çoluşmayacağım.",
+      "output": "Yarın ben daha çok çılşmayacağım.",
+      "raw_output": "Yarın ben daha çok çılşmayacağım.",
       "warnings": []
     },
     {
@@ -1344,8 +1344,8 @@
       "target": "Pekala, hazır mısınız?",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Pek ala hazır mısınız?",
-      "raw_output": "Pek ala hazır mısınız?",
+      "output": "Pekala hazır mısınız?",
+      "raw_output": "Pekala hazır mısınız?",
       "warnings": []
     },
     {
@@ -1362,8 +1362,8 @@
       "target": "Evet, hakkınız var, fakat artık benim tavsiyelerimi dinlemiyor.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Evet, hakkı biz var, fakat artık benim tavsiyelerimi dinlemiyor.",
-      "raw_output": "Evet, hakkı biz var, fakat artık benim tavsiyelerimi dinlemiyor.",
+      "output": "Evet, hakkıbiz var, fakat artık benim tavsiyelerimi dinlemiyor.",
+      "raw_output": "Evet, hakkıbiz var, fakat artık benim tavsiyelerimi dinlemiyor.",
       "warnings": []
     },
     {
@@ -1389,8 +1389,8 @@
       "target": "Öğleden sonra ben sana bir şey diyeceğim.",
       "difficulty": "kolay",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Öğleden sonra ben sana bir şey diyeceğim.",
-      "raw_output": "Öğleden sonra ben sana bir şey diyeceğim.",
+      "output": "Öğleden sonra ben sana bir şey deyeceğim.",
+      "raw_output": "Öğleden sonra ben sana bir şey deyeceğim.",
       "warnings": []
     },
     {
@@ -1407,8 +1407,8 @@
       "target": "Her zamankinden daha iltifatkarsınız sultanım.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Her zamankinden daha iltifat karsınız sultanım.",
-      "raw_output": "Her zamankinden daha iltifat karsınız sultanım.",
+      "output": "Her zamankinden daha iltifatkarsınız sultanım.",
+      "raw_output": "Her zamankinden daha iltifatkarsınız sultanım.",
       "warnings": []
     },
     {
@@ -1425,8 +1425,8 @@
       "target": "Neden korkayım ki?",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Neden konuşayım ki?",
-      "raw_output": "Neden konuşayım ki?",
+      "output": "Neden korkayım ki?",
+      "raw_output": "Neden korkayım ki?",
       "warnings": []
     },
     {
@@ -1686,8 +1686,8 @@
       "target": "Emanet eşeğin yuları gevşek olur.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Emanet eşeğin yuları gevşek olur.",
-      "raw_output": "Emanet eşeğin yuları gevşek olur.",
+      "output": "Emanet eseğin yuları gevşek olur.",
+      "raw_output": "Emanet eseğin yuları gevşek olur.",
       "warnings": []
     },
     {
@@ -1704,8 +1704,8 @@
       "target": "Herif, müfettişler Hamburg usulü bilmezler diye defterleri Hamburg usulü tutuyor.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Herif müfettişler Hamburg usulu bilmezler diye defterleri Hamburg usulu tutuyor.",
-      "raw_output": "Herif müfettişler Hamburg usulu bilmezler diye defterleri Hamburg usulu tutuyor.",
+      "output": "Herif müfettisler Hamburg usulu bilmezler diye defterleri Hamburg usulu tutuyor.",
+      "raw_output": "Herif müfettisler Hamburg usulu bilmezler diye defterleri Hamburg usulu tutuyor.",
       "warnings": []
     },
     {
@@ -1776,8 +1776,8 @@
       "target": "Birazdan maçı izleyeceksin.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Birazdan mçı ileyeceksin.",
-      "raw_output": "Birazdan mçı ileyeceksin.",
+      "output": "Birazdan müçi ileyeceksin.",
+      "raw_output": "Birazdan müçi ileyeceksin.",
       "warnings": []
     },
     {
@@ -1866,8 +1866,8 @@
       "target": "Hazır kadın da bulunmuşken, bir faaliyet göstermeliydi.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Hazır kadın da bulunmuş ken, bir faaliyet göstermeliydi.",
-      "raw_output": "Hazır kadın da bulunmuş ken, bir faaliyet göstermeliydi.",
+      "output": "Hazır kadın da bulunmuşken, bir faaliyet göstermeliydi.",
+      "raw_output": "Hazır kadın da bulunmuşken, bir faaliyet göstermeliydi.",
       "warnings": []
     },
     {
@@ -1884,8 +1884,8 @@
       "target": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olmuş geldiğini gördü.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Etrafına bakınırken ilerideki sokak başındaküçük bir küfecinin iki kat olmuş geldiğini gördü.",
-      "raw_output": "Etrafına bakınırken ilerideki sokak başındaküçük bir küfecinin iki kat olmuş geldiğini gördü.",
+      "output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olmuş geldiğini gördü.",
+      "raw_output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olmuş geldiğini gördü.",
       "warnings": []
     },
     {
@@ -2118,8 +2118,8 @@
       "target": "Bizi görünce odadakilerin hepsi ayağa kalktılar.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bizi görünce odadaki şerin hepsi ayağa kalktılar.",
-      "raw_output": "Bizi görünce odadaki şerin hepsi ayağa kalktılar.",
+      "output": "Bizi görünce odada kişerin hepsi ayağa kalktılar.",
+      "raw_output": "Bizi görünce odada kişerin hepsi ayağa kalktılar.",
       "warnings": []
     },
     {
@@ -2208,8 +2208,8 @@
       "target": "Küçük satıcı, o titrek ve ince sesiyle bağırıyordu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Küçük satıcı titrek ve ince sesiyle bağırıyordu.",
-      "raw_output": "Küçük satıcı titrek ve ince sesiyle bağırıyordu.",
+      "output": "Küçük satıcı o titrek ve ince sesiyle bağırıyordu.",
+      "raw_output": "Küçük satıcı o titrek ve ince sesiyle bağırıyordu.",
       "warnings": []
     },
     {
@@ -2244,8 +2244,8 @@
       "target": "Bir kere heybetli delikanlıydı!",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir kere heybetle delikanlıydı!",
-      "raw_output": "Bir kere heybetle delikanlıydı!",
+      "output": "Bir kere heybetli delikanlıydı!",
+      "raw_output": "Bir kere heybetli delikanlıydı!",
       "warnings": []
     },
     {
@@ -2307,8 +2307,8 @@
       "target": "Hocam sonucu öğrenecek.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Hocam sonucu öğreyecek.",
-      "raw_output": "Hocam sonucu öğreyecek.",
+      "output": "Hocam sonu çöğreyecek.",
+      "raw_output": "Hocam sonu çöğreyecek.",
       "warnings": []
     },
     {
@@ -2379,8 +2379,8 @@
       "target": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
-      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
+      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
+      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
       "warnings": []
     },
     {
@@ -2460,11 +2460,9 @@
       "target": "Bize yardım edebilir misin?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bize yardım EDBILIR misin?",
-      "raw_output": "Bize yardım edecek misin?",
-      "warnings": [
-        "1 kelime grubu harf benzerliği olmadığı için özgün haliyle korundu"
-      ]
+      "output": "Bize yardım edebilir misin?",
+      "raw_output": "Bize yardım edebilir misin?",
+      "warnings": []
     },
     {
       "input": "Bi raz sora Ali yem ek getiryior.",
@@ -2597,8 +2595,8 @@
       "target": "Fakat benim için bundan sonra eski uykuya dönmek imkânı yoktu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Fakat benim için bundan sonra eksi uykuya dönmek imkânı yoktu.",
-      "raw_output": "Fakat benim için bundan sonra eksi uykuya dönmek imkânı yoktu.",
+      "output": "Fakat benim için bundan sonra eksi uykuya dönmekim kânı yoktu.",
+      "raw_output": "Fakat benim için bundan sonra eksi uykuya dönmekim kânı yoktu.",
       "warnings": []
     },
     {
@@ -2606,8 +2604,8 @@
       "target": "Burası da en nihayet bir şehirdi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bura sıda en nihayte bir şehirdi.",
-      "raw_output": "Bura sıda en nihayte bir şehirdi.",
+      "output": "Burası da en nihayte bir şehirdi.",
+      "raw_output": "Burası da en nihayte bir şehirdi.",
       "warnings": []
     },
     {
@@ -2642,8 +2640,8 @@
       "target": "Ben de sizi bekliyordum.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ben de sizi bekliyordu.",
-      "raw_output": "Ben de sizi bekliyordu.",
+      "output": "Bendesizi bekliyordu.",
+      "raw_output": "Bendesizi bekliyordu.",
       "warnings": []
     },
     {
@@ -2714,8 +2712,8 @@
       "target": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olmuş geldiğini gördü.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat oluma geldiğini gördü.",
-      "raw_output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat oluma geldiğini gördü.",
+      "output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olumuş geldiğini gördü.",
+      "raw_output": "Etrafına bakınırken ilerideki sokak başında küçük bir küfecinin iki kat olumuş geldiğini gördü.",
       "warnings": []
     },
     {
@@ -2741,8 +2739,8 @@
       "target": "Çekemedi son nazı.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Çekemedi son nazı.",
-      "raw_output": "Çekemedi son nazı.",
+      "output": "Çekemedi sonrazı.",
+      "raw_output": "Çekemedi sonrazı.",
       "warnings": []
     },
     {
@@ -2831,8 +2829,8 @@
       "target": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
-      "raw_output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
+      "output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelikk işlerdendi.",
+      "raw_output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelikk işlerdendi.",
       "warnings": []
     },
     {
@@ -2849,8 +2847,8 @@
       "target": "Ummadığın taş baş yarar.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ummadın taş baş arar.",
-      "raw_output": "Ummadın taş baş arar.",
+      "output": "Ummadın taş baş urarar.",
+      "raw_output": "Ummadın taş baş urarar.",
       "warnings": []
     },
     {
@@ -2966,8 +2964,8 @@
       "target": "Hani nerdeyse harman yerlerinden duyulacaktı.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Hani neredeyse harman yerlerinden duyulacaktı.",
-      "raw_output": "Hani neredeyse harman yerlerinden duyulacaktı.",
+      "output": "Haninerdeyse harman yerlerinden duyulacaktı.",
+      "raw_output": "Haninerdeyse harman yerlerinden duyulacaktı.",
       "warnings": []
     },
     {
@@ -3164,8 +3162,8 @@
       "target": "En azından öyleydi.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "En zından öyleydi.",
-      "raw_output": "En zından öyleydi.",
+      "output": "Enzindan öyle değil.",
+      "raw_output": "Enzindan öyle değil.",
       "warnings": []
     },
     {
@@ -3182,8 +3180,8 @@
       "target": "Ben de sizi bekliyordum.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ben de sizi belkiyordum.",
-      "raw_output": "Ben de sizi belkiyordum.",
+      "output": "Ben de sizi bekliyordum.",
+      "raw_output": "Ben de sizi bekliyordum.",
       "warnings": []
     },
     {
@@ -3256,8 +3254,8 @@
       "target": "Sabah biz yemeği hazırlayacağız, tatilde sen size uğrayacaksın.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sabah biz yemeği hazırlayacağız, tatilde sen size uğrayacağız.",
-      "raw_output": "Sabah biz yemeği hazırlayacağız, tatilde sen size uğrayacağız.",
+      "output": "Sabah biz yemeği hazırlayacağız, tatilde sen size uğrayacaksın.",
+      "raw_output": "Sabah biz yemeği hazırlayacağız, tatilde sen size uğrayacaksın.",
       "warnings": []
     },
     {
@@ -3265,8 +3263,8 @@
       "target": "Bir şeyler ayarlarız.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir şey ayarlarız.",
-      "raw_output": "Bir şey ayarlarız.",
+      "output": "Bir şeyer ayarlarız.",
+      "raw_output": "Bir şeyer ayarlarız.",
       "warnings": []
     },
     {
@@ -3337,8 +3335,8 @@
       "target": "Necati'nin mirasını kimse tanımaz.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Necatinın mırasını kimse tanımaz?",
-      "raw_output": "Necatinın mırasını kimse tanımaz?",
+      "output": "Necatinin mirasını kimse tanımaz.",
+      "raw_output": "Necatinin mirasını kimse tanımaz.",
       "warnings": []
     },
     {
@@ -3373,8 +3371,8 @@
       "target": "Ne iş yapıyordun?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ne iş yaptırdın?",
-      "raw_output": "Ne iş yaptırdın?",
+      "output": "Ne iş yapıyordun?",
+      "raw_output": "Ne iş yapıyordun?",
       "warnings": []
     },
     {
@@ -3643,8 +3641,8 @@
       "target": "Söyleyecek bir kelime bulamadı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Söyleyece bir kelime bulamadı.",
-      "raw_output": "Söyleyece bir kelime bulamadı.",
+      "output": "Söyleyecek bir kelime bulamadı.",
+      "raw_output": "Söyleyecek bir kelime bulamadı.",
       "warnings": []
     },
     {
@@ -3769,8 +3767,8 @@
       "target": "Karı kapının yanındaymış.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Karı kapının yanındayamış.",
-      "raw_output": "Karı kapının yanındayamış.",
+      "output": "Karı kapının yanında yamış.",
+      "raw_output": "Karı kapının yanında yamış.",
       "warnings": []
     },
     {
@@ -3796,8 +3794,8 @@
       "target": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
-      "raw_output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
+      "output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
+      "raw_output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
       "warnings": []
     },
     {
@@ -3841,8 +3839,8 @@
       "target": "Ne iş yapıyordun?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ne iş yapıyorsun?",
-      "raw_output": "Ne iş yapıyorsun?",
+      "output": "Ne iş yapıyordun?",
+      "raw_output": "Ne iş yapıyordun?",
       "warnings": []
     },
     {
@@ -3895,8 +3893,8 @@
       "target": "Biraz sonra su içeceğim.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Biraz sonra su içeceğim.",
-      "raw_output": "Biraz sonra su içeceğim.",
+      "output": "Biraz sonrası içeceğim.",
+      "raw_output": "Biraz sonrası içeceğim.",
       "warnings": []
     },
     {
@@ -4039,8 +4037,8 @@
       "target": "Konuşmak niyetiyle çıktıkları halde ikisi de kendi âlemlerine dalmışlardı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Konuşmak niyetiyle çıkıtları halde ikisi de kendi âlemlerine dalmışlardı.",
-      "raw_output": "Konuşmak niyetiyle çıkıtları halde ikisi de kendi âlemlerine dalmışlardı.",
+      "output": "Konuşmak niyetiyle çıkıtkları halde ikisi de kendi âlemlerine dalmışlardı.",
+      "raw_output": "Konuşmak niyetiyle çıkıtkları halde ikisi de kendi âlemlerine dalmışlardı.",
       "warnings": []
     },
     {
@@ -4066,8 +4064,8 @@
       "target": "Kalp krizi geçiriyor.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kalp krızı geçiriyor.",
-      "raw_output": "Kalp krızı geçiriyor.",
+      "output": "Kalp krizi geçiriyorum.",
+      "raw_output": "Kalp krizi geçiriyorum.",
       "warnings": []
     },
     {
@@ -4075,8 +4073,8 @@
       "target": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "İyi etmediniz, bizim kaptan asabıdır, sakadan haz etmez.",
-      "raw_output": "İyi etmediniz, bizim kaptan asabıdır, sakadan haz etmez.",
+      "output": "İyi etmediniz, bizim kaptan asabidir, sakadan hazetmez.",
+      "raw_output": "İyi etmediniz, bizim kaptan asabidir, sakadan hazetmez.",
       "warnings": []
     },
     {
@@ -4093,8 +4091,8 @@
       "target": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Tavuslara, sülnlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
-      "raw_output": "Tavuslara, sülnlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
+      "output": "Tavuslara, sülnlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.",
+      "raw_output": "Tavuslara, sülnlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.",
       "warnings": []
     },
     {
@@ -4183,8 +4181,8 @@
       "target": "Kimse var mı orada?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kimse var mı orada?",
-      "raw_output": "Kimse var mı orada?",
+      "output": "Kimse var orada?",
+      "raw_output": "Kimse var orada?",
       "warnings": []
     },
     {
@@ -4300,8 +4298,8 @@
       "target": "İçimde sevinçle hüzün arasında garip bir hal vardı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "İçimde süvnçle hüzün arasında garip bir hal verdi.",
-      "raw_output": "İçimde süvnçle hüzün arasında garip bir hal verdi.",
+      "output": "İçimde sevinçle hüzün arasında garip bir hal verdi.",
+      "raw_output": "İçimde sevinçle hüzün arasında garip bir hal verdi.",
       "warnings": []
     },
     {
@@ -4309,8 +4307,8 @@
       "target": "Siyah eteklikli, topukları yırtık siyah çoraplı, şipidik terlikli şişman bir kadın yerleri siliyordu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Siyah eteklikli, topukları yırttık siyah çoraplı, sıpıdık terlikli sısman bir kadın yerleri sılıyordu.",
-      "raw_output": "Siyah eteklikli, topukları yırttık siyah çoraplı, sıpıdık terlikli sısman bir kadın yerleri sılıyordu.",
+      "output": "Siyah eteklikli, topukları yirttik siyah çoraplı, sıpıdık terlikli sısman bir kadın yerleri siliyordu.",
+      "raw_output": "Siyah eteklikli, topukları yirttik siyah çoraplı, sıpıdık terlikli sısman bir kadın yerleri siliyordu.",
       "warnings": []
     },
     {
@@ -4363,8 +4361,8 @@
       "target": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "İyi etmediniz, bizim kaptan asabıdır, şakadan hazzetmez.",
-      "raw_output": "İyi etmediniz, bizim kaptan asabıdır, şakadan hazzetmez.",
+      "output": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
+      "raw_output": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "warnings": []
     },
     {
@@ -4381,8 +4379,8 @@
       "target": "Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda, çıkıp gitti.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda çıkıp gitti.",
-      "raw_output": "Pantolon cebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda çıkıp gitti.",
+      "output": "Pantolon çebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda çıkıp gitti.",
+      "raw_output": "Pantolon çebinde bir hayli arandıktan sonra parayı verdi, polislerin kolunda çıkıp gitti.",
       "warnings": []
     },
     {
@@ -4606,8 +4604,8 @@
       "target": "Islak kumlar ayaklarımızın altında gıcırdıyordu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Islak kumlar ayaklarımızın altında gıçırdıyordu.",
-      "raw_output": "Islak kumlar ayaklarımızın altında gıçırdıyordu.",
+      "output": "İslak kumlar ayaklarımızın altında giçirdiyordu.",
+      "raw_output": "İslak kumlar ayaklarımızın altında giçirdiyordu.",
       "warnings": []
     },
     {
@@ -4642,8 +4640,8 @@
       "target": "Konuşmamız gereken çok şey var.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Konuşmamız gereken çok şey avar.",
-      "raw_output": "Konuşmamız gereken çok şey avar.",
+      "output": "Konuşmamız gereken çok şey avr.",
+      "raw_output": "Konuşmamız gereken çok şey avr.",
       "warnings": []
     },
     {
@@ -4714,8 +4712,8 @@
       "target": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "İyi etmediniz, bizim kaptan asabıdır, şakadan hazzetmez.",
-      "raw_output": "İyi etmediniz, bizim kaptan asabıdır, şakadan hazzetmez.",
+      "output": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
+      "raw_output": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "warnings": []
     },
     {
@@ -4750,11 +4748,9 @@
       "target": "Kendisi de biraz doğruldu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kendisi ed biraz oğruldu.",
-      "raw_output": "Kendisi de biraz oğruldu.",
-      "warnings": [
-        "1 kelime grubu harf benzerliği olmadığı için özgün haliyle korundu"
-      ]
+      "output": "Kendisi ede biraz oğruldu.",
+      "raw_output": "Kendisi ede biraz oğruldu.",
+      "warnings": []
     },
     {
       "input": "Kitabı bitireceksin, tamam mı?",
@@ -4806,8 +4802,8 @@
       "target": "Eskiye itibar olsaydı bitpazarına nur yağardı.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
-      "raw_output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
+      "output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
+      "raw_output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
       "warnings": []
     },
     {
@@ -4815,8 +4811,8 @@
       "target": "Biraz sonra su içeceğim.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Biraz sonra su iyeceğim.",
-      "raw_output": "Biraz sonra su iyeceğim.",
+      "output": "Biraz sonra su iveceğim.",
+      "raw_output": "Biraz sonra su iveceğim.",
       "warnings": []
     },
     {
@@ -4851,8 +4847,8 @@
       "target": "Eskiye itibar olsaydı bitpazarına nur yağardı.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
-      "raw_output": "Eskiye itibar olsaydı bir pazarına nur yağardı.",
+      "output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
+      "raw_output": "Eskiye itibar olsaydı bit pazarına nur yağardı.",
       "warnings": []
     },
     {
@@ -4923,8 +4919,8 @@
       "target": "Dört gün sonra, Polonya ve Romanya üzerinden Türkiye'ye döndüm.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Dört gün sonra Polonya ve Romanya üzerinden Türkieye döndüm.",
-      "raw_output": "Dört gün sonra Polonya ve Romanya üzerinden Türkieye döndüm.",
+      "output": "Dört gün sonra Polonya ve Romanya üzerinden Türkiye'ye döndüm.",
+      "raw_output": "Dört gün sonra Polonya ve Romanya üzerinden Türkiye'ye döndüm.",
       "warnings": []
     },
     {
@@ -5114,8 +5110,8 @@
       "target": "Söylediği buna benzer şeylerdi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Söylediği buna benzer şeylerde.",
-      "raw_output": "Söylediği buna benzer şeylerde.",
+      "output": "Söylediği buna benzer şeylerdi.",
+      "raw_output": "Söylediği buna benzer şeylerdi.",
       "warnings": []
     },
     {
@@ -5132,8 +5128,8 @@
       "target": "Kusura bakma, unutmuşum.",
       "difficulty": "kolay",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Kuşura bakma, unutmuşum.",
-      "raw_output": "Kuşura bakma, unutmuşum.",
+      "output": "Kusura bakma, unutmuşum.",
+      "raw_output": "Kusura bakma, unutmuşum.",
       "warnings": []
     },
     {
@@ -5168,8 +5164,8 @@
       "target": "Hocam akşam arıyor.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Hocam akşam arıyor.",
-      "raw_output": "Hocam akşam arıyor.",
+      "output": "Hocam akşamarıyor.",
+      "raw_output": "Hocam akşamarıyor.",
       "warnings": []
     },
     {
@@ -5177,8 +5173,8 @@
       "target": "Hadi ama bebeğim.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Hadi ama bebeğim.",
-      "raw_output": "Hadi ama bebeğim.",
+      "output": "Hadi ama ben beğim.",
+      "raw_output": "Hadi ama ben beğim.",
       "warnings": []
     },
     {
@@ -5213,9 +5209,11 @@
       "target": "Sizin suçunuz değil.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Sizin sünüz değil.",
-      "raw_output": "Sizin sünüz değil.",
-      "warnings": []
+      "output": "sIZINSUÖUNUZDEĞIL.",
+      "raw_output": "Sizin suçunuz değil.",
+      "warnings": [
+        "kapsamlı/eksik üretim korunma filtresiyle reddedildi"
+      ]
     },
     {
       "input": "Tatilde yemek getircek miyiz?",
@@ -5240,8 +5238,8 @@
       "target": "Peki ya senin ailen?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Öki ya senin alilen?",
-      "raw_output": "Öki ya senin alilen?",
+      "output": "Öki ya senin ailen?",
+      "raw_output": "Öki ya senin ailen?",
       "warnings": []
     },
     {
@@ -5366,8 +5364,8 @@
       "target": "Konuşmama hakkına sahipsin.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Konuşmama hakkına sahipsin.",
-      "raw_output": "Konuşmama hakkına sahipsin.",
+      "output": "Konuşmama hakkın asahipsin.",
+      "raw_output": "Konuşmama hakkın asahipsin.",
       "warnings": []
     },
     {
@@ -5438,8 +5436,8 @@
       "target": "Başka türlü olacağını mı zannediyordunuz?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Başka türlü olacağını mı zan nediyordunuz?",
-      "raw_output": "Başka türlü olacağını mı zan nediyordunuz?",
+      "output": "Başkatürlü olacağını mı zan nediyordunuz?",
+      "raw_output": "Başkatürlü olacağını mı zan nediyordunuz?",
       "warnings": []
     },
     {
@@ -5447,8 +5445,8 @@
       "target": "Şimdi bir yol bulacağım herhalde.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Şimdi bir yol balacağım herhalde.",
-      "raw_output": "Şimdi bir yol balacağım herhalde.",
+      "output": "Şimdi bir yol bakacağım herhalde.",
+      "raw_output": "Şimdi bir yol bakacağım herhalde.",
       "warnings": []
     },
     {
@@ -5492,8 +5490,8 @@
       "target": "Atın ürkeği, yiğidin korkağı.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Atın ürkeği, yiğidin korkağı.",
-      "raw_output": "Atın ürkeği, yiğidin korkağı.",
+      "output": "Atın ürkeği, yığıdın korkağı.",
+      "raw_output": "Atın ürkeği, yığıdın korkağı.",
       "warnings": []
     },
     {
@@ -5510,8 +5508,8 @@
       "target": "Öyle bir şey yapmam.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Öyle bir şey unapmam.",
-      "raw_output": "Öyle bir şey unapmam.",
+      "output": "Öyle bir şey uyapmam.",
+      "raw_output": "Öyle bir şey uyapmam.",
       "warnings": []
     },
     {
@@ -5519,8 +5517,8 @@
       "target": "Ne iş yapıyordun?",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ne iş yapıyorsun?",
-      "raw_output": "Ne iş yapıyorsun?",
+      "output": "Ne iş yapıyordun?",
+      "raw_output": "Ne iş yapıyordun?",
       "warnings": []
     },
     {
@@ -5546,8 +5544,8 @@
       "target": "Sizin köyün hıyanet olduğunu kim bilmez ki!",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Sizin köyün hıyanet olduğunu kım bilmez ki!",
-      "raw_output": "Sizin köyün hıyanet olduğunu kım bilmez ki!",
+      "output": "Sizin köyün hıyanet olduğunu kim bilmez ki!",
+      "raw_output": "Sizin köyün hıyanet olduğunu kim bilmez ki!",
       "warnings": []
     },
     {
@@ -5609,8 +5607,8 @@
       "target": "Cumartesi kardeşim kahvaltıyı hazırlayacak.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Çomartesi kardeşim kahvaltıyı hazırlayacak.",
-      "raw_output": "Çomartesi kardeşim kahvaltıyı hazırlayacak.",
+      "output": "Cumartesi kardeşim kahvaltıyı hazırlayacak.",
+      "raw_output": "Cumartesi kardeşim kahvaltıyı hazırlayacak.",
       "warnings": []
     },
     {
@@ -5645,8 +5643,8 @@
       "target": "Bu ölü toprakların üstünde hiçbir şey ölmek ve öldürmek kadar kolay değildir.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bu ölüyü toprakların üstünde hiçbir şey ölmek ve öldürmek kadar kolay değildir.",
-      "raw_output": "Bu ölüyü toprakların üstünde hiçbir şey ölmek ve öldürmek kadar kolay değildir.",
+      "output": "Bu ölü toprakların üstünde hiçbir şey ölmek ve öldürmek kadar kolay değildir.",
+      "raw_output": "Bu ölü toprakların üstünde hiçbir şey ölmek ve öldürmek kadar kolay değildir.",
       "warnings": []
     },
     {
@@ -5654,8 +5652,8 @@
       "target": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
-      "raw_output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
+      "output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
+      "raw_output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
       "warnings": []
     },
     {
@@ -5773,8 +5771,8 @@
       "target": "Biraz sonra gerçeği söyler misin?",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Biraz sonra gerçeği söyler misin?",
-      "raw_output": "Biraz sonra gerçeği söyler misin?",
+      "output": "Biraz sonra gereceği söyler misin?",
+      "raw_output": "Biraz sonra gereceği söyler misin?",
       "warnings": []
     },
     {
@@ -5782,8 +5780,8 @@
       "target": "İçinde güçlükle zapt ettiği bir ağlamak ihtiyacı vardı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "İçinde güçlüle zapt ettiği bir ağlamak ihtiyacı vardı.",
-      "raw_output": "İçinde güçlüle zapt ettiği bir ağlamak ihtiyacı vardı.",
+      "output": "İçinde güçlükle zapt ettiği bir ağlamak ihtiyacı vardı.",
+      "raw_output": "İçinde güçlükle zapt ettiği bir ağlamak ihtiyacı vardı.",
       "warnings": []
     },
     {
@@ -5845,8 +5843,8 @@
       "target": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
-      "raw_output": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
+      "output": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.",
+      "raw_output": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çulluğun, avı oldu.",
       "warnings": []
     },
     {
@@ -5881,8 +5879,8 @@
       "target": "Fakat adresini bilmiyordum.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Fakat adresini bilmiyordum.",
-      "raw_output": "Fakat adresini bilmiyordum.",
+      "output": "Fakat deresini bilmiyordum.",
+      "raw_output": "Fakat deresini bilmiyordum.",
       "warnings": []
     },
     {
@@ -5899,8 +5897,8 @@
       "target": "Şunu tutar mısın?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Şunu tutar mısın?",
-      "raw_output": "Şunu tutar mısın?",
+      "output": "Sunu tutar mısın?",
+      "raw_output": "Sunu tutar mısın?",
       "warnings": []
     },
     {
@@ -5962,8 +5960,8 @@
       "target": "Kutusunu afili bir tavırla omuzuna vurarak yürüdü.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kutusunu afılı bir tavırla omuzuna vurarak yürüdü.",
-      "raw_output": "Kutusunu afılı bir tavırla omuzuna vurarak yürüdü.",
+      "output": "Kütüsünü afılı bir tavırla omuzuna vurarak yürüdü.",
+      "raw_output": "Kütüsünü afılı bir tavırla omuzuna vurarak yürüdü.",
       "warnings": []
     },
     {
@@ -6079,8 +6077,8 @@
       "target": "Benimle dalga mı geçiyorsun?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Benimle dalgamı geçiyorsun?",
-      "raw_output": "Benimle dalgamı geçiyorsun?",
+      "output": "Benimle dalga mı geçiyorsun?",
+      "raw_output": "Benimle dalga mı geçiyorsun?",
       "warnings": []
     },
     {
@@ -6160,8 +6158,8 @@
       "target": "Peki ya senin ailen?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Peki ya senin alma?",
-      "raw_output": "Peki ya senin alma?",
+      "output": "Peki ya senin alın?",
+      "raw_output": "Peki ya senin alın?",
       "warnings": []
     },
     {
@@ -6385,8 +6383,8 @@
       "target": "Islak kumlar ayaklarımızın altında gıcırdıyordu.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Işlak kumlar ayaklarımızın altında giçirdiyordu.",
-      "raw_output": "Işlak kumlar ayaklarımızın altında giçirdiyordu.",
+      "output": "Islak kumlar ayaklarımızın altında giçirdiyordu.",
+      "raw_output": "Islak kumlar ayaklarımızın altında giçirdiyordu.",
       "warnings": []
     },
     {
@@ -6412,8 +6410,8 @@
       "target": "Eskiye itibar olsaydı bitpazarına nur yağardı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Eskiye itibar olsaydı bir to azarına nur yağardı.",
-      "raw_output": "Eskiye itibar olsaydı bir to azarına nur yağardı.",
+      "output": "Eskiye itibar olsaydı bir tozarına nur yağardı.",
+      "raw_output": "Eskiye itibar olsaydı bir tozarına nur yağardı.",
       "warnings": []
     },
     {
@@ -6547,8 +6545,8 @@
       "target": "Sonra ortalığı yıldırmış olduğum için, şurda burda saklı karıları bensiz alıp getiremezlerdi.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Sonra ortalığı yıldırmış olduğum için, surda burada saklı karıları bensiz alıp getiremezlerdi.",
-      "raw_output": "Sonra ortalığı yıldırmış olduğum için, surda burada saklı karıları bensiz alıp getiremezlerdi.",
+      "output": "Sonra ortalığı yıldırmış olduğum için, sürda burada saklı karıları bensiz alıp getiremezlerdi.",
+      "raw_output": "Sonra ortalığı yıldırmış olduğum için, sürda burada saklı karıları bensiz alıp getiremezlerdi.",
       "warnings": []
     },
     {
@@ -6628,8 +6626,8 @@
       "target": "Ağız büzülür, göz süzülür, ille burun, ille burun.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ağız büzülür, göz süzülür, ille burun, ille burun.",
-      "raw_output": "Ağız büzülür, göz süzülür, ille burun, ille burun.",
+      "output": "Ağız büzülür, göz süzülür, ille burun ille burun.",
+      "raw_output": "Ağız büzülür, göz süzülür, ille burun ille burun.",
       "warnings": []
     },
     {
@@ -6691,8 +6689,8 @@
       "target": "İşten sonra öğretmen anahtarı bulacak.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "İçiten sonra öğretmen anahtarı bulacak.",
-      "raw_output": "İçiten sonra öğretmen anahtarı bulacak.",
+      "output": "İşten sonra öğretmen anahtarı bulacaksın.",
+      "raw_output": "İşten sonra öğretmen anahtarı bulacaksın.",
       "warnings": []
     },
     {
@@ -6790,8 +6788,8 @@
       "target": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
-      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
+      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
+      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
       "warnings": []
     },
     {
@@ -6853,8 +6851,8 @@
       "target": "Her zamankinden daha iltifatkarsınız sultanım.",
       "difficulty": "temiz",
       "source": "Common Voice / CC0-1.0",
-      "output": "Her zamankinden daha iltifat karsınız sultanım.",
-      "raw_output": "Her zamankinden daha iltifat karsınız sultanım.",
+      "output": "Her zamankinden daha iltifatkarsınız sultanım.",
+      "raw_output": "Her zamankinden daha iltifatkarsınız sultanım.",
       "warnings": []
     },
     {
@@ -6880,8 +6878,8 @@
       "target": "Sabah Ayşe burada oturuyor.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sabah Atşe burada oturuyor.",
-      "raw_output": "Sabah Atşe burada oturuyor.",
+      "output": "Sabah Atişe burada oturuyor.",
+      "raw_output": "Sabah Atişe burada oturuyor.",
       "warnings": []
     },
     {
@@ -6943,8 +6941,8 @@
       "target": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
-      "raw_output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
+      "output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
+      "raw_output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
       "warnings": []
     },
     {
@@ -7006,8 +7004,8 @@
       "target": "Pekala, hazır mısınız?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Pek ala, hazır mısınız?",
-      "raw_output": "Pek ala, hazır mısınız?",
+      "output": "Pekala, hazır mısınız?",
+      "raw_output": "Pekala, hazır mısınız?",
       "warnings": []
     },
     {
@@ -7114,8 +7112,8 @@
       "target": "Emanet eşeğin yuları gevşek olur.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Emanet eşeğin yuları gevşek olur.",
-      "raw_output": "Emanet eşeğin yuları gevşek olur.",
+      "output": "Emanet eseğin yuları gevşek olur.",
+      "raw_output": "Emanet eseğin yuları gevşek olur.",
       "warnings": []
     },
     {
@@ -7132,8 +7130,8 @@
       "target": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
-      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
+      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
+      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
       "warnings": []
     },
     {
@@ -7393,8 +7391,8 @@
       "target": "Tatilde buraya gelecek misin?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Tatilde bu yaya gelecek misin?",
-      "raw_output": "Tatilde bu yaya gelecek misin?",
+      "output": "Tatilde buraya gelecek misin?",
+      "raw_output": "Tatilde buraya gelecek misin?",
       "warnings": []
     },
     {
@@ -7411,8 +7409,8 @@
       "target": "Karı kapının yanındaymış.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kararı kapının yanındaymış.",
-      "raw_output": "Kararı kapının yanındaymış.",
+      "output": "Karı kapının yanındaymış.",
+      "raw_output": "Karı kapının yanındaymış.",
       "warnings": []
     },
     {
@@ -7465,8 +7463,8 @@
       "target": "Olan bitenden bir şey anlamış değildim.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Olan bitenden bir şey anlaması değildim.",
-      "raw_output": "Olan bitenden bir şey anlaması değildim.",
+      "output": "Olan bitenden bir şey anlamas değildim.",
+      "raw_output": "Olan bitenden bir şey anlamas değildim.",
       "warnings": []
     },
     {
@@ -7474,8 +7472,8 @@
       "target": "Sonra sen olanları anlatıyorsun, kek pişirecek.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sonra sen olanları anlağıyorsun, kek pişirecek.",
-      "raw_output": "Sonra sen olanları anlağıyorsun, kek pişirecek.",
+      "output": "Sonra sen olanları anlayorsun, kek pişirecek.",
+      "raw_output": "Sonra sen olanları anlayorsun, kek pişirecek.",
       "warnings": []
     },
     {
@@ -7510,8 +7508,8 @@
       "target": "Islak kumlar ayaklarımızın altında gıcırdıyordu.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Islak kumlar ayaklarımızın altında gıçrdıyordu.",
-      "raw_output": "Islak kumlar ayaklarımızın altında gıçrdıyordu.",
+      "output": "Islak kumlar ayaklarımızın altında gırdıyordu.",
+      "raw_output": "Islak kumlar ayaklarımızın altında gırdıyordu.",
       "warnings": []
     },
     {
@@ -7537,8 +7535,8 @@
       "target": "Sabah Ayşe burada oturuyor.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sabah Ayşe burada oturuyorum.",
-      "raw_output": "Sabah Ayşe burada oturuyorum.",
+      "output": "Sabah ayşe burada oturuyorur.",
+      "raw_output": "Sabah ayşe burada oturuyorur.",
       "warnings": []
     },
     {
@@ -7573,8 +7571,8 @@
       "target": "Onun burada ne işi var?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Onun burada ne isi var?",
-      "raw_output": "Onun burada ne isi var?",
+      "output": "Onun burada ne işi var?",
+      "raw_output": "Onun burada ne işi var?",
       "warnings": []
     },
     {
@@ -7618,8 +7616,8 @@
       "target": "Tatilde mutfağı temizleyeceğim.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Tatilde mütfağı temizleyeceğim.",
-      "raw_output": "Tatilde mütfağı temizleyeceğim.",
+      "output": "Tatilde mutfağı temizleyeceğim.",
+      "raw_output": "Tatilde mutfağı temizleyeceğim.",
       "warnings": []
     },
     {
@@ -7690,8 +7688,8 @@
       "target": "Ağız büzülür, göz süzülür, ille burun, ille burun.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ağız büzülür, göz süzülür, ile burun, ille burun.",
-      "raw_output": "Ağız büzülür, göz süzülür, ile burun, ille burun.",
+      "output": "Ağız büzülür, göz süzülür, ilşe burun, ille burun.",
+      "raw_output": "Ağız büzülür, göz süzülür, ilşe burun, ille burun.",
       "warnings": []
     },
     {
@@ -7789,8 +7787,8 @@
       "target": "Ben size yetişirim.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": " Ben size yetişirim.",
-      "raw_output": " Ben size yetişirim.",
+      "output": " Bensize yetişirim.",
+      "raw_output": " Bensize yetişirim.",
       "warnings": []
     },
     {
@@ -7879,8 +7877,8 @@
       "target": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabanı küş, kanadı kırık bir çülkün, avı oldu.",
-      "raw_output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabanı küş, kanadı kırık bir çülkün, avı oldu.",
+      "output": "Tavuşlara, sulunlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çülüğün, avı oldu.",
+      "raw_output": "Tavuşlara, sulunlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çülüğün, avı oldu.",
       "warnings": []
     },
     {
@@ -7906,8 +7904,8 @@
       "target": "Seninle konuşmak istiyor.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Seninle konuşmak satiyor.",
-      "raw_output": "Seninle konuşmak satiyor.",
+      "output": "Senle konuşmak setiyor.",
+      "raw_output": "Senle konuşmak setiyor.",
       "warnings": []
     },
     {
@@ -7933,8 +7931,8 @@
       "target": "Yarın sabah onu götürüyor musun?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Yarın sabah onu götürüyor musun?",
-      "raw_output": "Yarın sabah onu götürüyor musun?",
+      "output": "Yarın sabah bu götürüyor musun?",
+      "raw_output": "Yarın sabah bu götürüyor musun?",
       "warnings": []
     },
     {
@@ -7996,8 +7994,8 @@
       "target": "Tavuslara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çulluğun, avı oldu.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çüllüğün, avı oldu.",
-      "raw_output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabani kuş, kanadı kırık bir çüllüğün, avı oldu.",
+      "output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çüllüğün, avı oldu.",
+      "raw_output": "Tavuşlara, sülünlere bakmaya tenezzül etmeyen yabanı kuş, kanadı kırık bir çüllüğün, avı oldu.",
       "warnings": []
     },
     {
@@ -8158,8 +8156,8 @@
       "target": "Komşumuz erken kalkacak ve akşam anlatıyorum.",
       "difficulty": "kolay",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Komşumuz erken kalacak ve akşam anlatıyorum.",
-      "raw_output": "Komşumuz erken kalacak ve akşam anlatıyorum.",
+      "output": "Komşumuz erken kalkacak ve akşam anlatıyorum.",
+      "raw_output": "Komşumuz erken kalkacak ve akşam anlatıyorum.",
       "warnings": []
     },
     {
@@ -8302,8 +8300,8 @@
       "target": "Herhalde yaşamak istemediği için.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Herhalde yaşamak istemediği için.",
-      "raw_output": "Herhalde yaşamak istemediği için.",
+      "output": "Herhalde yaşamak istemediği şiçin.",
+      "raw_output": "Herhalde yaşamak istemediği şiçin.",
       "warnings": []
     },
     {
@@ -8455,8 +8453,8 @@
       "target": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
-      "raw_output": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
+      "output": "Dudaklarımın altında sıcak ve ince bir derri duyuyordum.",
+      "raw_output": "Dudaklarımın altında sıcak ve ince bir derri duyuyordum.",
       "warnings": []
     },
     {
@@ -8545,8 +8543,8 @@
       "target": "Benden istediğin her şeyi yaptım.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ben den istediğin her şeyi yaptım.",
-      "raw_output": "Ben den istediğin her şeyi yaptım.",
+      "output": "Benden istediğin her şeyi yaptım.",
+      "raw_output": "Benden istediğin her şeyi yaptım.",
       "warnings": []
     },
     {
@@ -8572,8 +8570,8 @@
       "target": "Bizi görünce odadakilerin hepsi ayağa kalktılar.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bizi görünce o dafakılın hepsi ayağa kalktılar.",
-      "raw_output": "Bizi görünce o dafakılın hepsi ayağa kalktılar.",
+      "output": "Bizi görünce oda fakirin hepsi ayağa kalktılar.",
+      "raw_output": "Bizi görünce oda fakirin hepsi ayağa kalktılar.",
       "warnings": []
     },
     {
@@ -8581,8 +8579,8 @@
       "target": "Cehennemin dibine git!",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Cehen'in diyine gir!",
-      "raw_output": "Cehen'in diyine gir!",
+      "output": "Cehenin değine gir!",
+      "raw_output": "Cehenin değine gir!",
       "warnings": []
     },
     {
@@ -8590,8 +8588,8 @@
       "target": "Arkamdan hayretle bakan hizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Arkamdan hayretle bakan hizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.",
-      "raw_output": "Arkamdan hayretle bakan hizmetçi kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.",
+      "output": "Arkamdan hayretle bakan hizmetci kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.",
+      "raw_output": "Arkamdan hayretle bakan hizmetci kıza teşekkür bile etmeden merdivenleri dörder dörder atladım.",
       "warnings": []
     },
     {
@@ -8617,8 +8615,8 @@
       "target": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
-      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkiini daha ziyade sağlamlaştırmıştı.",
+      "output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
+      "raw_output": "Yeni bir vaka, Çakıcı'nın halk arasındaki mevkini daha ziyade sağlamlaştırmıştı.",
       "warnings": []
     },
     {
@@ -8644,8 +8642,8 @@
       "target": "Bir gardiyan elindeki kağıda bakarak yoklama yaptı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir gardiyan elindeki kağıda bakarak yok lama yaptı.",
-      "raw_output": "Bir gardiyan elindeki kağıda bakarak yok lama yaptı.",
+      "output": "Bir gardıyan elindeki kağıda bakarak yoklama yaptı.",
+      "raw_output": "Bir gardıyan elindeki kağıda bakarak yoklama yaptı.",
       "warnings": []
     },
     {
@@ -8662,8 +8660,8 @@
       "target": "Öğleden sonra ben sana bir şey diyeceğim.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Öğlden sonra ben sana bir şey diyeceğim.",
-      "raw_output": "Öğlden sonra ben sana bir şey diyeceğim.",
+      "output": "Öğleden sonra ben sana bir şey deyeceğim.",
+      "raw_output": "Öğleden sonra ben sana bir şey deyeceğim.",
       "warnings": []
     },
     {
@@ -8671,8 +8669,8 @@
       "target": "Beni tanımadın mı?",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Beni tanım dayın mı?",
-      "raw_output": "Beni tanım dayın mı?",
+      "output": "Beni tanım dasın mı?",
+      "raw_output": "Beni tanım dasın mı?",
       "warnings": []
     },
     {
@@ -8698,8 +8696,8 @@
       "target": "Gözlerini üstümde gezdirdi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Gözlerini üstüdme gezdirdi.",
-      "raw_output": "Gözlerini üstüdme gezdirdi.",
+      "output": "Gözlerini üstüdeme gezdirdi.",
+      "raw_output": "Gözlerini üstüdeme gezdirdi.",
       "warnings": []
     },
     {
@@ -8707,8 +8705,8 @@
       "target": "Bedri'nin dizleri dermansızlaşmıştı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bedri'nin dizleri dermansızlamıştı.",
-      "raw_output": "Bedri'nin dizleri dermansızlamıştı.",
+      "output": "Bedri'nin dizleri dermansızlaşmıştı.",
+      "raw_output": "Bedri'nin dizleri dermansızlaşmıştı.",
       "warnings": []
     },
     {
@@ -8716,8 +8714,8 @@
       "target": "Bu birkaç gün zarfında konuşmak fırsatı pek zuhur etmedi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bu birkaç gün zarfunda konuşmak fırsatı pek zuhur etmedi.",
-      "raw_output": "Bu birkaç gün zarfunda konuşmak fırsatı pek zuhur etmedi.",
+      "output": "Bu birkaç gün zarfunda konuşmak firsatı pek zuhur etmedi.",
+      "raw_output": "Bu birkaç gün zarfunda konuşmak firsatı pek zuhur etmedi.",
       "warnings": []
     },
     {
@@ -8761,8 +8759,8 @@
       "target": "Kutusunu afili bir tavırla omuzuna vurarak yürüdü.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kutusunu afılı bir tavırla omuzuna vurarak yürüdü.",
-      "raw_output": "Kutusunu afılı bir tavırla omuzuna vurarak yürüdü.",
+      "output": "Kütüsünü afılı bir tavırla omuzuna vurarak yürüdü.",
+      "raw_output": "Kütüsünü afılı bir tavırla omuzuna vurarak yürüdü.",
       "warnings": []
     },
     {
@@ -8770,8 +8768,8 @@
       "target": "Seni yarın ararım.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Şeyi yarın ararım.",
-      "raw_output": "Şeyi yarın ararım.",
+      "output": "Seni yarın ararım.",
+      "raw_output": "Seni yarın ararım.",
       "warnings": []
     },
     {
@@ -8815,8 +8813,8 @@
       "target": "Doğru, doğru, doğru.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Doğru, doğru, doğru.",
-      "raw_output": "Doğru, doğru, doğru.",
+      "output": "Doğru, doğru, dopru.",
+      "raw_output": "Doğru, doğru, dopru.",
       "warnings": []
     },
     {
@@ -8833,8 +8831,8 @@
       "target": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Dudaklarımın altında sıçak ve ince bir deri duyuyordum.",
-      "raw_output": "Dudaklarımın altında sıçak ve ince bir deri duyuyordum.",
+      "output": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
+      "raw_output": "Dudaklarımın altında sıcak ve ince bir deri duyuyordum.",
       "warnings": []
     },
     {
@@ -8887,8 +8885,8 @@
       "target": "İyi etmediniz, bizim kaptan asabidir, şakadan hazzetmez.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "İyi etmediniz, bizim kaptan asabıdır, sakadan hazzetmez.",
-      "raw_output": "İyi etmediniz, bizim kaptan asabıdır, sakadan hazzetmez.",
+      "output": "İyi etmediniz, bizim kaptan asabidir, sakadan hazzetmez.",
+      "raw_output": "İyi etmediniz, bizim kaptan asabidir, sakadan hazzetmez.",
       "warnings": []
     },
     {
@@ -8896,8 +8894,8 @@
       "target": "Ondan sonra Bekir'e döndüm, ellerimi uzattım.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ondan sonra Bekir'e döndüm, ellerimi uzattım.",
-      "raw_output": "Ondan sonra Bekir'e döndüm, ellerimi uzattım.",
+      "output": "Ondan sonra Bekir'e döndüyüm, ellerimi uzattım.",
+      "raw_output": "Ondan sonra Bekir'e döndüyüm, ellerimi uzattım.",
       "warnings": []
     },
     {
@@ -8923,8 +8921,8 @@
       "target": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
-      "raw_output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruş borç istemek gündelik işlerdendi.",
+      "output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruşborç istemek gündelik işlerdendi.",
+      "raw_output": "Bir zamanlar herhangi bir arkadaşından yirmi beş elli kuruşborç istemek gündelik işlerdendi.",
       "warnings": []
     },
     {
@@ -8986,8 +8984,8 @@
       "target": "Ekim bin dokuz yüz otuz beş.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ekim bin oduz yüz otuz beş.",
-      "raw_output": "Ekim bin oduz yüz otuz beş.",
+      "output": "Ekim bin odukuz yüz otuz beş.",
+      "raw_output": "Ekim bin odukuz yüz otuz beş.",
       "warnings": []
     },
     {
@@ -9049,8 +9047,8 @@
       "target": "Kalp krizi geçiriyor.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "Kalp krizi geçiriyor.",
-      "raw_output": "Kalp krizi geçiriyor.",
+      "output": "Kalpkrizi geçiriyor.",
+      "raw_output": "Kalpkrizi geçiriyor.",
       "warnings": []
     },
     {
@@ -9139,8 +9137,8 @@
       "target": "Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey değildi.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Hadise, umumiyet itibarıyle, zannedildiği kadar korkunç bir şey değilsi.",
-      "raw_output": "Hadise, umumiyet itibarıyle, zannedildiği kadar korkunç bir şey değilsi.",
+      "output": "Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey değilsi.",
+      "raw_output": "Hadise, umumiyet itibariyle, zannedildiği kadar korkunç bir şey değilsi.",
       "warnings": []
     },
     {
@@ -9148,8 +9146,8 @@
       "target": "İki yanımda, incirlerin altında, hasırlar üzerine yemişler serilmişti.",
       "difficulty": "orta",
       "source": "Common Voice / CC0-1.0",
-      "output": "İki yanımda, incirlerin altında, hağırlar üzerine yemişler serilmişti.",
-      "raw_output": "İki yanımda, incirlerin altında, hağırlar üzerine yemişler serilmişti.",
+      "output": "İki yanımda, incirlerin altında, hasırlar üzerine yemişler serilmişti.",
+      "raw_output": "İki yanımda, incirlerin altında, hasırlar üzerine yemişler serilmişti.",
       "warnings": []
     },
     {
@@ -9519,8 +9517,8 @@
       "target": "Sabah sana getireceğim ve bu akşam ben İngilizce öğrenmeyeceğim.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Sabah sana getireceğim ve bu akşam ben ingilizce öğrenmeyeceğim.",
-      "raw_output": "Sabah sana getireceğim ve bu akşam ben ingilizce öğrenmeyeceğim.",
+      "output": "Sabah sana getireceğim ve bu akşam ben İngilizce öğrenmeyeceğim.",
+      "raw_output": "Sabah sana getireceğim ve bu akşam ben İngilizce öğrenmeyeceğim.",
       "warnings": []
     },
     {
@@ -9573,8 +9571,8 @@
       "target": "Bizi yalnız bırakın.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Bizi yalnız bırakın.",
-      "raw_output": "Bizi yalnız bırakın.",
+      "output": "Bir zi yalnız bırakın.",
+      "raw_output": "Bir zi yalnız bırakın.",
       "warnings": []
     },
     {
@@ -9591,8 +9589,8 @@
       "target": "Pazartesi onu götürür müsün?",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Pazartesi nü götürür müsün?",
-      "raw_output": "Pazartesi nü götürür müsün?",
+      "output": "Pazartesi ne götürür müsün?",
+      "raw_output": "Pazartesi ne götürür müsün?",
       "warnings": []
     },
     {
@@ -9663,8 +9661,8 @@
       "target": "Desteklemeyi, Yakın ve Orta Doğudaki hakimiyet emellerine uygun buluyorlardı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Desteklemeye, yakın ve orta doğudaki hakimiyet emellerine uygun buluyorlardı.",
-      "raw_output": "Desteklemeye, yakın ve orta doğudaki hakimiyet emellerine uygun buluyorlardı.",
+      "output": "Desteklemey, yakın ve orta doğudaki hakimiye temellerine uygun buluyorlardı.",
+      "raw_output": "Desteklemey, yakın ve orta doğudaki hakimiye temellerine uygun buluyorlardı.",
       "warnings": []
     },
     {
@@ -9690,8 +9688,8 @@
       "target": "Akşam çözüm bulacak mısın?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Akşam çözüm bulacaksın?",
-      "raw_output": "Akşam çözüm bulacaksın?",
+      "output": "Akşam çözüm bulacak mısın?",
+      "raw_output": "Akşam çözüm bulacak mısın?",
       "warnings": []
     },
     {
@@ -9717,8 +9715,8 @@
       "target": "Babam arabayı aldı.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Başbam arabayı aldı.",
-      "raw_output": "Başbam arabayı aldı.",
+      "output": "Babam arabayı aldı.",
+      "raw_output": "Babam arabayı aldı.",
       "warnings": []
     },
     {
@@ -9753,8 +9751,8 @@
       "target": "Yarın çalışacağız, söz.",
       "difficulty": "orta",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Yarın çalışacağız, söy.",
-      "raw_output": "Yarın çalışacağız, söy.",
+      "output": "Yarın çalışacağız, söz.",
+      "raw_output": "Yarın çalışacağız, söz.",
       "warnings": []
     },
     {
@@ -9834,11 +9832,9 @@
       "target": "Onu, her şeye rağmen, bu çeşit bir mahluk addedemezdim.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Inu, hre şeye rağmen, bu çeşit bir mahluk addedemezdim.",
-      "raw_output": "Inu, her şeye rağmen, bu çeşit bir mahluk addedemezdim.",
-      "warnings": [
-        "1 kelime grubu harf benzerliği olmadığı için özgün haliyle korundu"
-      ]
+      "output": "İni, her şeye rağmen, bu çeşit bir mahluk addedemezdim.",
+      "raw_output": "İni, her şeye rağmen, bu çeşit bir mahluk addedemezdim.",
+      "warnings": []
     },
     {
       "input": "Pazartesi burada oturcak.",
@@ -9890,8 +9886,8 @@
       "target": "Hani nerdeyse harman yerlerinden duyulacaktı.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Hanı neredeyse harman yerlerinden duyulacaktı.",
-      "raw_output": "Hanı neredeyse harman yerlerinden duyulacaktı.",
+      "output": "Hani neredeyse harman yerlertinden duyulacaktı.",
+      "raw_output": "Hani neredeyse harman yerlertinden duyulacaktı.",
       "warnings": []
     },
     {
@@ -9980,8 +9976,8 @@
       "target": "Saat beşte buluşacaksın.",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Saat beşte buluşacaksın.",
-      "raw_output": "Saat beşte buluşacaksın.",
+      "output": "Saat best e buluşacaksın.",
+      "raw_output": "Saat best e buluşacaksın.",
       "warnings": []
     },
     {
@@ -9998,8 +9994,8 @@
       "target": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
       "difficulty": "kolay",
       "source": "Common Voice / CC0-1.0",
-      "output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
-      "raw_output": "Macide tatilde piyanoyla hiç denecek kadar az meşgul olabildi.",
+      "output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
+      "raw_output": "Macide tatilde piyanoyla hiç deneyecek kadar az meşgul olabildi.",
       "warnings": []
     },
     {
@@ -10034,8 +10030,8 @@
       "target": "Ama biz felsefeyi bırakalım da, canın isterse, yılbaşı gecesi beraber bir yere gidelim.",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Ama biz felsefeyi bırakalım da canın isterse yılbaşı gecesi beraber bir yere gidelim.",
-      "raw_output": "Ama biz felsefeyi bırakalım da canın isterse yılbaşı gecesi beraber bir yere gidelim.",
+      "output": "Ama biz felsefeyi bırakalım da canın isterse yılbaşı gecesi beraber bir yer gidelim.",
+      "raw_output": "Ama biz felsefeyi bırakalım da canın isterse yılbaşı gecesi beraber bir yer gidelim.",
       "warnings": []
     },
     {
@@ -10205,8 +10201,8 @@
       "target": "Yarın akşam evi temizler misin?",
       "difficulty": "zor",
       "source": "Megazeka gündelik şablon / CC0-1.0",
-      "output": "Yerin akşam evi temizler isin?",
-      "raw_output": "Yerin akşam evi temizler isin?",
+      "output": "Yarın akşam evi temizler misin?",
+      "raw_output": "Yarın akşam evi temizler misin?",
       "warnings": []
     },
     {
@@ -10322,8 +10318,8 @@
       "target": "Yapabileceğim bir şey var mı?",
       "difficulty": "zor",
       "source": "Common Voice / CC0-1.0",
-      "output": "Yapabileceğim bir şey var mı?",
-      "raw_output": "Yapabileceğim bir şey var mı?",
+      "output": "Yapabileceğim ir şey var mı?",
+      "raw_output": "Yapabileceğim ir şey var mı?",
       "warnings": []
     },
     {
@@ -10426,7 +10422,7 @@
       "warnings": []
     }
   ],
-  "seconds": 248.0273127999999,
+  "seconds": 220.62712100000044,
   "model_info": {
     "Mimari": "ByT5-small + LoRA",
     "Toplam parametre": 305896448,
@@ -10443,15 +10439,15 @@
   },
   "storage": {
     "model": 599341993,
-    "dataset": 7433782,
-    "checkpoints": 125539568,
+    "dataset": 12505528,
+    "checkpoints": 175695455,
     "cache": 0,
-    "logs": 1468269,
+    "logs": 5716385,
     "environment": 5198293154,
-    "total": 5938042966,
-    "other": 5966200,
+    "total": 6000786449,
+    "other": 9233934,
     "external_reserve": 1549096637,
-    "budget_total": 7487139603,
+    "budget_total": 7549883086,
     "warnings": [
       "5 GB eşiği aşıldı"
     ]

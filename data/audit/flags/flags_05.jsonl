@@ -1,0 +1,6 @@
+{"id": 5067, "target": "Nasılsınız efendim? yollu bir hatır sormadan başka bir şey gördüğü yoktu.", "fix": "Nasılsınız efendim? Yollu bir hatır sormadan başka bir şey gördüğü yoktu.", "type": "buyuk_harf", "note": "Cümle '?' işaretinden sonra küçük harfle başlamış"}
+{"id": 5197, "target": "Ne yap biliyor musun?", "fix": "Ne yapacağını biliyor musun?", "type": "dilbilgisi", "note": "'Ne yap' yerine 'Ne yapacağını' olmalı"}
+{"id": 5520, "target": "O çok zekiydi: İnsanın söyleyeceği şeyleri değil, söylemek İsteyebileceği şeyleri bile hissediyordu.", "fix": "O çok zekiydi: İnsanın söyleyeceği şeyleri değil, söylemek isteyebileceği şeyleri bile hissediyordu.", "type": "buyuk_harf", "note": "'İsteyebileceği' -> 'isteyebileceği' (cümle ortasında küçük i)"}
+{"id": 5566, "target": "On gündür vazifedeydik, İstanbul'a gelir gelmez nerden çıktunuz?", "fix": "On gündür vazifedeydik, İstanbul'a gelir gelmez nereden çıktınız?", "type": "yazim", "note": "nerden -> nereden; çıktunuz -> çıktınız"}
+{"id": 5606, "target": "Onla söylenecek şey daha açık ve samimi olmalıdır.", "fix": "Onunla söylenecek şey daha açık ve samimi olmalıdır.", "type": "yazim", "note": "onla -> onunla"}
+{"id": 5999, "target": "Sahnenin arka kapısından dışarı bakarak söylendi..", "fix": "Sahnenin arka kapısından dışarı bakarak söylendi.", "type": "noktalama", "note": "Çift nokta; tek nokta olmalı"}

@@ -1,0 +1,15 @@
+{"id": 7004, "target": "Vıyy, her yanlar da yaş!.", "fix": "Vıyy, her yanlar da yaş!", "type": "noktalama", "note": "çift bitiş işareti: !. -> !"}
+{"id": 7070, "target": "Yani sen şimdi Asiye'yi vermiyon mu?", "fix": "Yani sen şimdi Asiye'yi vermiyor musun?", "type": "konusma_dili", "note": "vermiyon mu -> vermiyor musun"}
+{"id": 7094, "target": "Yanıyom, Mustafa, yanıyom! diye inledi.", "fix": "Yanıyorum, Mustafa, yanıyorum! diye inledi.", "type": "konusma_dili", "note": "yanıyom -> yanıyorum"}
+{"id": 7254, "target": "Yirmi dört yaşma geldiğim halde hâlâ çocukluğumun saflığından kurtulamamıştım.", "fix": "Yirmi dört yaşına geldiğim halde hâlâ çocukluğumun saflığından kurtulamamıştım.", "type": "yazim", "note": "OCR: yaşma -> yaşına"}
+{"id": 7299, "target": "Yolun açılışının onuncu günü nafıanın fen memurlan vilayete bir rapor vermişler.", "fix": "Yolun açılışının onuncu günü nafıanın fen memurları vilayete bir rapor vermişler.", "type": "yazim", "note": "OCR: memurlan -> memurları"}
+{"id": 7381, "target": "Zannediyor musun ki.", "fix": "Zannediyor musun ki?", "type": "noktalama", "note": "mı/musun soru cümlesi nokta ile bitmiş"}
+{"id": 7667, "target": "Ömer, muharrir Hüseyin bey diye birini hatırlayamadı.", "fix": "Ömer, muharrir Hüseyin Bey diye birini hatırlayamadı.", "type": "buyuk_harf", "note": "unvan olan Bey büyük harfle yazılır"}
+{"id": 7738, "target": "Ülen Allahın sersem kulu, nasıl oldu da basiretin bağlandı?", "fix": "Ülen Allah'ın sersem kulu, nasıl oldu da basiretin bağlandı?", "type": "kesme", "note": "Allahın -> Allah'ın"}
+{"id": 7798, "target": "İki partidir içerdeyim!", "fix": "İki partidir içerideyim!", "type": "konusma_dili", "note": "içerdeyim -> içerideyim"}
+{"id": 7908, "target": "İstersen benim kliniğe yatırayım, ama şenin için biraz masraflı olur.", "fix": "İstersen benim kliniğe yatırayım, ama senin için biraz masraflı olur.", "type": "yazim", "note": "şenin -> senin"}
+{"id": 7918, "target": "İyi ama doktor, bin liranın yolu nerde?", "fix": "İyi ama doktor, bin liranın yolu nerede?", "type": "konusma_dili", "note": "nerde -> nerede"}
+{"id": 7959, "target": "İçerde ama, bugün görüşme günü değil.", "fix": "İçeride ama, bugün görüşme günü değil.", "type": "konusma_dili", "note": "İçerde -> İçeride"}
+{"id": 7960, "target": "İçerde bir kıpırdama oldu.", "fix": "İçeride bir kıpırdama oldu.", "type": "konusma_dili", "note": "İçerde -> İçeride"}
+{"id": 7961, "target": "İçerde, kulübesinde; bak, sesi geliyor!", "fix": "İçeride, kulübesinde; bak, sesi geliyor!", "type": "konusma_dili", "note": "İçerde -> İçeride"}
+{"id": 7972, "target": "İçimde gitgide artan bir sıkıntı bana nerdeyse o sopalı ve küfürlü sorgulamaları arattıracaktı.", "fix": "İçimde gitgide artan bir sıkıntı bana neredeyse o sopalı ve küfürlü sorgulamaları arattıracaktı.", "type": "konusma_dili", "note": "nerdeyse -> neredeyse"}

@@ -1,0 +1,19 @@
+{"id": 10116, "target": "Yarın akşam sana teşekkür eder misin?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana teşekkür); doğal değil"}
+{"id": 10117, "target": "Yarın akşam sana uğruyor musun?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana uğruyorsun); doğal değil"}
+{"id": 10120, "target": "Yarın akşam seni anlayacak mısın?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni anlayacaksın); doğal değil"}
+{"id": 10219, "target": "Yarın sabah sen sana telefon ediyorsun, merak etme.", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana telefon ediyorsun); doğal değil"}
+{"id": 10220, "target": "Yarın sabah sen seni ziyaret edeceksin.", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni ziyaret edeceksin); doğal değil"}
+{"id": 10233, "target": "Yarın sana bakacak mısın?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana bakacaksın); doğal değil"}
+{"id": 10320, "target": "Öğleden sonra sana bakıyorsun.", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana bakıyorsun); doğal değil"}
+{"id": 10321, "target": "Öğleden sonra sana söyler misin?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen sana söylersin); doğal değil"}
+{"id": 10325, "target": "Öğleden sonra seni bekliyor musun?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni bekliyorsun); doğal değil"}
+{"id": 10446, "target": "İşten sonra sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "Özne ve dolaylı nesne aynı kişi (sen sana diyorsun); doğal değil"}
+{"id": 10447, "target": "İşten sonra sen sana şunu diyorsun.", "fix": null, "type": "anlamsiz", "note": "Özne ve dolaylı nesne aynı kişi (sen sana diyorsun); doğal değil"}
+{"id": 10448, "target": "İşten sonra seni anlayacak mısın?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni anlayacaksın); doğal değil"}
+{"id": 10449, "target": "İşten sonra seni arayacak mısın?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni arayacaksın); doğal değil"}
+{"id": 10450, "target": "İşten sonra seni dinler misin?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni dinlersin); doğal değil"}
+{"id": 10453, "target": "İşten sonra seninle konuşur musun?", "fix": null, "type": "anlamsiz", "note": "Özne ve birliktelik nesnesi aynı kişi (sen seninle konuşursun); doğal değil"}
+{"id": 10513, "target": "Şimdi parkta yürümeyeceğim, saat üçte sen seni dinliyorsun.", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni dinliyorsun); doğal değil"}
+{"id": 10516, "target": "Şimdi sana söylüyor musun?", "fix": null, "type": "anlamsiz", "note": "Özne ve dolaylı nesne aynı kişi (sen sana söylüyorsun); doğal değil"}
+{"id": 10517, "target": "Şimdi sana yazar mısın?", "fix": null, "type": "anlamsiz", "note": "Özne ve dolaylı nesne aynı kişi (sen sana yazarsın); doğal değil"}
+{"id": 10522, "target": "Şimdi seni sevecek misin?", "fix": null, "type": "anlamsiz", "note": "Özne ve nesne aynı kişi (sen seni seveceksin); doğal değil"}
