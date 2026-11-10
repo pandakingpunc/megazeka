@@ -1,14 +1,14 @@
 {
   "model": 599341993,
-  "dataset": 7433782,
-  "checkpoints": 125539474,
-  "cache": 0,
-  "logs": 1652876,
+  "dataset": 16194216,
+  "checkpoints": 225851268,
+  "cache": 12082075,
+  "logs": 10034740,
   "environment": 5198293154,
-  "total": 5938227402,
-  "other": 5966123,
+  "total": 6074611577,
+  "other": 12814131,
   "external_reserve": 1549096637,
-  "budget_total": 7487324039,
+  "budget_total": 7623708214,
   "warnings": [
     "5 GB eşiği aşıldı"
   ]

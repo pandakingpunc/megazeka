@@ -20,3 +20,7 @@ reports/v3.1a/
 reports/v3.1b/
 # Denetim parçaları targets.jsonl'den yeniden üretilebilir
 data/audit/chunks/
+
+# v3.2 yerel arşivleri (v3.1 veri yedeği, ara ölçümler)
+data/v3.1-backup/
+reports/v3.2/

@@ -3,7 +3,8 @@ import random
 import re
 from .text import lower_tr, swapcase_tr
 from .colloquial import colloquialize, rewrite, hard_candidates, ne_candidates
-from .spelling import misspell, drop_proper_apostrophe, misspelling_candidates, apostrophe_candidates
+from .spelling import (misspell, drop_proper_apostrophe, misspelling_candidates,
+                       apostrophe_candidates, corrupt_proper_name)
 
 ASCII = str.maketrans('çğıöşüÇĞİÖŞÜ', 'cgiosuCGIOSU')
 KEYBOARD = ['qwertyuıopğü', 'asdfghjklşi', 'zxcvbnmöç']
@@ -76,6 +77,12 @@ class NoiseGenerator:
             return misspell(text, r)
         if kind == 'özel_ad_kesme':
             return drop_proper_apostrophe(text, r)
+        # Explicit/preferred operations only. Keep names, targeted and the
+        # weighted sampling expression unchanged for legacy RNG compatibility.
+        if kind == 'yazım_yanlışı_v32':
+            return misspell(text, r, v32=True)
+        if kind == 'özel_ad_bozma':
+            return corrupt_proper_name(text, r)
         return text
 
     def preferred(self, text):

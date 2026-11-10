@@ -14,14 +14,17 @@ import hashlib
 import json
 import random
 import re
+from collections import Counter
 from megazeka.storage import ROOT, ensure_budget, configure
 from megazeka.text import normalize, canonical
 from megazeka.noise import NoiseGenerator
 from training.everyday import sentences as everyday_sentences
+from training.targeted import sentences as targeted_sentences
 
 EVERYDAY_SOURCE = 'Megazeka gündelik şablon / CC0-1.0'
 COMMON_VOICE_SOURCE = 'Common Voice / CC0-1.0'
 COMBINED_SOURCE = 'Birleşik iki cümle'
+TARGETED_SOURCE = 'Megazeka hedefli şablon / CC0-1.0'
 DIFFICULTIES = ['temiz', 'kolay', 'orta', 'zor']
 COMBINED_MAX_BYTES = 170
 
@@ -37,9 +40,59 @@ TEST_PATH = ROOT / 'data/processed/test.jsonl.gz'
 
 def challenge_keys():
     """Canonical keys of the hand-written challenge targets: they must never enter train/validation."""
-    if not CHALLENGE.exists():
-        return set()
-    return {canonical(json.loads(line)['target']) for line in CHALLENGE.read_text(encoding='utf-8').splitlines() if line.strip()}
+    return _challenge_keys(sorted((ROOT / 'evaluation').glob('challenge*.jsonl')))
+
+
+def _challenge_keys(paths):
+    return {canonical(json.loads(line)['target']) for path in paths if path.exists()
+            for line in path.read_text(encoding='utf-8').splitlines() if line.strip()}
+
+
+def targeted_splits(blocked, seed=3200):
+    """Stratified holdout with its own RNG; never touches the legacy RNG."""
+    rng = random.Random(seed)
+    selected = {'train': [], 'validation': []}
+    counts = {}
+    generated = targeted_sentences(seed)
+    for kind in ('yazım', 'özel_ad', 'koruma'):
+        rows = [r for r in generated if r['kind'] == kind and canonical(r['target']) not in blocked]
+        rng.shuffle(rows)
+        held = round(len(rows) * .08)
+        # Keep the coverage promise in TRAIN too, after the holdout. A global
+        # random slice can otherwise take five of a spelling's sixteen targets.
+        available = Counter(r.get('focus') for r in rows)
+        holding = Counter()
+        validation, train = [], []
+        for row in rows:
+            focus = row.get('focus')
+            can_hold = kind != 'yazım' or holding[focus] < max(0, available[focus] - 12)
+            if len(validation) < held and can_hold:
+                validation.append(row)
+                holding[focus] += 1
+            else:
+                train.append(row)
+        selected['validation'].extend(validation)
+        selected['train'].extend(train)
+        counts[kind] = len(rows)
+    return selected, counts, len(generated) - sum(counts.values())
+
+
+def targeted_pairs(rows, seed):
+    generator = NoiseGenerator(seed)
+    output = []
+    for row in rows:
+        kind = row['kind']
+        # Initial common nouns have no proper-name corruption to request.
+        prefer = {'yazım': 'yazım_yanlışı_v32', 'özel_ad': 'özel_ad_bozma'}.get(kind)
+        if kind == 'özel_ad' and not row.get('names'):
+            prefer = None
+        difficulties = DIFFICULTIES + (['temiz'] if kind == 'koruma' else [])
+        for difficulty in difficulties:
+            requested = prefer if difficulty in ('kolay', 'orta') or (kind == 'özel_ad' and difficulty == 'zor') else None
+            noisy, operations = generator.corrupt(row['target'], difficulty, prefer=requested)
+            output.append({**row, 'source': TARGETED_SOURCE, 'input': noisy,
+                           'difficulty': difficulty, 'operations': operations, 'group_id': group_of(row['target'])})
+    return output
 
 CORRECTIONS = ROOT / 'data/audit/corrections.jsonl'
 
@@ -107,7 +160,10 @@ def main():
     everyday_total = len(everyday)
     held = max(40, len(everyday) // 12)
     frozen = TEST_PATH.exists()
-    blocked = challenge_keys()
+    # Generate the legacy stream against its original challenge file. Additional
+    # challenge files are filtered AFTER corruption, combination and shuffling:
+    # removing a target earlier would shift every subsequent RNG draw.
+    blocked = _challenge_keys([CHALLENGE])
     if frozen:
         # The v2 test split is frozen so v2 and v3 stay comparable: never regenerated, and every
         # sentence it contains is excluded from train/validation before any noise is added.
@@ -145,12 +201,21 @@ def main():
                 'everyday_source': {'name': 'Megazeka gündelik şablon ve elle yazılmış cümleler', 'module': 'training/everyday.py',
                                     'license': 'CC0-1.0', 'sentences': everyday_total},
                 'split_method': 'NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım',
-                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'version': 'v3.1',
+                'clean_ratio': .25, 'format': 'gzip-compressed JSONL', 'version': 'v3.2',
                 'target_corrections': {'file': 'data/audit/corrections.jsonl',
                                            'sha256': hashlib.sha256(corrections_file.read_bytes()).hexdigest() if corrections_file else None,
                                            'fixed_applied': fixed_applied, 'dropped_applied': dropped_applied},
                 'test_frozen_from': 'v2' if frozen else None, 'challenge_targets_excluded': len(challenge_keys()), 'splits': {}}
     print(f'Hedef düzeltmeleri: {fixed_applied} düzeltme, {dropped_applied} silme uygulandı; {collisions} çakışan kopya elendi.')
+    targeted_blocked = (set(sources) | {canonical(r['target']) for r in sources.values()}
+                        | blocked | challenge_keys())
+    targeted, targeted_counts, targeted_dropped = targeted_splits(targeted_blocked)
+    metadata['targeted_source'] = {'name': TARGETED_SOURCE, 'module': 'training/targeted.py',
+                                  'license': 'CC0-1.0', 'seed': 3200, 'by_kind': targeted_counts,
+                                  'sentences': sum(targeted_counts.values()), 'excluded': targeted_dropped,
+                                  'validation_ratio': .08, 'protection_clean_ratio': .4, 'splits': {}}
+    all_challenge_keys = challenge_keys()
+    challenge_groups = {group_of(k) for k in all_challenge_keys}
     keys = []
     for index, (split, rows) in enumerate(selected.items()):
         generator = NoiseGenerator(42 + index)
@@ -180,6 +245,17 @@ def main():
                                  'group_id': a['group_id'], 'group_id_second': b['group_id']})
             output.extend(combined)
         rng.shuffle(output)
+        # Legacy draws are now complete for this split. Filtering and appending
+        # must not consume rng (including when challenge2.jsonl appears later).
+        output = [r for r in output if r['group_id'] not in challenge_groups
+                  and r.get('group_id_second') not in challenge_groups
+                  and canonical(r['target']) not in all_challenge_keys]
+        if split in targeted:
+            extra = targeted_pairs(targeted[split], 4200 + index)
+            output.extend(extra)
+            metadata['targeted_source']['splits'][split] = {
+                'sentences': len(targeted[split]), 'pairs': len(extra),
+                'by_kind': {kind: sum(r['kind'] == kind for r in targeted[split]) for kind in targeted_counts}}
         path = ROOT / f'data/processed/{split}.jsonl.gz'
         with path.open('wb') as raw:
             with gzip.GzipFile(fileobj=raw, mode='wb', mtime=0) as stream:
@@ -188,7 +264,7 @@ def main():
         counts = {}
         for row in output:
             counts[row['source']] = counts.get(row['source'], 0) + 1
-        metadata['splits'][split] = {'pairs': len(output), 'unique_targets': len(rows), 'by_source': counts,
+        metadata['splits'][split] = {'pairs': len(output), 'unique_targets': len({r['target'] for r in output if r['source'] != COMBINED_SOURCE}), 'by_source': counts,
                                     'bytes': path.stat().st_size, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
         keys.append({row['group_id'] for row in output} | {row.get('group_id_second') for row in output if row.get('group_id_second')})
     if frozen:
@@ -202,7 +278,7 @@ def main():
         keys.append({row['group_id'] for row in frozen_rows})
     assert not keys[0] & keys[1] and not keys[0] & keys[2] and not keys[1] & keys[2]
     for split in ('train', 'validation'):
-        leaked = [r['target'] for r in read_pairs(split) if canonical(r['target']) in challenge_keys()]
+        leaked = [r['target'] for r in read_pairs(split) if canonical(r['target']) in all_challenge_keys]
         assert not leaked, f'Zorluk kümesi hedefi {split} içinde: {leaked[:3]}'
     (ROOT / 'data/metadata.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(metadata, ensure_ascii=False, indent=2))

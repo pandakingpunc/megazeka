@@ -28,40 +28,53 @@ Değerlendirme 1080/1128
 Değerlendirme 1120/1128
 {
   "checkpoint": "best",
+  "tag": "best",
+  "lexicon_guard": false,
   "metrics": {
     "examples": 1128,
-    "cer": 0.012900909526089037,
-    "wer": 0.06089309878213803,
-    "exact_match": 0.7801418439716312,
-    "edit_precision": 0.924915562483762,
-    "edit_recall": 0.8849117573949788,
-    "edit_f1": 0.9044715447154472,
+    "cer": 0.012254667304930588,
+    "wer": 0.058694181326116375,
+    "exact_match": 0.7810283687943262,
+    "edit_precision": 0.93046875,
+    "edit_recall": 0.8881431767337807,
+    "edit_f1": 0.908813429988554,
     "clean_examples": 282,
-    "overcorrection": 0.02127659574468085
+    "overcorrection": 0.010638297872340425
+  },
+  "audited_metrics": {
+    "examples": 1116,
+    "cer": 0.012970106075216972,
+    "wer": 0.062414733969986355,
+    "exact_match": 0.767921146953405,
+    "edit_precision": 0.9339473684210526,
+    "edit_recall": 0.8802083333333334,
+    "edit_f1": 0.9062819203268642,
+    "clean_examples": 269,
+    "overcorrection": 0.0037174721189591076
   },
   "subsets": {
     "common_voice": {
       "metrics": {
         "examples": 640,
-        "cer": 0.016727772685609533,
-        "wer": 0.07698497854077253,
-        "exact_match": 0.703125,
-        "edit_precision": 0.90883420734167,
-        "edit_recall": 0.8609094382881162,
-        "edit_f1": 0.8842229199372057,
+        "cer": 0.015543843568591507,
+        "wer": 0.07162017167381975,
+        "exact_match": 0.7140625,
+        "edit_precision": 0.9195449004469728,
+        "edit_recall": 0.8647306075659151,
+        "edit_f1": 0.8912957857424183,
         "clean_examples": 160,
-        "overcorrection": 0.0375
+        "overcorrection": 0.01875
       },
       "raw_metrics": {
         "examples": 640,
-        "cer": 0.014970974641002138,
-        "wer": 0.0740343347639485,
-        "exact_match": 0.709375,
-        "edit_precision": 0.9111816019032514,
-        "edit_recall": 0.8781047000382117,
-        "edit_f1": 0.8943374197314652,
+        "cer": 0.01401619309501986,
+        "wer": 0.06893776824034335,
+        "exact_match": 0.7203125,
+        "edit_precision": 0.9166998804304504,
+        "edit_recall": 0.8788689338937715,
+        "edit_f1": 0.8973858759266485,
         "clean_examples": 160,
-        "overcorrection": 0.0375
+        "overcorrection": 0.01875
       },
       "identity_baseline": {
         "examples": 640,
@@ -78,23 +91,23 @@ Değerlendirme 1120/1128
     "gündelik": {
       "metrics": {
         "examples": 488,
-        "cer": 0.0064760194921774815,
-        "wer": 0.033424908424908424,
-        "exact_match": 0.8811475409836066,
-        "edit_precision": 0.954014598540146,
-        "edit_recall": 0.9295874822190612,
-        "edit_f1": 0.9416426512968301,
+        "cer": 0.006732495511669659,
+        "wer": 0.03663003663003663,
+        "exact_match": 0.8688524590163934,
+        "edit_precision": 0.9499637418419145,
+        "edit_recall": 0.9317211948790897,
+        "edit_f1": 0.940754039497307,
         "clean_examples": 122,
         "overcorrection": 0.0
       },
       "raw_metrics": {
         "examples": 488,
-        "cer": 0.006347781482431393,
-        "wer": 0.03296703296703297,
-        "exact_match": 0.8831967213114754,
-        "edit_precision": 0.9540816326530612,
-        "edit_recall": 0.9310099573257468,
-        "edit_f1": 0.9424046076313894,
+        "cer": 0.006732495511669659,
+        "wer": 0.03663003663003663,
+        "exact_match": 0.8688524590163934,
+        "edit_precision": 0.9499637418419145,
+        "edit_recall": 0.9317211948790897,
+        "edit_f1": 0.940754039497307,
         "clean_examples": 122,
         "overcorrection": 0.0
       },
@@ -113,14 +126,14 @@ Değerlendirme 1120/1128
   },
   "raw_metrics": {
     "examples": 1128,
-    "cer": 0.011752034466251796,
-    "wer": 0.05886332882273342,
+    "cer": 0.011297271421732886,
+    "wer": 0.05700270635994587,
     "exact_match": 0.7845744680851063,
-    "edit_precision": 0.926296866974833,
-    "edit_recall": 0.8965945811583396,
-    "edit_f1": 0.9112037387899456,
+    "edit_precision": 0.9284979423868313,
+    "edit_recall": 0.8973402933134477,
+    "edit_f1": 0.912653267602073,
     "clean_examples": 282,
-    "overcorrection": 0.02127659574468085
+    "overcorrection": 0.010638297872340425
   },
   "identity_baseline": {
     "examples": 1128,
@@ -135,16 +148,16 @@ Değerlendirme 1120/1128
   },
   "manual_metrics": {
     "examples": 23,
-    "cer": 0.005856515373352855,
-    "wer": 0.05102040816326531,
+    "cer": 0.004392386530014641,
+    "wer": 0.030612244897959183,
     "exact_match": 0.8695652173913043,
-    "edit_precision": 0.9761904761904762,
-    "edit_recall": 0.9534883720930233,
-    "edit_f1": 0.9647058823529412,
+    "edit_precision": 0.9659090909090909,
+    "edit_recall": 0.9883720930232558,
+    "edit_f1": 0.9770114942528736,
     "clean_examples": 9,
     "overcorrection": 0.0
   },
-  "seconds": 220.62712100000044,
+  "seconds": 234.6392835000006,
   "model_info": {
     "Mimari": "ByT5-small + LoRA",
     "Toplam parametre": 305896448,
@@ -156,20 +169,20 @@ Değerlendirme 1120/1128
     "Nicemleme": "Yok",
     "Parça sınırı": "176 UTF-8 baytı",
     "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
-    "Eğitim adımı": 5000,
+    "Eğitim adımı": 6000,
     "LoRA hassasiyeti": "torch.float32"
   },
   "storage": {
     "model": 599341993,
-    "dataset": 12505528,
-    "checkpoints": 175695455,
-    "cache": 0,
-    "logs": 5716385,
+    "dataset": 16194216,
+    "checkpoints": 225851268,
+    "cache": 12082075,
+    "logs": 9982752,
     "environment": 5198293154,
-    "total": 6000786449,
-    "other": 9233934,
+    "total": 6074559589,
+    "other": 12814131,
     "external_reserve": 1549096637,
-    "budget_total": 7549883086,
+    "budget_total": 7623656226,
     "warnings": [
       "5 GB eşiği aşıldı"
     ]

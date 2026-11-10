@@ -1,0 +1,188 @@
+{
+  "difference_direction": "B - A",
+  "resamples": 10000,
+  "seed": 42,
+  "bootstrap_unit": "target",
+  "overall": {
+    "examples": 66,
+    "target_groups": 66,
+    "a_only_correct": 1,
+    "b_only_correct": 15,
+    "mcnemar_p": 0.000518798828125,
+    "exact_match": {
+      "a": 0.696969696969697,
+      "b": 0.9090909090909091,
+      "difference": 0.21212121212121213,
+      "ci95": [
+        0.10606060606060606,
+        0.3181818181818182
+      ]
+    },
+    "mean_cer": {
+      "a": 0.014959321634078098,
+      "b": 0.00512608151288811,
+      "difference": -0.009833240121189989,
+      "ci95": [
+        -0.01552219093254111,
+        -0.0048276613836084935
+      ]
+    }
+  },
+  "subsets": {},
+  "difficulty": {},
+  "categories": {
+    "doğru_cümle": {
+      "examples": 8,
+      "target_groups": 8,
+      "a_only_correct": 0,
+      "b_only_correct": 0,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 1.0,
+        "b": 1.0,
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mean_cer": {
+        "a": 0.0,
+        "b": 0.0,
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "doğru_kelime_koruma": {
+      "examples": 16,
+      "target_groups": 16,
+      "a_only_correct": 0,
+      "b_only_correct": 3,
+      "mcnemar_p": 0.25,
+      "exact_match": {
+        "a": 0.8125,
+        "b": 1.0,
+        "difference": 0.1875,
+        "ci95": [
+          0.0,
+          0.375
+        ]
+      },
+      "mean_cer": {
+        "a": 0.008907154673283705,
+        "b": 0.0,
+        "difference": -0.008907154673283705,
+        "ci95": [
+          -0.020538668320926386,
+          0.0
+        ]
+      }
+    },
+    "noktalama": {
+      "examples": 6,
+      "target_groups": 6,
+      "a_only_correct": 1,
+      "b_only_correct": 1,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 0.8333333333333334,
+        "b": 0.8333333333333334,
+        "difference": 0.0,
+        "ci95": [
+          -0.5,
+          0.5
+        ]
+      },
+      "mean_cer": {
+        "a": 0.016666666666666666,
+        "b": 0.007246376811594203,
+        "difference": -0.009420289855072464,
+        "ci95": [
+          -0.05000000000000001,
+          0.021739130434782608
+        ]
+      }
+    },
+    "sohbet": {
+      "examples": 10,
+      "target_groups": 10,
+      "a_only_correct": 0,
+      "b_only_correct": 1,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 0.8,
+        "b": 0.9,
+        "difference": 0.1,
+        "ci95": [
+          0.0,
+          0.3
+        ]
+      },
+      "mean_cer": {
+        "a": 0.006702702702702704,
+        "b": 0.002702702702702703,
+        "difference": -0.004,
+        "ci95": [
+          -0.012,
+          0.0
+        ]
+      }
+    },
+    "yazım_yanlışı": {
+      "examples": 14,
+      "target_groups": 14,
+      "a_only_correct": 0,
+      "b_only_correct": 4,
+      "mcnemar_p": 0.125,
+      "exact_match": {
+        "a": 0.5,
+        "b": 0.7857142857142857,
+        "difference": 0.2857142857142857,
+        "ci95": [
+          0.07142857142857142,
+          0.5
+        ]
+      },
+      "mean_cer": {
+        "a": 0.029122505846643776,
+        "b": 0.016666666666666666,
+        "difference": -0.01245583917997711,
+        "ci95": [
+          -0.021727123451261383,
+          -0.004365079365079365
+        ]
+      }
+    },
+    "ı_i_isimleri": {
+      "examples": 12,
+      "target_groups": 12,
+      "a_only_correct": 0,
+      "b_only_correct": 6,
+      "mcnemar_p": 0.03125,
+      "exact_match": {
+        "a": 0.4166666666666667,
+        "b": 0.9166666666666666,
+        "difference": 0.5,
+        "ci95": [
+          0.25,
+          0.75
+        ]
+      },
+      "mean_cer": {
+        "a": 0.02250488701638127,
+        "b": 0.0028735632183908046,
+        "difference": -0.019631323797990465,
+        "ci95": [
+          -0.033650975317641975,
+          -0.007590924257590924
+        ]
+      }
+    }
+  },
+  "targets": "original"
+}
+Tam eşleşme: B lehine fark var.
+Farklar B - A; CER cümle ortalamasıdır. Alt grup p değerleri çoklu karşılaştırma için düzeltilmemiştir.

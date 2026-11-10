@@ -24,6 +24,39 @@ MISSPELLINGS = [
     ('iyi ki', ['iyiki'], True), ('tabii ki', ['tabiki', 'tabi ki'], True), ('birtakım', ['bir takım'], True),
 ]
 
+# Opt-in only: extending MISSPELLINGS would change the seeded v3.1 stream.
+# Unambiguous standard spellings; ambiguous lexical pairs (e.g. direk/direkt,
+# mütevazı/mütevazi) are not added here. Existing v3.1 entries stay untouched.
+MISSPELLINGS_V32 = [
+    ('tıraş', ['traş'], False), ('kibrit', ['kirbit'], False),
+    ('sarımsak', ['sarmısak'], False), ('şarj', ['şarz'], False),
+    ('kirpik', ['kiprik'], False), ('ukala', ['ukela'], False),
+    ('döviz', ['dövüz'], False), ('poğaça', ['poaça'], False),
+    ('kravat', ['kıravat'], False), ('tişört', ['tişort'], False),
+    ('aferin', ['aferim'], True), ('maydanoz', ['maydonoz'], False),
+    ('muhatap', ['muhattap'], False), ('muhasebe', ['muhasepe'], False),
+    ('müteahhit', ['mütahit', 'müteahit'], False), ('müsaade', ['müsade'], False),
+    ('iddia', ['iddaa'], False), ('inisiyatif', ['insiyatif'], False),
+    ('doküman', ['döküman'], False), ('tren', ['tiren'], False),
+    ('film', ['filim'], False), ('espri', ['espiri'], False),
+    ('astronot', ['astronat'], False),
+    ('antrenman', ['antreman'], False), ('antrenör', ['antirenör'], False),
+    ('sandviç', ['sandüviç'], False), ('bisküvi', ['büsküvi'], False),
+    ('deodorant', ['deodarant'], False), ('restoran', ['restorant'], False),
+    ('karnabahar', ['karnıbahar'], False), ('kavanoz', ['kavonoz'], False),
+    ('fasulye', ['fasülye'], False), ('ekşi', ['eşki'], False),
+    ('maalesef', ['malesef'], True), ('mükemmel', ['mükemel'], False),
+    ('teşekkür', ['teşekür'], False), ('sıhhat', ['sıhat'], False),
+    ('yanlış', ['yannış'], False),
+]
+
+# Separate vocabulary for the opt-in name corruption; never extend PROPER_NAMES.
+NAMES_V32 = frozenset((
+    'Isparta Iğdır Ilgaz Ilgın Ilıca Işık Işıl Işın Irmak Irak Ihlara Ilgar '
+    'İzmir İstanbul İpek İrem İsmail İnegöl İznik İskenderun İran İtalya İngiltere İsveç İspir '
+    'Ankara Bursa Antalya Ali Ayşe Zeynep Deniz Ahmet'
+).split())
+
 # Names that take a case suffix after an apostrophe. Also matches lowercase chat text
 # ("ankara'ya"); capitalized words are treated as proper nouns whether listed or not.
 PROPER_NAMES = {lower_tr(n) for n in (
@@ -41,13 +74,13 @@ def _fix_case(original, replacement):
     return upper_first(replacement) if original[:1].isupper() else replacement
 
 
-def misspelling_candidates(text):
+def misspelling_candidates(text, *, v32=False):
     """(start, end, [wrong forms]) for every common misspelling target present in `text`."""
     lowered = lower_tr(text)
     found = []
     if len(lowered) != len(text):
         return found
-    for correct, wrong, whole in MISSPELLINGS:
+    for correct, wrong, whole in (MISSPELLINGS + MISSPELLINGS_V32 if v32 else MISSPELLINGS):
         pattern = r'(?<!\w)' + re.escape(correct) + (r'(?!\w)' if whole else '')
         for m in re.finditer(pattern, lowered):
             original = text[m.start():m.start() + len(correct)]
@@ -65,12 +98,42 @@ def apostrophe_candidates(text):
     return found
 
 
-def misspell(text, rng):
-    options = misspelling_candidates(text)
+def misspell(text, rng, *, v32=False):
+    options = misspelling_candidates(text, v32=v32)
     if not options:
         return text
     start, end, forms = rng.choice(options)
     return text[:start] + rng.choice(forms) + text[end:]
+
+
+def corrupt_proper_name(text, rng):
+    """One known, capitalized name: Turkish lowercase, ASCII, or I/İ confusion.
+
+    The exact-token vocabulary avoids treating any sentence-initial capital as a
+    name. The targeted corpus marks actual names; ordinary lowercase nouns such
+    as ışık/ırmak are never selected. Apostrophe suffixes may lose their separator.
+    """
+    options = [m for m in re.finditer(r'\b[A-Za-zÇĞİÖŞÜçğıöşü]+\b', text)
+               if m.group() in NAMES_V32]
+    if not options:
+        return text
+    match = rng.choice(options)
+    name = match.group()
+    ascii_table = str.maketrans('çğıöşüÇĞİÖŞÜ', 'cgiosuCGIOSU')
+    # Fold suffix letters as well for the keyboard modes: Işık'ın -> isik'in.
+    suffix_match = re.match(r"['’][a-zçğıöşü]+", text[match.end():])
+    tail = suffix_match.group() if suffix_match else ''
+    variants = [lower_tr(name) + tail, (name + tail).translate(ascii_table),
+                lower_tr(name + tail).translate(ascii_table)]
+    if name.startswith('I'):
+        variants.append('İ' + name[1:] + tail)
+    elif name.startswith('İ'):
+        variants.append('I' + name[1:] + tail)
+    variants = list(dict.fromkeys(v for v in variants if v != name + tail))
+    replacement = rng.choice(variants)
+    if tail and rng.random() < .35:
+        replacement = replacement.replace("'", '').replace('’', '')
+    return text[:match.start()] + replacement + text[match.end() + len(tail):]
 
 
 def drop_proper_apostrophe(text, rng):

@@ -6,8 +6,9 @@ import argparse
 import json
 import time
 from megazeka.storage import ROOT, ensure_budget, usage
-from megazeka.inference import CorrectionEngine
+from megazeka.inference import CorrectionEngine, report_name
 from megazeka.metrics import measure
+from evaluation.audit import recompute_audited_metrics
 from training.prepare import read_pairs
 
 MANUAL = [
@@ -40,9 +41,12 @@ UNCHANGED = [t for _, t in MANUAL if _ == t]
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--checkpoint', choices=['base', 'best', 'latest'], default='best')
+    parser.add_argument('--checkpoint', type=report_name, default='best')
+    parser.add_argument('--tag', type=report_name)
+    parser.add_argument('--lexicon-guard', action='store_true')
     parser.add_argument('--limit', type=int, default=None)
     args = parser.parse_args()
+    tag = args.tag if args.tag is not None else args.checkpoint
     ensure_budget(10_000_000, 'Değerlendirme raporu')
     engine = CorrectionEngine(args.checkpoint)
     source = read_pairs('test')[:args.limit]  # None -> all pairs
@@ -50,7 +54,7 @@ def main():
     started = time.perf_counter()
     for offset in range(0, len(source), 8):
         batch = source[offset:offset+8]
-        results = engine.correct_batch([r['input'] for r in batch])
+        results = engine.correct_batch([r['input'] for r in batch], lexicon_guard=args.lexicon_guard)
         for row, result in zip(batch, results):
             rows.append({**{k: row[k] for k in ['input', 'target', 'difficulty', 'source']},
                          'output': result['output'], 'raw_output': result['raw_output'], 'warnings': result['warnings']})
@@ -58,7 +62,7 @@ def main():
             print(f'Değerlendirme {min(offset+8, len(source))}/{len(source)}', flush=True)
     manual = []
     for text, target in MANUAL:
-        result = engine.correct(text, inspect=False)
+        result = engine.correct(text, inspect=False, lexicon_guard=args.lexicon_guard)
         manual.append({'input': text, 'target': target, 'output': result['output'], 'raw_output': result['raw_output']})
     subsets = {}
     for name, keep in [('common_voice', lambda r: r['source'].startswith('Common Voice')),
@@ -67,15 +71,18 @@ def main():
         if chosen:
             subsets[name] = {'metrics': measure(chosen), 'raw_metrics': measure([{**r, 'output': r['raw_output']} for r in chosen]),
                              'identity_baseline': measure([{**r, 'output': r['input']} for r in chosen])}
-    report = {'checkpoint': args.checkpoint, 'metrics': measure(rows), 'subsets': subsets,
+    report = {'checkpoint': args.checkpoint, 'tag': tag, 'lexicon_guard': args.lexicon_guard,
+              'metrics': measure(rows), 'audited_metrics': recompute_audited_metrics({'examples': rows}), 'subsets': subsets,
               'raw_metrics': measure([{**r, 'output': r['raw_output']} for r in rows]),
               'identity_baseline': measure([{**r, 'output': r['input']} for r in rows]),
               'manual_metrics': measure(manual), 'manual': manual, 'examples': rows,
               'seconds': time.perf_counter()-started, 'model_info': engine.info, 'storage': usage(),
               'note': 'Sentetik test; karakter düzenleme F1; manuel örnekler eğitim dışında. Modelin ön eğitim verileriyle olası örtüşme bilinmiyor.'}
-    path = ROOT / f'reports/evaluation-{args.checkpoint}.json'
+    path = ROOT / f'reports/evaluation-{tag}.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     lines = ['# Megazeka değerlendirmesi', '', '```json', json.dumps(report['metrics'], ensure_ascii=False, indent=2), '```', '']
+    lines += ['## Denetlenmiş hedefler', '', '```json', json.dumps(report['audited_metrics'], ensure_ascii=False, indent=2), '```', '']
     for name, values in subsets.items():
         lines.extend([f'## Alt küme: {name} ({values["metrics"]["examples"]} çift)', '', '```json',
                       json.dumps({'filtreli': values['metrics'], 'ham': values['raw_metrics'], 'girdiyi_kopyala': values['identity_baseline']}, ensure_ascii=False, indent=2), '```', ''])
@@ -92,7 +99,7 @@ def main():
             lines.append('Bu kategoride örnek yok.')
         for row in examples[:12]:
             lines.extend(['```text', 'GİRDİ: ' + row['input'], 'MODEL: ' + row['output'], 'HEDEF: ' + row['target'], '```', ''])
-    (ROOT / f'reports/evaluation-{args.checkpoint}.md').write_text('\n'.join(lines), encoding='utf-8')
+    (ROOT / f'reports/evaluation-{tag}.md').write_text('\n'.join(lines), encoding='utf-8')
     print(json.dumps({k: v for k, v in report.items() if k not in ['examples', 'manual']}, ensure_ascii=False, indent=2))
 
 if __name__ == '__main__':

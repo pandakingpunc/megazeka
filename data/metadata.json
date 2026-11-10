@@ -19,7 +19,7 @@
   "split_method": "NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım",
   "clean_ratio": 0.25,
   "format": "gzip-compressed JSONL",
-  "version": "v3.1",
+  "version": "v3.2",
   "target_corrections": {
     "file": "data/audit/corrections.jsonl",
     "sha256": "790e34b0165b84951fd7caededa33f5fb9e6b0cee41559068264b63f3991d8f5",
@@ -27,28 +27,30 @@
     "dropped_applied": 12
   },
   "test_frozen_from": "v2",
-  "challenge_targets_excluded": 81,
+  "challenge_targets_excluded": 146,
   "splits": {
     "train": {
-      "pairs": 42017,
-      "unique_targets": 10186,
+      "pairs": 55902,
+      "unique_targets": 13387,
       "by_source": {
-        "Common Voice / CC0-1.0": 31936,
-        "Megazeka gündelik şablon / CC0-1.0": 8808,
-        "Birleşik iki cümle": 1273
+        "Common Voice / CC0-1.0": 31932,
+        "Megazeka gündelik şablon / CC0-1.0": 8792,
+        "Birleşik iki cümle": 1272,
+        "Megazeka hedefli şablon / CC0-1.0": 13906
       },
-      "bytes": 2923981,
-      "sha256": "5b0feaecbb564ddeffc60bb9f05e59d1a79071c1bfec50a6a3eb100fb202ae9a"
+      "bytes": 3368905,
+      "sha256": "ec637a3aa3e89ca60895ca37b70919ff177dfae9daa5f3af310eed492646cc19"
     },
     "validation": {
-      "pairs": 1440,
-      "unique_targets": 360,
+      "pairs": 2650,
+      "unique_targets": 639,
       "by_source": {
         "Common Voice / CC0-1.0": 640,
-        "Megazeka gündelik şablon / CC0-1.0": 800
+        "Megazeka gündelik şablon / CC0-1.0": 800,
+        "Megazeka hedefli şablon / CC0-1.0": 1210
       },
-      "bytes": 82736,
-      "sha256": "f3aa570ed40c336d9cfa0480797abd05700216f120c4f61ce1ec57b1c476df20"
+      "bytes": 121634,
+      "sha256": "a8de67b31e8bd4f56833026bd123ce569c5f978e2bae834fff0b0b96212c2058"
     },
     "test": {
       "pairs": 1128,
@@ -60,6 +62,41 @@
       "bytes": 67547,
       "sha256": "43738c617c498e21753f71f9af928ac518c374e938742901a443e81b827e30a5",
       "frozen_from": "v2"
+    }
+  },
+  "targeted_source": {
+    "name": "Megazeka hedefli şablon / CC0-1.0",
+    "module": "training/targeted.py",
+    "license": "CC0-1.0",
+    "seed": 3200,
+    "by_kind": {
+      "yazım": 1149,
+      "özel_ad": 1160,
+      "koruma": 1176
+    },
+    "sentences": 3485,
+    "excluded": 3,
+    "validation_ratio": 0.08,
+    "protection_clean_ratio": 0.4,
+    "splits": {
+      "train": {
+        "sentences": 3206,
+        "pairs": 13906,
+        "by_kind": {
+          "yazım": 1057,
+          "özel_ad": 1067,
+          "koruma": 1082
+        }
+      },
+      "validation": {
+        "sentences": 279,
+        "pairs": 1210,
+        "by_kind": {
+          "yazım": 92,
+          "özel_ad": 93,
+          "koruma": 94
+        }
+      }
     }
   }
 }

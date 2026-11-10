@@ -1,0 +1,213 @@
+{
+  "difference_direction": "B - A",
+  "resamples": 10000,
+  "seed": 42,
+  "bootstrap_unit": "target",
+  "overall": {
+    "examples": 81,
+    "target_groups": 81,
+    "a_only_correct": 3,
+    "b_only_correct": 8,
+    "mcnemar_p": 0.2265625,
+    "exact_match": {
+      "a": 0.8271604938271605,
+      "b": 0.8888888888888888,
+      "difference": 0.06172839506172839,
+      "ci95": [
+        -0.012345679012345678,
+        0.14814814814814814
+      ]
+    },
+    "mean_cer": {
+      "a": 0.0074699944063834345,
+      "b": 0.006239071547996033,
+      "difference": -0.001230922858387401,
+      "ci95": [
+        -0.004761256172986663,
+        0.0024738234493666567
+      ]
+    }
+  },
+  "subsets": {},
+  "difficulty": {},
+  "categories": {
+    "doğru_cümle": {
+      "examples": 17,
+      "target_groups": 17,
+      "a_only_correct": 1,
+      "b_only_correct": 0,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 1.0,
+        "b": 0.9411764705882353,
+        "difference": -0.058823529411764705,
+        "ci95": [
+          -0.17647058823529413,
+          0.0
+        ]
+      },
+      "mean_cer": {
+        "a": 0.0,
+        "b": 0.00392156862745098,
+        "difference": 0.00392156862745098,
+        "ci95": [
+          0.0,
+          0.011764705882352941
+        ]
+      }
+    },
+    "kesme_işareti": {
+      "examples": 8,
+      "target_groups": 8,
+      "a_only_correct": 0,
+      "b_only_correct": 0,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 0.875,
+        "b": 0.875,
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mean_cer": {
+        "a": 0.005434782608695652,
+        "b": 0.005434782608695652,
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "ne_yap": {
+      "examples": 12,
+      "target_groups": 12,
+      "a_only_correct": 0,
+      "b_only_correct": 0,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 0.8333333333333334,
+        "b": 0.8333333333333334,
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mean_cer": {
+        "a": 0.011330409356725144,
+        "b": 0.015716374269005847,
+        "difference": 0.0043859649122807015,
+        "ci95": [
+          0.0,
+          0.013157894736842105
+        ]
+      }
+    },
+    "sohbet": {
+      "examples": 8,
+      "target_groups": 8,
+      "a_only_correct": 0,
+      "b_only_correct": 1,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 0.75,
+        "b": 0.875,
+        "difference": 0.125,
+        "ci95": [
+          0.0,
+          0.375
+        ]
+      },
+      "mean_cer": {
+        "a": 0.011817226890756302,
+        "b": 0.004464285714285714,
+        "difference": -0.007352941176470588,
+        "ci95": [
+          -0.022058823529411763,
+          0.0
+        ]
+      }
+    },
+    "yazım_yanlışı": {
+      "examples": 17,
+      "target_groups": 17,
+      "a_only_correct": 1,
+      "b_only_correct": 3,
+      "mcnemar_p": 0.625,
+      "exact_match": {
+        "a": 0.7647058823529411,
+        "b": 0.8823529411764706,
+        "difference": 0.11764705882352941,
+        "ci95": [
+          -0.11764705882352941,
+          0.35294117647058826
+        ]
+      },
+      "mean_cer": {
+        "a": 0.009012422674661765,
+        "b": 0.005347593582887701,
+        "difference": -0.0036648290917740633,
+        "ci95": [
+          -0.012509663363553306,
+          0.005347593582887701
+        ]
+      }
+    },
+    "yumuşama": {
+      "examples": 10,
+      "target_groups": 10,
+      "a_only_correct": 1,
+      "b_only_correct": 0,
+      "mcnemar_p": 1.0,
+      "exact_match": {
+        "a": 1.0,
+        "b": 0.9,
+        "difference": -0.1,
+        "ci95": [
+          -0.3,
+          0.0
+        ]
+      },
+      "mean_cer": {
+        "a": 0.0,
+        "b": 0.004,
+        "difference": 0.004,
+        "ci95": [
+          0.0,
+          0.012
+        ]
+      }
+    },
+    "ı_i_isimleri": {
+      "examples": 9,
+      "target_groups": 9,
+      "a_only_correct": 0,
+      "b_only_correct": 4,
+      "mcnemar_p": 0.125,
+      "exact_match": {
+        "a": 0.4444444444444444,
+        "b": 0.8888888888888888,
+        "difference": 0.4444444444444444,
+        "ci95": [
+          0.1111111111111111,
+          0.7777777777777778
+        ]
+      },
+      "mean_cer": {
+        "a": 0.019764152574610092,
+        "b": 0.0044444444444444444,
+        "difference": -0.015319708130165647,
+        "ci95": [
+          -0.026818134661271913,
+          -0.003968253968253968
+        ]
+      }
+    }
+  },
+  "targets": "original"
+}
+Tam eşleşme: fark gürültü sınırında.
+Farklar B - A; CER cümle ortalamasıdır. Alt grup p değerleri çoklu karşılaştırma için düzeltilmemiştir.

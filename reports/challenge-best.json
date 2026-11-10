@@ -1,13 +1,16 @@
 {
   "checkpoint": "best",
+  "tag": "best",
+  "file": "megazeka\\evaluation\\challenge.jsonl",
+  "lexicon_guard": false,
   "total": 81,
-  "exact": 67,
-  "exact_match": 0.8271604938271605,
+  "exact": 72,
+  "exact_match": 0.8888888888888888,
   "categories": {
     "yumuşama": {
       "total": 10,
-      "exact": 10,
-      "exact_match": 1.0
+      "exact": 9,
+      "exact_match": 0.9
     },
     "ne_yap": {
       "total": 12,
@@ -16,13 +19,13 @@
     },
     "sohbet": {
       "total": 8,
-      "exact": 6,
-      "exact_match": 0.75
+      "exact": 7,
+      "exact_match": 0.875
     },
     "yazım_yanlışı": {
       "total": 17,
-      "exact": 13,
-      "exact_match": 0.7647058823529411
+      "exact": 15,
+      "exact_match": 0.8823529411764706
     },
     "kesme_işareti": {
       "total": 8,
@@ -31,33 +34,40 @@
     },
     "ı_i_isimleri": {
       "total": 9,
-      "exact": 4,
-      "exact_match": 0.4444444444444444
+      "exact": 8,
+      "exact_match": 0.8888888888888888
     },
     "doğru_cümle": {
       "total": 17,
-      "exact": 17,
-      "exact_match": 1.0
+      "exact": 16,
+      "exact_match": 0.9411764705882353
     }
   },
   "clean_total": 17,
-  "clean_changed": 0,
-  "overcorrection": 0.0,
-  "seconds": 40.93069259999993,
+  "clean_changed": 1,
+  "overcorrection": 0.058823529411764705,
+  "seconds": 40.68630380000104,
   "failures": [
+    {
+      "source": "yemeği tadcaz bakalım",
+      "target": "Yemeği tadacağız bakalım.",
+      "category": "yumuşama",
+      "output": "Yemeği tadacağız, bakalım.",
+      "raw_output": "Yemeği tadacağız, bakalım."
+    },
     {
       "source": "nolur gel",
       "target": "Ne olur gel.",
       "category": "ne_yap",
-      "output": "Ne olur gel?",
-      "raw_output": "Ne olur gel?"
+      "output": "Ne olur, gel.",
+      "raw_output": "Ne olur, gel."
     },
     {
       "source": "naber nasılsın",
       "target": "Ne haber, nasılsın?",
       "category": "ne_yap",
-      "output": "Ne haber nasılsın?",
-      "raw_output": "Ne haber nasılsın?"
+      "output": "Ne yaber nasılsın?",
+      "raw_output": "Ne yaber nasılsın?"
     },
     {
       "source": "bi dakika bekle geliyom",
@@ -67,25 +77,11 @@
       "raw_output": "Bir dakika bekle geliyorum."
     },
     {
-      "source": "bilmiyom valla",
-      "target": "Bilmiyorum valla.",
-      "category": "sohbet",
-      "output": "Bilmiyorum vallah.",
-      "raw_output": "Bilmiyorum vallah."
-    },
-    {
-      "source": "şöför beni evin önünde bıraktı",
-      "target": "Şoför beni evin önünde bıraktı.",
+      "source": "makina bozuldu galiba",
+      "target": "Makine bozuldu galiba.",
       "category": "yazım_yanlışı",
-      "output": "Şöför beni evin önünde bıraktı.",
-      "raw_output": "Şöför beni evin önünde bıraktı."
-    },
-    {
-      "source": "labaratuvarda çalışıyorum",
-      "target": "Laboratuvarda çalışıyorum.",
-      "category": "yazım_yanlışı",
-      "output": "Labaratuvarda çalışıyorum.",
-      "raw_output": "Labaratuvarda çalışıyorum."
+      "output": "Makine bozuldu, galiba.",
+      "raw_output": "Makine bozuldu, galiba."
     },
     {
       "source": "klavuz kitabı masada",
@@ -93,13 +89,6 @@
       "category": "yazım_yanlışı",
       "output": "Kalavuz kitabı masada.",
       "raw_output": "Kalavuz kitabı masada."
-    },
-    {
-      "source": "herzaman böyle yapıyorsun",
-      "target": "Her zaman böyle yapıyorsun.",
-      "category": "yazım_yanlışı",
-      "output": "Her zaman böyle yapıyorsun?",
-      "raw_output": "Her zaman böyle yapıyorsun?"
     },
     {
       "source": "Ayşenin kitabı masada.",
@@ -116,32 +105,11 @@
       "raw_output": "Isık bugün okula gelmedi."
     },
     {
-      "source": "Irmak ile Ilgaz parka gitti",
-      "target": "Irmak ile Ilgaz parka gitti.",
-      "category": "ı_i_isimleri",
-      "output": "Irmak ile İlgaz parka gitti.",
-      "raw_output": "Irmak ile İlgaz parka gitti."
-    },
-    {
-      "source": "isparta gülleriyle ünlüdür",
-      "target": "Isparta gülleriyle ünlüdür.",
-      "category": "ı_i_isimleri",
-      "output": "İsparta gülleriyle ünlüdür.",
-      "raw_output": "İsparta gülleriyle ünlüdür."
-    },
-    {
-      "source": "ılgaz ve işık yarın gelcek",
-      "target": "Ilgaz ve Işık yarın gelecek.",
-      "category": "ı_i_isimleri",
-      "output": "Ilgaz ve işık yarın gelecek.",
-      "raw_output": "Ilgaz ve işık yarın gelecek."
-    },
-    {
-      "source": "Isparta'dan Igdir'a yolculuk uzun",
-      "target": "Isparta'dan Iğdır'a yolculuk uzun.",
-      "category": "ı_i_isimleri",
-      "output": "Isparta'dan İğdır'a yolculuk uzun.",
-      "raw_output": "Isparta'dan İğdır'a yolculuk uzun."
+      "source": "Nolan'ın yeni filmini izledim.",
+      "target": "Nolan'ın yeni filmini izledim.",
+      "category": "doğru_cümle",
+      "output": "Ne olan'ın yeni filmini izledim.",
+      "raw_output": "Ne olan'ın yeni filmini izledim."
     }
   ],
   "rows": [
@@ -205,8 +173,8 @@
       "source": "yemeği tadcaz bakalım",
       "target": "Yemeği tadacağız bakalım.",
       "category": "yumuşama",
-      "output": "Yemeği tadacağız bakalım.",
-      "raw_output": "Yemeği tadacağız bakalım."
+      "output": "Yemeği tadacağız, bakalım.",
+      "raw_output": "Yemeği tadacağız, bakalım."
     },
     {
       "source": "yoksa kaybetcem",
@@ -247,15 +215,15 @@
       "source": "nolur gel",
       "target": "Ne olur gel.",
       "category": "ne_yap",
-      "output": "Ne olur gel?",
-      "raw_output": "Ne olur gel?"
+      "output": "Ne olur, gel.",
+      "raw_output": "Ne olur, gel."
     },
     {
       "source": "naber nasılsın",
       "target": "Ne haber, nasılsın?",
       "category": "ne_yap",
-      "output": "Ne haber nasılsın?",
-      "raw_output": "Ne haber nasılsın?"
+      "output": "Ne yaber nasılsın?",
+      "raw_output": "Ne yaber nasılsın?"
     },
     {
       "source": "nabıyosun",
@@ -324,8 +292,8 @@
       "source": "bilmiyom valla",
       "target": "Bilmiyorum valla.",
       "category": "sohbet",
-      "output": "Bilmiyorum vallah.",
-      "raw_output": "Bilmiyorum vallah."
+      "output": "Bilmiyorum valla.",
+      "raw_output": "Bilmiyorum valla."
     },
     {
       "source": "ordan bişey almıcam",
@@ -380,8 +348,8 @@
       "source": "şöför beni evin önünde bıraktı",
       "target": "Şoför beni evin önünde bıraktı.",
       "category": "yazım_yanlışı",
-      "output": "Şöför beni evin önünde bıraktı.",
-      "raw_output": "Şöför beni evin önünde bıraktı."
+      "output": "Şoför beni evin önünde bıraktı.",
+      "raw_output": "Şoför beni evin önünde bıraktı."
     },
     {
       "source": "eşortman almam lazım",
@@ -408,15 +376,15 @@
       "source": "makina bozuldu galiba",
       "target": "Makine bozuldu galiba.",
       "category": "yazım_yanlışı",
-      "output": "Makine bozuldu galiba.",
-      "raw_output": "Makine bozuldu galiba."
+      "output": "Makine bozuldu, galiba.",
+      "raw_output": "Makine bozuldu, galiba."
     },
     {
       "source": "labaratuvarda çalışıyorum",
       "target": "Laboratuvarda çalışıyorum.",
       "category": "yazım_yanlışı",
-      "output": "Labaratuvarda çalışıyorum.",
-      "raw_output": "Labaratuvarda çalışıyorum."
+      "output": "Laboratuvarda çalışıyorum.",
+      "raw_output": "Laboratuvarda çalışıyorum."
     },
     {
       "source": "arabanın egzos borusu delinmiş",
@@ -471,8 +439,8 @@
       "source": "herzaman böyle yapıyorsun",
       "target": "Her zaman böyle yapıyorsun.",
       "category": "yazım_yanlışı",
-      "output": "Her zaman böyle yapıyorsun?",
-      "raw_output": "Her zaman böyle yapıyorsun?"
+      "output": "Her zaman böyle yapıyorsun.",
+      "raw_output": "Her zaman böyle yapıyorsun."
     },
     {
       "source": "Ankaraya yarın gideceğim.",
@@ -541,8 +509,8 @@
       "source": "Irmak ile Ilgaz parka gitti",
       "target": "Irmak ile Ilgaz parka gitti.",
       "category": "ı_i_isimleri",
-      "output": "Irmak ile İlgaz parka gitti.",
-      "raw_output": "Irmak ile İlgaz parka gitti."
+      "output": "Irmak ile Ilgaz parka gitti.",
+      "raw_output": "Irmak ile Ilgaz parka gitti."
     },
     {
       "source": "Ipek Izmirde yaşıyor",
@@ -555,8 +523,8 @@
       "source": "isparta gülleriyle ünlüdür",
       "target": "Isparta gülleriyle ünlüdür.",
       "category": "ı_i_isimleri",
-      "output": "İsparta gülleriyle ünlüdür.",
-      "raw_output": "İsparta gülleriyle ünlüdür."
+      "output": "Isparta gülleriyle ünlüdür.",
+      "raw_output": "Isparta gülleriyle ünlüdür."
     },
     {
       "source": "Igdir'a ilk kez gidiyorum",
@@ -576,8 +544,8 @@
       "source": "ılgaz ve işık yarın gelcek",
       "target": "Ilgaz ve Işık yarın gelecek.",
       "category": "ı_i_isimleri",
-      "output": "Ilgaz ve işık yarın gelecek.",
-      "raw_output": "Ilgaz ve işık yarın gelecek."
+      "output": "Ilgaz ve Işık yarın gelecek.",
+      "raw_output": "Ilgaz ve Işık yarın gelecek."
     },
     {
       "source": "Isik ile Ipek aynı sınıfta",
@@ -590,8 +558,8 @@
       "source": "Isparta'dan Igdir'a yolculuk uzun",
       "target": "Isparta'dan Iğdır'a yolculuk uzun.",
       "category": "ı_i_isimleri",
-      "output": "Isparta'dan İğdır'a yolculuk uzun.",
-      "raw_output": "Isparta'dan İğdır'a yolculuk uzun."
+      "output": "Isparta'dan Iğdır'a yolculuk uzun.",
+      "raw_output": "Isparta'dan Iğdır'a yolculuk uzun."
     },
     {
       "source": "Yarın okula gideceğim.",
@@ -632,8 +600,8 @@
       "source": "Nolan'ın yeni filmini izledim.",
       "target": "Nolan'ın yeni filmini izledim.",
       "category": "doğru_cümle",
-      "output": "Nolan'ın yeni filmini izledim.",
-      "raw_output": "Nolan'ın yeni filmini izledim."
+      "output": "Ne olan'ın yeni filmini izledim.",
+      "raw_output": "Ne olan'ın yeni filmini izledim."
     },
     {
       "source": "Yalnız başına yaşamak zor olabilir.",
@@ -724,7 +692,7 @@
     "Nicemleme": "Yok",
     "Parça sınırı": "176 UTF-8 baytı",
     "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
-    "Eğitim adımı": 5000,
+    "Eğitim adımı": 6000,
     "LoRA hassasiyeti": "torch.float32"
   }
 }

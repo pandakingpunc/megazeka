@@ -6,7 +6,7 @@ import math
 import time
 from contextlib import nullcontext
 from difflib import SequenceMatcher
-from .text import normalize, chunks, lower_tr
+from .text import normalize, chunks, lower_tr, upper_first
 from .metrics import edits, change_type
 
 # Chunk-level guard: reject a generation that rewrites more characters than the chunk has.
@@ -16,6 +16,8 @@ MAX_CHUNK_EDIT_RATIO = 1.0
 MIN_LENGTH_RATIO = .65
 # Word-level guard: a replaced word group must keep letter similarity with the original.
 MAX_WORD_DISTANCE = .6
+LEXICON_GUARD_DEFAULT = False
+MIN_SOURCE_COUNT = 3
 _FOLD = str.maketrans('çğıöşüâîû', 'cgiosuaiu')
 
 def fold(word):
@@ -46,19 +48,75 @@ def guard_words(source, candidate):
             blocked += 1
     return (candidate if not blocked else ' '.join(output)), blocked
 
-def guard(part, raw, ids):
-    """Apply both guards; returns (final_text, warning_or_None)."""
+def guard_lexicon(source, candidate, known=None):
+    """Revert only isolated known -> unseen word replacements."""
+    if known is None:
+        from .lexicon import known
+    a, b = source.split(), candidate.split()
+    matcher = SequenceMatcher(None, [fold(w) for w in a], [fold(w) for w in b], autojunk=False)
+    blocked = 0
+    pairs = []
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == 'equal':
+            pairs.extend(zip(range(i1, i2), range(j1, j2)))
+        elif tag == 'replace' and i2 - i1 == j2 - j1 == 1:
+            pairs.append((i1, j1))
+    for i1, j1 in pairs:
+        old, new = a[i1], b[j1]
+        key = lambda w: ''.join(c for c in lower_tr(w) if c.isalnum())
+        if key(old) == key(new) or not known(old, min_count=MIN_SOURCE_COUNT) or known(new):
+            continue
+        cut = len(old)
+        while cut and not old[cut-1].isalnum():
+            cut -= 1
+        end = len(new)
+        while end and not new[end-1].isalnum():
+            end -= 1
+        restored = old[:cut]
+        first = next((n for n, c in enumerate(restored) if c.isalpha()), None)
+        new_first = next((c for c in new if c.isalpha()), '')
+        initial = i1 == 0 or a[i1-1].endswith(('.', '!', '?'))
+        if initial and first is not None and restored[first].islower() and new_first.isupper():
+            restored = restored[:first] + upper_first(restored[first:])
+        b[j1] = restored + (new[end:] or old[cut:])
+        blocked += 1
+    return (' '.join(b) if blocked else candidate), blocked
+
+
+def report_name(name):
+    if not isinstance(name, str) or not name.strip() or name == '.' or '..' in name or any(c in name for c in '/\\:'):
+        raise ValueError('Geçersiz ad: yol ayırıcıları ve .. kullanılamaz.')
+    return name
+
+
+def checkpoint_path(checkpoint):
+    report_name(checkpoint)
+    path = ROOT / ('models/base' if checkpoint == 'base' else f'models/checkpoints/{checkpoint}')
+    if not path.is_dir():
+        raise ValueError(f'Kontrol noktası bulunamadı: {checkpoint}')
+    return path
+
+
+def guard(part, raw, ids, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
+    """Apply optional guards; returns (final_text, warning_or_None)."""
     from rapidfuzz.distance import Levenshtein
-    ratio = Levenshtein.distance(part, raw) / max(1, len(part))
-    if not raw.strip() or ratio > MAX_CHUNK_EDIT_RATIO or len(raw) < MIN_LENGTH_RATIO * len(part) or 1 not in ids:
-        return part, 'kapsamlı/eksik üretim korunma filtresiyle reddedildi'
-    final, blocked = guard_words(part, raw)
-    if blocked:
-        return final, f'{blocked} kelime grubu harf benzerliği olmadığı için özgün haliyle korundu'
-    return final, None
+    final, warnings = raw, []
+    if conservative:
+        ratio = Levenshtein.distance(part, raw) / max(1, len(part))
+        if not raw.strip() or ratio > MAX_CHUNK_EDIT_RATIO or len(raw) < MIN_LENGTH_RATIO * len(part) or 1 not in ids:
+            return part, 'kapsamlı/eksik üretim korunma filtresiyle reddedildi'
+        final, blocked = guard_words(part, raw)
+        if blocked:
+            warnings.append(f'{blocked} kelime grubu harf benzerliği olmadığı için özgün haliyle korundu')
+    if lexicon_guard:
+        final, blocked = guard_lexicon(part, final)
+        if blocked:
+            warnings.append(f'{blocked} kelime sözlük korumasıyla özgün haliyle korundu')
+    return final, '; '.join(warnings) or None
 
 class CorrectionEngine:
     def __init__(self, checkpoint='best', device=None):
+        path = checkpoint_path(checkpoint)
         import torch
         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
         from peft import PeftModel
@@ -72,9 +130,6 @@ class CorrectionEngine:
         base = AutoModelForSeq2SeqLM.from_pretrained(ROOT / 'models/base', local_files_only=True, dtype=self.dtype)
         self.checkpoint = checkpoint
         if checkpoint != 'base':
-            if checkpoint not in ('best', 'latest'):
-                raise ValueError('Geçersiz kontrol noktası.')
-            path = ROOT / 'models/checkpoints' / checkpoint
             if not (path / 'adapter_config.json').exists():
                 raise RuntimeError('Eğitilmiş model henüz bulunamadı. Önce eğitim komutunu çalıştırın.')
             base = PeftModel.from_pretrained(base, path, local_files_only=True)
@@ -102,7 +157,7 @@ class CorrectionEngine:
             return repr(chr(b)) if 32 <= b < 127 else f'0x{b:02X}'
         return f'<extra:{token_id}>'
 
-    def correct(self, text, inspect=True, conservative=True):
+    def correct(self, text, inspect=True, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
         if not isinstance(text, str):
             raise TypeError('Metin bir yazı dizisi olmalı.')
         if not text.strip():
@@ -152,8 +207,8 @@ class CorrectionEngine:
             timings['Çözümleme'] += (now() - t) * 1000
             t = now()
             final = raw
-            if conservative:
-                final, warning = guard(part, raw, ids)
+            if conservative or lexicon_guard:
+                final, warning = guard(part, raw, ids, conservative=conservative, lexicon_guard=lexicon_guard)
                 if warning:
                     warnings.append(f'{part_index+1}. parça: {warning}. Ham çıktı inceleme ekranında.')
             pieces.append({'part': part_index, 'input': part, 'raw': raw, 'final': final})
@@ -174,12 +229,12 @@ class CorrectionEngine:
                 'sequence_log_probability': sum(math.log(max(p, 1e-30)) for p in probabilities) if probabilities else None,
                 'checkpoint': self.checkpoint}
 
-    def correct_batch(self, texts, conservative=True):
+    def correct_batch(self, texts, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
         """Evaluation path for short independent sentences; never truncate long input."""
         if not texts:
             return []
         if any(len(chunks(normalize(t))) != 1 or len(t.encode('utf-8')) > 176 or not t.strip() for t in texts):
-            return [self.correct(t, inspect=False, conservative=conservative) for t in texts]
+            return [self.correct(t, inspect=False, conservative=conservative, lexicon_guard=lexicon_guard) for t in texts]
         prepared = [normalize(t) for t in texts]
         x = self.tokenizer(prepared, padding=True, return_tensors='pt').to(self.device)
         with self.torch.inference_mode():
@@ -187,6 +242,6 @@ class CorrectionEngine:
         outputs = self.tokenizer.batch_decode(sequences, skip_special_tokens=True)
         results = []
         for text, raw, ids in zip(prepared, outputs, sequences.tolist()):
-            final, warning = (guard(text, raw, ids) if conservative else (raw, None))
+            final, warning = guard(text, raw, ids, conservative=conservative, lexicon_guard=lexicon_guard)
             results.append({'output': final, 'raw_output': raw, 'warnings': [warning] if warning else []})
         return results

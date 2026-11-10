@@ -11,11 +11,17 @@ import argparse
 import json
 import time
 from megazeka.storage import ROOT
+from megazeka.inference import report_name
 
 CHALLENGE = ROOT / 'evaluation/challenge.jsonl'
 
-def load():
-    return [json.loads(line) for line in CHALLENGE.read_text(encoding='utf-8').splitlines() if line.strip()]
+def load(path=CHALLENGE):
+    return [json.loads(line) for line in Path(path).read_text(encoding='utf-8').splitlines() if line.strip()]
+
+
+def output_stem(path, tag):
+    name = 'challenge' if Path(path).resolve() == CHALLENGE.resolve() else Path(path).stem
+    return ROOT / f'reports/{name}-{report_name(tag)}'
 
 def summarize(rows):
     """rows: dicts with source/target/output/category. Pure function so it can be unit-tested."""
@@ -36,21 +42,27 @@ def summarize(rows):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--checkpoint', choices=['base', 'best', 'latest'], default='best')
+    parser.add_argument('--checkpoint', type=report_name, default='best')
+    parser.add_argument('--tag', type=report_name)
+    parser.add_argument('--file', type=Path, default=CHALLENGE)
+    parser.add_argument('--lexicon-guard', action='store_true')
     args = parser.parse_args()
+    tag = args.tag if args.tag is not None else args.checkpoint
     from megazeka.inference import CorrectionEngine
     engine = CorrectionEngine(args.checkpoint)
     started = time.perf_counter()
     rows = []
-    for item in load():
-        result = engine.correct(item['source'], inspect=False, conservative=True)
+    for item in load(args.file):
+        result = engine.correct(item['source'], inspect=False, conservative=True, lexicon_guard=args.lexicon_guard)
         rows.append({**item, 'output': result['output'], 'raw_output': result['raw_output']})
     summary = summarize(rows)
     failures = [r for r in rows if r['output'] != r['target']]
-    report = {'checkpoint': args.checkpoint, **summary, 'seconds': time.perf_counter() - started,
+    report = {'checkpoint': args.checkpoint, 'tag': tag, 'file': str(args.file), 'lexicon_guard': args.lexicon_guard,
+              **summary, 'seconds': time.perf_counter() - started,
               'failures': failures, 'rows': rows, 'model_info': engine.info}
-    stem = ROOT / f'reports/challenge-{args.checkpoint}'
-    stem.with_suffix('.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+    stem = output_stem(args.file, tag)
+    stem.parent.mkdir(parents=True, exist_ok=True)
+    Path(str(stem) + '.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     lines = [f'# Zorluk kümesi: {args.checkpoint}', '',
              f'Tam eşleşme: **{summary["exact"]}/{summary["total"]} = %{summary["exact_match"]*100:.1f}**', '']
     if summary['overcorrection'] is not None:
@@ -62,7 +74,7 @@ def main():
     lines += ['', f'## Başarısızlıklar ({len(failures)})', '']
     for r in failures:
         lines += ['```text', f'[{r["category"]}]', 'GİRDİ: ' + r['source'], 'MODEL: ' + r['output'], 'HEDEF: ' + r['target'], '```', '']
-    stem.with_suffix('.md').write_text('\n'.join(lines), encoding='utf-8')
+    Path(str(stem) + '.md').write_text('\n'.join(lines), encoding='utf-8')
     print(json.dumps({k: v for k, v in report.items() if k not in ('rows', 'failures', 'model_info')}, ensure_ascii=False, indent=2))
 
 if __name__ == '__main__':
