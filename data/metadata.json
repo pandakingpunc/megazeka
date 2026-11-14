@@ -19,7 +19,7 @@
   "split_method": "NFC + Türkçe küçük harf + alfanümerik kanonik tekilleştirme; gürültüden önce ayrım",
   "clean_ratio": 0.25,
   "format": "gzip-compressed JSONL",
-  "version": "v3.2",
+  "version": "v3.5",
   "target_corrections": {
     "file": "data/audit/corrections.jsonl",
     "sha256": "790e34b0165b84951fd7caededa33f5fb9e6b0cee41559068264b63f3991d8f5",
@@ -30,7 +30,7 @@
   "challenge_targets_excluded": 146,
   "splits": {
     "train": {
-      "pairs": 55902,
+      "pairs": 70831,
       "unique_targets": 13387,
       "by_source": {
         "Common Voice / CC0-1.0": 31932,
@@ -38,19 +38,19 @@
         "Birleşik iki cümle": 1272,
         "Megazeka hedefli şablon / CC0-1.0": 13906
       },
-      "bytes": 3368905,
-      "sha256": "ec637a3aa3e89ca60895ca37b70919ff177dfae9daa5f3af310eed492646cc19"
+      "bytes": 4226657,
+      "sha256": "0e6798f1cb1ef23c27c91e43b025637963fd9c2670ff896e2af9d186d68ee133"
     },
     "validation": {
-      "pairs": 2650,
+      "pairs": 3442,
       "unique_targets": 639,
       "by_source": {
         "Common Voice / CC0-1.0": 640,
         "Megazeka gündelik şablon / CC0-1.0": 800,
         "Megazeka hedefli şablon / CC0-1.0": 1210
       },
-      "bytes": 121634,
-      "sha256": "a8de67b31e8bd4f56833026bd123ce569c5f978e2bae834fff0b0b96212c2058"
+      "bytes": 157621,
+      "sha256": "cf94179c83f7674b8f312fe8466e5b239da6a17fb5b36cd5f147b5ed00076225"
     },
     "test": {
       "pairs": 1128,
@@ -97,6 +97,71 @@
           "koruma": 94
         }
       }
+    }
+  },
+  "v35": {
+    "base_sha256": {
+      "train": "ec637a3aa3e89ca60895ca37b70919ff177dfae9daa5f3af310eed492646cc19",
+      "validation": "a8de67b31e8bd4f56833026bd123ce569c5f978e2bae834fff0b0b96212c2058"
+    },
+    "approved_sha256": "9f7ec2a35e750f030f0ec68365e58d9fa1ff9b97b2322434805f420e44d396b2",
+    "base_rows": {
+      "train": {
+        "fixed": 30,
+        "dropped": 109
+      },
+      "validation": {
+        "fixed": 1,
+        "dropped": 3
+      }
+    },
+    "added": {
+      "train": {
+        "pairs": 15038,
+        "by_kind": {
+          "açık_yazım": 337,
+          "bağlaç": 152,
+          "koruma": 4798,
+          "noktalama": 40,
+          "yazım": 9196,
+          "özel_ad": 515
+        }
+      },
+      "validation": {
+        "pairs": 795,
+        "by_kind": {
+          "açık_yazım": 23,
+          "bağlaç": 9,
+          "koruma": 265,
+          "noktalama": 22,
+          "yazım": 474,
+          "özel_ad": 2
+        }
+      }
+    },
+    "rejected": {
+      "train": {
+        "test": 2,
+        "challenge": 3,
+        "opposite_base": 8,
+        "duplicate": 41,
+        "opposite_new": 0
+      },
+      "validation": {
+        "test": 0,
+        "challenge": 1,
+        "opposite_base": 4,
+        "duplicate": 0,
+        "opposite_new": 0
+      }
+    },
+    "pairs": {
+      "train": 70831,
+      "validation": 3442
+    },
+    "output_sha256": {
+      "train": "0e6798f1cb1ef23c27c91e43b025637963fd9c2670ff896e2af9d186d68ee133",
+      "validation": "cf94179c83f7674b8f312fe8466e5b239da6a17fb5b36cd5f147b5ed00076225"
     }
   }
 }

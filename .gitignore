@@ -24,3 +24,6 @@ data/audit/chunks/
 # v3.2 yerel arşivleri (v3.1 veri yedeği, ara ölçümler)
 data/v3.1-backup/
 reports/v3.2/
+
+# v3.5 yerel arşivleri
+data/v3.2-backup/
