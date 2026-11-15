@@ -1,3 +1,4 @@
+import gzip
 import json
 from pathlib import Path
 import subprocess
@@ -193,3 +194,31 @@ def test_config_only_steps_changed():
     medium = json.loads((root / 'configs/medium.json').read_text(encoding='utf-8'))
     expected = dict(medium, steps=7000)
     assert json.loads((root / 'configs/v3.5.json').read_text(encoding='utf-8')) == expected
+
+
+def test_live_data_is_v32_archive_plus_audit_and_additions():
+    """Real data: only audited rows differ from the v3.2 archive; the rest is explicit v3.5 additions."""
+    from collections import Counter
+    from training import v35
+    root = Path(prepare.__file__).resolve().parents[1]
+    archive = root / 'data/v3.2-backup'
+    if not (archive / 'train.jsonl.gz').exists():
+        pytest.skip('v3.2 backup is not installed')
+    metadata = json.loads((root / 'data/metadata.json').read_text(encoding='utf-8'))
+    assert metadata['version'] == 'v3.5'
+    report = metadata['v35']
+
+    def read(path):
+        with gzip.open(path, 'rt', encoding='utf-8') as stream:
+            return [json.dumps(json.loads(line), sort_keys=True, ensure_ascii=False) for line in stream]
+
+    for split in prepare.SPLITS:
+        base = Counter(read(archive / f'{split}.jsonl.gz'))
+        live = read(root / f'data/processed/{split}.jsonl.gz')
+        kept = Counter(row for row in live if json.loads(row)['source'] != v35.SOURCE)
+        added = len(live) - sum(kept.values())
+        assert added == report['added'][split]['pairs']
+        # Rows only in the archive are the audit drops and fixes; rows only in live data are the fixed ones.
+        assert sum((base - kept).values()) == sum(report['base_rows'][split].values())
+        assert sum((kept - base).values()) == report['base_rows'][split]['fixed']
+        assert len(live) == report['pairs'][split]

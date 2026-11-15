@@ -12,7 +12,7 @@ from megazeka.spelling import (MISSPELLINGS, MISSPELLINGS_V32, NAMES_V32, PROPER
                                misspelling_candidates)
 from megazeka.storage import ROOT
 from megazeka.text import canonical, lower_tr
-from training import prepare, targeted
+from training import prepare, targeted, v35
 
 
 @pytest.fixture(scope='module')
@@ -267,9 +267,16 @@ def _read(path):
 
 
 def test_legacy_stream_identity_and_frozen_test():
+    """v3.1 -> v3.2: the v3.2 stream is checked on its archive, not on the live data.
+
+    `data/processed` is now the v3.5 dataset, so the v3.2 contract is verified on
+    `data/v3.2-backup` (gitignored; skipped when the local archives are absent).
+    """
     backup = ROOT / 'data/v3.1-backup'
-    if not (backup / 'train.jsonl.gz').exists():
-        pytest.skip('v3.1 backup is not installed')
+    archive = ROOT / 'data/v3.2-backup'
+    for folder in (backup, archive):
+        if not (folder / 'train.jsonl.gz').exists():
+            pytest.skip(f'{folder.name} is not installed')
     # Only removals required by NEW challenge files are permitted. For joined
     # examples, neither constituent may leak into training either.
     new_keys = prepare.challenge_keys() - prepare._challenge_keys([prepare.CHALLENGE])
@@ -279,11 +286,12 @@ def test_legacy_stream_identity_and_frozen_test():
         expected = [r for r in _read(backup / f'{split}.jsonl.gz')
                     if r['group_id'] not in new_groups and r.get('group_id_second') not in new_groups
                     and canonical(r['target']) not in new_keys]
-        actual = [r for r in prepare.read_pairs(split) if r['source'] != prepare.TARGETED_SOURCE]
+        actual = [r for r in _read(archive / f'{split}.jsonl.gz') if r['source'] != prepare.TARGETED_SOURCE]
         assert Counter(tuple(r[k] for k in fields) for r in actual) == Counter(tuple(r[k] for k in fields) for r in expected)
         # Also retain operation history and all legacy metadata verbatim.
         assert Counter(json.dumps(r, sort_keys=True) for r in actual) == Counter(json.dumps(r, sort_keys=True) for r in expected)
     assert prepare.TEST_PATH.read_bytes() == (backup / 'test.jsonl.gz').read_bytes()
+    assert json.loads((archive / 'metadata.json').read_text(encoding='utf-8'))['version'] == 'v3.2'
 
 
 def test_processed_targeted_splits_are_disjoint_and_blocked():
@@ -298,5 +306,12 @@ def test_processed_targeted_splits_are_disjoint_and_blocked():
         extra = [r for r in rows if r['source'] == prepare.TARGETED_SOURCE]
         assert bool(extra) == (split != 'test')
     metadata = json.loads((ROOT / 'data/metadata.json').read_text(encoding='utf-8'))
-    assert metadata['version'] == 'v3.2'
+    # Live data is the v3.5 dataset (v3.2 data + audit + explicit additions); v3.2 stays in its archive.
+    assert metadata['version'] == 'v3.5'
+    assert metadata['splits']['train']['pairs'] == len(split_rows['train'])
+    assert metadata['splits']['validation']['pairs'] == len(split_rows['validation'])
+    assert metadata['splits']['test']['pairs'] == len(split_rows['test'])
+    added = Counter(r['source'] for split in ('train', 'validation') for r in split_rows[split])
+    assert added[v35.SOURCE] == sum(metadata['v35']['added'][s]['pairs'] for s in ('train', 'validation'))
+    assert not any(r['source'] == v35.SOURCE for r in split_rows['test'])
     assert metadata['targeted_source']['sentences'] == sum(metadata['targeted_source']['by_kind'].values())
