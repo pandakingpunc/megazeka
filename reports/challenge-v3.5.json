@@ -657,7 +657,7 @@
     "Mimari": "ByT5-small + LoRA",
     "Toplam parametre": 305896448,
     "Token sözlüğü": 384,
-    "Kontrol noktası": "C:\\Users\\Superuser\\Desktop\\Projeler\\proje\\megazeka\\models\\checkpoints\\v3.5",
+    "Kontrol noktası": "models/checkpoints/v3.5",
     "Temel model boyutu (MB)": 599.3,
     "Aygıt": "NVIDIA GeForce RTX 4060",
     "Hassasiyet": "torch.bfloat16",
