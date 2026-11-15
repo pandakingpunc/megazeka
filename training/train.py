@@ -72,14 +72,16 @@ def main():
     if device == 'cpu':
         config['batch_size'] = min(config['batch_size'], 2)
     dtype = torch.bfloat16 if device == 'cuda' and torch.cuda.is_bf16_supported() else torch.float32
-    tokenizer = AutoTokenizer.from_pretrained(ROOT / 'models/base', local_files_only=True)
-    model = AutoModelForSeq2SeqLM.from_pretrained(ROOT / 'models/base', local_files_only=True, dtype=dtype)
-    if not (ROOT / 'models/base/model.safetensors').exists():
+    base_dir = ROOT / config.get('base', 'models/base')
+    base_name = config.get('base_name', 'google/byt5-small')
+    tokenizer = AutoTokenizer.from_pretrained(base_dir, local_files_only=True)
+    model = AutoModelForSeq2SeqLM.from_pretrained(base_dir, local_files_only=True, dtype=dtype)
+    if not (base_dir / 'model.safetensors').exists():
         ensure_budget(sum(p.numel() * p.element_size() for p in model.parameters()) + 10_000_000, 'Temel modeli safetensors biçimine dönüştürme')
-        model.save_pretrained(ROOT / 'models/base', safe_serialization=True)
+        model.save_pretrained(base_dir, safe_serialization=True)
         # Exact redundant source file; never touches another model or global cache.
-        (ROOT / 'models/base/pytorch_model.bin').unlink(missing_ok=True)
-        tokenizer.save_pretrained(ROOT / 'models/base')
+        (base_dir / 'pytorch_model.bin').unlink(missing_ok=True)
+        tokenizer.save_pretrained(base_dir)
     state = {'step': 0, 'best_loss': 1e10, 'bad_evaluations': 0, 'elapsed_seconds': 0, 'examples_processed': 0}
     resume_dir = ROOT / 'models/checkpoints/latest'
     if args.resume:
@@ -107,7 +109,7 @@ def main():
         y = tokenizer.pad({'input_ids': [r[1] for r in rows]}, return_tensors='pt')['input_ids']
         y[y == tokenizer.pad_token_id] = -100
         return {**{k: v.to(device) for k, v in x.items()}, 'labels': y.to(device)}
-    info = {'architecture': 'ByT5-small + LoRA', 'base': 'google/byt5-small',
+    info = {'architecture': base_name.split('/')[-1].replace('byt5', 'ByT5') + ' + LoRA', 'base': base_name,
             'parameters': sum(p.numel() for p in model.parameters()),
             'trainable_parameters': sum(p.numel() for p in model.parameters() if p.requires_grad),
             'device': torch.cuda.get_device_name() if device == 'cuda' else 'CPU',
@@ -170,8 +172,9 @@ def main():
             model.eval()
             val_loss, val_tokens = 0.0, 0
             with torch.inference_mode():
-                for offset in range(0, len(validation), config['batch_size']):
-                    inputs = batch(encoded['validation'][offset:offset + config['batch_size']])
+                eval_batch = config.get('eval_batch_size', config['batch_size'])
+                for offset in range(0, len(validation), eval_batch):
+                    inputs = batch(encoded['validation'][offset:offset + eval_batch])
                     n = (inputs['labels'] != -100).sum().item()
                     val_loss += model(**inputs).loss.item() * n; val_tokens += n
                 observed = []
@@ -205,7 +208,7 @@ def main():
             model.train()
             if state['bad_evaluations'] >= config['patience'] or should_stop:
                 break
-    write_json(ROOT / 'models/final.json', {'adapter': 'models/checkpoints/best', 'base': 'models/base',
+    write_json(ROOT / 'models/final.json', {'adapter': 'models/checkpoints/best', 'base': config.get('base', 'models/base'),
                 'best_step': state.get('best_step'), 'note': 'Son model en iyi kontrol noktasına işaret eder; kopya yok.'})
     status.update(state, running=False)
     write_json(ROOT / 'reports/training_status.json', status)

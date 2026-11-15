@@ -29,3 +29,12 @@ def test_real_model_fixes_colloquial_and_keeps_correct_text():
     assert hits >= 2, hits
     for text in ['Okula gideceğim.', 'Yarın arkadaşlarımla sinemaya gideceğiz.', 'Bugün hava çok güzel.']:
         assert engine.correct(text, inspect=False)['output'] == text
+
+
+def test_base_of_resolution(tmp_path):
+    from megazeka.inference import base_of
+    assert base_of(tmp_path) == (ROOT/'models/base', 'google/byt5-small')
+    (tmp_path/'training_config.json').write_text('{"steps": 1}', encoding='utf-8')
+    assert base_of(tmp_path) == (ROOT/'models/base', 'google/byt5-small')
+    (tmp_path/'training_config.json').write_text('{"base": "models/base-byt5-base", "base_name": "google/byt5-base"}', encoding='utf-8')
+    assert base_of(tmp_path) == (ROOT/'models/base-byt5-base', 'google/byt5-base')

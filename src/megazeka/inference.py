@@ -4,6 +4,7 @@ configure()
 import json
 import math
 import time
+from pathlib import Path
 from contextlib import nullcontext
 from difflib import SequenceMatcher
 from .text import normalize, chunks, lower_tr, upper_first
@@ -97,6 +98,12 @@ def checkpoint_path(checkpoint):
     return path
 
 
+def base_of(checkpoint_dir):
+    config = Path(checkpoint_dir) / 'training_config.json'
+    saved = json.loads(config.read_text(encoding='utf-8')) if config.exists() else {}
+    return ROOT / saved.get('base', 'models/base'), saved.get('base_name', 'google/byt5-small')
+
+
 def guard(part, raw, ids, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
     """Apply optional guards; returns (final_text, warning_or_None)."""
     from rapidfuzz.distance import Levenshtein
@@ -121,13 +128,15 @@ class CorrectionEngine:
         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
         from peft import PeftModel
         self.torch = torch
-        if not (ROOT / 'models/base/config.json').exists():
+        self.base_dir, base_name = (ROOT / 'models/base', 'google/byt5-small') if checkpoint == 'base' else base_of(path)
+        label = base_name.split('/')[-1].replace('byt5', 'ByT5')
+        if not (self.base_dir / 'config.json').exists():
             raise RuntimeError('Temel model bulunamadı. Önce scripts/download.py komutunu çalıştırın.')
         torch.set_num_threads(6)
         self.device = device or ('cuda' if torch.cuda.is_available() else 'cpu')
         self.dtype = torch.bfloat16 if self.device == 'cuda' and torch.cuda.is_bf16_supported() else torch.float32
-        self.tokenizer = AutoTokenizer.from_pretrained(ROOT / 'models/base', local_files_only=True)
-        base = AutoModelForSeq2SeqLM.from_pretrained(ROOT / 'models/base', local_files_only=True, dtype=self.dtype)
+        self.tokenizer = AutoTokenizer.from_pretrained(self.base_dir, local_files_only=True)
+        base = AutoModelForSeq2SeqLM.from_pretrained(self.base_dir, local_files_only=True, dtype=self.dtype)
         self.checkpoint = checkpoint
         if checkpoint != 'base':
             if not (path / 'adapter_config.json').exists():
@@ -135,10 +144,10 @@ class CorrectionEngine:
             base = PeftModel.from_pretrained(base, path, local_files_only=True)
         self.model = base.to(self.device).eval()
         self.model.config.use_cache = True
-        self.info = {'Mimari': 'ByT5-small + LoRA' if checkpoint != 'base' else 'ByT5-small (temel)',
+        self.info = {'Mimari': f'{label} + LoRA' if checkpoint != 'base' else f'{label} (temel)',
                      'Toplam parametre': sum(p.numel() for p in self.model.parameters()),
                      'Token sözlüğü': len(self.tokenizer), 'Kontrol noktası': str(ROOT / ('models/base' if checkpoint == 'base' else f'models/checkpoints/{checkpoint}')),
-                     'Temel model boyutu (MB)': round(size(ROOT / 'models/base') / 1e6, 1),
+                     'Temel model boyutu (MB)': round(size(self.base_dir) / 1e6, 1),
                      'Aygıt': torch.cuda.get_device_name() if self.device == 'cuda' else 'CPU',
                      'Hassasiyet': str(self.dtype), 'Nicemleme': 'Yok', 'Parça sınırı': '176 UTF-8 baytı',
                      'Üretim': 'Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı'}

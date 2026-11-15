@@ -1,0 +1,1 @@
+{"steps": 7000, "batch_size": 4, "gradient_accumulation": 4, "eval_batch_size": 16, "learning_rate": 0.0005, "eval_every": 250, "seed": 42, "rank": 16, "max_bytes": 176, "patience": 8, "base": "models/base-byt5-base", "base_name": "google/byt5-base"}
