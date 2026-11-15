@@ -1,16 +1,16 @@
 {
   "step": 7000,
-  "best_loss": 0.02744695790189665,
+  "best_loss": 0.021789462367867978,
   "bad_evaluations": 1,
-  "elapsed_seconds": 4679.5464051,
+  "elapsed_seconds": 11019.154811499999,
   "examples_processed": 112000,
   "best_step": 6750,
   "epoch": 1.5812285581172085,
-  "loss": 0.02392578125,
+  "loss": 0.0268096923828125,
   "learning_rate": 0.0005,
   "total_steps": 7000,
   "remaining_steps": 0,
   "running": false,
-  "pid": 9556,
+  "pid": 7672,
   "device": "NVIDIA GeForce RTX 4060"
 }

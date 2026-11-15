@@ -1,6 +1,6 @@
 {
   "adapter": "models/checkpoints/best",
-  "base": "models/base",
+  "base": "models/base-byt5-base",
   "best_step": 6750,
   "note": "Son model en iyi kontrol noktasına işaret eder; kopya yok."
 }
