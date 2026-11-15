@@ -1,0 +1,727 @@
+{
+  "checkpoint": "v4",
+  "tag": "v4",
+  "file": "evaluation\\challenge5.jsonl",
+  "lexicon_guard": false,
+  "dictionary": false,
+  "dictionary_margin": 8.0,
+  "total": 70,
+  "exact": 44,
+  "exact_match": 0.6285714285714286,
+  "categories": {
+    "öğretilmiş": {
+      "total": 11,
+      "exact": 11,
+      "exact_match": 1.0
+    },
+    "yeni_sözcük": {
+      "total": 26,
+      "exact": 7,
+      "exact_match": 0.2692307692307692
+    },
+    "koruma": {
+      "total": 30,
+      "exact": 24,
+      "exact_match": 0.8
+    },
+    "karışık": {
+      "total": 3,
+      "exact": 2,
+      "exact_match": 0.6666666666666666
+    }
+  },
+  "clean_total": 30,
+  "clean_changed": 6,
+  "overcorrection": 0.2,
+  "seconds": 108.79855880000105,
+  "failures": [
+    {
+      "source": "Salataya biraz maydonos doğradım.",
+      "target": "Salataya biraz maydanoz doğradım.",
+      "category": "yeni_sözcük",
+      "output": "Salataya biraz maydanos doğradım.",
+      "raw_output": "Salataya biraz maydanos doğradım."
+    },
+    {
+      "source": "Çocuklar bahçede kelebeg kovalıyor.",
+      "target": "Çocuklar bahçede kelebek kovalıyor.",
+      "category": "yeni_sözcük",
+      "output": "Çocuklar bahçede kelebeğ kovalıyor.",
+      "raw_output": "Çocuklar bahçede kelebeğ kovalıyor."
+    },
+    {
+      "source": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum.",
+      "target": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometre almayı unuttum.",
+      "category": "yeni_sözcük",
+      "output": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum.",
+      "raw_output": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum."
+    },
+    {
+      "source": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü.",
+      "target": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürültülü.",
+      "category": "yeni_sözcük",
+      "output": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü.",
+      "raw_output": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü."
+    },
+    {
+      "source": "Sınavdan önce kütüphanede sesizce çalıştık.",
+      "target": "Sınavdan önce kütüphanede sessizce çalıştık.",
+      "category": "yeni_sözcük",
+      "output": "Sınavdan önce kütüphanede sesizce çalıştık.",
+      "raw_output": "Sınavdan önce kütüphanede sesizce çalıştık."
+    },
+    {
+      "source": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi.",
+      "target": "Öğretmen tahtaya bir üçgen ve bir dikdörtgen çizdi.",
+      "category": "yeni_sözcük",
+      "output": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi.",
+      "raw_output": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi."
+    },
+    {
+      "source": "Dedem her sabah gazatesini okur.",
+      "target": "Dedem her sabah gazetesini okur.",
+      "category": "yeni_sözcük",
+      "output": "Dedem her sabah gazatesini okur.",
+      "raw_output": "Dedem her sabah gazatesini okur."
+    },
+    {
+      "source": "Yolda bir kaplunbağa gördük.",
+      "target": "Yolda bir kaplumbağa gördük.",
+      "category": "yeni_sözcük",
+      "output": "Yolda bir kaplunbağa gördük.",
+      "raw_output": "Yolda bir kaplunbağa gördük."
+    },
+    {
+      "source": "Bu filmin senoryosu çok zayıf.",
+      "target": "Bu filmin senaryosu çok zayıf.",
+      "category": "yeni_sözcük",
+      "output": "Bu filmin senoryosu çok zayıf.",
+      "raw_output": "Bu filmin senoryosu çok zayıf."
+    },
+    {
+      "source": "Tiyatro oyununun pirovası gece yarısına kadar sürdü.",
+      "target": "Tiyatro oyununun provası gece yarısına kadar sürdü.",
+      "category": "yeni_sözcük",
+      "output": "Tiyatro oyununun pirovası gece yarısına kadar sürdü.",
+      "raw_output": "Tiyatro oyununun pirovası gece yarısına kadar sürdü."
+    },
+    {
+      "source": "Konserde orkestıra harika çaldı.",
+      "target": "Konserde orkestra harika çaldı.",
+      "category": "yeni_sözcük",
+      "output": "Konserde orkestira harika çaldı.",
+      "raw_output": "Konserde orkestira harika çaldı."
+    },
+    {
+      "source": "Dosyayı Whatsapp'tan gönderdim.",
+      "target": "Dosyayı Whatsapp'tan gönderdim.",
+      "category": "koruma",
+      "output": "Dosyayı Whatsap'tan gönderdim.",
+      "raw_output": "Dosyayı Whatsap'tan gönderdim."
+    },
+    {
+      "source": "Akşam Netflix'te bir dizi izledik.",
+      "target": "Akşam Netflix'te bir dizi izledik.",
+      "category": "koruma",
+      "output": "Akşam Netfliz'te bir dizi izledik.",
+      "raw_output": "Akşam Netfliz'te bir dizi izledik."
+    },
+    {
+      "source": "Havalimanında pasaportumu kontrol ettiler ve bagajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "target": "Havalimanında pasaportumu kontrol ettiler ve bagajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "category": "koruma",
+      "output": "Havalimanında pasaportumu kontrol ettiler ve bağajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "raw_output": "Havalimanında pasaportumu kontrol ettiler ve bağajımı teslim aldım, sonra otobüs terminaline gittim."
+    },
+    {
+      "source": "Otelin resepsyonunda uzun süre bekledik.",
+      "target": "Otelin resepsiyonunda uzun süre bekledik.",
+      "category": "yeni_sözcük",
+      "output": "Otelin resepsyonunda uzun süre bekledik.",
+      "raw_output": "Otelin resepsyonunda uzun süre bekledik."
+    },
+    {
+      "source": "Tatlı olarak sütlaç yerine profitörol aldık.",
+      "target": "Tatlı olarak sütlaç yerine profiterol aldık.",
+      "category": "yeni_sözcük",
+      "output": "Tatlı olarak sütlaç yerine profitörol aldık.",
+      "raw_output": "Tatlı olarak sütlaç yerine profitörol aldık."
+    },
+    {
+      "source": "Kahveme iki kaşık şekker attım.",
+      "target": "Kahveme iki kaşık şeker attım.",
+      "category": "yeni_sözcük",
+      "output": "Kahveme iki kaşık şekker attım.",
+      "raw_output": "Kahveme iki kaşık şekker attım."
+    },
+    {
+      "source": "Dişçi dolguyu yaptıktan sonra anastezi geçti.",
+      "target": "Dişçi dolguyu yaptıktan sonra anestezi geçti.",
+      "category": "yeni_sözcük",
+      "output": "Dişçi dolguyu yaptıktan sonra anastezi geçti.",
+      "raw_output": "Dişçi dolguyu yaptıktan sonra anastezi geçti."
+    },
+    {
+      "source": "Yağmurdan sonra gökkuşagı çıktı.",
+      "target": "Yağmurdan sonra gökkuşağı çıktı.",
+      "category": "yeni_sözcük",
+      "output": "Yağmurdan sonra gökküşağı çıktı.",
+      "raw_output": "Yağmurdan sonra gökküşağı çıktı."
+    },
+    {
+      "source": "Toplantıya Gökçe Hanım ve Tolga Bey de katılacak.",
+      "target": "Toplantıya Gökçe Hanım ve Tolga Bey de katılacak.",
+      "category": "koruma",
+      "output": "Toplantıya Gökçe Hanım ve Tolga Bey'de katılacak.",
+      "raw_output": "Toplantıya Gökçe Hanım ve Tolga Bey'de katılacak."
+    },
+    {
+      "source": "Muhasebeci faturaları tek tek kontorol etti.",
+      "target": "Muhasebeci faturaları tek tek kontrol etti.",
+      "category": "yeni_sözcük",
+      "output": "Muhasebeci faturaları tek tek kontorol etti.",
+      "raw_output": "Muhasebeci faturaları tek tek kontorol etti."
+    },
+    {
+      "source": "Maaşlar bu ay geçikmeli yatacakmış.",
+      "target": "Maaşlar bu ay gecikmeli yatacakmış.",
+      "category": "yeni_sözcük",
+      "output": "Maşlar bu ay geçikmeli yatacakmış.",
+      "raw_output": "Maşlar bu ay geçikmeli yatacakmış."
+    },
+    {
+      "source": "Abi bu oyun acayip sarıyor ya.",
+      "target": "Abi bu oyun acayip sarıyor ya.",
+      "category": "koruma",
+      "output": "Abi bu oyun acayıp sarıyor ya.",
+      "raw_output": "Abi bu oyun acayıp sarıyor ya."
+    },
+    {
+      "source": "Kanka akşam halı sahaya geliyon mu?",
+      "target": "Kanka akşam halı sahaya geliyon mu?",
+      "category": "koruma",
+      "output": "Kanka akşam halı sahaya geliyorsun mu?",
+      "raw_output": "Kanka akşam halı sahaya geliyorsun mu?"
+    },
+    {
+      "source": "Trafik yüzünden randevüye geç kaldım.",
+      "target": "Trafik yüzünden randevuya geç kaldım.",
+      "category": "yeni_sözcük",
+      "output": "Trafik yüzünden randevüye geç kaldım.",
+      "raw_output": "Trafik yüzünden randevüye geç kaldım."
+    },
+    {
+      "source": "Rezarvasyon için otelin resepsyonunu aradım.",
+      "target": "Rezervasyon için otelin resepsiyonunu aradım.",
+      "category": "karışık",
+      "output": "Rezervasyon için otelin resepsyonunu aradım.",
+      "raw_output": "Rezervasyon için otelin resepsyonunu aradım."
+    }
+  ],
+  "rows": [
+    {
+      "source": "Kahvaltıda taze domatez ve peynir yedik.",
+      "target": "Kahvaltıda taze domates ve peynir yedik.",
+      "category": "öğretilmiş",
+      "output": "Kahvaltıda taze domates ve peynir yedik.",
+      "raw_output": "Kahvaltıda taze domates ve peynir yedik."
+    },
+    {
+      "source": "Salataya biraz maydonos doğradım.",
+      "target": "Salataya biraz maydanoz doğradım.",
+      "category": "yeni_sözcük",
+      "output": "Salataya biraz maydanos doğradım.",
+      "raw_output": "Salataya biraz maydanos doğradım."
+    },
+    {
+      "source": "Çocuklar bahçede kelebeg kovalıyor.",
+      "target": "Çocuklar bahçede kelebek kovalıyor.",
+      "category": "yeni_sözcük",
+      "output": "Çocuklar bahçede kelebeğ kovalıyor.",
+      "raw_output": "Çocuklar bahçede kelebeğ kovalıyor."
+    },
+    {
+      "source": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum.",
+      "target": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometre almayı unuttum.",
+      "category": "yeni_sözcük",
+      "output": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum.",
+      "raw_output": "Doktor iki hafta istirahat verdi ve reçete yazdı, eczaneden ilaçları aldım ama termometire almayı unuttum."
+    },
+    {
+      "source": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü.",
+      "target": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürültülü.",
+      "category": "yeni_sözcük",
+      "output": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü.",
+      "raw_output": "Yeni aldığımız buzdolabı çok sessiz çalışıyor ama çamaşır makinesi gürlütülü."
+    },
+    {
+      "source": "Sınavdan önce kütüphanede sesizce çalıştık.",
+      "target": "Sınavdan önce kütüphanede sessizce çalıştık.",
+      "category": "yeni_sözcük",
+      "output": "Sınavdan önce kütüphanede sesizce çalıştık.",
+      "raw_output": "Sınavdan önce kütüphanede sesizce çalıştık."
+    },
+    {
+      "source": "Arabanın direksyonu biraz sert dönüyor.",
+      "target": "Arabanın direksiyonu biraz sert dönüyor.",
+      "category": "öğretilmiş",
+      "output": "Arabanın direksiyonu biraz sert dönüyor.",
+      "raw_output": "Arabanın direksiyonu biraz sert dönüyor."
+    },
+    {
+      "source": "Bahçedeki hortumu musluğa bağladım.",
+      "target": "Bahçedeki hortumu musluğa bağladım.",
+      "category": "koruma",
+      "output": "Bahçedeki hortumu musluğa bağladım.",
+      "raw_output": "Bahçedeki hortumu musluğa bağladım."
+    },
+    {
+      "source": "Tamirci arabanın egsozunu değiştirdi.",
+      "target": "Tamirci arabanın egzozunu değiştirdi.",
+      "category": "yeni_sözcük",
+      "output": "Tamirci arabanın egzozunu değiştirdi.",
+      "raw_output": "Tamirci arabanın egzozunu değiştirdi."
+    },
+    {
+      "source": "Pencerenin pervazına saksı koyduk.",
+      "target": "Pencerenin pervazına saksı koyduk.",
+      "category": "koruma",
+      "output": "Pencerenin pervazına saksı koyduk.",
+      "raw_output": "Pencerenin pervazına saksı koyduk."
+    },
+    {
+      "source": "Bu konuda profösörün görüşünü almalıyız.",
+      "target": "Bu konuda profesörün görüşünü almalıyız.",
+      "category": "yeni_sözcük",
+      "output": "Bu konuda profesörün görüşünü almalıyız.",
+      "raw_output": "Bu konuda profesörün görüşünü almalıyız."
+    },
+    {
+      "source": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi.",
+      "target": "Öğretmen tahtaya bir üçgen ve bir dikdörtgen çizdi.",
+      "category": "yeni_sözcük",
+      "output": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi.",
+      "raw_output": "Öğretmen tahtaya bir üçgen ve bir dikdörgen çizdi."
+    },
+    {
+      "source": "Laboratuarda deney yaparken eldiven takmalısın.",
+      "target": "Laboratuvarda deney yaparken eldiven takmalısın.",
+      "category": "öğretilmiş",
+      "output": "Laboratuvarda deney yaparken eldiven takmalısın.",
+      "raw_output": "Laboratuvarda deney yaparken eldiven takmalısın."
+    },
+    {
+      "source": "Yarınki maç için stadyuma erken gideceğiz.",
+      "target": "Yarınki maç için stadyuma erken gideceğiz.",
+      "category": "koruma",
+      "output": "Yarınki maç için stadyuma erken gideceğiz.",
+      "raw_output": "Yarınki maç için stadyuma erken gideceğiz."
+    },
+    {
+      "source": "Takımın antremanı sabah dokuzda başlıyor.",
+      "target": "Takımın antrenmanı sabah dokuzda başlıyor.",
+      "category": "öğretilmiş",
+      "output": "Takımın antrenmanı sabah dokuzda başlıyor.",
+      "raw_output": "Takımın antrenmanı sabah dokuzda başlıyor."
+    },
+    {
+      "source": "Kaleci son dakikada penaltıyı kurtardı.",
+      "target": "Kaleci son dakikada penaltıyı kurtardı.",
+      "category": "koruma",
+      "output": "Kaleci son dakikada penaltıyı kurtardı.",
+      "raw_output": "Kaleci son dakikada penaltıyı kurtardı."
+    },
+    {
+      "source": "Dedem her sabah gazatesini okur.",
+      "target": "Dedem her sabah gazetesini okur.",
+      "category": "yeni_sözcük",
+      "output": "Dedem her sabah gazatesini okur.",
+      "raw_output": "Dedem her sabah gazatesini okur."
+    },
+    {
+      "source": "Babaannem torunlarına hırka ördü.",
+      "target": "Babaannem torunlarına hırka ördü.",
+      "category": "koruma",
+      "output": "Babaannem torunlarına hırka ördü.",
+      "raw_output": "Babaannem torunlarına hırka ördü."
+    },
+    {
+      "source": "Yolda bir kaplunbağa gördük.",
+      "target": "Yolda bir kaplumbağa gördük.",
+      "category": "yeni_sözcük",
+      "output": "Yolda bir kaplunbağa gördük.",
+      "raw_output": "Yolda bir kaplunbağa gördük."
+    },
+    {
+      "source": "Hayvanat bahçesinde zürafalara yaprak verdik.",
+      "target": "Hayvanat bahçesinde zürafalara yaprak verdik.",
+      "category": "koruma",
+      "output": "Hayvanat bahçesinde zürafalara yaprak verdik.",
+      "raw_output": "Hayvanat bahçesinde zürafalara yaprak verdik."
+    },
+    {
+      "source": "Bu filmin senoryosu çok zayıf.",
+      "target": "Bu filmin senaryosu çok zayıf.",
+      "category": "yeni_sözcük",
+      "output": "Bu filmin senoryosu çok zayıf.",
+      "raw_output": "Bu filmin senoryosu çok zayıf."
+    },
+    {
+      "source": "Tiyatro oyununun pirovası gece yarısına kadar sürdü.",
+      "target": "Tiyatro oyununun provası gece yarısına kadar sürdü.",
+      "category": "yeni_sözcük",
+      "output": "Tiyatro oyununun pirovası gece yarısına kadar sürdü.",
+      "raw_output": "Tiyatro oyununun pirovası gece yarısına kadar sürdü."
+    },
+    {
+      "source": "Konserde orkestıra harika çaldı.",
+      "target": "Konserde orkestra harika çaldı.",
+      "category": "yeni_sözcük",
+      "output": "Konserde orkestira harika çaldı.",
+      "raw_output": "Konserde orkestira harika çaldı."
+    },
+    {
+      "source": "Kemancı sahnede tek başına çaldı.",
+      "target": "Kemancı sahnede tek başına çaldı.",
+      "category": "koruma",
+      "output": "Kemancı sahnede tek başına çaldı.",
+      "raw_output": "Kemancı sahnede tek başına çaldı."
+    },
+    {
+      "source": "Bilgisayarın kılavyesi bozulmuş.",
+      "target": "Bilgisayarın klavyesi bozulmuş.",
+      "category": "yeni_sözcük",
+      "output": "Bilgisayarın klavyesi bozulmuş.",
+      "raw_output": "Bilgisayarın klavyesi bozulmuş."
+    },
+    {
+      "source": "Telefonun şarz aleti evde kalmış.",
+      "target": "Telefonun şarj aleti evde kalmış.",
+      "category": "öğretilmiş",
+      "output": "Telefonun şarj aleti evde kalmış.",
+      "raw_output": "Telefonun şarj aleti evde kalmış."
+    },
+    {
+      "source": "Dosyayı Whatsapp'tan gönderdim.",
+      "target": "Dosyayı Whatsapp'tan gönderdim.",
+      "category": "koruma",
+      "output": "Dosyayı Whatsap'tan gönderdim.",
+      "raw_output": "Dosyayı Whatsap'tan gönderdim."
+    },
+    {
+      "source": "Akşam Netflix'te bir dizi izledik.",
+      "target": "Akşam Netflix'te bir dizi izledik.",
+      "category": "koruma",
+      "output": "Akşam Netfliz'te bir dizi izledik.",
+      "raw_output": "Akşam Netfliz'te bir dizi izledik."
+    },
+    {
+      "source": "Yazılımcı kodu github reposuna yükledi.",
+      "target": "Yazılımcı kodu github reposuna yükledi.",
+      "category": "koruma",
+      "output": "Yazılımcı kodu github reposuna yükledi.",
+      "raw_output": "Yazılımcı kodu github reposuna yükledi."
+    },
+    {
+      "source": "Sunucuya yeni bir güncelleme deploy ettik.",
+      "target": "Sunucuya yeni bir güncelleme deploy ettik.",
+      "category": "koruma",
+      "output": "Sunucuya yeni bir güncelleme deploy ettik.",
+      "raw_output": "Sunucuya yeni bir güncelleme deploy ettik."
+    },
+    {
+      "source": "Uçağımız rötar yüzünden geç kalktı.",
+      "target": "Uçağımız rötar yüzünden geç kalktı.",
+      "category": "koruma",
+      "output": "Uçağımız rötar yüzünden geç kalktı.",
+      "raw_output": "Uçağımız rötar yüzünden geç kalktı."
+    },
+    {
+      "source": "Havalimanında pasaportumu kontrol ettiler ve bagajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "target": "Havalimanında pasaportumu kontrol ettiler ve bagajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "category": "koruma",
+      "output": "Havalimanında pasaportumu kontrol ettiler ve bağajımı teslim aldım, sonra otobüs terminaline gittim.",
+      "raw_output": "Havalimanında pasaportumu kontrol ettiler ve bağajımı teslim aldım, sonra otobüs terminaline gittim."
+    },
+    {
+      "source": "Otelin resepsyonunda uzun süre bekledik.",
+      "target": "Otelin resepsiyonunda uzun süre bekledik.",
+      "category": "yeni_sözcük",
+      "output": "Otelin resepsyonunda uzun süre bekledik.",
+      "raw_output": "Otelin resepsyonunda uzun süre bekledik."
+    },
+    {
+      "source": "Tatil için rezarvasyon yaptırdık.",
+      "target": "Tatil için rezervasyon yaptırdık.",
+      "category": "öğretilmiş",
+      "output": "Tatil için rezervasyon yaptırdık.",
+      "raw_output": "Tatil için rezervasyon yaptırdık."
+    },
+    {
+      "source": "Garson hesabı getirirken bardağı devirdi.",
+      "target": "Garson hesabı getirirken bardağı devirdi.",
+      "category": "koruma",
+      "output": "Garson hesabı getirirken bardağı devirdi.",
+      "raw_output": "Garson hesabı getirirken bardağı devirdi."
+    },
+    {
+      "source": "Lokantada mercimek çorbası ve pilav söyledik.",
+      "target": "Lokantada mercimek çorbası ve pilav söyledik.",
+      "category": "koruma",
+      "output": "Lokantada mercimek çorbası ve pilav söyledik.",
+      "raw_output": "Lokantada mercimek çorbası ve pilav söyledik."
+    },
+    {
+      "source": "Tatlı olarak sütlaç yerine profitörol aldık.",
+      "target": "Tatlı olarak sütlaç yerine profiterol aldık.",
+      "category": "yeni_sözcük",
+      "output": "Tatlı olarak sütlaç yerine profitörol aldık.",
+      "raw_output": "Tatlı olarak sütlaç yerine profitörol aldık."
+    },
+    {
+      "source": "Kahveme iki kaşık şekker attım.",
+      "target": "Kahveme iki kaşık şeker attım.",
+      "category": "yeni_sözcük",
+      "output": "Kahveme iki kaşık şekker attım.",
+      "raw_output": "Kahveme iki kaşık şekker attım."
+    },
+    {
+      "source": "Bu ayın elektirk faturası çok yüksek geldi.",
+      "target": "Bu ayın elektrik faturası çok yüksek geldi.",
+      "category": "yeni_sözcük",
+      "output": "Bu ayın elektrik faturası çok yüksek geldi.",
+      "raw_output": "Bu ayın elektrik faturası çok yüksek geldi."
+    },
+    {
+      "source": "Kombinin termostatını yirmi iki dereceye ayarladım.",
+      "target": "Kombinin termostatını yirmi iki dereceye ayarladım.",
+      "category": "koruma",
+      "output": "Kombinin termostatını yirmi iki dereceye ayarladım.",
+      "raw_output": "Kombinin termostatını yirmi iki dereceye ayarladım."
+    },
+    {
+      "source": "Musluktan su damlıyor, tesisatcı çağırmalıyız.",
+      "target": "Musluktan su damlıyor, tesisatçı çağırmalıyız.",
+      "category": "yeni_sözcük",
+      "output": "Musluktan su damlıyor, tesisatçı çağırmalıyız.",
+      "raw_output": "Musluktan su damlıyor, tesisatçı çağırmalıyız."
+    },
+    {
+      "source": "Marangoz dolabın menteşesini yeniledi.",
+      "target": "Marangoz dolabın menteşesini yeniledi.",
+      "category": "koruma",
+      "output": "Marangoz dolabın menteşesini yeniledi.",
+      "raw_output": "Marangoz dolabın menteşesini yeniledi."
+    },
+    {
+      "source": "Duvarı boyamadan önce zımparalamak gerek.",
+      "target": "Duvarı boyamadan önce zımparalamak gerek.",
+      "category": "koruma",
+      "output": "Duvarı boyamadan önce zımparalamak gerek.",
+      "raw_output": "Duvarı boyamadan önce zımparalamak gerek."
+    },
+    {
+      "source": "Kardeşim ünüversite sınavına hazırlanıyor.",
+      "target": "Kardeşim üniversite sınavına hazırlanıyor.",
+      "category": "öğretilmiş",
+      "output": "Kardeşim üniversite sınavına hazırlanıyor.",
+      "raw_output": "Kardeşim üniversite sınavına hazırlanıyor."
+    },
+    {
+      "source": "Diplomasını almak için fakülteye gitti.",
+      "target": "Diplomasını almak için fakülteye gitti.",
+      "category": "koruma",
+      "output": "Diplomasını almak için fakülteye gitti.",
+      "raw_output": "Diplomasını almak için fakülteye gitti."
+    },
+    {
+      "source": "Öğrenciler matamatik dersinden korkuyor.",
+      "target": "Öğrenciler matematik dersinden korkuyor.",
+      "category": "öğretilmiş",
+      "output": "Öğrenciler matematik dersinden korkuyor.",
+      "raw_output": "Öğrenciler matematik dersinden korkuyor."
+    },
+    {
+      "source": "Kimya dersinde periyodik cetveli ezberledik.",
+      "target": "Kimya dersinde periyodik cetveli ezberledik.",
+      "category": "koruma",
+      "output": "Kimya dersinde periyodik cetveli ezberledik.",
+      "raw_output": "Kimya dersinde periyodik cetveli ezberledik."
+    },
+    {
+      "source": "Hastanede tansyonumu ölçtüler.",
+      "target": "Hastanede tansiyonumu ölçtüler.",
+      "category": "yeni_sözcük",
+      "output": "Hastanede tansiyonumu ölçtüler.",
+      "raw_output": "Hastanede tansiyonumu ölçtüler."
+    },
+    {
+      "source": "Dişçi dolguyu yaptıktan sonra anastezi geçti.",
+      "target": "Dişçi dolguyu yaptıktan sonra anestezi geçti.",
+      "category": "yeni_sözcük",
+      "output": "Dişçi dolguyu yaptıktan sonra anastezi geçti.",
+      "raw_output": "Dişçi dolguyu yaptıktan sonra anastezi geçti."
+    },
+    {
+      "source": "Hemşire koluma serum taktı.",
+      "target": "Hemşire koluma serum taktı.",
+      "category": "koruma",
+      "output": "Hemşire koluma serum taktı.",
+      "raw_output": "Hemşire koluma serum taktı."
+    },
+    {
+      "source": "Yağmurdan sonra gökkuşagı çıktı.",
+      "target": "Yağmurdan sonra gökkuşağı çıktı.",
+      "category": "yeni_sözcük",
+      "output": "Yağmurdan sonra gökküşağı çıktı.",
+      "raw_output": "Yağmurdan sonra gökküşağı çıktı."
+    },
+    {
+      "source": "Dağın zirvesinde hava çok soguktu.",
+      "target": "Dağın zirvesinde hava çok soğuktu.",
+      "category": "öğretilmiş",
+      "output": "Dağın zirvesinde hava çok soğuktu.",
+      "raw_output": "Dağın zirvesinde hava çok soğuktu."
+    },
+    {
+      "source": "Kampta çadırı kurup ateş yaktık.",
+      "target": "Kampta çadırı kurup ateş yaktık.",
+      "category": "koruma",
+      "output": "Kampta çadırı kurup ateş yaktık.",
+      "raw_output": "Kampta çadırı kurup ateş yaktık."
+    },
+    {
+      "source": "Mustafa ile Zeynep haftaya Erzurum'a gidiyor.",
+      "target": "Mustafa ile Zeynep haftaya Erzurum'a gidiyor.",
+      "category": "koruma",
+      "output": "Mustafa ile Zeynep haftaya Erzurum'a gidiyor.",
+      "raw_output": "Mustafa ile Zeynep haftaya Erzurum'a gidiyor."
+    },
+    {
+      "source": "Toplantıya Gökçe Hanım ve Tolga Bey de katılacak.",
+      "target": "Toplantıya Gökçe Hanım ve Tolga Bey de katılacak.",
+      "category": "koruma",
+      "output": "Toplantıya Gökçe Hanım ve Tolga Bey'de katılacak.",
+      "raw_output": "Toplantıya Gökçe Hanım ve Tolga Bey'de katılacak."
+    },
+    {
+      "source": "Şirketin yeni müdürü çok disiplinli biri.",
+      "target": "Şirketin yeni müdürü çok disiplinli biri.",
+      "category": "koruma",
+      "output": "Şirketin yeni müdürü çok disiplinli biri.",
+      "raw_output": "Şirketin yeni müdürü çok disiplinli biri."
+    },
+    {
+      "source": "Muhasebeci faturaları tek tek kontorol etti.",
+      "target": "Muhasebeci faturaları tek tek kontrol etti.",
+      "category": "yeni_sözcük",
+      "output": "Muhasebeci faturaları tek tek kontorol etti.",
+      "raw_output": "Muhasebeci faturaları tek tek kontorol etti."
+    },
+    {
+      "source": "Bankadan kiredi çekmek için başvurdum.",
+      "target": "Bankadan kredi çekmek için başvurdum.",
+      "category": "yeni_sözcük",
+      "output": "Bankadan kredi çekmek için başvurdum.",
+      "raw_output": "Bankadan kredi çekmek için başvurdum."
+    },
+    {
+      "source": "Maaşlar bu ay geçikmeli yatacakmış.",
+      "target": "Maaşlar bu ay gecikmeli yatacakmış.",
+      "category": "yeni_sözcük",
+      "output": "Maşlar bu ay geçikmeli yatacakmış.",
+      "raw_output": "Maşlar bu ay geçikmeli yatacakmış."
+    },
+    {
+      "source": "Abi bu oyun acayip sarıyor ya.",
+      "target": "Abi bu oyun acayip sarıyor ya.",
+      "category": "koruma",
+      "output": "Abi bu oyun acayıp sarıyor ya.",
+      "raw_output": "Abi bu oyun acayıp sarıyor ya."
+    },
+    {
+      "source": "Kanka akşam halı sahaya geliyon mu?",
+      "target": "Kanka akşam halı sahaya geliyon mu?",
+      "category": "koruma",
+      "output": "Kanka akşam halı sahaya geliyorsun mu?",
+      "raw_output": "Kanka akşam halı sahaya geliyorsun mu?"
+    },
+    {
+      "source": "Trafik yüzünden randevüye geç kaldım.",
+      "target": "Trafik yüzünden randevuya geç kaldım.",
+      "category": "yeni_sözcük",
+      "output": "Trafik yüzünden randevüye geç kaldım.",
+      "raw_output": "Trafik yüzünden randevüye geç kaldım."
+    },
+    {
+      "source": "Otoparkta arabayı park edecek yer bulamadım.",
+      "target": "Otoparkta arabayı park edecek yer bulamadım.",
+      "category": "koruma",
+      "output": "Otoparkta arabayı park edecek yer bulamadım.",
+      "raw_output": "Otoparkta arabayı park edecek yer bulamadım."
+    },
+    {
+      "source": "Minübüs durağında yarım saat bekledim.",
+      "target": "Minibüs durağında yarım saat bekledim.",
+      "category": "öğretilmiş",
+      "output": "Minibüs durağında yarım saat bekledim.",
+      "raw_output": "Minibüs durağında yarım saat bekledim."
+    },
+    {
+      "source": "Yeni aldığım ayakabı ayağımı sıkıyor.",
+      "target": "Yeni aldığım ayakkabı ayağımı sıkıyor.",
+      "category": "öğretilmiş",
+      "output": "Yeni aldığım ayakkabı ayağımı sıkıyor.",
+      "raw_output": "Yeni aldığım ayakkabı ayağımı sıkıyor."
+    },
+    {
+      "source": "Terzi pantolonun paçasını kısalttı.",
+      "target": "Terzi pantolonun paçasını kısalttı.",
+      "category": "koruma",
+      "output": "Terzi pantolonun paçasını kısalttı.",
+      "raw_output": "Terzi pantolonun paçasını kısalttı."
+    },
+    {
+      "source": "Kışın atkı ve eldivensiz dışarı çıkma.",
+      "target": "Kışın atkı ve eldivensiz dışarı çıkma.",
+      "category": "koruma",
+      "output": "Kışın atkı ve eldivensiz dışarı çıkma.",
+      "raw_output": "Kışın atkı ve eldivensiz dışarı çıkma."
+    },
+    {
+      "source": "Tesisatcı gelince hem musluğu hem de elektirk prizini gösterdim.",
+      "target": "Tesisatçı gelince hem musluğu hem de elektrik prizini gösterdim.",
+      "category": "karışık",
+      "output": "Tesisatçı gelince hem musluğu hem de elektrik prizini gösterdim.",
+      "raw_output": "Tesisatçı gelince hem musluğu hem de elektrik prizini gösterdim."
+    },
+    {
+      "source": "Ünüversite kütüphanesinde matamatik çalıştık.",
+      "target": "Üniversite kütüphanesinde matematik çalıştık.",
+      "category": "karışık",
+      "output": "Üniversite kütüphanesinde matematik çalıştık.",
+      "raw_output": "Üniversite kütüphanesinde matematik çalıştık."
+    },
+    {
+      "source": "Rezarvasyon için otelin resepsyonunu aradım.",
+      "target": "Rezervasyon için otelin resepsiyonunu aradım.",
+      "category": "karışık",
+      "output": "Rezervasyon için otelin resepsyonunu aradım.",
+      "raw_output": "Rezervasyon için otelin resepsyonunu aradım."
+    }
+  ],
+  "model_info": {
+    "Mimari": "ByT5-base + LoRA",
+    "Toplam parametre": 592417536,
+    "Token sözlüğü": 384,
+    "Kontrol noktası": "C:\\Users\\Superuser\\Desktop\\Projeler\\proje\\megazeka\\models\\checkpoints\\v4",
+    "Temel model boyutu (MB)": 2326.7,
+    "Aygıt": "NVIDIA GeForce RTX 4060",
+    "Hassasiyet": "torch.bfloat16",
+    "Nicemleme": "Yok",
+    "Parça sınırı": "176 UTF-8 baytı",
+    "Üretim": "Açgözlü çözümleme; 1 ışın; en fazla 224 yeni bayt tokenı",
+    "Eğitim adımı": 6750,
+    "LoRA hassasiyeti": "torch.float32"
+  }
+}

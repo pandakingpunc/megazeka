@@ -9,6 +9,7 @@ from contextlib import nullcontext
 from difflib import SequenceMatcher
 from .text import normalize, chunks, lower_tr, upper_first
 from .metrics import edits, change_type
+from .dictionary import available as dictionary_available
 
 # Chunk-level guard: reject a generation that rewrites more characters than the chunk has.
 # Measured on the 1,128-pair test set: the old 0.45 threshold rejected most correct heavy
@@ -166,7 +167,26 @@ class CorrectionEngine:
             return repr(chr(b)) if 32 <= b < 127 else f'0x{b:02X}'
         return f'<extra:{token_id}>'
 
-    def correct(self, text, inspect=True, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
+    def score(self, source, targets):
+        """Total log-probability the model assigns to each target given one source."""
+        if not targets:
+            return []
+        torch = self.torch
+        x = self.tokenizer([source] * len(targets), padding=True, return_tensors='pt').to(self.device)
+        labels = self.tokenizer(list(targets), padding=True, return_tensors='pt').input_ids.to(self.device)
+        mask = labels != self.tokenizer.pad_token_id
+        with torch.inference_mode():
+            logits = self.model(**x, labels=labels.masked_fill(~mask, -100)).logits.float()
+            logp = torch.log_softmax(logits, dim=-1).gather(-1, labels.unsqueeze(-1)).squeeze(-1)
+        return (logp * mask).sum(dim=-1).tolist()
+
+    def assist(self, part, final):
+        """Dictionary-assisted pass; returns (text, number_of_changed_words)."""
+        from .dictionary import assist
+        text, changes = assist(part, final, lambda s, t: self.score(s, t))
+        return text, len(changes)
+
+    def correct(self, text, inspect=True, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT, dictionary=False):
         if not isinstance(text, str):
             raise TypeError('Metin bir yazı dizisi olmalı.')
         if not text.strip():
@@ -185,6 +205,7 @@ class CorrectionEngine:
         output_parts, raw_parts, input_tokens, generated = [], [], [], []
         warnings = []
         pieces = []
+        dictionary = dictionary and dictionary_available()
         for part_index, (part, layout) in enumerate(parts):
             if layout:
                 output_parts.append(part); raw_parts.append(part)
@@ -220,6 +241,10 @@ class CorrectionEngine:
                 final, warning = guard(part, raw, ids, conservative=conservative, lexicon_guard=lexicon_guard)
                 if warning:
                     warnings.append(f'{part_index+1}. parça: {warning}. Ham çıktı inceleme ekranında.')
+            if dictionary:
+                final, changed = self.assist(part, final)
+                if changed:
+                    warnings.append(f'{changed} sözcük sözlük desteğiyle düzeltildi')
             pieces.append({'part': part_index, 'input': part, 'raw': raw, 'final': final})
             raw_parts.append(raw); output_parts.append(final)
             timings['Son işleme'] += (now() - t) * 1000
@@ -238,19 +263,25 @@ class CorrectionEngine:
                 'sequence_log_probability': sum(math.log(max(p, 1e-30)) for p in probabilities) if probabilities else None,
                 'checkpoint': self.checkpoint}
 
-    def correct_batch(self, texts, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT):
+    def correct_batch(self, texts, conservative=True, lexicon_guard=LEXICON_GUARD_DEFAULT, dictionary=False):
         """Evaluation path for short independent sentences; never truncate long input."""
         if not texts:
             return []
         if any(len(chunks(normalize(t))) != 1 or len(t.encode('utf-8')) > 176 or not t.strip() for t in texts):
-            return [self.correct(t, inspect=False, conservative=conservative, lexicon_guard=lexicon_guard) for t in texts]
+            return [self.correct(t, inspect=False, conservative=conservative, lexicon_guard=lexicon_guard, dictionary=dictionary) for t in texts]
         prepared = [normalize(t) for t in texts]
         x = self.tokenizer(prepared, padding=True, return_tensors='pt').to(self.device)
         with self.torch.inference_mode():
             sequences = self.model.generate(**x, max_new_tokens=224, num_beams=1, do_sample=False)
         outputs = self.tokenizer.batch_decode(sequences, skip_special_tokens=True)
+        dictionary = dictionary and dictionary_available()
         results = []
         for text, raw, ids in zip(prepared, outputs, sequences.tolist()):
             final, warning = guard(text, raw, ids, conservative=conservative, lexicon_guard=lexicon_guard)
-            results.append({'output': final, 'raw_output': raw, 'warnings': [warning] if warning else []})
+            notes = [warning] if warning else []
+            if dictionary:
+                final, changed = self.assist(text, final)
+                if changed:
+                    notes.append(f'{changed} sözcük sözlük desteğiyle düzeltildi')
+            results.append({'output': final, 'raw_output': raw, 'warnings': notes})
         return results

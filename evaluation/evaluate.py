@@ -7,6 +7,7 @@ import json
 import time
 from megazeka.storage import ROOT, ensure_budget, usage
 from megazeka.inference import CorrectionEngine, report_name
+from megazeka import dictionary as dictionary_module
 from megazeka.metrics import measure
 from evaluation.audit import recompute_audited_metrics
 from training.prepare import read_pairs
@@ -44,8 +45,12 @@ def main():
     parser.add_argument('--checkpoint', type=report_name, default='best')
     parser.add_argument('--tag', type=report_name)
     parser.add_argument('--lexicon-guard', action='store_true')
+    parser.add_argument('--dictionary', action='store_true')
+    parser.add_argument('--dictionary-margin', type=float, default=None)
     parser.add_argument('--limit', type=int, default=None)
     args = parser.parse_args()
+    if args.dictionary_margin is not None:
+        dictionary_module.DICTIONARY_MARGIN = args.dictionary_margin
     tag = args.tag if args.tag is not None else args.checkpoint
     ensure_budget(10_000_000, 'Değerlendirme raporu')
     engine = CorrectionEngine(args.checkpoint)
@@ -54,7 +59,7 @@ def main():
     started = time.perf_counter()
     for offset in range(0, len(source), 8):
         batch = source[offset:offset+8]
-        results = engine.correct_batch([r['input'] for r in batch], lexicon_guard=args.lexicon_guard)
+        results = engine.correct_batch([r['input'] for r in batch], lexicon_guard=args.lexicon_guard, dictionary=args.dictionary)
         for row, result in zip(batch, results):
             rows.append({**{k: row[k] for k in ['input', 'target', 'difficulty', 'source']},
                          'output': result['output'], 'raw_output': result['raw_output'], 'warnings': result['warnings']})
@@ -62,7 +67,7 @@ def main():
             print(f'Değerlendirme {min(offset+8, len(source))}/{len(source)}', flush=True)
     manual = []
     for text, target in MANUAL:
-        result = engine.correct(text, inspect=False, lexicon_guard=args.lexicon_guard)
+        result = engine.correct(text, inspect=False, lexicon_guard=args.lexicon_guard, dictionary=args.dictionary)
         manual.append({'input': text, 'target': target, 'output': result['output'], 'raw_output': result['raw_output']})
     subsets = {}
     for name, keep in [('common_voice', lambda r: r['source'].startswith('Common Voice')),
@@ -72,6 +77,7 @@ def main():
             subsets[name] = {'metrics': measure(chosen), 'raw_metrics': measure([{**r, 'output': r['raw_output']} for r in chosen]),
                              'identity_baseline': measure([{**r, 'output': r['input']} for r in chosen])}
     report = {'checkpoint': args.checkpoint, 'tag': tag, 'lexicon_guard': args.lexicon_guard,
+              'dictionary': args.dictionary, 'dictionary_margin': dictionary_module.DICTIONARY_MARGIN,
               'metrics': measure(rows), 'audited_metrics': recompute_audited_metrics({'examples': rows}), 'subsets': subsets,
               'raw_metrics': measure([{**r, 'output': r['raw_output']} for r in rows]),
               'identity_baseline': measure([{**r, 'output': r['input']} for r in rows]),

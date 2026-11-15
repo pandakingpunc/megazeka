@@ -12,6 +12,7 @@ import json
 import time
 from megazeka.storage import ROOT
 from megazeka.inference import report_name
+from megazeka import dictionary as dictionary_module
 
 CHALLENGE = ROOT / 'evaluation/challenge.jsonl'
 
@@ -46,18 +47,23 @@ def main():
     parser.add_argument('--tag', type=report_name)
     parser.add_argument('--file', type=Path, default=CHALLENGE)
     parser.add_argument('--lexicon-guard', action='store_true')
+    parser.add_argument('--dictionary', action='store_true')
+    parser.add_argument('--dictionary-margin', type=float, default=None)
     args = parser.parse_args()
+    if args.dictionary_margin is not None:
+        dictionary_module.DICTIONARY_MARGIN = args.dictionary_margin
     tag = args.tag if args.tag is not None else args.checkpoint
     from megazeka.inference import CorrectionEngine
     engine = CorrectionEngine(args.checkpoint)
     started = time.perf_counter()
     rows = []
     for item in load(args.file):
-        result = engine.correct(item['source'], inspect=False, conservative=True, lexicon_guard=args.lexicon_guard)
+        result = engine.correct(item['source'], inspect=False, conservative=True, lexicon_guard=args.lexicon_guard, dictionary=args.dictionary)
         rows.append({**item, 'output': result['output'], 'raw_output': result['raw_output']})
     summary = summarize(rows)
     failures = [r for r in rows if r['output'] != r['target']]
     report = {'checkpoint': args.checkpoint, 'tag': tag, 'file': str(args.file), 'lexicon_guard': args.lexicon_guard,
+              'dictionary': args.dictionary, 'dictionary_margin': dictionary_module.DICTIONARY_MARGIN,
               **summary, 'seconds': time.perf_counter() - started,
               'failures': failures, 'rows': rows, 'model_info': engine.info}
     stem = output_stem(args.file, tag)

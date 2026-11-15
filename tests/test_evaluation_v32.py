@@ -87,10 +87,11 @@ def test_evaluate_cli_report_without_model(tmp_path, monkeypatch, tag, enabled):
         info = {}
         def __init__(self, checkpoint):
             assert checkpoint == 'v3.1b'
-        def correct_batch(self, texts, lexicon_guard):
+        def correct_batch(self, texts, lexicon_guard, dictionary):
+            assert dictionary is False
             assert lexicon_guard == enabled
             return [{'output': t, 'raw_output': t, 'warnings': []} for t in texts]
-        def correct(self, text, inspect, lexicon_guard):
+        def correct(self, text, inspect, lexicon_guard, dictionary):
             assert lexicon_guard == enabled
             return {'output': text, 'raw_output': text}
     monkeypatch.setattr(evaluate, 'ROOT', tmp_path)
@@ -116,7 +117,7 @@ def test_challenge_cli_custom_file_and_tag(tmp_path, monkeypatch):
         info = {}
         def __init__(self, checkpoint):
             assert checkpoint == 'v3.1b'
-        def correct(self, text, inspect, conservative, lexicon_guard):
+        def correct(self, text, inspect, conservative, lexicon_guard, dictionary):
             assert lexicon_guard and conservative
             return {'output': text, 'raw_output': text}
     path = tmp_path / 'challenge2.jsonl'
@@ -128,5 +129,5 @@ def test_challenge_cli_custom_file_and_tag(tmp_path, monkeypatch):
     challenge.main()
     report_path = tmp_path / 'reports/challenge2-v3.2.lex.json'
     report = json.loads(report_path.read_text(encoding='utf-8'))
-    assert report['lexicon_guard'] and report['exact_match'] == 1
+    assert report['lexicon_guard'] and report['exact_match'] == 1 and report['dictionary'] is False
     assert (tmp_path / 'reports/challenge2-v3.2.lex.md').exists()

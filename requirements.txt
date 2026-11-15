@@ -5,3 +5,4 @@ safetensors==0.6.2
 numpy==2.2.6
 rapidfuzz==3.14.1
 pytest==8.4.2
+zeyrek==0.1.3
